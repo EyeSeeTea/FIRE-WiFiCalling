@@ -36,11 +36,11 @@
   "cordovaPlugins": [
     "cordova-plugin-whitelist",
     "cordova-plugin-statusbar",
-    "cordova-plugin-console",
     "cordova-plugin-device",
+    "cordova-plugin-console",
     "cordova-plugin-splashscreen",
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "WiFi Calling: An Ionic project"
+  "description": "WiFiCalling: An Ionic project"
 }
