@@ -8,7 +8,7 @@ To configure basic dev environment
 First of all create an account in https://apps.ionic.io
 
 ```
-sudo npm install -g ionic cordova
+sudo npm install -g ionic@2.2.3 cordova
 ```
 
 (optional, probably for the future)
