@@ -6,13 +6,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { WificallPage } from '../pages/wificall/wificall';
 import { AdminPage } from '../pages/admin/admin';
 
+type page = {title: string, component: any};
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = WificallPage;
-  pages: Array<{title: string, component: any}>;
+  pages: Array<page>;
+  activePage: page;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -29,9 +32,15 @@ export class MyApp {
       {title: 'License', component: WificallPage},
       {title: 'Log Out', component: WificallPage},
     ];
+    this.activePage = this.pages[0];
   }
 
   openPage(page) {
     this.nav.setRoot(page.component);
+    this.activePage = page;
+  }
+
+  checkActive(page) {
+    return this.activePage === page;
   }
 }
