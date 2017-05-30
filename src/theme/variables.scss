@@ -24,7 +24,7 @@ $font-path: "../assets/fonts";
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    #d95e2a,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
@@ -43,7 +43,14 @@ $colors: (
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+// Toolbar
+$toolbar-md-background:                   color($colors, primary);
+$toolbar-md-active-color:                 #fff;
 
+// Tabs
+$tabs-background:      									  color($colors, primary);
+$tabs-md-tab-color-active:                #fff;
+$tabs-md-tab-color-inactive:              #fdb2a1;
 
 
 // App Windows Variables
