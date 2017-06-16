@@ -9,10 +9,10 @@ import { TopupPage } from '../topup/topup';
   templateUrl: 'wificall.html'
 })
 export class WiFiCallPage {
-  Call = CallPage;
-  Contacts = ContactsPage;
-  History = HistoryPage;
-  Topup = TopupPage;
+  tabCall = CallPage;
+  tabContacts = ContactsPage;
+  tabHistory = HistoryPage;
+  tabTopup = TopupPage;
 
   constructor() {
   }
