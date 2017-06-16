@@ -3,5 +3,8 @@
 </ion-header>
 
 <ion-content padding>
-	Top Up content
+  <ion-tabs tabsPlacement="top">
+    <ion-tab [root]="addVoucher" tabTitle="Add Voucher"></ion-tab>
+    <ion-tab [root]="voucherList" tabTitle="Vouchers List"></ion-tab>
+  </ion-tabs>
 </ion-content>

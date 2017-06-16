@@ -1,0 +1,25 @@
+<ion-content>
+  <form (ngSubmit)="topUp()">
+    <ion-grid>
+      <ion-row text-center>
+        <ion-col>Add Voucher</ion-col>
+      </ion-row>
+      <ion-row text-center>
+        <!--<ion-col><button ion-button icon-left (click)="getVoucherCode($event)"><ion-icon name="heart"></ion-icon> {{voucherCode}}</button></ion-col>-->
+        <ion-item>
+          <button ion-button clear color="dark" type="button" item-left> <ion-icon name="heart"> </ion-icon> </button>
+          <ion-input placeholder="Voucher Code" [(ngModel)]="voucherCode"  [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+
+              <!--<ion-item>
+          <ion-input placeholder="Type to Search"></ion-input>
+          <button ion-button clear color="dark" type="button" item-right (click)="managePassword()"> <ion-icon name="search"> </ion-icon> </button>
+        </ion-item>-->
+      </ion-row>
+    </ion-grid>
+
+
+    <button ion-button full large class="bottom" type="submit">Enter Voucher Code</button>
+  </form>
+
+</ion-content>
