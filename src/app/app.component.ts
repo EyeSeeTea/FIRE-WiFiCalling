@@ -11,7 +11,7 @@ type page = {title: string, component: any};
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class WiFiCalling {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = WificallPage;
   pages: Array<page>;
