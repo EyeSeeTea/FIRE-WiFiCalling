@@ -8,7 +8,7 @@ import { TopupPage } from '../topup/topup';
 @Component({
   templateUrl: 'wificall.html'
 })
-export class WificallPage {
+export class WiFiCallPage {
   tab1Root = CallPage;
   tab2Root = ContactsPage;
   tab3Root = HistoryPage;

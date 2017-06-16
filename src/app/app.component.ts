@@ -3,7 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { WificallPage } from '../pages/wificall/wificall';
+import { WiFiCallPage } from '../pages/wificall/wificall';
 import { AdminPage } from '../pages/admin/admin';
 
 type page = {title: string, component: any};
@@ -13,7 +13,7 @@ type page = {title: string, component: any};
 })
 export class WiFiCalling {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = WificallPage;
+  rootPage: any = WiFiCallPage;
   pages: Array<page>;
   activePage: page;
 
@@ -24,13 +24,13 @@ export class WiFiCalling {
     });
 
     this.pages = [
-      {title: 'WifiCall', component: WificallPage},
+      {title: 'WifiCall', component: WiFiCallPage},
       {title: 'Admin', component: AdminPage},
-      {title: 'Settings', component: WificallPage},
-      {title: 'Check Network', component: WificallPage},
-      {title: 'About', component: WificallPage},
-      {title: 'License', component: WificallPage},
-      {title: 'Log Out', component: WificallPage},
+      {title: 'Settings', component: WiFiCallPage},
+      {title: 'Check Network', component: WiFiCallPage},
+      {title: 'About', component: WiFiCallPage},
+      {title: 'License', component: WiFiCallPage},
+      {title: 'Log Out', component: WiFiCallPage},
     ];
     this.activePage = this.pages[0];
   }

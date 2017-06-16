@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { WiFiCalling } from './app.component';
 
-import { WificallPage } from '../pages/wificall/wificall';
+import { WiFiCallPage } from '../pages/wificall/wificall';
 import { CallPage } from '../pages/call/call';
 import { ContactsPage } from '../pages/contacts/contacts';
 import { HistoryPage } from '../pages/history/history';
@@ -21,7 +21,7 @@ import { UserData } from '../providers/user-data.ts';
 @NgModule({
   declarations: [
     WiFiCalling,
-    WificallPage,
+    WiFiCallPage,
     CallPage,
     ContactsPage,
     HistoryPage,
@@ -37,7 +37,7 @@ import { UserData } from '../providers/user-data.ts';
   bootstrap: [IonicApp],
   entryComponents: [
     WiFiCalling,
-    WificallPage,
+    WiFiCallPage,
     CallPage,
     ContactsPage,
     HistoryPage,
