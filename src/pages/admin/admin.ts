@@ -6,10 +6,10 @@ import { NotificationsPage } from '../notifications/notifications';
   templateUrl: 'admin.html'
 })
 export class AdminPage {
-  tab1Root = NotificationsPage;
-  tab2Root = NotificationsPage;
-  tab3Root = NotificationsPage;
-  tab4Root = NotificationsPage;
+  tabNotifications = NotificationsPage;
+  tabUsers = NotificationsPage;
+  tabBilling = NotificationsPage;
+  tabTest = NotificationsPage;
 
   constructor() {
   }

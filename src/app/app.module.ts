@@ -2,9 +2,8 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
 
-import { WificallPage } from '../pages/wificall/wificall';
+import { WiFiCallPage } from '../pages/wificall/wificall';
 import { CallPage } from '../pages/call/call';
 import { ContactsPage } from '../pages/contacts/contacts';
 import { HistoryPage } from '../pages/history/history';
@@ -21,12 +20,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HeaderComponent } from '../components/header/header';
 import { UserData } from '../providers/user-data.ts';
-import { Voucher } from '../providers/voucher.ts';
 
 @NgModule({
   declarations: [
-    MyApp,
-    WificallPage,
+    WiFiCalling,
+    WiFiCallPage,
     CallPage,
     ContactsPage,
     HistoryPage,
@@ -40,12 +38,12 @@ import { Voucher } from '../providers/voucher.ts';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(WiFiCalling),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    WificallPage,
+    WiFiCalling,
+    WiFiCallPage,
     CallPage,
     ContactsPage,
     HistoryPage,
