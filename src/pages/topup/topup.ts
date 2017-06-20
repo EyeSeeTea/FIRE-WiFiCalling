@@ -5,7 +5,6 @@ import { UserData } from '../../providers/user-data';
 import { VoucherListPage } from './voucherList/voucherList';
 import { AddVoucherPage } from './addVoucher/addVoucher';
 
-@IonicPage()
 @Component({
   selector: 'page-topup',
   templateUrl: 'topup.html',
