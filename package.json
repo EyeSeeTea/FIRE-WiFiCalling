@@ -1,8 +1,8 @@
 {
-  "name": "ionic-hello-world",
-  "version": "0.0.0",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "wifi-calling",
+  "version": "0.0.1",
+  "author": "EyeSeeTea Team",
+  "homepage": "http://eyeseetea.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.3.6",
+    "tslint-ionic-rules": "0.0.8",
     "typescript": "~2.2.1"
   },
   "cordovaPlugins": [
@@ -42,5 +43,5 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "WiFiCalling: An Ionic project"
+  "description": "WiFiCalling: phone calls over SIP auto-provisioning"
 }
