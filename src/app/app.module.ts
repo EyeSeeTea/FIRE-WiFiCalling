@@ -22,6 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HeaderComponent } from '../components/header/header';
 import { UserData } from '../providers/user-data';
 import { Voucher } from '../providers/voucher';
+import { Logger } from '../providers/logger.service'
 
 @NgModule({
   declarations: [
@@ -63,7 +64,7 @@ import { Voucher } from '../providers/voucher';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AddVoucherPage,
     VoucherList,
-    //{ provide: APP_CONFIG, useValue: VOUCHER_DI_CONFIG},
+    Logger,
   ],
   //bootstrap: [ AppComponent ]
 })
