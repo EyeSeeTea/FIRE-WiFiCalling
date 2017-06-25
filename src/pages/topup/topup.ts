@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserData } from '../../providers/user-data';
 
-import { VoucherListPage } from './voucherList/voucherList';
+import { VoucherList } from './voucherList/voucherList';
 import { AddVoucherPage } from './addVoucher/addVoucher';
 
 @Component({
@@ -11,7 +11,7 @@ import { AddVoucherPage } from './addVoucher/addVoucher';
 })
 export class TopupPage {
   addVoucher = AddVoucherPage;
-  voucherList = VoucherListPage;
+  voucherList = VoucherList;
 
 
 

@@ -10,7 +10,7 @@ import { ContactsPage } from '../pages/contacts/contacts';
 import { HistoryPage } from '../pages/history/history';
 import { TopupPage } from '../pages/topup/topup';
 import { AddVoucherPage } from '../pages/topup/addVoucher/addVoucher';
-import { VoucherListPage } from '../pages/topup/voucherList/voucherList';
+import { VoucherList } from '../pages/topup/voucherList/voucherList';
 
 
 import { AdminPage } from '../pages/admin/admin';
@@ -35,7 +35,7 @@ import { Voucher } from '../providers/voucher.ts';
     NotificationsPage,
     HeaderComponent,
     AddVoucherPage,
-    VoucherListPage,
+    VoucherList,
   ],
   imports: [
     BrowserModule,
@@ -52,8 +52,8 @@ import { Voucher } from '../providers/voucher.ts';
     TopupPage,
     AdminPage,
     NotificationsPage,
+    VoucherList,
     AddVoucherPage,
-    VoucherListPage,
   ],
   providers: [
     StatusBar,
@@ -61,6 +61,8 @@ import { Voucher } from '../providers/voucher.ts';
     UserData,
     Voucher,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AddVoucherPage,
+    VoucherList,
   ]
 })
 export class AppModule {}

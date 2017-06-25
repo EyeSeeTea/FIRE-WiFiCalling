@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {Voucher} from '../../../providers/voucher'
+import {Voucher} from '../../../providers/voucher';
 
 @IonicPage()
 @Component({
@@ -8,7 +8,7 @@ import {Voucher} from '../../../providers/voucher'
   templateUrl: 'voucherList.html',
   providers: [Voucher]
 })
-export class VoucherListPage {
+export class VoucherList {
   public vouchers: Voucher[];
   constructor(
       public navCtrl: NavController,
@@ -20,5 +20,12 @@ export class VoucherListPage {
         this.vouchers = [];
         this.vouchers.push(new Voucher());
         this.vouchers.push(new Voucher());
+  }
+
+  pushPage(voucher) {
+    console.log('Navigate to detail of voucher: ' + voucher.id);
+    this.navCtrl.push('VoucherDetail', {
+      'id': voucher.id
+    });
   }
 }
