@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {Voucher} from '../../../providers/voucher';
+import { Voucher } from '../../../providers/voucher';
+import { VOUCHERS } from '../../../providers/mock-vouchers';
 
 @IonicPage()
 @Component({
@@ -9,7 +10,7 @@ import {Voucher} from '../../../providers/voucher';
   providers: [Voucher]
 })
 export class VoucherList {
-  public vouchers: Voucher[];
+  public vouchers: Voucher[] = VOUCHERS;
   constructor(
       public navCtrl: NavController,
       public navParams: NavParams,
@@ -17,9 +18,6 @@ export class VoucherList {
         //We should have something like this
         // https://angular.io/guide/dependency-injection#!#singleton-services
         //this.vouchers = voucherService.getVouchers();
-        this.vouchers = [];
-        this.vouchers.push(new Voucher());
-        this.vouchers.push(new Voucher());
   }
 
   pushPage(voucher) {
