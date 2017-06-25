@@ -20,8 +20,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HeaderComponent } from '../components/header/header';
-import { UserData } from '../providers/user-data.ts';
-import { Voucher } from '../providers/voucher.ts';
+import { UserData } from '../providers/user-data';
+import { Voucher } from '../providers/voucher';
 
 @NgModule({
   declarations: [
@@ -63,6 +63,8 @@ import { Voucher } from '../providers/voucher.ts';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AddVoucherPage,
     VoucherList,
-  ]
+    //{ provide: APP_CONFIG, useValue: VOUCHER_DI_CONFIG},
+  ],
+  //bootstrap: [ AppComponent ]
 })
 export class AppModule {}
