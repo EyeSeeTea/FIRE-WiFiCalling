@@ -1,0 +1,29 @@
+<ion-content>
+  <ion-grid>
+    <ion-row text-center>
+      <ion-col>
+        <ion-item>
+          <ion-input placeholder="Type to Search"></ion-input>
+          <button ion-button clear color="dark" type="button" item-right (click)="managePassword()"> <ion-icon name="search"> </ion-icon> </button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <button ion-item *ngFor="let v of vouchers" (click)="pushPage(v)">
+      <ion-col>
+        {{v.id}}
+      </ion-col>
+      <ion-col>
+        {{v.user}}
+      </ion-col>
+      <ion-col>
+        {{v.state}}
+      </ion-col>
+      <ion-icon name="paper" item-end></ion-icon>
+    </button>
+  </ion-list>
+
+  <button ion-button full large class="bottom">Enter Voucher Code</button>
+</ion-content>
