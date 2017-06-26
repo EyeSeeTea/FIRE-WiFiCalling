@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { WiFiCalling } from './app.component';
 
@@ -23,6 +23,7 @@ import { HeaderComponent } from '../components/header/header';
 import { UserData } from '../providers/user-data';
 import { Voucher } from '../providers/voucher';
 import { Logger } from '../providers/logger.service'
+import { APP_CONFIG, VOUCHER_DI_CONFIG } from './app-config'
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { Logger } from '../providers/logger.service'
   imports: [
     BrowserModule,
     HttpModule,
+    JsonpModule,
     IonicModule.forRoot(WiFiCalling),
   ],
   bootstrap: [IonicApp],
@@ -65,7 +67,7 @@ import { Logger } from '../providers/logger.service'
     AddVoucherPage,
     VoucherList,
     Logger,
+    [{ provide: APP_CONFIG, useValue: VOUCHER_DI_CONFIG}]
   ],
-  //bootstrap: [ AppComponent ]
 })
 export class AppModule {}

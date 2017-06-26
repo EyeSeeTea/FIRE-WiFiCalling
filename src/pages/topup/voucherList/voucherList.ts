@@ -16,10 +16,10 @@ export class VoucherList {
       public navParams: NavParams,
       voucherService: VoucherService
       ) {
-        //We should have something like this
+        // TODO: use getVouchersFromServer instead of getVouchersFromMock
         // https://angular.io/guide/dependency-injection#!#singleton-services
-        //this.vouchers = voucherService.getVouchers();
-        this.vouchers = voucherService.getVouchers();
+        this.vouchers = voucherService.getVouchersFromMock();
+        voucherService.getVouchersFromServer();
   }
 
   pushPage(voucher) {
