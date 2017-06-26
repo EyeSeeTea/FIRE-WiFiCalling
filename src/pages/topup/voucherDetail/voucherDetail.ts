@@ -13,9 +13,11 @@ import {Voucher} from '../../../providers/voucher'
 })
 export class VoucherDetail {
   public vouchers: Voucher[];
+  voucher: Voucher;
   constructor(
       public navCtrl: NavController,
       public navParams: NavParams,
+      voucher: Voucher,
       ) {
 
       }

@@ -10,8 +10,8 @@
     </ion-row>
   </ion-grid>
 
-  <ion-grid>
-    <ion-row *ngFor="let v of vouchers" text-center>
+  <ion-list>
+    <button ion-item *ngFor="let v of vouchers" (click)="pushPage(v)">
       <ion-col>
         {{v.id}}
       </ion-col>
@@ -21,8 +21,9 @@
       <ion-col>
         {{v.state}}
       </ion-col>
-    </ion-row>
-  </ion-grid>
+      <ion-icon name="paper" item-end></ion-icon>
+    </button>
+  </ion-list>
 
   <button ion-button full large class="bottom">Enter Voucher Code</button>
 </ion-content>

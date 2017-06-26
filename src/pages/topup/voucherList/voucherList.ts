@@ -25,7 +25,8 @@ export class VoucherList {
   pushPage(voucher) {
     console.log('Navigate to detail of voucher: ' + voucher.id);
     this.navCtrl.push('VoucherDetail', {
-      'id': voucher.id
+      'id': voucher.id,
+      'voucher': voucher 
     });
   }
 }
