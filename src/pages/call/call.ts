@@ -22,7 +22,8 @@ export class CallPage {
     }
 
     remove_last() {
-        if (this.phone_number.length > 0)
-            this.phone_number = this.phone_number.substring(0, -1);
+        var len = this.phone_number.length;
+        if (len > 0)
+            this.phone_number = this.phone_number.substring(0, len-1);
     }
 }
