@@ -38,6 +38,6 @@
         </ion-row>
     </ion-grid>
 
-    <button class="call_button" ion-button [navPush]="pushPage" [navParams]="phone_number">CALL</button>
+    <button class="call_button" ion-button (click)="call()">CALL</button>
 
 </ion-content>

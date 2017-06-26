@@ -9,7 +9,6 @@ import { CallingPage } from './calling';
   templateUrl: 'call.html',
 })
 export class CallPage {
-    public pushPage: any = CallingPage;
     phone_number: string = '';
 
     constructor(public navCtrl: NavController,
@@ -25,5 +24,9 @@ export class CallPage {
         var len = this.phone_number.length;
         if (len > 0)
             this.phone_number = this.phone_number.substring(0, len-1);
+    }
+
+    call() {
+        this.navCtrl.push(CallingPage, {'phone_number': this.phone_number});
     }
 }
