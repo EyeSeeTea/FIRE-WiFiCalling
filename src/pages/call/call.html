@@ -3,5 +3,60 @@
 </ion-header>
 
 <ion-content padding>
-	Call content
+    <img src="assets/img/addcontact_btn.svg" align="left">
+    <img src="assets/img/delete_btn.svg" on-tap="remove_last()" align="right">
+    <span style="text-align:center"><h1>{{phone_number}}</h1></span>
+
+<!-- Found how to use the pictures here:
+	 https://stackoverflow.com/questions/39952214/correct-way-to-use-image-assets-in-ionic-2 -->
+
+    <ion-grid align="center">
+        <ion-row>
+            <ion-col>
+                <img src="assets/img/dial_1.svg" on-tap="add('1')">
+            </ion-col>
+            <ion-col>
+                <img src="assets/img/dial_2.svg" on-tap="add('2')">
+            </ion-col>
+            <ion-col>
+                <img src="assets/img/dial_3.svg" on-tap="add('3')">
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <img src="assets/img/dial_4.svg" on-tap="add('4')">
+            </ion-col>
+            <ion-col>
+                <img src="assets/img/dial_5.svg" on-tap="add('5')">
+            </ion-col>
+            <ion-col>
+                <img src="assets/img/dial_6.svg" on-tap="add('6')">
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <img src="assets/img/dial_7.svg" on-tap="add('7')">
+            </ion-col>
+            <ion-col>
+                <img src="assets/img/dial_8.svg" on-tap="add('8')">
+            </ion-col>
+            <ion-col>
+                <img src="assets/img/dial_9.svg" on-tap="add('9')">
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <img src="assets/img/dial_star.svg" on-tap="add('*')">
+            </ion-col>
+            <ion-col>
+                <img src="assets/img/dial_0.svg" on-tap="add('0')">
+            </ion-col>
+            <ion-col>
+                <img src="assets/img/dial_square.svg" on-tap="add('#')">
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <button class="call_button" ion-button [navPush]="pushPage" [navParams]="phone_number">CALL</button>
+
 </ion-content>
