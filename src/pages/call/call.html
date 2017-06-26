@@ -38,6 +38,6 @@
         </ion-row>
     </ion-grid>
 
-    <button class="call_button" ion-button (click)="call()">CALL</button>
+    <button [hidden]="isHidden" class="call_button" ion-button (click)="call()">CALL</button>
 
 </ion-content>

@@ -10,6 +10,7 @@ import { CallingPage } from './calling';
 })
 export class CallPage {
     phone_number: string = '';
+    isHidden: boolean = true;
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
@@ -18,12 +19,15 @@ export class CallPage {
 
     add(n: string) {
         this.phone_number += n;
+        this.isHidden = false;
     }
 
     remove_last() {
         var len = this.phone_number.length;
         if (len > 0)
             this.phone_number = this.phone_number.substring(0, len-1);
+        else
+            this.isHidden = true;
     }
 
     call() {
