@@ -3,11 +3,19 @@
 </ion-header>
 
 <ion-content padding>
-    <img src="assets/img/addcontact_btn.svg" align="left">
-    <img src="assets/img/delete_btn.svg" on-tap="remove_last()" align="right">
-    <span style="text-align:center"><h1>&nbsp;{{phone_number}}&nbsp;</h1></span>
 
     <ion-grid text-center>
+		<ion-row>
+			<ion-col>
+				<img src="assets/img/addcontact_btn.svg">
+			</ion-col>
+			<ion-col>
+				<h1>&nbsp;{{phone_number}}&nbsp;</h1>
+			</ion-col>
+			<ion-col>
+				<img src="assets/img/delete_btn.svg" on-tap="remove_last()">
+			</ion-col>
+		</ion-row>
         <ion-row>
 			<ion-col>
                 <img src="assets/img/dial_1.svg" on-tap="add('1')">
