@@ -2,6 +2,13 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { WiFiCalling } from './app.component';
+import { HttpModule } from '@angular/http';
+
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from '../store/app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from '../store/app.effect';
 
 import { WiFiCallPage } from '../pages/wificall/wificall';
 import { CallPage } from '../pages/call/call';
@@ -16,7 +23,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HeaderComponent } from '../components/header/header';
-import { UserData } from '../providers/user-data.ts';
+import { UserData } from '../providers/user-data';
 
 @NgModule({
   declarations: [
@@ -33,6 +40,13 @@ import { UserData } from '../providers/user-data.ts';
   imports: [
     BrowserModule,
     IonicModule.forRoot(WiFiCalling),
+    HttpModule,
+    StoreModule.provideStore(appReducer),
+    EffectsModule.run(AppEffects),
+    /** Only for dev, To be removed in Production */
+    StoreDevtoolsModule.instrumentOnlyWithExtension({
+      maxAge: 5
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,13 +57,13 @@ import { UserData } from '../providers/user-data.ts';
     HistoryPage,
     TopupPage,
     AdminPage,
-    NotificationsPage,
+    NotificationsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    UserData,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    UserData
   ]
 })
-export class AppModule {}
+export class AppModule { }
