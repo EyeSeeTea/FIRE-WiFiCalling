@@ -12,10 +12,12 @@ type page = {title: string, component: any};
   templateUrl: 'app.html'
 })
 export class WiFiCalling {
+
   @ViewChild(Nav) nav: Nav;
   rootPage: any = WiFiCallPage;
   pages: Array<page>;
   activePage: page;
+
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -24,13 +26,13 @@ export class WiFiCalling {
     });
 
     this.pages = [
-      {title: 'WifiCall', component: WiFiCallPage},
-      {title: 'Admin', component: AdminPage},
-      {title: 'Settings', component: WiFiCallPage},
-      {title: 'Check Network', component: WiFiCallPage},
-      {title: 'About', component: WiFiCallPage},
-      {title: 'License', component: WiFiCallPage},
-      {title: 'Log Out', component: WiFiCallPage},
+      { title: 'WifiCall', component: WiFiCallPage },
+      { title: 'Admin', component: AdminPage },
+      { title: 'Settings', component: WiFiCallPage },
+      { title: 'Check Network', component: WiFiCallPage },
+      { title: 'About', component: WiFiCallPage },
+      { title: 'License', component: WiFiCallPage },
+      { title: 'Log Out', component: WiFiCallPage },
     ];
     this.activePage = this.pages[0];
   }
