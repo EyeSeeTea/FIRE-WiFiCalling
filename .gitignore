@@ -3,7 +3,7 @@
 
 # These ones are put in place from src/assets when we run:
 #   ionic package build android
-resources
+resources/
 
 # Generated when we run:
 #   ionic io init
