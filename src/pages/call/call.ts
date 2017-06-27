@@ -29,6 +29,11 @@ export class CallPage {
         this.phone_number = this.phone_number.substring(0, len-1);
     }
 
+    remove_all() {
+        this.phone_number = '';
+        this.isHidden = true;
+    }
+
     call() {
         this.navCtrl.push(CallingPage, {'phone_number': this.phone_number});
     }
