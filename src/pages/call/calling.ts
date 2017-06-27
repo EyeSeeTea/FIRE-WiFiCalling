@@ -14,4 +14,12 @@ export class CallingPage {
                 public userData: UserData) {
        this.phone_number = this.navParams.get('phone_number');
     }
+
+    gsm() {
+        console.log('Tried to call %s using GSM', this.phone_number);
+    }
+
+    voip() {
+        console.log('Tried to call %s using VoIP', this.phone_number);
+    }
 }

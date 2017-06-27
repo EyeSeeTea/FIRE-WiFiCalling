@@ -3,21 +3,44 @@
 </ion-header>
 
 <ion-content padding>
-    <span style="text-align:center"><h1>Calling to</h1></span>
-    <span style="text-align:center"><h1>{{phone_number}}</h1></span>
-
-    <ion-grid align="center">
+    <ion-grid text-center>
         <ion-row>
             <ion-col>
-                GSM<br>
-                XX,xx<br>
-                R/min
+				<h1>Calling to</h1>
+			    <h1>{{phone_number}}</h1>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<div class="call_opt_box">
+					<div class="call_opt_header">
+						GSM
+					</div>
+					XX,xx
+					<div class="units">
+						R/min
+					</div>
+				</div>
             </ion-col>
             <ion-col>
-                VoIP<br>
-                XX,xx<br>
-                R/min
+				<div class="call_opt_box">
+					<div class="call_opt_header">
+						VoIP
+					</div>
+					XX,xx
+					<div class="units">
+						R/min
+					</div>
+				</div>
             </ion-col>
         </ion-row>
+		<ion-row>
+			<ion-col>
+				<button class="call_button" ion-button (click)="gsm()">Use GSM</button>
+			</ion-col>
+			<ion-col>
+				<button class="call_button" ion-button (click)="voip()">Use VoIP</button>
+			</ion-col>
+		</ion-row>
     </ion-grid>
 </ion-content>
