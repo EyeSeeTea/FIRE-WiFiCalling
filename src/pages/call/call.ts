@@ -24,10 +24,9 @@ export class CallPage {
 
     remove_last() {
         var len = this.phone_number.length;
-        if (len > 0)
-            this.phone_number = this.phone_number.substring(0, len-1);
-        else
+        if (len <= 1)
             this.isHidden = true;
+        this.phone_number = this.phone_number.substring(0, len-1);
     }
 
     call() {
