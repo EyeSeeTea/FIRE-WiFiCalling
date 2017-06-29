@@ -10,7 +10,7 @@ import { CallingPage } from './calling';
 })
 export class CallPage {
     phoneNumber: string = '';
-    isHidden: boolean = true;
+    callButtonHidden: boolean = true;
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
@@ -19,19 +19,19 @@ export class CallPage {
 
     add(n: string) {
         this.phoneNumber += n;
-        this.isHidden = false;
+        this.callButtonHidden = false;
     }
 
     removeLast() {
         var len = this.phoneNumber.length;
         if (len <= 1)
-            this.isHidden = true;
+            this.callButtonHidden = true;
         this.phoneNumber = this.phoneNumber.substring(0, len - 1);
     }
 
     removeAll() {
         this.phoneNumber = '';
-        this.isHidden = true;
+        this.callButtonHidden = true;
     }
 
     call() {
