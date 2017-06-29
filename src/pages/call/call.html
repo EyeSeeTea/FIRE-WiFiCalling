@@ -10,10 +10,11 @@
 				<img src="assets/img/addcontact_btn.svg">
 			</ion-col>
 			<ion-col>
-				<h1>&nbsp;{{phone_number}}&nbsp;</h1>
+				<h1>&nbsp;{{phoneNumber}}&nbsp;</h1>
 			</ion-col>
 			<ion-col>
-				<img src="assets/img/delete_btn.svg" (press)="remove_all()" (click)="remove_last()">
+				<img src="assets/img/delete_btn.svg"
+				     (press)="remove_all()" (click)="remove_last()">
 			</ion-col>
 		</ion-row>
         <ion-row>
@@ -46,6 +47,7 @@
         </ion-row>
     </ion-grid>
 
-    <button [hidden]="isHidden" class="call_button" ion-button (click)="call()">CALL</button>
+    <button [hidden]="isHidden" class="call_button"
+		    ion-button (click)="call()">CALL</button>
 
 </ion-content>
