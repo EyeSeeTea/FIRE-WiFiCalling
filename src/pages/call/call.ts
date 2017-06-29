@@ -22,14 +22,14 @@ export class CallPage {
         this.isHidden = false;
     }
 
-    remove_last() {
+    removeLast() {
         var len = this.phoneNumber.length;
         if (len <= 1)
             this.isHidden = true;
         this.phoneNumber = this.phoneNumber.substring(0, len - 1);
     }
 
-    remove_all() {
+    removeAll() {
         this.phoneNumber = '';
         this.isHidden = true;
     }
