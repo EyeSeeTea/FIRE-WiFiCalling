@@ -1,24 +1,24 @@
 <ion-header>
-	<header [userData]="userData"></header>
+    <header [userData]="userData"></header>
 </ion-header>
 
 <ion-content padding>
 
     <ion-grid text-center>
-		<ion-row>
-			<ion-col>
-				<img src="assets/img/addcontact_btn.svg">
-			</ion-col>
-			<ion-col>
-				<h1>&nbsp;{{phoneNumber}}&nbsp;</h1>
-			</ion-col>
-			<ion-col>
-				<img src="assets/img/delete_btn.svg"
-				     (press)="removeAll()" (click)="removeLast()">
-			</ion-col>
-		</ion-row>
         <ion-row>
-			<ion-col>
+            <ion-col>
+                <img src="assets/img/addcontact_btn.svg">
+            </ion-col>
+            <ion-col>
+                <h1>&nbsp;{{phoneNumber}}&nbsp;</h1>
+            </ion-col>
+            <ion-col>
+                <img src="assets/img/delete_btn.svg"
+                     (press)="removeAll()" (click)="removeLast()">
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
                 <img src="assets/img/dial_1.svg" on-tap="add('1')">
                 <img src="assets/img/dial_2.svg" on-tap="add('2')">
                 <img src="assets/img/dial_3.svg" on-tap="add('3')">
@@ -48,6 +48,6 @@
     </ion-grid>
 
     <button [hidden]="callButtonHidden" class="call_button"
-		    ion-button (click)="call()">CALL</button>
+            ion-button (click)="call()">CALL</button>
 
 </ion-content>
