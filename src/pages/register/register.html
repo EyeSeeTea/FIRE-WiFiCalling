@@ -1,0 +1,68 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid fixed justify-content-center>
+
+    <ion-row justify-content-center>
+      <div class="app-logo">
+        <ion-icon color="primary" ios="ios-baseball" md="md-baseball"></ion-icon>
+      </div>
+    </ion-row>
+
+    <form *ngIf="active" novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+      <ion-row>
+        <ion-col>
+          <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
+          <small *ngIf="formErrors.username && showErrors">{{formErrors.username}}</small>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+          <small *ngIf="formErrors.email && showErrors">{{formErrors.email}}</small>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+          <small *ngIf="formErrors.password && showErrors">{{formErrors.password}}</small>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input type="password" formControlName="cPassword" placeholder="Confirm Password"></ion-input>
+          <small *ngIf="formErrors.cPassword && showErrors">{{formErrors.cPassword}}</small>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <div class="checkbox-item">
+            <ion-checkbox formControlName="acceptRules"></ion-checkbox>
+            <span>I Accept the rules... </span>
+          </div>
+          <small *ngIf="formErrors.acceptRules && showErrors">You must accept the rules to register.</small>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="btn-row">
+        <ion-col>
+          <button ion-button color="dark" (tap)="login()">Login</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button type="submit">Register</button>
+        </ion-col>
+      </ion-row>
+    </form>
+
+  </ion-grid>
+
+</ion-content>
