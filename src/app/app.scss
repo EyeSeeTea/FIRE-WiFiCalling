@@ -18,3 +18,15 @@
 .activeHighlight {
 	background-color: map-get($colors, light);
 }
+
+.app-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 150px;
+  ion-icon {
+    // Icon size
+    font-size: 120px;
+  }
+}

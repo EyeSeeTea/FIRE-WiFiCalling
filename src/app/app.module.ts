@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { appReducer } from '../store/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { AppEffects } from '../store/app.effect';
+import { AppEffects, AppService } from '../store';
 
 import { WiFiCallPage } from '../pages/wificall/wificall';
 import { CallPage } from '../pages/call/call';
@@ -22,8 +22,9 @@ import { NotificationsPage } from '../pages/notifications/notifications';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HeaderComponent } from '../components/header/header';
 import { UserData } from '../providers/user-data';
+import { Core } from '../core/core';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -35,15 +36,16 @@ import { UserData } from '../providers/user-data';
     TopupPage,
     AdminPage,
     NotificationsPage,
-    HeaderComponent,
+    Core,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(WiFiCalling),
     HttpModule,
+    SharedModule,
     StoreModule.provideStore(appReducer),
     EffectsModule.run(AppEffects),
-    /** Only for dev, To be removed in Production */
+    /** StoreDevtoolsModule is only for dev, will be removed in Production */
     StoreDevtoolsModule.instrumentOnlyWithExtension({
       maxAge: 5
     })
@@ -60,6 +62,7 @@ import { UserData } from '../providers/user-data';
     NotificationsPage
   ],
   providers: [
+    AppService,
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
