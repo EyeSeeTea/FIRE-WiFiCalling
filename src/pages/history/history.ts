@@ -1,6 +1,6 @@
+
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { UserData } from '../../providers/user-data';
 
 /**
  * Generated class for the HistoryPage page.
@@ -15,8 +15,7 @@ import { UserData } from '../../providers/user-data';
 export class HistoryPage {
   constructor(
       public navCtrl: NavController,
-      public navParams: NavParams,
-      public userData: UserData
+      public navParams: NavParams
       ) {
   }
 }

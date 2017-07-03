@@ -1,6 +1,8 @@
+
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { UserData } from '../../providers/user-data';
+import { Store } from '@ngrx/store';
+import { AppState } from './../../store/app.state';
 
 @Component({
   selector: 'page-contacts',
@@ -10,7 +12,7 @@ export class ContactsPage {
   constructor(
       public navCtrl: NavController,
       public navParams: NavParams,
-      public userData: UserData
+      public store: Store<AppState>
       ) {
   }
 }

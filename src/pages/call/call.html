@@ -1,16 +1,12 @@
 <ion-header>
-	<header [userData]="userData"></header>
+	<header [state]="state"></header>
 </ion-header>
 
 <ion-content padding>
 	Call content Test for Store
 	<div *ngIf="store | async as state" class="test">
 
-		<button ion-button (click)="test()">Change Status: {{state.status}}</button>
-
-		<button ion-button color="secondary" (click)="login()" [disabled]="state.loggedIn">Login</button>
-
-		<button ion-button color="danger" (click)="logout()" [disabled]="!state.loggedIn">Logout</button>
+		<button ion-button color="danger" (click)="appService.logout()" [disabled]="!state.user">Logout</button>
 
 	</div>
 
