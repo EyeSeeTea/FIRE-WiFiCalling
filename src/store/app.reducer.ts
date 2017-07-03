@@ -3,38 +3,44 @@ import { AppState } from './app.state';
 
 /** Store types */
 export const AppStore = {
-    STATUS: 'STATUS',
-    LOGIN: 'LOGIN',
-    LOGGED_IN: 'LOGGED_IN',
-    LOGOUT: 'LOGOUT',
-    ERROR: 'ERROR'
+  STATUS: 'STATUS',
+  AUTHENTICATION: 'AUTHENTICATION',
+  LOGIN: 'LOGIN',
+  LOGOUT: 'LOGOUT',
+  REGISTER: 'REGISTER'
 };
 
 /** Initial state */
 const INITIAL_STATE: AppState = {
-    status: 'available',
-    credit: '0',
-    loggedIn: undefined,
-    settings: undefined,
-    notifications: []
+  status: 'available',
+  credit: '0',
+  authenticated: false,
+  user: undefined,
+  settings: undefined,
+  notifications: []
 };
 
 export function appReducer(state: AppState = INITIAL_STATE, action: Action) {
-    switch (action.type) {
+  switch (action.type) {
 
-        case AppStore.STATUS:
-            return Object.assign({}, state, { status: action.payload });
+    /** Status, payload has the current status, e.g. 'AVAILABLE', 'BUSY' */
+    case AppStore.STATUS:
+      return Object.assign({}, state, {status: action.payload});
 
-        case AppStore.LOGIN:
-            return Object.assign({}, state);
+    /** Login, payload has user's credentials */
+    case AppStore.LOGIN:
+      return state;
 
-        case AppStore.LOGOUT:
-            return Object.assign({}, state, { loggedIn: undefined });
+    /** Logout */
+    case AppStore.LOGOUT:
+      return state;
 
-        case AppStore.LOGGED_IN:
-            return Object.assign({}, state, { loggedIn: action.payload });
+    /** Authenticated payload has the user object */
+    case AppStore.AUTHENTICATION:
+      return Object.assign({}, state, action.payload);
 
-        default:
-            return Object.assign({}, state);
-    }
+    default:
+      return Object.assign({}, state);
+  }
 }
+
