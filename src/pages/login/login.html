@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid fixed justify-content-center>
+
+    <ion-row justify-content-center>
+      <div class="app-logo">
+        <ion-icon color="primary" ios="ios-baseball" md="md-baseball"></ion-icon>
+      </div>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input #user type="text" placeholder="Username"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input #pass type="password" placeholder="Password"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="btn-row">
+      <ion-col>
+        <button ion-button (click)="appService.login(user.value, pass.value)">Login</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button (click)="register()">Register</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
