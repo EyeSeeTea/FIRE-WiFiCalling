@@ -9,27 +9,27 @@ import { CallingPage } from './calling';
   templateUrl: 'call.html',
 })
 export class CallPage {
-    phoneNumber: string = '';
+  phoneNumber: string = '';
 
-    constructor(public navCtrl: NavController,
-                public navParams: NavParams,
-                public userData: UserData) {
-    }
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public userData: UserData) {
+  }
 
-    add(n: string) {
-        this.phoneNumber += n;
-    }
+  add(n: string) {
+    this.phoneNumber += n;
+  }
 
-    removeLast() {
-        var len = this.phoneNumber.length;
-        this.phoneNumber = this.phoneNumber.substring(0, len - 1);
-    }
+  removeLast() {
+    var len = this.phoneNumber.length;
+    this.phoneNumber = this.phoneNumber.substring(0, len - 1);
+  }
 
-    call() {
-        this.navCtrl.push(CallingPage, {'phoneNumber': this.phoneNumber});
-    }
+  call() {
+    this.navCtrl.push(CallingPage, {'phoneNumber': this.phoneNumber});
+  }
 
-    personAdd() {
-      console.log('Add contact with number %s', this.phoneNumber);
-    }
+  personAdd() {
+    console.log('Add contact with number %s', this.phoneNumber);
+  }
 }

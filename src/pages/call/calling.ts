@@ -7,19 +7,19 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'calling.html',
 })
 export class CallingPage {
-    phoneNumber: string = '';
+  phoneNumber: string = '';
 
-    constructor(public navCtrl: NavController,
-                public navParams: NavParams,
-                public userData: UserData) {
-       this.phoneNumber = this.navParams.get('phoneNumber');
-    }
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public userData: UserData) {
+    this.phoneNumber = this.navParams.get('phoneNumber');
+  }
 
-    gsm() {
-        console.log('Tried to call %s using GSM', this.phoneNumber);
-    }
+  gsm() {
+    console.log('Tried to call %s using GSM', this.phoneNumber);
+  }
 
-    voip() {
-        console.log('Tried to call %s using VoIP', this.phoneNumber);
-    }
+  voip() {
+    console.log('Tried to call %s using VoIP', this.phoneNumber);
+  }
 }
