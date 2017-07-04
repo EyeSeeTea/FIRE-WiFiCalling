@@ -5,43 +5,59 @@
 <ion-content padding>
   <ion-grid text-center>
     <ion-row class="phone-number-wrapper">
-      <ion-col col-2 align-items-center>
+      <ion-col col-4>
         <ion-icon name="person-add" [hidden]="!phoneNumber.length"
           (tap)="personAdd()" (press)="personAdd()"></ion-icon>
       </ion-col>
-      <ion-col col-8 class="phone-number-call">
+      <ion-col col-4 class="phone-number-call">
         {{phoneNumber}}
       </ion-col>
-      <ion-col col-2 align-items-center>
+      <ion-col col-4>
         <ion-icon name="backspace" [hidden]="!phoneNumber.length"
           (tap)="removeLast()" (press)="phoneNumber = ''"></ion-icon>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col col-4 text-right>
         <img src="assets/img/dial_1.svg" (tap)="add('1')" (press)="add('1')">
+      </ion-col>
+      <ion-col col-4>
         <img src="assets/img/dial_2.svg" (tap)="add('2')" (press)="add('2')">
+      </ion-col>
+      <ion-col col-4 text-left>
         <img src="assets/img/dial_3.svg" (tap)="add('3')" (press)="add('3')">
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col col-4 text-right>
         <img src="assets/img/dial_4.svg" (tap)="add('4')" (press)="add('4')">
+      </ion-col>
+      <ion-col col-4>
         <img src="assets/img/dial_5.svg" (tap)="add('5')" (press)="add('5')">
+      </ion-col>
+      <ion-col col-4 text-left>
         <img src="assets/img/dial_6.svg" (tap)="add('6')" (press)="add('6')">
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col col-4 text-right>
         <img src="assets/img/dial_7.svg" (tap)="add('7')" (press)="add('7')">
+      </ion-col>
+      <ion-col col-4>
         <img src="assets/img/dial_8.svg" (tap)="add('8')" (press)="add('8')">
+      </ion-col>
+      <ion-col col-4 text-left>
         <img src="assets/img/dial_9.svg" (tap)="add('9')" (press)="add('9')">
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col col-4 text-right>
         <img src="assets/img/dial_star.svg" (tap)="add('*')" (press)="add('*')">
+      </ion-col>
+      <ion-col col-4>
         <img src="assets/img/dial_0.svg" (tap)="add('0')" (press)="add('+')">
+      </ion-col>
+      <ion-col col-4 text-left>
         <img src="assets/img/dial_square.svg" (tap)="add('#')" (press)="add('#')">
       </ion-col>
     </ion-row>
