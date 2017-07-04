@@ -1,8 +1,4 @@
 page-call {
-    h1 {
-        color: #4A4A4A;
-    }
-
     .call_button {
         width: 100%;
         background-color: #62AC11;
@@ -10,5 +6,17 @@ page-call {
         text-shadow: 2px 2px 2px black;
         position: absolute;
         bottom: 0;
+    }
+
+    .phone-number-call {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4A4A4A;
+      font-size: 200%;
+    }
+    .phone-number-wrapper {
+      height: 60px;
     }
 }

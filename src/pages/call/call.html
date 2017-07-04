@@ -5,16 +5,17 @@
 <ion-content padding>
 
     <ion-grid text-center>
-        <ion-row>
-            <ion-col>
-                <img src="assets/img/addcontact_btn.svg">
+        <ion-row class="phone-number-wrapper">
+            <ion-col col-2 align-items-center>
+              <ion-icon [hidden]="!phoneNumber.length" name="person-add"
+                (click)="personAdd()" (press)="personAdd()"></ion-icon>
             </ion-col>
-            <ion-col>
-                <h1>&nbsp;{{phoneNumber}}&nbsp;</h1>
+            <ion-col col-8 class="phone-number-call">
+              {{phoneNumber}}
             </ion-col>
-            <ion-col>
-                <img src="assets/img/delete_btn.svg"
-                     (press)="removeAll()" (click)="removeLast()">
+            <ion-col col-2 align-items-center>
+              <ion-icon [hidden]="!phoneNumber.length" name="backspace"
+                (click)="removeLast()" (press)="phoneNumber = ''"></ion-icon>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -47,7 +48,7 @@
         </ion-row>
     </ion-grid>
 
-    <button [hidden]="callButtonHidden" class="call_button"
+    <button [hidden]="!phoneNumber.length" class="call_button"
             ion-button (click)="call()">CALL</button>
 
 </ion-content>
