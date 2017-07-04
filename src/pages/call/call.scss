@@ -1,9 +1,13 @@
 page-call {
+  ion-icon {
+    font-size: 25px;
+  }
+
   .call_button {
     width: 100%;
     background-color: #62AC11;
     color: white;
-    text-shadow: 2px 2px 2px black;
+    text-shadow: 1px 1px 1px black;
     position: absolute;
     bottom: 0;
   }
