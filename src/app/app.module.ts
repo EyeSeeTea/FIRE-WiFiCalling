@@ -5,6 +5,7 @@ import { WiFiCalling } from './app.component';
 
 import { WiFiCallPage } from '../pages/wificall/wificall';
 import { CallPage } from '../pages/call/call';
+import { CallingPage } from '../pages/call/calling';
 import { ContactsPage } from '../pages/contacts/contacts';
 import { HistoryPage } from '../pages/history/history';
 import { TopupPage } from '../pages/topup/topup';
@@ -23,6 +24,7 @@ import { UserData } from '../providers/user-data.ts';
     WiFiCalling,
     WiFiCallPage,
     CallPage,
+    CallingPage,
     ContactsPage,
     HistoryPage,
     TopupPage,
@@ -39,6 +41,7 @@ import { UserData } from '../providers/user-data.ts';
     WiFiCalling,
     WiFiCallPage,
     CallPage,
+    CallingPage,
     ContactsPage,
     HistoryPage,
     TopupPage,

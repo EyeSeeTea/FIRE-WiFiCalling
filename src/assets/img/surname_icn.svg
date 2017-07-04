@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>surname_icn</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="surname_icn" sketch:type="MSArtboardGroup" fill="#4A4A4A">
+            <path d="M15,10 C16.66,10 17.99,8.66 17.99,7 C17.99,5.34 16.66,4 15,4 C13.34,4 12,5.34 12,7 C12,8.66 13.34,10 15,10 L15,10 Z M7,10 C8.66,10 9.99,8.66 9.99,7 C9.99,5.34 8.66,4 7,4 C5.34,4 4,5.34 4,7 C4,8.66 5.34,10 7,10 L7,10 Z M7,12 C4.67,12 0,13.17 0,15.5 L0,18 L14,18 L14,15.5 C14,13.17 9.33,12 7,12 L7,12 Z M15,12 C14.71,12 14.38,12.02 14.03,12.05 C15.19,12.89 16,14.02 16,15.5 L16,18 L22,18 L22,15.5 C22,13.17 17.33,12 15,12 L15,12 Z" id="Shape" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

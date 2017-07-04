@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>topup_btn</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="topup_btn" sketch:type="MSArtboardGroup" fill="#FFFFFF">
+            <path d="M10,7 C5.825,7 2.809,6.157 1,4.969 L1,7 C1,7.769 3.216,10 10,10 C16.784,10 19,7.769 19,7 L19,4.969 C17.191,6.157 14.175,7 10,7 Z M10,15 C16.784,15 19,12.769 19,12 L19,9.969 C17.191,11.157 14.175,12 10,12 C5.825,12 2.809,11.157 1,9.969 L1,12 C1,12.769 3.216,15 10,15 Z M10,5 C15.195,5 17.705,3.694 18.599,2.735 C17.404,0.936 13.687,0 10,0 C6.313,0 2.596,0.936 1.401,2.735 C2.295,3.694 4.805,5 10,5 Z M10,17 C5.825,17 2.809,16.157 1,14.969 L1,16 C1,18.626 5.527,20 10,20 C14.473,20 19,18.626 19,16 L19,14.969 C17.191,16.157 14.175,17 10,17 Z" id="topupon_btn" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>
