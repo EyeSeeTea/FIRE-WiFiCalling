@@ -40,5 +40,4 @@ export class CallPage {
     call() {
         this.navCtrl.push(CallingPage, {'phoneNumber': this.phoneNumber});
     }
-                public userData: UserData) {
 }
