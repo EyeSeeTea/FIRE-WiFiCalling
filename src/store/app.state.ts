@@ -1,4 +1,3 @@
-
 /** App State */
 export interface AppState {
   status: string;
@@ -11,8 +10,8 @@ export interface AppState {
 
 export interface User {
   id: number;
-  first_name: string;
-  last_name: string;
+  name: string;
+  credit: string;
 }
 
 export interface AppSettings {

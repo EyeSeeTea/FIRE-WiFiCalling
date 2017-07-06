@@ -12,7 +12,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/observable/empty';
 import 'rxjs/add/operator/withLatestFrom';
 import { LoginPage } from '../pages/login/login';
-import { WiFiCallPage } from '../pages/wificall/wificall';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @Injectable()
 export class AppEffects {
@@ -30,7 +30,7 @@ export class AppEffects {
       console.log('[Logging in]:', action.payload);
       return this.http.get('../assets/mock.json')
         .map(res => {
-          this.appCtrl.getRootNav().push(WiFiCallPage);
+          this.appCtrl.getRootNav().setRoot(TabsPage);
           return {type: AppStore.AUTHENTICATION, payload: {user: res.json(), authenticated: true}};
         })
         .catch((err) => {
@@ -60,7 +60,6 @@ export class AppEffects {
       console.log('[Register]:', action.payload);
       return this.http.get('../assets/mock.json')
         .map(res => {
-          this.appCtrl.getRootNav().push(WiFiCallPage);
           return {type: AppStore.LOGIN, payload: {user: res.json(), authenticated: true}};
         })
         .catch((err) => {
@@ -74,22 +73,5 @@ export class AppEffects {
           return Observable.empty();
         });
     });
-
-  // @Effect()
-  // guard$ = this.actions$
-  //   .ofType(AppStore.NAVIGATE)
-  //   .withLatestFrom(this.store)
-  //   // .filter(([action, state]) => !state.user)
-  //   .map(([action, state]) => {
-  //     console.log(action);
-  //     if (!state.user) {
-  //       console.log('should navigate to Login page');
-  //       this.appCtrl.getRootNav().setRoot(LoginPage);
-  //       return {type: AppStore.PAGE, payload: LoginPage};
-  //     }
-  //     console.log('should navigate to', action.payload);
-  //     this.appCtrl.getRootNav().push(action.payload);
-  //     return {type: AppStore.PAGE, page: action.payload};
-  //   });
 
 }

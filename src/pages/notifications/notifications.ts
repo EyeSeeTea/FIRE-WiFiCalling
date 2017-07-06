@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Store } from '@ngrx/store';
-import { AppState } from './../../store/app.state';
+import { AppState } from '../../store/app.state';
 
 @Component({
   selector: 'page-notifications',
