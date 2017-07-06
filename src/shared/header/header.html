@@ -1,10 +1,21 @@
-  <ion-navbar>
-	<ion-title>
-		<ion-icon name="logo-twitter" class="logo"></ion-icon>
-
-		<span class="name">{{state?.user?.name}}</span>
-		<span class="phone-number">{{state?.user?.phoneNumber}}</span>
-		<span class="credit">{{state?.user?.credit}}</span>
+<ion-navbar>
+	<ion-title text-center>
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<img src="assets/img/wifi_logo_small.svg">
+				</ion-col>
+				<ion-col>
+					<span class="name">{{state?.user?.name}}</span>
+				</ion-col>
+				<ion-col>
+					<span class="phone-number">{{state?.user?.phoneNumber}}</span>
+				</ion-col>
+				<ion-col>
+					<span class="credit">{{state?.user?.credit}}</span>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
 	</ion-title>
 
 	<ion-buttons end>

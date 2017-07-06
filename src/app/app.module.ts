@@ -16,6 +16,7 @@ import { AppEffects, AppService } from '../store';
 import { WiFiCalling } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
 import { CallPage } from '../pages/call/call';
+import { CallingPage } from '../pages/call/calling';
 import { HistoryPage } from '../pages/history/history';
 import { TopupPage } from '../pages/topup/topup';
 import { ContactsPage } from '../pages/contacts/contacts';
@@ -32,6 +33,7 @@ import { SharedModule } from '../shared/shared.module';
     WiFiCalling,
     TabsPage,
     CallPage,
+    CallingPage,
     HistoryPage,
     TopupPage,
     AdminPage,
@@ -56,6 +58,7 @@ import { SharedModule } from '../shared/shared.module';
     WiFiCalling,
     TabsPage,
     CallPage,
+    CallingPage,
     HistoryPage,
     TopupPage,
     AdminPage,

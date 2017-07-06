@@ -1,0 +1,46 @@
+<ion-header>
+    <header [userData]="userData"></header>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid text-center>
+        <ion-row>
+            <ion-col>
+                <h1>Calling to</h1>
+                <h1>{{phoneNumber}}</h1>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div class="call_opt_box">
+                    <div class="call_opt_header">
+                        GSM
+                    </div>
+                    XX,xx
+                    <div class="units">
+                        R/min
+                    </div>
+                </div>
+            </ion-col>
+            <ion-col>
+                <div class="call_opt_box">
+                    <div class="call_opt_header">
+                        VoIP
+                    </div>
+                    XX,xx
+                    <div class="units">
+                        R/min
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <button class="call_button" ion-button (click)="gsm()">Use GSM</button>
+            </ion-col>
+            <ion-col>
+                <button class="call_button" ion-button (click)="voip()">Use VoIP</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
