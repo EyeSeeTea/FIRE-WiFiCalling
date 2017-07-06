@@ -2,8 +2,7 @@ import { Component, ViewChild, Input, OnInit } from '@angular/core';
 import { App, Nav, ViewController } from 'ionic-angular';
 
 import { AppState } from '../store';
-import { WiFiCallPage } from '../pages/wificall/wificall';
-import { LoginPage } from '../pages/login/login';
+import { TabsPage } from '../pages/tabs/tabs';
 
 type page = { title: string, component: any };
 
@@ -13,7 +12,7 @@ type page = { title: string, component: any };
 })
 export class Core implements OnInit {
 
-  rootPage = WiFiCallPage;
+  rootPage = TabsPage;
   activePage: page;
 
   @Input() state: AppState;

@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { WiFiCallPage } from '../pages/wificall/wificall';
+import { TabsPage } from '../pages/tabs/tabs';
 import { AdminPage } from '../pages/admin/admin';
 import { LoginPage } from '../pages/login/login';
 import { Store } from '@ngrx/store';
@@ -26,14 +26,14 @@ export class WiFiCalling {
     });
 
     this.pages = [
-      {title: 'WifiCall', component: WiFiCallPage},
+      {title: 'WifiCall', component: TabsPage},
       {title: 'Login', component: LoginPage},
       {title: 'Admin', component: AdminPage},
-      {title: 'Settings', component: WiFiCallPage},
-      {title: 'Check Network', component: WiFiCallPage},
-      {title: 'About', component: WiFiCallPage},
-      {title: 'License', component: WiFiCallPage},
-      {title: 'Log Out', component: WiFiCallPage},
+      {title: 'Settings', component: TabsPage},
+      {title: 'Check Network', component: TabsPage},
+      {title: 'About', component: TabsPage},
+      {title: 'License', component: TabsPage},
+      {title: 'Log Out', component: TabsPage},
     ];
 
   }
