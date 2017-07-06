@@ -3,5 +3,31 @@
 </ion-header>
 
 <ion-content padding>
-	History content
+  <ion-list>
+    <ion-list-header>History ({{history.length}})</ion-list-header>
+
+    <button ion-item *ngFor="let log of history | orderBy: 'date': true">
+      <ion-avatar class="log-icon" item-start>
+
+        <ion-icon name="call" class="log-icon" [class.missed]="log.missed"
+                  color="dark"></ion-icon>
+
+      </ion-avatar>
+
+
+      {{ log.displayName }}
+
+
+      <span *ngIf="log.type === 'outgoing'" class="log-type">
+        <ion-icon color="secondary" name="arrow-round-forward"></ion-icon>
+        <!--<small>outgoing</small>-->
+      </span>
+      <span *ngIf="log.type === 'incoming'" class="log-type">
+        <ion-icon color="danger" name="arrow-round-back"></ion-icon>
+        <!--<small>incoming</small>-->
+      </span>
+      <p item-end>{{log.date | date}}</p>
+    </button>
+
+  </ion-list>
 </ion-content>

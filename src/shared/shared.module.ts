@@ -4,18 +4,24 @@ import { HttpModule } from '@angular/http';
 import { IonicModule } from 'ionic-angular';
 
 import { HeaderComponent } from './header/header';
+import { OrderModule } from 'ngx-order-pipe';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     IonicModule,
     CommonModule,
-    HttpModule
+    HttpModule,
+    OrderModule,
+    FilterPipeModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    OrderModule,
+    FilterPipeModule
   ]
 })
 export class SharedModule {

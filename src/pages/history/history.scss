@@ -1,3 +1,25 @@
+@import '../../theme/variables.scss';
+
 page-history {
+  // until we use the correct icons
+  .log-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: color($colors, secondary);
+    font-size: 1.3em;
+    &.missed {
+      transform: rotate(-224deg);
+      color: color($colors, danger);
+    }
+  }
+
+  .log-type ion-icon {
+    transform: rotate(-45deg);
+    font-weight: bold;
+    //display: inline-flex;
+    //align-items: center;
+    //justify-content: center;
+  }
 
 }

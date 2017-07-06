@@ -3,5 +3,19 @@
 </ion-header>
 
 <ion-content padding>
-	Contacts content
+
+  <ion-searchbar (ionInput)="term = $event.target.value"></ion-searchbar>
+
+  <ion-list>
+
+    <button ion-item *ngFor="let contact of list | filterBy: {displayName: term}">
+
+    <ion-avatar item-start>
+      <ion-icon *ngIf="!contact.image" name="contact" item-start></ion-icon>
+      <img *ngIf="contact.image" [src]="contact.image"/>
+    </ion-avatar>
+    {{ contact.displayName }}
+    </button>
+
+  </ion-list>
 </ion-content>
