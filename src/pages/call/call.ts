@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { UserData } from '../../providers/user-data';
 import { AppService, AppState } from '../../store';
 import { Store } from '@ngrx/store';
 
