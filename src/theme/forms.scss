@@ -1,0 +1,33 @@
+/** Styles for all forms inputs */
+
+$form_color: #4C4C4C;
+$form_bg: #E0E0E0;
+$form_error: #fff2f2;
+
+.fire-input {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  padding: 3px;
+  background-color: $form_bg;
+  color: color($colors, gray);
+
+  ion-icon {
+    margin: 0 0.5em;
+    font-size: 1.5em;
+    width: 20px;
+    text-align: center;
+  }
+}
+
+.fire-input-error {
+  display: flex;
+  align-items: center;
+  padding: 1em 2em;
+  background-color: $form_error;
+  color: color($colors, danger);
+  z-index: 50;
+}

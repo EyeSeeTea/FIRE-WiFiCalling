@@ -1,40 +1,28 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-
+  <div class="login-header header-bg">
+    <div class="login-logo">
+      <img src="assets/img/wifi_logo.svg">
+      <span>WiFiCall</span>
+    </div>
+    <ion-grid class="login-tabs">
+      <ion-row>
+        <ion-col text-center>
+          <div class="login-tab" [class.active]="selectedTab === 'Login'" (tap)="selectedTab = 'Login'">Existing User
+          </div>
+        </ion-col>
+        <ion-col text-center>
+          <div class="login-tab" [class.active]="selectedTab === 'Register'" (tap)="selectedTab = 'Register'">New User
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-header>
 
+<ion-content no-bounce>
 
-<ion-content padding>
+  <login [@slideLogin] *ngIf="selectedTab === 'Login'"></login>
 
-  <ion-grid fixed justify-content-center>
-
-    <ion-row justify-content-center>
-      <div class="app-logo">
-        <ion-icon color="primary" name="baseball"></ion-icon>
-      </div>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-input #user type="text" placeholder="Username"></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-input #pass type="password" placeholder="Password"></ion-input>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="btn-row">
-      <ion-col>
-        <button ion-button (click)="appService.login(user.value, pass.value)">Login</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button (click)="register()">Register</button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <register [@slideRegister] *ngIf="selectedTab === 'Register'"></register>
 
 </ion-content>

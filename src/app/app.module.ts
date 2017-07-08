@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -44,6 +45,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(WiFiCalling),
+    BrowserAnimationsModule,
     HttpModule,
     SharedModule,
     StoreModule.provideStore(appReducer),

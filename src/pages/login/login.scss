@@ -1,9 +1,63 @@
 page-login {
-  background-color: white;
-  ion-grid {
-    height: 100%;
-  }
-  .btn-row button {
+
+  .header-bg {
+    color: white;
     width: 100%;
+    .login-logo {
+      height: 20vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .login-tabs {
+      .login-tab {
+        padding: 1em;
+        cursor: pointer;
+      }
+      .active {
+        font-weight: bold;
+        border-bottom: 2px solid color($colors, light);
+      }
+    }
+    span {
+      font-size: 3em;
+      font-style: italic;
+    }
+    img {
+      width: 70px;
+      height: 70px;
+    }
   }
+
+  ion-grid {
+    flex: 1;
+  }
+
+  form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  login, register {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    .col {
+      margin-bottom: 10px;
+    }
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    span {
+      margin-left: 1em;
+    }
+  }
+
 }
