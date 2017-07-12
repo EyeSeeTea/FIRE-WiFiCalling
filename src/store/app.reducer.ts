@@ -29,11 +29,11 @@ export function appReducer(state: AppState = INITIAL_STATE, action: Action) {
 
     /** Login, payload has user's credentials */
     case AppStore.LOGIN:
-      return state;
+      return Object.assign({}, state);
 
     /** Logout */
     case AppStore.LOGOUT:
-      return state;
+      return Object.assign({}, state);
 
     /** Authenticated payload has the user object */
     case AppStore.AUTHENTICATION:

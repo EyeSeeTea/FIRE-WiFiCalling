@@ -1,5 +1,5 @@
 import { Component, ViewChild, Input, OnInit } from '@angular/core';
-import { App, Nav, ViewController } from 'ionic-angular';
+import { Nav } from 'ionic-angular';
 
 import { AppState } from '../store';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -21,23 +21,25 @@ export class Core implements OnInit {
   @ViewChild(Nav) nav: Nav;
 
 
-  constructor(private appCtrl: App) {
-
-  }
+  // constructor(private appCtrl: App) { }
 
   ngOnInit() {
-    /** TODO: Auto login */
+    /** Disable auth guard for development purpose */
+    /** TODO: Activate this in prod */
 
-    /** Subscribe to page changes event */
-    this.appCtrl.viewWillEnter
-      .filter((page: ViewController) => !page.enableBack())
-      .subscribe((page: ViewController) => {
+    // /** Subscribe to page changes event */
+    // this.appCtrl.viewWillEnter
+    //   .filter((page: ViewController) => !page.enableBack())
+    //   .subscribe((page: ViewController) => {
 
-        /** Check if user is authenticated */
-        if (!this.state.authenticated && page.name !== 'LoginPage') {
-          this.nav.setRoot('LoginPage');
-        }
-      });
+    /** TODO: Check why it performs two times per change */
+    /** "CanEnter" bug: https://github.com/ionic-team/ionic/issues/10399 */
+
+    // /** Check if user is authenticated */
+    //   if (!this.state.authenticated && page.name !== 'AccessPage') {
+    //     this.nav.setRoot('AccessPage');
+    //   }
+    // });
 
   }
 

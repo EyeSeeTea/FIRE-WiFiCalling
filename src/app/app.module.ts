@@ -25,7 +25,6 @@ import { ContactsPage } from '../pages/contacts/contacts';
 import { AdminPage } from '../pages/admin/admin';
 import { NotificationsPage } from '../pages/notifications/notifications';
 
-import { UserData } from '../providers/user-data';
 import { Core } from '../core/core';
 import { SharedModule } from '../shared/shared.module';
 
@@ -72,8 +71,7 @@ import { SharedModule } from '../shared/shared.module';
     StatusBar,
     SplashScreen,
     Contacts,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserData
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {

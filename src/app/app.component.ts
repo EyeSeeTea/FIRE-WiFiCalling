@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { AdminPage } from '../pages/admin/admin';
-import { LoginPage } from '../pages/login/login';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store';
 
@@ -27,7 +26,7 @@ export class WiFiCalling {
 
     this.pages = [
       {title: 'WifiCall', component: TabsPage},
-      {title: 'Login', component: LoginPage},
+      {title: 'Login', component: 'AccessPage'},
       {title: 'Admin', component: AdminPage},
       {title: 'Settings', component: TabsPage},
       {title: 'Check Network', component: TabsPage},
