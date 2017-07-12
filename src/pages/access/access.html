@@ -1,0 +1,32 @@
+<ion-header>
+  <div class="login-header header-bg">
+
+    <!-- LOGO -->
+
+    <div class="login-logo">
+      <!-- TODO: Use logo with title svg -->
+      <img src="assets/img/wifi_logo.svg">
+      <span class="logo-title">WiFiCall</span>
+    </div>
+
+    <!-- LOGIN/REGISTER TABS -->
+
+    <div class="login-tabs">
+      <div class="login-tab" [class.active]="selectedTab === 'Login'" (tap)="selectedTab = 'Login'">
+        <span>Existing User</span>
+      </div>
+      <div class="login-tab" [class.active]="selectedTab === 'Register'" (tap)="selectedTab = 'Register'">
+        <span>New User</span>
+      </div>
+    </div>
+
+  </div>
+</ion-header>
+
+<ion-content no-bounce>
+
+  <login [@slideLogin] *ngIf="selectedTab === 'Login'"></login>
+
+  <register [@slideRegister] *ngIf="selectedTab === 'Register'"></register>
+
+</ion-content>

@@ -1,4 +1,4 @@
-page-login {
+page-access {
 
   .header-bg {
     color: white;
@@ -9,17 +9,7 @@ page-login {
       justify-content: center;
       align-items: center;
     }
-    .login-tabs {
-      .login-tab {
-        padding: 1em;
-        cursor: pointer;
-      }
-      .active {
-        font-weight: bold;
-        border-bottom: 2px solid color($colors, light);
-      }
-    }
-    span {
+    .logo-title {
       font-size: 3em;
       font-style: italic;
     }
@@ -57,6 +47,35 @@ page-login {
     align-items: center;
     span {
       margin-left: 1em;
+    }
+  }
+
+  .login-tabs {
+    display: flex;
+    .login-tab {
+      cursor: pointer;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      span {
+        position: relative;
+        padding: 15px;
+        width: 120px;
+        text-align: center;
+      }
+    }
+
+    .active span {
+      font-weight: bold;
+      &:after {
+        bottom: -5px;
+        left: 0;
+        right: 0;
+        position: absolute;
+        content: '';
+        height: 5px;
+        background-color: color($colors, link);
+      }
     }
   }
 

@@ -23,12 +23,13 @@ import { AppService } from '../../../store/app.service';
 })
 export class RegisterComponent implements OnInit {
 
+  /** Display errors */
   showErrors = false;
-  active = false;
+
+  /** Register From */
   form: FormGroup;
 
-  constructor(private builder: FormBuilder,
-              private appService: AppService) {
+  constructor(private builder: FormBuilder, private appService: AppService) {
   }
 
   ngOnInit() {
@@ -37,32 +38,23 @@ export class RegisterComponent implements OnInit {
 
   buildForm() {
     this.form = this.builder.group({
-        username: [
-          '', [
-            Validators.required,
-            Validators.minLength(4),
-            Validators.maxLength(10)
-          ]
-        ],
-        email: [
-          '', [
-            Validators.required,
-            Validators.email
-          ]
-        ],
-        password: [
-          '', [Validators.required]
-        ],
-        cPassword: [
-          '', [Validators.required, (c) => this.matchingPasswords(c)]
-        ],
-        // acceptRules: [
-        //   false, [Validators.requiredTrue]
-        // ]
+        name: ['', Validators.required],
+        surname: ['', Validators.required],
+        email: ['', [
+          Validators.required,
+          Validators.email
+        ]],
+        address: [''],
+        gender: [''],
+        phone: ['', [
+          Validators.required,
+          Validators.maxLength(10),
+          Validators.minLength(10)
+        ]],
+        password: ['', Validators.required],
+        cPassword: ['', [Validators.required, (c) => this.matchingPasswords(c)]]
       }
     );
-
-    this.active = true;
 
     this.form.valueChanges.subscribe(data => this.onValueChanged(data));
     this.onValueChanged(); // (re)set validation messages now
@@ -76,13 +68,13 @@ export class RegisterComponent implements OnInit {
 
     for (const field in this.formErrors) {
       // clear previous error message (if any)
-      this.formErrors[field] = '';
+      this.formErrors[field] = [];
       const control = this.form.get(field);
 
       if (control && !control.valid) {
         const messages = this.validationMessages[field];
         for (const key in control.errors) {
-          this.formErrors[field] += messages[key] + ' ';
+          this.formErrors[field].push(messages[key]);
         }
       }
     }
@@ -103,22 +95,31 @@ export class RegisterComponent implements OnInit {
   }
 
   formErrors = {
-    username: '',
+    name: '',
+    surname: '',
     email: '',
+    address: '',
+    phone: '',
+    gender: '',
     password: '',
-    cPassword: '',
-    // acceptRules: ''
+    cPassword: ''
   };
 
   validationMessages = {
-    username: {
-      required: 'Username is required.',
-      minlength: 'Username must be at least 4 characters long.',
-      maxlength: 'Username cannot be more than 10 characters long.',
+    name: {
+      required: 'Name is required.'
+    },
+    surname: {
+      required: 'Surname is required.',
     },
     email: {
       required: 'Email is required.',
       email: 'Email is not valid'
+    },
+    phone: {
+      required: 'Phone number is required',
+      minlength: 'Phone number must be 10 digit',
+      maxlength: 'Phone number must be 10 digit'
     },
     password: {
       required: 'Password is required.'
@@ -126,10 +127,7 @@ export class RegisterComponent implements OnInit {
     cPassword: {
       required: 'Repeat Password is required.',
       notSame: 'Passwords do not match.'
-    },
-    // acceptRules: {
-    //   requiredTrue: 'You must acceptRules the rules to register.'
-    // }
+    }
   };
 
 }

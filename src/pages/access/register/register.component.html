@@ -1,0 +1,148 @@
+<form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <ion-grid no-padding>
+
+    <ion-scroll scrollY="true">
+
+      <ion-grid padding>
+
+        <!-- Name -->
+
+        <ion-row padding-horizontal padding-top>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="person"></ion-icon>
+              <ion-input type="text" formControlName="name" placeholder="Name"></ion-input>
+            </div>
+            <div [@slideDown] *ngIf="showErrors && formErrors.name.length" class="fire-input-error">
+              {{ formErrors.name[0] }}
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- SURNAME -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="people"></ion-icon>
+              <ion-input type="text" formControlName="surname" placeholder="Surname"></ion-input>
+            </div>
+            <div [@slideDown] *ngIf="showErrors && formErrors.surname.length" class="fire-input-error">
+              {{ formErrors.surname[0] }}
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- ADDRESS -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="card"></ion-icon>
+              <ion-input type="email" formControlName="address" placeholder="Address"></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- EMAIL -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="at"></ion-icon>
+              <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+            </div>
+            <div [@slideDown] *ngIf="showErrors && formErrors.email.length" class="fire-input-error">
+              {{ formErrors.email[0] }}
+            </div>
+          </ion-col>
+        </ion-row>
+        <!-- PASSWORD -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="lock"></ion-icon>
+              <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+            </div>
+            <div [@slideDown] *ngIf="showErrors && formErrors.password.length" class="fire-input-error">
+              {{formErrors.password[0]}}
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- CONFIRM PASSWORD -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="lock"></ion-icon>
+              <ion-input type="password" formControlName="cPassword" placeholder="Repeat Password"></ion-input>
+            </div>
+            <div [@slideDown] *ngIf="showErrors && formErrors.cPassword.length" class="fire-input-error">
+              {{formErrors.cPassword[0]}}
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- GENDER -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input btn-toggle">
+              <div class="btn-toggle-option">
+                <input id="female" type="radio" formControlName="gender" value="Female">
+                <label for="female">Female</label>
+              </div>
+              <div class="btn-toggle-option">
+                <input id="male" type="radio" formControlName="gender" value="Male" [checked]="true">
+                <label for="male">Male</label>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- PHONE NUMBER  -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="phone-portrait"></ion-icon>
+              <ion-input type="number" formControlName="phone" placeholder="Phone Number"></ion-input>
+            </div>
+            <div [@slideDown] *ngIf="showErrors && formErrors.phone.length" class="fire-input-error">
+              {{ formErrors.phone[0] }}
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- ERRORS PANEL -->
+
+        <ion-row *ngIf="showErrors && formErrors" padding-horizontal>
+          <ion-col>
+            <div class="form-errors">
+              <div padding class="error-header">
+                <h3>ERROR</h3>
+                <span (tap)="showErrors = false"><ion-icon name="close"></ion-icon></span>
+              </div>
+              <div class="error-body">
+                <h5>Error Message</h5>
+                <span>Error Code: XXX</span>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="fill-space"></ion-row>
+
+      </ion-grid>
+
+    </ion-scroll>
+
+    <ion-row>
+      <button ion-button full color="link" type="submit">REQUEST USER</button>
+    </ion-row>
+
+  </ion-grid>
+</form>

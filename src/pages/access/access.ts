@@ -1,12 +1,12 @@
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { AppService } from '../../store/app.service';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+  selector: 'page-access',
+  templateUrl: 'access.html',
   animations: [
     trigger(
       'slideRegister', [
@@ -35,17 +35,12 @@ import { AppService } from '../../store/app.service';
   ]
 })
 
-export class LoginPage {
+export class AccessPage {
 
+  /** default active tab */
   selectedTab = 'Login';
 
-
-  constructor(public navCtrl: NavController,
-              public appService: AppService) {
-  }
-
-  register() {
-    this.navCtrl.push('RegisterPage');
+  constructor(public appService: AppService) {
   }
 
 }
