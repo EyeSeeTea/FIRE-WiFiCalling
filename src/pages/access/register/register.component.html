@@ -58,33 +58,6 @@
             </div>
           </ion-col>
         </ion-row>
-        <!-- PASSWORD -->
-
-        <ion-row padding-horizontal>
-          <ion-col>
-            <div class="fire-input">
-              <ion-icon name="lock"></ion-icon>
-              <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
-            </div>
-            <div [@slideDown] *ngIf="showErrors && formErrors.password.length" class="fire-input-error">
-              {{formErrors.password[0]}}
-            </div>
-          </ion-col>
-        </ion-row>
-
-        <!-- CONFIRM PASSWORD -->
-
-        <ion-row padding-horizontal>
-          <ion-col>
-            <div class="fire-input">
-              <ion-icon name="lock"></ion-icon>
-              <ion-input type="password" formControlName="cPassword" placeholder="Repeat Password"></ion-input>
-            </div>
-            <div [@slideDown] *ngIf="showErrors && formErrors.cPassword.length" class="fire-input-error">
-              {{formErrors.cPassword[0]}}
-            </div>
-          </ion-col>
-        </ion-row>
 
         <!-- GENDER -->
 
@@ -116,6 +89,35 @@
             </div>
           </ion-col>
         </ion-row>
+
+        <!-- PASSWORD -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="lock"></ion-icon>
+              <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+            </div>
+            <div [@slideDown] *ngIf="showErrors && formErrors.password.length" class="fire-input-error">
+              {{formErrors.password[0]}}
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- CONFIRM PASSWORD -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="lock"></ion-icon>
+              <ion-input type="password" formControlName="cPassword" placeholder="Repeat Password"></ion-input>
+            </div>
+            <div [@slideDown] *ngIf="showErrors && formErrors.cPassword.length" class="fire-input-error">
+              {{formErrors.cPassword[0]}}
+            </div>
+          </ion-col>
+        </ion-row>
+
 
         <!-- ERRORS PANEL -->
 
