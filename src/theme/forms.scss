@@ -1,0 +1,150 @@
+/** Styles for all forms inputs */
+
+.fire-input {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  padding: 3px;
+  background-color: color($colors, form);
+  color: color($colors, gray);
+
+  // Input icon
+
+  ion-icon {
+    margin: 0 0.5em;
+    font-size: 1.5em;
+    width: 20px;
+    text-align: center;
+  }
+
+  // Toggle button
+
+  input[type="radio"] {
+    font-size: 1.2em;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    visibility: hidden;
+    &:checked {
+      + label, .btn-toggle-text {
+        color: color($colors, dark);
+        background-color: color($colors, form);
+      }
+    }
+    + label {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      color: color($colors, light);
+      flex: 1;
+      width: 100%;
+      padding: 11px 0;
+      cursor: pointer;
+    }
+  }
+
+}
+
+.fire-input-error {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 1em 2em;
+  border: 2px solid color($colors, danger);
+  color: color($colors, danger);
+  z-index: 50;
+}
+
+// TOGGLE BUTTON
+
+.btn-toggle-option {
+  position: relative;
+  flex: 1;
+}
+
+.btn-toggle {
+  background-color: color($colors, gray);
+}
+
+.form-errors {
+  background-color: color($colors, danger);
+  color: white;
+  text-align: center;
+  padding: 3px;
+  .error-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 42px;
+    h3 {
+      margin: 0;
+    }
+    span {
+      font-size: 20px;
+      position: absolute;
+      right: 12px;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      ion-icon {
+        font-weight: bold;
+      }
+    }
+  }
+  .error-body {
+    background-color: white;
+    color: color($colors, danger);
+    display: flex;
+    flex-direction: column;
+    h5 {
+      margin-top: 1em;
+    }
+    span {
+      margin-top: 0.5em;
+      margin-bottom: 2em;
+    }
+  }
+}
+
+/** hide arrow buttons from number input */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+/** Input placholder color */
+
+.text-input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: color($colors, gray);
+}
+
+.text-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: color($colors, gray);
+  opacity: 1;
+}
+
+.text-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: color($colors, gray);
+  opacity: 1;
+}
+
+.text-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: color($colors, gray);
+}
+
+.text-input::-ms-input-placeholder { /* Microsoft Edge */
+  color: color($colors, gray);
+}
+
