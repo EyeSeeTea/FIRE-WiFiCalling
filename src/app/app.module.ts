@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -12,7 +12,9 @@ import { StoreModule } from '@ngrx/store';
 import { appReducer } from '../store/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { AppEffects, AppService } from '../store';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { WiFiCalling } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -27,6 +29,10 @@ import { NotificationsPage } from '../pages/notifications/notifications';
 
 import { Core } from '../core/core';
 import { SharedModule } from '../shared/shared.module';
+
+export function createTranslateLoader(http: Http) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -44,6 +50,13 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(WiFiCalling),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
+      }
+    }),
     BrowserAnimationsModule,
     HttpModule,
     SharedModule,
@@ -71,7 +84,7 @@ import { SharedModule } from '../shared/shared.module';
     StatusBar,
     SplashScreen,
     Contacts,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
 export class AppModule {

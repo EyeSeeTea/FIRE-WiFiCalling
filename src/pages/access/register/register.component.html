@@ -12,7 +12,7 @@
           <ion-col>
             <div class="fire-input">
               <ion-icon name="person"></ion-icon>
-              <ion-input type="text" formControlName="name" placeholder="Name"></ion-input>
+              <ion-input type="text" formControlName="name" placeholder="{{ 'NAME' | translate }}"></ion-input>
             </div>
             <div [@slideDown] *ngIf="showErrors && formErrors.name.length" class="fire-input-error">
               {{ formErrors.name[0] }}
