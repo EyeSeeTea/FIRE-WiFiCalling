@@ -42,6 +42,9 @@
               <ion-icon name="card"></ion-icon>
               <ion-input type="email" formControlName="address" placeholder="Address"></ion-input>
             </div>
+            <div [@slideDown] *ngIf="showErrors && formErrors.surname.length" class="fire-input-error">
+              {{ formErrors.address[0] }}
+            </div>
           </ion-col>
         </ion-row>
 

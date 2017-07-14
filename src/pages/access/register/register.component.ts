@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
           Validators.required,
           Validators.email
         ]],
-        address: [''],
+        address: ['', Validators.required],
         gender: [''],
         phone: ['', [
           Validators.required,
@@ -115,6 +115,9 @@ export class RegisterComponent implements OnInit {
     email: {
       required: 'Email is required.',
       email: 'Email is not valid'
+    },
+    address: {
+      required: 'Address is required.',
     },
     phone: {
       required: 'Phone number is required',
