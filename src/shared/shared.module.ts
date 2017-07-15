@@ -6,10 +6,12 @@ import { IonicModule } from 'ionic-angular';
 import { HeaderComponent } from './header/header';
 import { OrderModule } from 'ngx-order-pipe';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    TimeAgoPipe
   ],
   imports: [
     IonicModule,
@@ -21,7 +23,8 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
   exports: [
     HeaderComponent,
     OrderModule,
-    FilterPipeModule
+    FilterPipeModule,
+    TimeAgoPipe
   ]
 })
 export class SharedModule {

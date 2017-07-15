@@ -1,25 +1,29 @@
 @import '../../theme/variables.scss';
 
-page-history {
-  // until we use the correct icons
-  .log-icon {
+page-history, page-contacts {
+
+  ion-avatar {
+    border-radius: 50%;
+    background-color: color($colors, lightgray);
+    overflow: hidden;
+  }
+
+  button {
+  }
+
+  div {
+    color: color($colors, dark);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: color($colors, secondary);
-    font-size: 1.3em;
-    &.missed {
-      transform: rotate(-224deg);
-      color: color($colors, danger);
+    flex-direction: column;
+
+    small {
+      display: flex;
+      align-items: center;
+      img {
+        margin: 0 5px;
+      }
     }
   }
 
-  .log-type ion-icon {
-    transform: rotate(-45deg);
-    font-weight: bold;
-    //display: inline-flex;
-    //align-items: center;
-    //justify-content: center;
-  }
 
 }

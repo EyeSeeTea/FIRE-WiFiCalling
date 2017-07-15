@@ -2,31 +2,30 @@
   <header [state]="store | async"></header>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+
+  <ion-searchbar></ion-searchbar>
+
   <ion-list>
-    <ion-list-header>History ({{history.length}})</ion-list-header>
+    <!--<ion-list-header>History ({{history.length}})</ion-list-header>-->
 
     <button ion-item *ngFor="let log of history | orderBy: 'date': true">
-      <ion-avatar class="log-icon" item-start>
 
-        <ion-icon name="call" class="log-icon" [class.missed]="log.missed"
-                  color="dark"></ion-icon>
-
+      <ion-avatar item-start>
+        <img *ngIf="log.image" [src]="log.image"/>
       </ion-avatar>
 
+      <div>
+        <p> {{ log.displayName }} </p>
 
-      {{ log.displayName }}
+        <small>
+          <span>1</span>
+          <img src="assets/img/exitcall_icn.svg">
+          <span>{{ log.date | timeAgo }}</span>
+        </small>
+      </div>
 
-
-      <span *ngIf="log.type === 'outgoing'" class="log-type">
-        <ion-icon color="secondary" name="arrow-round-forward"></ion-icon>
-        <!--<small>outgoing</small>-->
-      </span>
-      <span *ngIf="log.type === 'incoming'" class="log-type">
-        <ion-icon color="danger" name="arrow-round-back"></ion-icon>
-        <!--<small>incoming</small>-->
-      </span>
-      <p item-end>{{log.date | date}}</p>
+      <ion-icon item-end name="call"></ion-icon>
     </button>
 
   </ion-list>
