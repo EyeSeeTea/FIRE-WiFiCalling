@@ -1,5 +1,25 @@
 {
-  "NAME": "Name",
-  "CALL": "Call",
-  "TopUpContent": "Top up content"
+  "Contacts": "Kişiler",
+  "Call": "Klavye",
+  "TopUpContent": "Top up content",
+  "Top Up": "Yükleme",
+  "History": "Son Aramalar",
+  "Login": "Oturum Aç",
+  "Name": "Adı",
+  "Surname": "Soyadı",
+  "Female": "Kadın",
+  "Male": "Erkek",
+  "Password": "Şifre",
+  "Repeat Password": "Tekrar Şifre",
+  "Email": "Email",
+  "Address": "Adres",
+  "Phone Number": "Telefon Numarası",
+  "Request user": "Kayıt Olmak",
+  "Username": "Kullanıcı Adı",
+  "Forgot your password?": "Şifre Unuttum?",
+  "Logout": "",
+  "License": "",
+  "About": "",
+  "Settings": "",
+  "Admin": ""
 }

@@ -12,7 +12,7 @@
           <ion-col>
             <div class="fire-input">
               <ion-icon name="person"></ion-icon>
-              <ion-input type="text" formControlName="name" placeholder="{{ 'NAME' | translate }}"></ion-input>
+              <ion-input type="text" formControlName="name" [placeholder]="'Name' | translate"></ion-input>
             </div>
             <div [@slideDown] *ngIf="showErrors && formErrors.name.length" class="fire-input-error">
               {{ formErrors.name[0] }}
@@ -26,7 +26,7 @@
           <ion-col>
             <div class="fire-input">
               <ion-icon name="people"></ion-icon>
-              <ion-input type="text" formControlName="surname" placeholder="Surname"></ion-input>
+              <ion-input type="text" formControlName="surname" [placeholder]="'Surname' | translate"></ion-input>
             </div>
             <div [@slideDown] *ngIf="showErrors && formErrors.surname.length" class="fire-input-error">
               {{ formErrors.surname[0] }}
@@ -40,7 +40,7 @@
           <ion-col>
             <div class="fire-input">
               <ion-icon name="card"></ion-icon>
-              <ion-input type="email" formControlName="address" placeholder="Address"></ion-input>
+              <ion-input type="email" formControlName="address" [placeholder]="'Address' | translate"></ion-input>
             </div>
             <div [@slideDown] *ngIf="showErrors && formErrors.address.length" class="fire-input-error">
               {{ formErrors.address[0] }}
@@ -54,7 +54,7 @@
           <ion-col>
             <div class="fire-input">
               <ion-icon name="at"></ion-icon>
-              <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+              <ion-input type="email" formControlName="email" [placeholder]="'Email' | translate"></ion-input>
             </div>
             <div [@slideDown] *ngIf="showErrors && formErrors.email.length" class="fire-input-error">
               {{ formErrors.email[0] }}
@@ -69,11 +69,11 @@
             <div class="fire-input btn-toggle">
               <div class="btn-toggle-option">
                 <input id="female" type="radio" formControlName="gender" value="Female">
-                <label for="female">Female</label>
+                <label for="female">{{ 'Female' | translate }}</label>
               </div>
               <div class="btn-toggle-option">
                 <input id="male" type="radio" formControlName="gender" value="Male" [checked]="true">
-                <label for="male">Male</label>
+                <label for="male">{{ 'Male' | translate }}</label>
               </div>
             </div>
           </ion-col>
@@ -85,7 +85,7 @@
           <ion-col>
             <div class="fire-input">
               <ion-icon name="phone-portrait"></ion-icon>
-              <ion-input type="number" formControlName="phone" placeholder="Phone Number"></ion-input>
+              <ion-input type="number" formControlName="phone" [placeholder]="'Phone Number' | translate"></ion-input>
             </div>
             <div [@slideDown] *ngIf="showErrors && formErrors.phone.length" class="fire-input-error">
               {{ formErrors.phone[0] }}
@@ -99,10 +99,10 @@
           <ion-col>
             <div class="fire-input">
               <ion-icon name="lock"></ion-icon>
-              <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+              <ion-input type="password" formControlName="password" [placeholder]="'Password' | translate"></ion-input>
             </div>
             <div [@slideDown] *ngIf="showErrors && formErrors.password.length" class="fire-input-error">
-              {{formErrors.password[0]}}
+              {{ formErrors.password[0] }}
             </div>
           </ion-col>
         </ion-row>
@@ -113,10 +113,10 @@
           <ion-col>
             <div class="fire-input">
               <ion-icon name="lock"></ion-icon>
-              <ion-input type="password" formControlName="cPassword" placeholder="Repeat Password"></ion-input>
+              <ion-input type="password" formControlName="cPassword" [placeholder]="'Repeat Password' | translate"></ion-input>
             </div>
             <div [@slideDown] *ngIf="showErrors && formErrors.cPassword.length" class="fire-input-error">
-              {{formErrors.cPassword[0]}}
+              {{ formErrors.cPassword[0] }}
             </div>
           </ion-col>
         </ion-row>
