@@ -42,7 +42,7 @@
               <ion-icon name="card"></ion-icon>
               <ion-input type="email" formControlName="address" placeholder="Address"></ion-input>
             </div>
-            <div [@slideDown] *ngIf="showErrors && formErrors.surname.length" class="fire-input-error">
+            <div [@slideDown] *ngIf="showErrors && formErrors.address.length" class="fire-input-error">
               {{ formErrors.address[0] }}
             </div>
           </ion-col>
@@ -124,20 +124,20 @@
 
         <!-- ERRORS PANEL -->
 
-        <ion-row *ngIf="showErrors && formErrors" padding-horizontal>
-          <ion-col>
-            <div class="form-errors">
-              <div padding class="error-header">
-                <h3>ERROR</h3>
-                <span (tap)="showErrors = false"><ion-icon name="close"></ion-icon></span>
-              </div>
-              <div class="error-body">
-                <h5>Error Message</h5>
-                <span>Error Code: XXX</span>
-              </div>
-            </div>
-          </ion-col>
-        </ion-row>
+        <!--<ion-row *ngIf="showErrors && formErrors" padding-horizontal>-->
+          <!--<ion-col>-->
+            <!--<div class="form-errors">-->
+              <!--<div padding class="error-header">-->
+                <!--<h3>ERROR</h3>-->
+                <!--<span (tap)="showErrors = false"><ion-icon name="close"></ion-icon></span>-->
+              <!--</div>-->
+              <!--<div class="error-body">-->
+                <!--<h5>Error Message</h5>-->
+                <!--<span>Error Code: XXX</span>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</ion-col>-->
+        <!--</ion-row>-->
 
         <ion-row class="fill-space"></ion-row>
 
