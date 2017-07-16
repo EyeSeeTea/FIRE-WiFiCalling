@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Contacts } from '@ionic-native/contacts';
+import { Globalization } from '@ionic-native/globalization';
 
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from '../store/app.reducer';
@@ -84,6 +85,8 @@ export function createTranslateLoader(http: Http) {
     StatusBar,
     SplashScreen,
     Contacts,
+    Globalization,
+
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
