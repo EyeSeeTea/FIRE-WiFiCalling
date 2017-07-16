@@ -28,16 +28,17 @@ export class WiFiCalling {
 
       translate.setDefaultLang(defaultLang);
 
-      if ((<any>window).cordova) {
-        this.globalization.getPreferredLanguage().then(result => {
-          var language = getSuitableLanguage(result.value);
+
+      this.globalization.getPreferredLanguage()
+        .then(result => {
+          const language = getSuitableLanguage(result.value);
           translate.use(language);
-        });
-      } else {
-        let browserLanguage = translate.getBrowserLang() || defaultLang;
-        var language = getSuitableLanguage(browserLanguage);
-        translate.use(language);
-      }
+        })
+        .catch(err => {
+          const browserLanguage = translate.getBrowserLang() || defaultLang;
+          const language = getSuitableLanguage(browserLanguage);
+          translate.use(language);
+        })
     });
 
     this.pages = [
