@@ -12,8 +12,6 @@ Example in Ubuntu:
 sudo apt-get install npm nodejs
 ```
 
-Create an account in https://apps.ionic.io
-
 ```
 sudo npm install -g ionic@2.2.3 cordova
 ```
@@ -22,6 +20,8 @@ sudo npm install -g ionic@2.2.3 cordova
 ```
 sudo npm install -g bower
 ```
+
+Create an account in https://apps.ionic.io
 
 Then clone this repo and add android platform
 ```
