@@ -12,5 +12,5 @@ export const availableLanguages = [{
 
 export function getSuitableLanguage(language) {
     language = language.substring(0, 2).toLowerCase();
-    return availableLanguages.some(x => x.code === language) ? language : defaultLang;
+    return availableLanguages.some(x => x.code == language) ? language : defaultLang;
 }
