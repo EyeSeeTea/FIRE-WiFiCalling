@@ -13,10 +13,10 @@
 
     <div class="login-tabs">
       <div class="login-tab" [class.active]="selectedTab === 'Login'" (tap)="selectedTab = 'Login'">
-        <span>Existing User</span>
+        <span>{{ 'EXISTING_USER' | translate }}</span>
       </div>
       <div class="login-tab" [class.active]="selectedTab === 'Register'" (tap)="selectedTab = 'Register'">
-        <span>New User</span>
+        <span>{{ 'NEW_USER' | translate }}</span>
       </div>
     </div>
 

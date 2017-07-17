@@ -43,13 +43,13 @@ export class WiFiCalling {
 
     this.pages = [
       { title: 'WifiCall', component: TabsPage },
-      { title: 'Login', component: 'AccessPage' },
-      { title: 'Admin', component: AdminPage },
-      { title: 'Settings', component: TabsPage },
+      { title: 'LOGIN', component: 'AccessPage' },
+      { title: 'ADMIN', component: AdminPage },
+      { title: 'SETTINGS', component: TabsPage },
       { title: 'Check Network', component: TabsPage },
-      { title: 'About', component: TabsPage },
-      { title: 'License', component: TabsPage },
-      { title: 'Log Out', component: TabsPage },
+      { title: 'ABOUT', component: TabsPage },
+      { title: 'LICENSE', component: TabsPage },
+      { title: 'LOGOUT', component: TabsPage },
     ];
   }
 }

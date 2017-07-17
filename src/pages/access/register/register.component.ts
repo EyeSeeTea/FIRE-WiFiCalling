@@ -107,29 +107,29 @@ export class RegisterComponent implements OnInit {
 
   validationMessages = {
     name: {
-      required: 'Name is required.'
+      required: 'ERR_NAME_REQUIRED'
     },
     surname: {
-      required: 'Surname is required.',
+      required: 'ERR_SURNAME_REQUIRED',
     },
     email: {
-      required: 'Email is required.',
-      email: 'Email is not valid'
+      required: 'ERR_EMAIL_REQUIRED',
+      email: 'ERR_EMAIL_VALID'
     },
     address: {
-      required: 'Address is required.',
+      required: 'ERR_ADDRESS_REQUIRED',
     },
     phone: {
-      required: 'Phone number is required',
-      minlength: 'Phone number must be 10 digit',
-      maxlength: 'Phone number must be 10 digit'
+      required: 'ERR_PHONE_NUMBER_REQUIRED',
+      minlength: 'ERR_PHONE_NUMBER_LENGTH',
+      maxlength: 'ERR_PHONE_NUMBER_LENGTH'
     },
     password: {
-      required: 'Password is required.'
+      required: 'ERR_PASSWORD_REQUIRED'
     },
     cPassword: {
-      required: 'Repeat Password is required.',
-      notSame: 'Passwords do not match.'
+      required: 'ERR_CPASSWORD_REQUIRED',
+      notSame: 'ERR_PASSWORD_MATCH'
     }
   };
 
