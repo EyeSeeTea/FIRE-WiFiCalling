@@ -1,19 +1,19 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.state';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
   selector: 'page-history',
   templateUrl: 'history.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HistoryPage {
 
   history;
 
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public store: Store<AppState>) {
+  constructor(public store: Store<AppState>,
+              private inAppBrowser: InAppBrowser) {
 
     const minDate = new Date('October 13, 2016 11:13:00');
     const maxDate = Date.now();
@@ -59,6 +59,11 @@ export class HistoryPage {
       }
 
     ];
+  }
+
+  ngOnInit() {
+    // TODO: Open native call logs app
+    // this.inAppBrowser.create('com.application.logs');
   }
 
 

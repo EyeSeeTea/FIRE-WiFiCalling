@@ -1,63 +1,69 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { Contacts, IContactProperties } from '@ionic-native/contacts';
-import { AppState } from '../../store';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Contacts, IContactProperties, IContactFindOptions } from '@ionic-native/contacts';
 import { Store } from '@ngrx/store';
+import { AppState } from '../../store';
+import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'page-contacts',
   templateUrl: 'contacts.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContactsPage {
+export class ContactsPage implements OnInit {
 
-  term;
-  searchQuery: string = '';
-  list: IContactProperties[];
-  mockList;
+  /** Filter contacts with name or phone number */
+  filterKey = new BehaviorSubject('');
 
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public contacts: Contacts,
-              public store: Store<AppState>) {
-    contacts.find(['displayName', 'phoneNumbers'], {multiple: true}).then((res) => {
-      console.log(res);
-      this.list = res;
-      // this.contactsFound = res;
-    }).catch(err => {
-      this.list = this.mockList;
+  /** Contact list */
+  list = new Subject<IContactProperties[]>();
+
+  constructor(public contacts: Contacts, public store: Store<AppState>) {
+
+  }
+
+  ngOnInit() {
+
+    this.filterKey.subscribe((key: string) => {
+
+      const filterOptions: IContactFindOptions = {
+        multiple: true,
+        hasPhoneNumber: true,
+        desiredFields: ['displayName', 'phoneNumbers', 'photos'],
+        filter: key
+      };
+      return this.contacts.find(['displayName', 'phoneNumbers'], filterOptions)
+        .then((contacts: IContactProperties[]) => this.list.next(contacts))
+        .catch(err => this.list.next(mockList));
     });
-    this.initializeItems();
-  }
-
-  initializeItems() {
-
-    this.mockList = [
-      {
-        displayName: 'Jamee Seals',
-        phoneNumber: ['[111 2222 333 45']
-      },
-      {
-        displayName: 'Coreen Boomer',
-        phoneNumber: ['111 7777 333 45']
-      }, {
-        displayName: 'Ruben Gangi',
-        phoneNumber: ['222 2222 333 45']
-      }, {
-        displayName: 'Carlos',
-        phoneNumber: ['111 2222 444 44'],
-      }, {
-        displayName: 'Vasiliki Mccall',
-        phoneNumber: ['111 2222 444 44']
-      }, {
-        displayName: 'Donny Flavell',
-        phoneNumber: ['111 2222 444 44']
-      }
-
-    ];
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactsPage');
   }
 
 }
+
+const mockList = [
+  {
+    displayName: 'Jamee Seals',
+    phoneNumber: ['[111 2222 333 45']
+  },
+  {
+    displayName: 'Coreen Boomer',
+    phoneNumber: ['111 7777 333 45']
+  },
+  {
+    displayName: 'Ruben Gangi',
+    phoneNumber: ['222 2222 333 45']
+  },
+  {
+    displayName: 'Carlos',
+    phoneNumber: ['111 2222 444 44'],
+  },
+  {
+    displayName: 'Vasiliki Mccall',
+    phoneNumber: ['111 2222 444 44']
+  },
+  {
+    displayName: 'Donny Flavell',
+    phoneNumber: ['111 2222 444 44']
+  }
+];

@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { IonicModule } from 'ionic-angular';
+import { InAppBrowser } from "@ionic-native/in-app-browser";
+
+/** OrderModule is used in History to order calls log by date */
+import { OrderModule } from 'ngx-order-pipe';
 
 import { HeaderComponent } from './header/header';
-import { OrderModule } from 'ngx-order-pipe';
-import { FilterPipeModule } from 'ngx-filter-pipe';
 import { TimeAgoPipe } from 'time-ago-pipe';
 
 @NgModule({
@@ -17,14 +19,15 @@ import { TimeAgoPipe } from 'time-ago-pipe';
     IonicModule,
     CommonModule,
     HttpModule,
-    OrderModule,
-    FilterPipeModule
+    OrderModule
   ],
   exports: [
     HeaderComponent,
     OrderModule,
-    FilterPipeModule,
     TimeAgoPipe
+  ],
+  providers: [
+    InAppBrowser
   ]
 })
 export class SharedModule {

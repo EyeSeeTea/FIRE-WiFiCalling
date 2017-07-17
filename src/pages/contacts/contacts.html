@@ -2,24 +2,23 @@
   <header [state]="store | async"></header>
 </ion-header>
 
-
 <ion-content>
 
-  <ion-searchbar (ionInput)="term = $event.target.value"></ion-searchbar>
+  <ion-searchbar (ionInput)="filterKey.next($event.target.value)"></ion-searchbar>
 
   <ion-list>
 
-    <button ion-item *ngFor="let contact of list | filterBy: {displayName: term}">
+    <button ion-item *ngFor="let contact of list | async">
 
       <ion-avatar item-start>
-        <img *ngIf="contact?.photos" [src]="contact?.photos"/>
+        <!--<img *ngIf="contact?.photos" [test]="contact.photos[0]"/>-->
+        <ion-icon name="contact"></ion-icon>
       </ion-avatar>
 
       <div>
-        <p> {{ contact?.displayName || contact?.phoneNumbers[0].value }} </p>
+        <p> {{ contact.displayName || contact.phoneNumbers[0].value }} </p>
       </div>
 
     </button>
-
   </ion-list>
 </ion-content>
