@@ -1,46 +1,39 @@
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { WiFiCallPage } from '../pages/wificall/wificall';
+import { TabsPage } from '../pages/tabs/tabs';
 import { AdminPage } from '../pages/admin/admin';
-
-type page = {title: string, component: any};
+import { Store } from '@ngrx/store';
+import { AppState } from '../store';
 
 @Component({
-  templateUrl: 'app.html'
+  template: `
+    <main [state]="store | async" [pages]="pages"></main>
+  `
 })
 export class WiFiCalling {
-  @ViewChild(Nav) nav: Nav;
-  rootPage: any = WiFiCallPage;
-  pages: Array<page>;
-  activePage: page;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  pages;
+
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public store: Store<AppState>) {
+
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
     });
 
     this.pages = [
-      {title: 'WifiCall', component: WiFiCallPage},
+      {title: 'WifiCall', component: TabsPage},
+      {title: 'Login', component: 'AccessPage'},
       {title: 'Admin', component: AdminPage},
-      {title: 'Settings', component: WiFiCallPage},
-      {title: 'Check Network', component: WiFiCallPage},
-      {title: 'About', component: WiFiCallPage},
-      {title: 'License', component: WiFiCallPage},
-      {title: 'Log Out', component: WiFiCallPage},
+      {title: 'Settings', component: TabsPage},
+      {title: 'Check Network', component: TabsPage},
+      {title: 'About', component: TabsPage},
+      {title: 'License', component: TabsPage},
+      {title: 'Log Out', component: TabsPage},
     ];
-    this.activePage = this.pages[0];
-  }
 
-  openPage(page) {
-    this.nav.setRoot(page.component);
-    this.activePage = page;
-  }
-
-  checkActive(page) {
-    return this.activePage === page;
   }
 }

@@ -6,6 +6,7 @@ import { NotificationsPage } from '../notifications/notifications';
   templateUrl: 'admin.html'
 })
 export class AdminPage {
+
   tabNotifications = NotificationsPage;
   tabUsers = NotificationsPage;
   tabBilling = NotificationsPage;
@@ -13,4 +14,5 @@ export class AdminPage {
 
   constructor() {
   }
+
 }

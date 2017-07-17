@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
 
-import { ContactsPage } from '../contacts/contacts';
 import { HistoryPage } from '../history/history';
 import { CallPage } from '../call/call';
 import { TopupPage } from '../topup/topup';
+import { ContactsPage } from '../contacts/contacts';
 
 @Component({
-  templateUrl: 'wificall.html'
+  templateUrl: 'tabs.html'
 })
-export class WiFiCallPage {
-  tabCall = CallPage;
+export class TabsPage {
+
   tabContacts = ContactsPage;
+  tabCall = CallPage;
   tabHistory = HistoryPage;
   tabTopup = TopupPage;
 
   constructor() {
   }
+
 }

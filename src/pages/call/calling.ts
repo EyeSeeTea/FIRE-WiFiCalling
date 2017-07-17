@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { UserData } from '../../providers/user-data';
+import { AppState } from '../../store/app.state';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'page-calling',
@@ -11,7 +12,7 @@ export class CallingPage {
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
-                public userData: UserData) {
+                public store: Store<AppState>) {
        this.phoneNumber = this.navParams.get('phoneNumber');
     }
 

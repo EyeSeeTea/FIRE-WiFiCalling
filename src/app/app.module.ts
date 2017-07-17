@@ -1,58 +1,78 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { WiFiCalling } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { WiFiCallPage } from '../pages/wificall/wificall';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { Contacts } from '@ionic-native/contacts';
+
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from '../store/app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects, AppService } from '../store';
+
+import { WiFiCalling } from './app.component';
+import { TabsPage } from '../pages/tabs/tabs';
 import { CallPage } from '../pages/call/call';
 import { CallingPage } from '../pages/call/calling';
-import { ContactsPage } from '../pages/contacts/contacts';
 import { HistoryPage } from '../pages/history/history';
 import { TopupPage } from '../pages/topup/topup';
+import { ContactsPage } from '../pages/contacts/contacts';
 
 import { AdminPage } from '../pages/admin/admin';
 import { NotificationsPage } from '../pages/notifications/notifications';
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { HeaderComponent } from '../components/header/header';
-import { UserData } from '../providers/user-data.ts';
+import { Core } from '../core/core';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     WiFiCalling,
-    WiFiCallPage,
+    TabsPage,
     CallPage,
     CallingPage,
-    ContactsPage,
     HistoryPage,
     TopupPage,
     AdminPage,
     NotificationsPage,
-    HeaderComponent,
+    ContactsPage,
+    Core,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(WiFiCalling),
+    BrowserAnimationsModule,
+    HttpModule,
+    SharedModule,
+    StoreModule.provideStore(appReducer),
+    EffectsModule.run(AppEffects),
+    /** StoreDevtoolsModule is only for dev, will be removed in Production */
+    StoreDevtoolsModule.instrumentOnlyWithExtension({
+      maxAge: 5
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     WiFiCalling,
-    WiFiCallPage,
+    TabsPage,
     CallPage,
     CallingPage,
-    ContactsPage,
     HistoryPage,
     TopupPage,
     AdminPage,
     NotificationsPage,
+    ContactsPage
   ],
   providers: [
+    AppService,
     StatusBar,
     SplashScreen,
-    UserData,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Contacts,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
-export class AppModule {}
+export class AppModule {
+}

@@ -3,16 +3,16 @@
 		<ion-grid>
 			<ion-row>
 				<ion-col>
-					<img src="assets/img/wifi_logo_small.svg">
+					<img src="assets/img/wifi_logo.svg">
 				</ion-col>
 				<ion-col>
-					<span class="name">{{userData.name}}</span>
+					<span class="name">{{state?.user?.name}}</span>
 				</ion-col>
 				<ion-col>
-					<span class="phone-number">{{userData.phoneNumber}}</span>
+					<span class="phone-number">{{state?.user?.phoneNumber}}</span>
 				</ion-col>
 				<ion-col>
-					<span class="credit">{{userData.credit}}</span>
+					<span class="credit">{{state?.user?.credit}}</span>
 				</ion-col>
 			</ion-row>
 		</ion-grid>
