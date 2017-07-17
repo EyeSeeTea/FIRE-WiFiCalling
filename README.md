@@ -5,7 +5,12 @@ WiFi Calling App to be used with LibreServer
 
 To configure basic dev environment
 
-First of all create an account in https://apps.ionic.io
+First of all, in your OS, install npm and nodejs. 
+
+Example in Ubuntu:
+```
+sudo apt-get install npm nodejs
+```
 
 ```
 sudo npm install -g ionic@2.2.3 cordova
@@ -15,6 +20,8 @@ sudo npm install -g ionic@2.2.3 cordova
 ```
 sudo npm install -g bower
 ```
+
+Create an account in https://apps.ionic.io
 
 Then clone this repo and add android platform
 ```
