@@ -4,6 +4,8 @@ import { HttpModule, Http } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// Ionic native plugins
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Contacts } from '@ionic-native/contacts';
