@@ -1,0 +1,50 @@
+{
+  "TOP_UP_CONTENT": "Contenido de la pestaña de recarga",
+  "TABS": {
+    "CALL": "Llamar",
+    "CONTACTS": "Contactos",
+    "HISTORY": "Historia",
+    "TOP_UP": "Recarga",
+    "NOTIFICATIONS": "Notificaciones",
+    "USERS": "Usuarios",
+    "BILLING": "Recibos"
+  },
+  "MENU": {
+    "LICENSE": "Licencia",
+    "ABOUT": "About",
+    "SETTINGS": "Preferencias",
+    "ADMIN": "Administracion",
+    "LOGOUT": "Salir"
+  },
+  "ACCESS": {
+    "LOGIN": "Log In",
+    "REQUEST_USER": "Usuario Requerido",
+    "EXISTING_USER": "Usuario Existente",
+    "NEW_USER": "Nuevo Usuario",
+    "FORGOT_PASSWORD": "Recordar Contraseña?"
+  },
+  "FORMS": {
+    "NAME": "Nombre",
+    "SURNAME": "Apellido",
+    "USERNAME": "Nombre de Usuario",
+    "FEMALE": "Femenino",
+    "MALE": "Masculino",
+    "PASSWORD": "Contraseña",
+    "REPEAT_PASSWORD": "Repetir Contraseña",
+    "EMAIL": "Email",
+    "ADDRESS": "Dirección",
+    "PHONE_NUMBER": "Teléfono"
+  },
+  "ERR": {
+    "NAME_REQUIRED": "Nombre es obligatorio",
+    "SURNAME_REQUIRED": "Apellido es obligatorio",
+    "PASSWORD_REQUIRED": "Contraseña es obligatorio",
+    "CPASSWORD_REQUIRED": "Confirmar contraseña es un campo obligatorio",
+    "PASSWORD_MATCH": "Las contraseñas no coinciden",
+    "EMAIL_REQUIRED": "Email es obligatorio",
+    "EMAIL_VALID": "Email no es valido",
+    "ADDRESS_REQUIRED": "Direccion es obligatoria",
+    "PHONE_NUMBER_REQUIRED": "Teléfono es obligatorio",
+    "PHONE_NUMBER_LENGTH": "Teléfono debe tener una longitud minima de 10"
+  }
+}

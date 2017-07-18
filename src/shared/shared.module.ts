@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { IonicModule } from 'ionic-angular';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { HeaderComponent } from './header/header';
 
@@ -12,10 +13,12 @@ import { HeaderComponent } from './header/header';
   imports: [
     IonicModule,
     CommonModule,
-    HttpModule
+    HttpModule,
+    TranslateModule.forChild()
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    TranslateModule
   ]
 })
 export class SharedModule {
