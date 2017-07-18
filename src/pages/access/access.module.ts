@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { AccessPage } from './access';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { RegisterComponent } from './register/register.component';
     RegisterComponent
   ],
   imports: [
-    IonicPageModule.forChild(AccessPage)
+    IonicPageModule.forChild(AccessPage),
+    TranslateModule.forChild()
   ],
   exports: [
     AccessPage,
