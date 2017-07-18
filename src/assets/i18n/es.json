@@ -3,7 +3,7 @@
   "TABS": {
     "CALL": "Llamar",
     "CONTACTS": "Contactos",
-    "HISTORY": "Historia",
+    "HISTORY": "Historial",
     "TOP_UP": "Recarga",
     "NOTIFICATIONS": "Notificaciones",
     "USERS": "Usuarios",
@@ -18,7 +18,7 @@
   },
   "ACCESS": {
     "LOGIN": "Log In",
-    "REQUEST_USER": "Usuario Requerido",
+    "REQUEST_USER": "Registrarte",
     "EXISTING_USER": "Usuario Existente",
     "NEW_USER": "Nuevo Usuario",
     "FORGOT_PASSWORD": "Recordar Contraseña?"
