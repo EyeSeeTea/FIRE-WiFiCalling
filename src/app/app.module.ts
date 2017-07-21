@@ -12,11 +12,9 @@ import { Contacts } from '@ionic-native/contacts';
 import { Globalization } from '@ionic-native/globalization';
 
 import { StoreModule } from '@ngrx/store';
-import { appReducer } from '../store/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { AppEffects, AppService } from '../store';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { WiFiCalling } from './app.component';
@@ -32,6 +30,7 @@ import { NotificationsPage } from '../pages/notifications/notifications';
 
 import { Core } from '../core/core';
 import { SharedModule } from '../shared/shared.module';
+import { metaReducers, reducers } from "../reducers/index";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -63,10 +62,10 @@ export function createTranslateLoader(http: Http) {
     BrowserAnimationsModule,
     HttpModule,
     SharedModule,
-    StoreModule.provideStore(appReducer),
-    EffectsModule.run(AppEffects),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([]),
     /** StoreDevtoolsModule is only for dev, will be removed in Production */
-    StoreDevtoolsModule.instrumentOnlyWithExtension({
+    StoreDevtoolsModule.instrument({
       maxAge: 5
     })
   ],
@@ -83,7 +82,6 @@ export function createTranslateLoader(http: Http) {
     ContactsPage
   ],
   providers: [
-    AppService,
     StatusBar,
     SplashScreen,
     Contacts,

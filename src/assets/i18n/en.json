@@ -36,6 +36,7 @@
     "PHONE_NUMBER": "Phone Number"
   },
   "ERR": {
+    "USERNAME_REQUIRED": "Username is required",
     "NAME_REQUIRED": "Name is required.",
     "SURNAME_REQUIRED": "Surname is required.",
     "PASSWORD_REQUIRED": "Password is required.",

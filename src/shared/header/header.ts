@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { AppState } from '../../store/app.state';
 
 @Component({
   selector: 'header',
@@ -7,7 +6,7 @@ import { AppState } from '../../store/app.state';
 })
 export class HeaderComponent {
 
-  @Input() state: AppState;
+  @Input() state: any;
 
   constructor() {
   }

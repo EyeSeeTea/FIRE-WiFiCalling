@@ -1,7 +1,6 @@
 import { Component, ViewChild, Input, OnInit } from '@angular/core';
 import { Nav } from 'ionic-angular';
 
-import { AppState } from '../store';
 import { TabsPage } from '../pages/tabs/tabs';
 
 type page = { title: string, component: any };
@@ -15,7 +14,7 @@ export class Core implements OnInit {
   rootPage = TabsPage;
   activePage: page;
 
-  @Input() state: AppState;
+  @Input() state: any;
   @Input() pages: Array<page>;
 
   @ViewChild(Nav) nav: Nav;

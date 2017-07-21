@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AppService, AppState } from '../../store';
 import { Store } from '@ngrx/store';
 
 import { CallingPage } from './calling';
@@ -14,8 +13,7 @@ export class CallPage {
   callButtonHidden: boolean = true;
 
   constructor(public navCtrl: NavController,
-              public store: Store<AppState>,
-              public appService: AppService) {
+              public store: Store<any>) {
   }
 
   add(n: string) {

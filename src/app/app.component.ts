@@ -7,7 +7,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AdminPage } from '../pages/admin/admin';
 import { Store } from '@ngrx/store';
-import { AppState } from '../store';
 import { Globalization } from '@ionic-native/globalization';
 import { defaultLang, getSuitableLanguage } from './i18n.constants';
 
@@ -20,7 +19,11 @@ export class WiFiCalling {
 
   pages;
 
-  constructor(platform: Platform, translate: TranslateService, statusBar: StatusBar, splashScreen: SplashScreen, public store: Store<AppState>, private globalization: Globalization) {
+  constructor(platform: Platform,
+              translate: TranslateService, statusBar: StatusBar,
+              splashScreen: SplashScreen,
+              public store: Store<any>,
+              private globalization: Globalization) {
 
     platform.ready().then(() => {
       statusBar.styleDefault();
@@ -43,7 +46,7 @@ export class WiFiCalling {
 
     this.pages = [
       { title: 'WifiCall', component: TabsPage },
-      { title: 'ACCESS.LOGIN', component: 'AccessPage' },
+      { title: 'ACCESS.LOGIN', component: 'AuthPage' },
       { title: 'MENU.ADMIN', component: AdminPage },
       { title: 'MENU.SETTINGS', component: TabsPage },
       { title: 'Check Network', component: TabsPage },

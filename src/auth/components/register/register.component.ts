@@ -1,25 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { animate, style, transition, trigger } from '@angular/animations';
-import { AppService } from '../../../store/app.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
+import { errAnimation } from '../../animations/auth.animations';
+import { Authenticate } from '../../models/user';
 
 @Component({
   selector: 'register',
   templateUrl: 'register.component.html',
-  animations: [
-    trigger(
-      'slideDown', [
-        transition(':enter', [
-          style({transform: 'translateY(-100%)'}),
-          animate('200ms', style({transform: 'translateY(0)'}))
-        ]),
-        transition(':leave', [
-          style({transform: 'translateY(0)'}),
-          animate('200ms', style({transform: 'translateY(-100%)'}))
-        ])
-      ]
-    )
-  ]
+  animations: [errAnimation]
 })
 export class RegisterComponent implements OnInit {
 
@@ -27,35 +14,39 @@ export class RegisterComponent implements OnInit {
   showErrors = false;
 
   /** Register From */
-  form: FormGroup;
+  form: FormGroup = new FormGroup({
+      name: new FormControl('', Validators.required),
+      surname: new FormControl('', Validators.required),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email
+      ]),
+      address: new FormControl('', Validators.required),
+      gender: new FormControl(''),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(10),
+        Validators.minLength(10)
+      ]),
+      password: new FormControl('', Validators.required),
+      cPassword: new FormControl('', [
+        Validators.required,
+        (c) => this.matchingPasswords(c)]
+      )
+    }
+  );
 
-  constructor(private builder: FormBuilder, private appService: AppService) {
+  @Input()
+  set pending(isPending: boolean) {
+    if (isPending) {
+      this.form.disable();
+    }
+    this.form.enable();
   }
+
+  @Output() submitted = new EventEmitter<Authenticate>();
 
   ngOnInit() {
-    this.buildForm();
-  }
-
-  buildForm() {
-    this.form = this.builder.group({
-        name: ['', Validators.required],
-        surname: ['', Validators.required],
-        email: ['', [
-          Validators.required,
-          Validators.email
-        ]],
-        address: ['', Validators.required],
-        gender: [''],
-        phone: ['', [
-          Validators.required,
-          Validators.maxLength(10),
-          Validators.minLength(10)
-        ]],
-        password: ['', Validators.required],
-        cPassword: ['', [Validators.required, (c) => this.matchingPasswords(c)]]
-      }
-    );
-
     this.form.valueChanges.subscribe(data => this.onValueChanged(data));
     this.onValueChanged(); // (re)set validation messages now
   }
@@ -88,7 +79,7 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
 
     if (this.form.valid) {
-      this.appService.register(this.form.value);
+      this.submitted.emit(this.form.value);
     } else {
       this.showErrors = true;
     }
