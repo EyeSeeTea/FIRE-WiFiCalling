@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -12,6 +12,7 @@ import { reducers } from '../reducers';
 import { AuthPage } from './auth';
 import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/register/register.component';
+import { FireHttpModule } from '../http/fire-http.module';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { RegisterComponent } from '../components/register/register.component';
     TranslateModule.forChild(),
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature([AuthEffects]),
+    FireHttpModule.forRoot()
   ],
   declarations: [
     AuthPage,

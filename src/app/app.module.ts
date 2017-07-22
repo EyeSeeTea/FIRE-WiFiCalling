@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule, Http } from '@angular/http';
+import { Http } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -30,7 +30,8 @@ import { NotificationsPage } from '../pages/notifications/notifications';
 
 import { Core } from '../core/core';
 import { SharedModule } from '../shared/shared.module';
-import { metaReducers, reducers } from "../reducers/index";
+import { metaReducers, reducers } from '../reducers/index';
+import { FireHttpModule } from '../auth/http/fire-http.module';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -60,14 +61,11 @@ export function createTranslateLoader(http: Http) {
       }
     }),
     BrowserAnimationsModule,
-    HttpModule,
     SharedModule,
+    FireHttpModule.forRoot(),
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([]),
-    /** StoreDevtoolsModule is only for dev, will be removed in Production */
-    StoreDevtoolsModule.instrument({
-      maxAge: 5
-    })
+    StoreDevtoolsModule.instrument()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

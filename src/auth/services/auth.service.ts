@@ -1,24 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { of } from 'rxjs/observable/of';
-import { _throw } from 'rxjs/observable/throw';
+import { FireHttp } from '../http/fire-http';
 import { Authenticate, RegisterForm } from '../models/user';
 
 @Injectable()
 export class AuthService {
 
-  constructor(private http: Http) {}
+  constructor(private fire: FireHttp) {
+  }
 
-  login({ username, password }: Authenticate) {
-    /**
-     * Simulate a failed login to display the error
-     * message for the login form.
-     */
-    if (username !== 'test') {
-      return _throw('Invalid username or password');
-    }
-
-    return of({ name: username });
+  login(keys: Authenticate) {
+    this.fire.setAuthKeys(keys);
+    return this.fire.get('/users').map(res => res.json());
   }
 
   logout() {
@@ -26,11 +19,6 @@ export class AuthService {
   }
 
   register(userData: RegisterForm) {
-
-    if (userData === null) {
-      return _throw('Invalid register form');
-    }
-
-    return of({ name: 'User' });
+    return this.fire.post('/newUserRequests', userData).map(res => res.json());
   }
 }

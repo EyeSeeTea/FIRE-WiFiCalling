@@ -14,6 +14,7 @@ import * as Auth from '../actions/auth';
 import { TabsPage } from '../../pages/tabs/tabs';
 import { Authenticate, RegisterForm, User } from '../models/user';
 import { AuthPage } from '../containers/auth';
+import { SecureStorage, SecureStorageObject } from "@ionic-native/secure-storage";
 
 @Injectable()
 export class AuthEffects {
@@ -22,8 +23,8 @@ export class AuthEffects {
   login$ = this.actions$
     .ofType(Auth.LOGIN)
     .map((action: Auth.Login) => action.payload)
-    .exhaustMap((auth: Authenticate) =>
-      this.authService.login(auth)
+    .exhaustMap((keys: Authenticate) =>
+      this.authService.login(keys)
         .map((user: User) => new Auth.LoginSuccess({user}))
         .catch(error => of(new Auth.LoginFailure(error)))
     );
@@ -31,7 +32,13 @@ export class AuthEffects {
   @Effect({dispatch: false})
   loginSuccess$ = this.actions$
     .ofType(Auth.LOGIN_SUCCESS)
-    .do(() => this.appCtrl.getRootNav().setRoot(TabsPage));
+    .map((action: Auth.Login) => action.payload)
+    .map((keys: Authenticate) => {
+      this.secureStorage.create('fire-app')
+        .then((storage: SecureStorageObject) => storage.set('auth-keys', JSON.stringify(keys)))
+        .catch((err) => console.log('Login Success: could not set auth-keys in SecureStorage', err));
+      this.appCtrl.getRootNav().setRoot(TabsPage);
+    });
 
   @Effect({dispatch: false})
   loginRedirect$ = this.actions$
@@ -65,6 +72,7 @@ export class AuthEffects {
 
   constructor(private actions$: Actions,
               private authService: AuthService,
-              private appCtrl: App) {
+              private appCtrl: App,
+              private secureStorage: SecureStorage) {
   }
 }
