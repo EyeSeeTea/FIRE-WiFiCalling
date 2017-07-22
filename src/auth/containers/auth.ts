@@ -23,7 +23,12 @@ export class AuthPage {
   error$ = this.store.select(fromAuth.getAuthPageError);
 
   constructor(private store: Store<fromAuth.State>) {
-
+    this.pending$.subscribe((pending) => {
+      console.log('loading:', pending);
+    });
+    this.error$.subscribe((err)=>{
+      console.log(err);
+    });
   }
 
   onLogin(e: Authenticate) {

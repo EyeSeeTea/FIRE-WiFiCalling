@@ -16,21 +16,18 @@ export const REGISTER_FAILURE = '[Register] Register Failure';
 
 export class Login implements Action {
   readonly type = LOGIN;
-
   constructor(public payload: Authenticate) {
   }
 }
 
 export class LoginSuccess implements Action {
   readonly type = LOGIN_SUCCESS;
-
   constructor(public payload: { user: User }) {
   }
 }
 
 export class LoginFailure implements Action {
   readonly type = LOGIN_FAILURE;
-
   constructor(public payload: any) {
   }
 }
@@ -47,21 +44,18 @@ export class Logout implements Action {
 
 export class Register implements Action {
   readonly type = REGISTER;
-
   constructor(public payload: RegisterForm) {
   }
 }
 
 export class RegisterSuccess implements Action {
   readonly type = REGISTER_SUCCESS;
-
   constructor(public payload: RegisterForm) {
   }
 }
 
 export class RegisterFailure implements Action {
   readonly type = REGISTER_FAILURE;
-
   constructor(public payload: any) {
   }
 }

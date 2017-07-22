@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Authenticate } from '../../models/user';
 import { errAnimation } from '../../animations/auth.animations';
 
 @Component({
@@ -18,15 +17,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
-  @Input()
-  set pending(isPending: boolean) {
-      if (isPending) {
-        this.form.disable();
-      }
-      this.form.enable();
-  }
-
-  @Output() submitted = new EventEmitter<Authenticate>();
+  @Output() submitted = new EventEmitter();
 
   ngOnInit() {
     this.form.valueChanges.subscribe(data => this.onValueChanged(data));

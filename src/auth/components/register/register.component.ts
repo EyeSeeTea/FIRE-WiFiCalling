@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { errAnimation } from '../../animations/auth.animations';
-import { Authenticate } from '../../models/user';
 
 @Component({
   selector: 'register',
@@ -36,15 +35,7 @@ export class RegisterComponent implements OnInit {
     }
   );
 
-  @Input()
-  set pending(isPending: boolean) {
-    if (isPending) {
-      this.form.disable();
-    }
-    this.form.enable();
-  }
-
-  @Output() submitted = new EventEmitter<Authenticate>();
+  @Output() submitted = new EventEmitter();
 
   ngOnInit() {
     this.form.valueChanges.subscribe(data => this.onValueChanged(data));
