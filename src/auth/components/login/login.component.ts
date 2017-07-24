@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-
   formErrors = {
     username: '',
     password: '',

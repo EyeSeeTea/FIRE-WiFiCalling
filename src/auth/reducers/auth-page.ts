@@ -1,7 +1,7 @@
 import * as auth from '../actions/auth';
 
 export interface State {
-  error: string | null;
+  error: any;
   pending: boolean;
 }
 
@@ -11,7 +11,9 @@ export const initialState: State = {
 };
 
 export function reducer(state = initialState, action: auth.Actions): State {
+
   switch (action.type) {
+
     case auth.LOGIN: {
       return {
         ...state,
@@ -35,6 +37,7 @@ export function reducer(state = initialState, action: auth.Actions): State {
         pending: false,
       };
     }
+
     case auth.REGISTER: {
       return {
         ...state,

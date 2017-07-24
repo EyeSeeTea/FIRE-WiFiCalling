@@ -3,7 +3,8 @@ import { ActionReducerMap, ActionReducer } from '@ngrx/store';
 export interface State {
 }
 
-export const reducers: ActionReducerMap<State> = {};
+export const reducers: ActionReducerMap<State> = {
+};
 
 // console.log all actions
 export function logger(reducer: ActionReducer<State>): ActionReducer<any, any> {

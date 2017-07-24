@@ -28,10 +28,11 @@ import { ContactsPage } from '../pages/contacts/contacts';
 import { AdminPage } from '../pages/admin/admin';
 import { NotificationsPage } from '../pages/notifications/notifications';
 
-import { Core } from '../core/core';
 import { SharedModule } from '../shared/shared.module';
 import { metaReducers, reducers } from '../reducers/index';
 import { FireHttpModule } from '../auth/http/fire-http.module';
+
+import { AuthEffects } from '../auth/effects/auth.effects';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -47,8 +48,7 @@ export function createTranslateLoader(http: Http) {
     TopupPage,
     AdminPage,
     NotificationsPage,
-    ContactsPage,
-    Core,
+    ContactsPage
   ],
   imports: [
     BrowserModule,
@@ -64,10 +64,9 @@ export function createTranslateLoader(http: Http) {
     SharedModule,
     FireHttpModule.forRoot(),
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument()
   ],
-  bootstrap: [IonicApp],
   entryComponents: [
     WiFiCalling,
     TabsPage,
@@ -84,9 +83,9 @@ export function createTranslateLoader(http: Http) {
     SplashScreen,
     Contacts,
     Globalization,
-
     { provide: ErrorHandler, useClass: IonicErrorHandler }
-  ]
+  ],
+  bootstrap: [IonicApp]
 })
 export class AppModule {
 }

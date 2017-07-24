@@ -8,14 +8,14 @@ import { Authenticate } from '../models/user';
 export class FireHttp extends Http {
 
   private baseUrl = 'http://dev.eyeseetea.com:5000';
-  private keys: Authenticate;
+  private keys: Authenticate = {username: undefined, password: undefined};
 
   constructor(backend: ConnectionBackend, defaultOptions: RequestOptions, secureStorage: SecureStorage) {
 
     super(backend, defaultOptions);
 
     secureStorage.create('fire-app').then((storage: SecureStorageObject) => {
-      console.log('SecureStorage worked');
+      console.log('SecureStorage is loaded');
       storage.get('keys')
         .then(
           data => {
@@ -25,7 +25,7 @@ export class FireHttp extends Http {
           error => console.log('SecureStorage could not get the keys:', error)
         );
     }).catch(err => {
-      console.log('SecureStorage didn\'t worked')
+      console.log('SecureStorage not loaded')
     });
   }
 
@@ -47,7 +47,7 @@ export class FireHttp extends Http {
 
   getHeaders() {
     const headers = new Headers();
-    headers.append('Authorization', 'Basic ' + btoa(`${this.keys.username}:${this.keys.password}`));
+    headers.append('Authorization', 'Basic ' + btoa(this.keys.username + ':' + this.keys.password));
     return {headers: headers};
   }
 

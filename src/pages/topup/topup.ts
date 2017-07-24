@@ -6,10 +6,8 @@ import { Store } from '@ngrx/store';
   templateUrl: 'topup.html',
 })
 export class TopupPage {
+
   constructor(public store: Store<any>) {
   }
 
-  test(){
-
-  }
 }

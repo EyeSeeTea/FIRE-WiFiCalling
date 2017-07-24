@@ -12,7 +12,7 @@ export const REGISTER = '[Register] Register';
 export const REGISTER_SUCCESS = '[Register] Register Success';
 export const REGISTER_FAILURE = '[Register] Register Failure';
 
-/** LOGIN */
+/** LOGIN ACTIONS */
 
 export class Login implements Action {
   readonly type = LOGIN;
@@ -32,15 +32,15 @@ export class LoginFailure implements Action {
   }
 }
 
-export class LoginRedirect implements Action {
-  readonly type = LOGIN_REDIRECT;
-}
-
 export class Logout implements Action {
   readonly type = LOGOUT;
 }
 
-/** REGISTER */
+export class LoginRedirect implements Action {
+  readonly type = LOGIN_REDIRECT;
+}
+
+/** REGISTER ACTIONS */
 
 export class Register implements Action {
   readonly type = REGISTER;

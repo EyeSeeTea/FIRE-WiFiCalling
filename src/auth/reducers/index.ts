@@ -19,32 +19,15 @@ export const reducers = {
 
 export const selectAuthState = createFeatureSelector<AuthState>('auth');
 
-export const selectAuthStatusState = createSelector(
-  selectAuthState,
-  (state: AuthState) => state.status
-);
+export const selectAuthStatusState = createSelector(selectAuthState, (state: AuthState) => state.status);
 
-export const getLoggedIn = createSelector(
-  selectAuthStatusState,
-  fromAuth.getLoggedIn
-);
+export const getLoggedIn = createSelector(selectAuthStatusState, fromAuth.getLoggedIn);
 
 export const getUser = createSelector(selectAuthStatusState, fromAuth.getUser);
 
-export const selectAuthPageState = createSelector(
-  selectAuthState,
-  (state: AuthState) => state.authPage
-);
-export const getAuthPageError = createSelector(
-  selectAuthPageState,
-  fromAuthPage.getError
-);
-export const getAuthPagePending = createSelector(
-  selectAuthPageState,
-  fromAuthPage.getPending
-);
+export const selectAuthPageState = createSelector(selectAuthState, (state: AuthState) => state.authPage);
 
-export const selectRegisterPageState = createSelector(
-  selectAuthState,
-  (state: AuthState) => state.authPage
-);
+export const getAuthPageError = createSelector(selectAuthPageState, fromAuthPage.getError);
+
+export const getAuthPagePending = createSelector(selectAuthPageState, fromAuthPage.getPending);
+
