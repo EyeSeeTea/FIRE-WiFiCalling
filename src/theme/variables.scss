@@ -58,6 +58,20 @@ $tabs-background: color($colors, primary);
 $tabs-md-tab-color-active: #fff;
 $tabs-md-tab-color-inactive: #fdb2a1;
 
+// Dialog 
+ 
+// Min width of the modal inset 
+$modal-inset-min-width: 250px; 
+ 
+// Width of the large modal inset 
+$modal-inset-width: 275px; 
+ 
+// Minimum height of the small modal inset 
+$modal-inset-min-height-small: 200px; 
+ 
+// Height of the small modal inset 
+$modal-inset-height-small: 250px; 
+
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here

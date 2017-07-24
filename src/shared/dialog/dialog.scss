@@ -1,0 +1,15 @@
+fire-dialog {
+    display: flex !important;
+    flex-direction: column;
+    background-color: white;
+    ion-grid {
+        flex: 1;
+    }
+    .dialog-title h3 {
+        margin-top: 1em;
+        margin-bottom: 0;
+    }
+    .dialog-content {
+        color: color($colors, gray);
+    }
+}

@@ -19,7 +19,7 @@
 @import '../theme/buttons';
 
 .activeHighlight {
-	background-color: map-get($colors, light);
+	background-color: color($colors, light); 
 }
 
 .fill-space{

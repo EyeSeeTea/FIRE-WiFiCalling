@@ -9,12 +9,14 @@ import { TranslateModule } from '@ngx-translate/core';
 import { OrderModule } from 'ngx-order-pipe';
 
 import { HeaderComponent } from './header/header';
+import { DialogComponent } from './dialog/dialog';
 import { TimeAgoPipe } from 'time-ago-pipe';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
+    DialogComponent
   ],
   imports: [
     IonicModule,
@@ -28,6 +30,9 @@ import { TimeAgoPipe } from 'time-ago-pipe';
     OrderModule,
     TimeAgoPipe,
     TranslateModule
+  ],
+  entryComponents: [
+    DialogComponent
   ],
   providers: [
     InAppBrowser
