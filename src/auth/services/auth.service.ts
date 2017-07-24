@@ -14,6 +14,8 @@ export class AuthService {
   }
 
   register(form: RegisterForm) {
-    return this.fireHttp.post('/newUserRequests', form).map(res => res.json());
+    /** TODO: remove the hardcoded username when the registration design is complete
+     * issue: https://github.com/EyeSeeTea/FIRE-WiFiCalling/issues/37 */
+    return this.fireHttp.post('/newUserRequests', { user: { ...form, username: 'hardcoded' } }).map(res => res.json());
   }
 }
