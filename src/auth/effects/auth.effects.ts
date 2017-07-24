@@ -74,9 +74,15 @@ export class AuthEffects {
   @Effect({dispatch: false})
   registerSuccess$ = this.actions$
     .ofType(Auth.REGISTER_SUCCESS)
-    .map((action: Auth.Register) => action.payload)
-    .map((form: RegisterForm) => <Authenticate>{username: form.email, password: form.password})
-    .map((cred: Authenticate) => new Auth.Login(cred));
+    .do(() => {
+
+      const alert = this.alerts.create({
+        title: 'Success',
+        message: 'Your account request will be reviewed by the admin.',
+        buttons: ['OK']
+      });
+      alert.present();
+    });
 
 
   /** Login/Register Fail */
