@@ -3,21 +3,22 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/exhaustMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
-import { Injectable } from '@angular/core';
-import { App } from 'ionic-angular';
-import { Effect, Actions } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
+import { Injectable } from '@angular/core';
+import { AlertController, App } from 'ionic-angular';
+import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage';
+import { Effect, Actions } from '@ngrx/effects';
 
 import { AuthService } from '../services/auth.service';
 import * as Auth from '../actions/auth';
 
 import { TabsPage } from '../../pages/tabs/tabs';
 import { Authenticate, RegisterForm, User } from '../models/user';
-import { AuthPage } from '../containers/auth';
-import { SecureStorage, SecureStorageObject } from "@ionic-native/secure-storage";
 
 @Injectable()
 export class AuthEffects {
+
+  /** Login */
 
   @Effect()
   login$ = this.actions$
@@ -28,6 +29,8 @@ export class AuthEffects {
         .map((user: User) => new Auth.LoginSuccess({user}))
         .catch(error => of(new Auth.LoginFailure(error)))
     );
+
+  /** Login success */
 
   @Effect({dispatch: false})
   loginSuccess$ = this.actions$
@@ -40,10 +43,17 @@ export class AuthEffects {
       this.appCtrl.getRootNav().setRoot(TabsPage);
     });
 
+  /** Redirect to login page */
+
   @Effect({dispatch: false})
   loginRedirect$ = this.actions$
     .ofType(Auth.LOGIN_REDIRECT, Auth.LOGOUT)
-    .do(authed => this.appCtrl.getRootNav().setRoot(AuthPage));
+    .do(() => {
+      console.log('REDIRECTING...');
+      this.appCtrl.getRootNavs()[0].push('AuthPage');
+    });
+
+  /** Register new user */
 
   @Effect()
   register$ = this.actions$
@@ -56,23 +66,40 @@ export class AuthEffects {
         .catch(error => of(new Auth.RegisterFailure(error)))
     );
 
+  /** Register success */
+
+  /** TODO: Autologin after register, replace form.email with form.username
+   * (waiting for a decision https://github.com/EyeSeeTea/FIRE-WiFiCalling/issues/37) */
+
   @Effect({dispatch: false})
   registerSuccess$ = this.actions$
     .ofType(Auth.REGISTER_SUCCESS)
     .map((action: Auth.Register) => action.payload)
-    .map((form: RegisterForm) => <Authenticate>{username: form.username, password: form.password})
+    .map((form: RegisterForm) => <Authenticate>{username: form.email, password: form.password})
     .map((cred: Authenticate) => new Auth.Login(cred));
+
+
+  /** Login/Register Fail */
 
   @Effect({dispatch: false})
   failure$ = this.actions$
     .ofType(Auth.REGISTER_FAILURE, Auth.LOGIN_FAILURE)
-    .do(() => {
+    .map((action: Auth.LoginFailure) => action.payload)
+    .map((err) => {
       // handle errors here
+
+      const alert = this.alerts.create({
+        title: 'Error',
+        message: JSON.stringify(err),
+        buttons: ['OK']
+      });
+      alert.present();
     });
 
   constructor(private actions$: Actions,
               private authService: AuthService,
               private appCtrl: App,
-              private secureStorage: SecureStorage) {
+              private secureStorage: SecureStorage,
+              private alerts: AlertController) {
   }
 }
