@@ -1,25 +1,27 @@
 // Ionic Variables and Theming. For more info, please see:
-// http://ionicframework.com/docs/v2/theming/
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
 $font-path: "../assets/fonts";
 
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
 @import "ionic.globals";
+
 
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
-// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-.header-bg {
-  background: -moz-linear-gradient(90deg, rgba(201, 39, 34, 1) 0%, rgba(242, 86, 53, 1) 100%); /* ff3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(242, 86, 53, 1)), color-stop(100%, rgba(201, 39, 34, 1))); /* safari4+,chrome */
-  background: -webkit-linear-gradient(90deg, rgba(201, 39, 34, 1) 0%, rgba(242, 86, 53, 1) 100%); /* safari5.1+,chrome10+ */
-  background: -o-linear-gradient(90deg, rgba(201, 39, 34, 1) 0%, rgba(242, 86, 53, 1) 100%); /* opera 11.10+ */
-  background: -ms-linear-gradient(90deg, rgba(201, 39, 34, 1) 0%, rgba(242, 86, 53, 1) 100%); /* ie10+ */
-  background: linear-gradient(0deg, rgba(201, 39, 34, 1) 0%, rgba(242, 86, 53, 1) 100%); /* w3c */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F25635', endColorstr='#C92722', GradientType=0); /* ie6-9 */
-}
 
 // Named Color Variables
 // --------------------------------------------------
@@ -29,10 +31,12 @@ $font-path: "../assets/fonts";
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
+
 $colors: (
   primary: #d95e2a,
   secondary: #32db64,
   danger: #D0021B,
+  brown: #421C00,
   light: #f4f4f4,
   dark: #222,
   gray: #4A4A4A,
@@ -41,13 +45,18 @@ $colors: (
   form: #E0E0E0
 );
 
+
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
+
+
+
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
+
 
 // Toolbar
 $toolbar-md-background: color($colors, primary);
@@ -58,23 +67,12 @@ $tabs-background: color($colors, primary);
 $tabs-md-tab-color-active: #fff;
 $tabs-md-tab-color-inactive: #fdb2a1;
 
-// Dialog 
- 
-// Min width of the modal inset 
-$modal-inset-min-width: 250px; 
- 
-// Width of the large modal inset 
-$modal-inset-width: 275px; 
- 
-// Minimum height of the small modal inset 
-$modal-inset-min-height-small: 200px; 
- 
-// Height of the small modal inset 
-$modal-inset-height-small: 250px; 
-
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
+
+
+
 
 // App Theme
 // --------------------------------------------------
@@ -85,15 +83,32 @@ $modal-inset-height-small: 250px;
 
 @import "ionic.theme.default";
 
+
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
-// http://ionicframework.com/docs/v2/ionicons/
+// http://ionicframework.com/docs/ionicons/
 
 @import "ionic.ionicons";
+
 
 // Fonts
 // --------------------------------------------------
 
 @import "roboto";
 @import "noto-sans";
+
+
+// Dialog
+
+// Min width of the modal inset
+$modal-inset-min-width: 250px;
+
+// Width of the large modal inset
+$modal-inset-width: 275px;
+
+// Minimum height of the small modal inset
+$modal-inset-min-height-small: 200px;
+
+// Height of the small modal inset
+$modal-inset-height-small: 250px;

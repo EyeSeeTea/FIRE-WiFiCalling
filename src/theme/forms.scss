@@ -50,6 +50,18 @@
     }
   }
 
+  .text-input {
+    margin: 0;
+    padding: 13px 8px;
+    width: 100%;
+  }
+
+  .item-block {
+    background-color: transparent;
+    .item-inner{
+      border-bottom: 0 !important;
+    }
+  }
 }
 
 .fire-input-error {
