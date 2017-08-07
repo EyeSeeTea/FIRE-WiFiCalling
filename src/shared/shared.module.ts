@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { IonicModule } from 'ionic-angular';
-import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { TranslateModule } from '@ngx-translate/core';
 
 /** OrderModule is used in History to order calls log by date */
@@ -11,12 +10,16 @@ import { OrderModule } from 'ngx-order-pipe';
 import { HeaderComponent } from './header/header';
 import { DialogComponent } from './dialog/dialog';
 import { TimeAgoPipe } from 'time-ago-pipe';
+import { MarkPopupComponent } from "../admin/pages/notifications/mark-popup/mark-popup.component";
+import { MessageDialogComponent } from "../admin/pages/users/message-dialog/message-dialog.component";
 
 @NgModule({
   declarations: [
     HeaderComponent,
     TimeAgoPipe,
-    DialogComponent
+    DialogComponent,
+    MessageDialogComponent,
+    MarkPopupComponent
   ],
   imports: [
     IonicModule,
@@ -32,10 +35,9 @@ import { TimeAgoPipe } from 'time-ago-pipe';
     TranslateModule
   ],
   entryComponents: [
-    DialogComponent
-  ],
-  providers: [
-    InAppBrowser
+    DialogComponent,
+    MessageDialogComponent,
+    MarkPopupComponent
   ]
 })
 export class SharedModule {
