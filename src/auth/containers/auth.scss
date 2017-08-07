@@ -1,82 +1,76 @@
 page-auth {
-
-  .header-bg {
-    color: white;
-    width: 100%;
-    .login-logo {
-      height: 20vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .header-bg {
+        background: linear-gradient(0deg, rgba(201, 39, 34, 1) 0%, rgba(242, 86, 53, 1) 100%);
+        color: white;
+        width: 100%;
+        .login-logo {
+            height: 20vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .logo-title {
+            font-size: 3em;
+            font-style: italic;
+        }
+        img {
+            width: 70px;
+            height: 70px;
+        }
     }
-    .logo-title {
-      font-size: 3em;
-      font-style: italic;
+    ion-grid {
+        flex: 1;
     }
-    img {
-      width: 70px;
-      height: 70px;
+    form {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
     }
-  }
-
-  ion-grid {
-    flex: 1;
-  }
-
-  form {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  login, register {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    .col {
-      margin-bottom: 10px;
-    }
-  }
-
-  .checkbox-item {
-    display: flex;
-    align-items: center;
-    span {
-      margin-left: 1em;
-    }
-  }
-
-  .login-tabs {
-    display: flex;
-    .login-tab {
-      cursor: pointer;
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      span {
-        position: relative;
-        padding: 15px;
-        width: 140px;
-        text-align: center;
-      }
-    }
-
-    .active span {
-      font-weight: bold;
-      &:after {
-        bottom: -5px;
+    login,
+    register {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
         left: 0;
         right: 0;
-        position: absolute;
-        content: '';
-        height: 5px;
-        background-color: color($colors, link);
-      }
+        top: 0;
+        bottom: 0;
+        .col {
+            margin-bottom: 10px;
+        }
     }
-  }
-
+    .checkbox-item {
+        display: flex;
+        align-items: center;
+        span {
+            margin-left: 1em;
+        }
+    }
+    .login-tabs {
+        display: flex;
+        .login-tab {
+            cursor: pointer;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            span {
+                position: relative;
+                padding: 15px;
+                width: 140px;
+                text-align: center;
+            }
+        }
+        .active span {
+            font-weight: bold;
+            &:after {
+                bottom: -5px;
+                left: 0;
+                right: 0;
+                position: absolute;
+                content: '';
+                height: 5px;
+                background-color: color($colors, link);
+            }
+        }
+    }
 }

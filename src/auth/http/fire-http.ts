@@ -8,7 +8,7 @@ import { Authenticate } from '../models/user';
 export class FireHttp extends Http {
 
   private baseUrl = 'http://dev.eyeseetea.com:5000';
-  private keys: Authenticate = {username: undefined, password: undefined};
+  private keys: Authenticate = {username: 'joel', password: 'joel1234'};
 
   constructor(backend: ConnectionBackend, defaultOptions: RequestOptions, secureStorage: SecureStorage) {
 
@@ -39,6 +39,10 @@ export class FireHttp extends Http {
 
   put(endpoint, body): Observable<any> {
     return super.put(this.baseUrl + endpoint, body, this.getHeaders());
+  }
+
+  patch(endpoint, body): Observable<any> {
+    return super.patch(this.baseUrl + endpoint, body, this.getHeaders());
   }
 
   delete(endpoint): Observable<any> {
