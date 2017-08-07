@@ -1,0 +1,18 @@
+<button ion-button clear full class="item" (click)="filterByUserRequest()">
+  New user request
+</button>
+<button ion-button clear full class="item" (click)="filterByUserAccepted()">
+  New user accepted
+</button>
+<button ion-button clear full class="item" (click)="filterByMessageSent()">
+  Message sent
+</button>
+<button ion-button clear full class="item" (click)="filterByProfileUpdate()">
+  Profile updated
+</button>
+<button ion-button clear full class="item" (click)="filterByToppedUp()">
+  Topped up
+</button>
+<div class="item search-item">
+  <input type="text" [formControl]="searchControl" placeholder="Filter by user name">
+</div>

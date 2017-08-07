@@ -1,0 +1,37 @@
+<ion-navbar color="brown" padding-horizontal>
+
+  <div class="notif-navbar">
+    <ion-buttons>
+      <button ion-button (click)="filterMenu = !filterMenu">
+        <ion-icon name="funnel"></ion-icon>
+        Filter
+      </button>
+    </ion-buttons>
+
+    <div class="fill-space"></div>
+
+    <ion-buttons class="notif-date">
+      <button ion-button (click)="dateUp = !dateUp">
+        <ion-icon [name]="(dateUp) ? 'arrow-dropdown' : 'arrow-dropup'"></ion-icon>
+        Date
+      </button>
+    </ion-buttons>
+
+    <ion-buttons class="notif-mark">
+      <button ion-button (click)="presentPopover($event)">
+        <ion-icon name="checkbox"></ion-icon>
+      </button>
+    </ion-buttons>
+  </div>
+
+  <filter-menu *ngIf="filterMenu" [@slideDown] (filterChange)="setFilter($event)"></filter-menu>
+
+</ion-navbar>
+
+<div class="notif-list">
+
+  <filter-state [filter]="filter" (filterChange)="setFilter($event)"></filter-state>
+
+  <notif-item *ngFor="let notification of notifications" [item]="notification"></notif-item>
+
+</div>

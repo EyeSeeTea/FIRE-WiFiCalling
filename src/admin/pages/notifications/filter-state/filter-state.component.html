@@ -1,0 +1,28 @@
+<div *ngIf="filter" [ngSwitch]="filter.name" class="notif-filter">
+
+  <ng-template [ngSwitchCase]="'USER_REQUEST'">
+    Filter by user request
+  </ng-template>
+
+  <ng-template [ngSwitchCase]="'USER_ACCEPTED'">
+    Filter by user accepted
+  </ng-template>
+
+  <ng-template [ngSwitchCase]="'MESSAGE_SENT'">
+    Filter by message sent
+  </ng-template>
+
+  <ng-template [ngSwitchCase]="'PROFILE_UPDATED'">
+    Filter by profile updated
+  </ng-template>
+
+  <ng-template [ngSwitchCase]="'TOPPED_UP'">
+    Filter by topped up
+  </ng-template>
+
+  <ng-template [ngSwitchCase]="'USER_NAME'">
+    Filter by user: {{ filter.value }}
+  </ng-template>
+
+  <ion-icon (click)="removeFilter()" name="close-circle"></ion-icon>
+</div>

@@ -1,0 +1,28 @@
+<div class="notif-seen" *ngIf="!item.seen"></div>
+
+<div class="notif-item">
+
+  <div class="notif-img">
+    <img [src]="temp?.user?.avatarUrl || temp?.fromUser?.avatarUrl"/>
+  </div>
+
+  <div class="notif-content">
+    <div class="notif-desc">
+      <h2>{{ temp?.user?.name || temp?.fromUser?.name }}</h2>
+      <p>{{ item.type }}</p>
+    </div>
+    <div class="notif-date">
+      <p> {{ temp?.created || temp?.user?.created | date: 'dd MMM, HH:mm a' }}</p>
+    </div>
+  </div>
+
+  <ion-checkbox item-end  [(ngModel)]="item.checked"></ion-checkbox>
+</div>
+
+<div *ngIf="item.type === 'newUserRequest'" class="notif-actions">
+  <div class="notif-img"></div>
+  <div class="notif-actions">
+    <button ion-button small color="secondary" (click)="acceptUser()" style="margin-right: 10px;">accept</button>
+    <button ion-button small color="danger" (click)="rejectUser()">reject</button>
+  </div>
+</div>
