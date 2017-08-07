@@ -10,12 +10,11 @@ import { defaultLang, getSuitableLanguage } from './i18n.constants';
 import * as Auth from '../auth/actions/auth';
 
 import { TabsPage } from '../pages/tabs/tabs';
-import { AdminPage } from '../pages/admin/admin';
 
 type Page = { title: string, component?: any };
 
 @Component({
-  templateUrl: 'app.component.html'
+  templateUrl: 'app.html'
 })
 export class WiFiCalling {
 
@@ -30,7 +29,7 @@ export class WiFiCalling {
   /** Menu items */
   pages = [
     {title: 'WifiCall', component: TabsPage},
-    {title: 'MENU.ADMIN', component: AdminPage},
+    {title: 'MENU.ADMIN', component: 'AdminPage'},
     {title: 'MENU.SETTINGS', component: TabsPage},
     {title: 'Check Network', component: TabsPage},
     {title: 'MENU.ABOUT', component: TabsPage},
@@ -51,6 +50,7 @@ export class WiFiCalling {
 
       /** Initialize translation */
       translate.setDefaultLang(defaultLang);
+
       globalization.getPreferredLanguage()
         .then(result => {
           const language = getSuitableLanguage(result.value);
@@ -70,8 +70,8 @@ export class WiFiCalling {
     if (page.title === 'MENU.LOGOUT') {
       this.store.dispatch(new Auth.Logout());
     } else {
-    this.nav.push(page.component);
-    this.activePage = page;
+      this.nav.push(page.component);
+      this.activePage = page;
     }
   }
 }
