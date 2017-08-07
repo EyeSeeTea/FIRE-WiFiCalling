@@ -1,0 +1,61 @@
+page-billing {
+
+  ion-grid {
+    flex: 1;
+  }
+  ion-content {
+    .col {
+      margin: 0.5em;
+    }
+  }
+
+  ion-select {
+    width: 100%;
+    max-width: none;
+    color: color($colors, lightgray);
+    font-weight: bold;
+
+    .select-icon-inner{
+      color: color($colors, lightgray) !important;
+    }
+  }
+
+  .scroll-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-label {
+    text-align: center;
+    font-size: 13px;
+  }
+
+  pricing-form, form {
+    display: flex;
+    flex: 1;
+  }
+
+  .fire-input .text-input {
+    text-align: right;
+    padding-right: 13px;
+  }
+
+  .currency {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    width: 30px;
+    color: color($colors, lightgray);
+    background-color: color($colors, gray);
+  }
+
+  .fire-select {
+    background-color: color($colors, gray);
+  }
+
+}
