@@ -1,0 +1,42 @@
+<ion-navbar color="brown" padding-horizontal>
+
+  <div class="user-navbar">
+    <ion-buttons>
+      <button ion-button icon-only (click)="search = !search">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons class="user-name">
+      <button ion-button (click)="nameUp = !nameUp">
+        <ion-icon [name]="(nameUp) ? 'arrow-dropdown' : 'arrow-dropup'"></ion-icon>
+        Name
+      </button>
+    </ion-buttons>
+
+    <div class="fill-space"></div>
+
+    <div class="user-last-access">
+      Last Access
+    </div>
+
+    <ion-checkbox class="user-mark" (ionChange)="checkAll($event)"></ion-checkbox>
+  </div>
+
+</ion-navbar>
+
+<div class="user-list">
+
+  <ion-searchbar *ngIf="search" (ionInput)="filterKey.next($event.target.value)"></ion-searchbar>
+
+  <ion-list>
+
+    <user-item [item]="user" *ngFor="let user of users"></user-item>
+
+  </ion-list>
+
+</div>
+
+<ion-row>
+  <button ion-button type="submit" full color="link" *ngIf="check()" (click)="sendMessage()">Send Message</button>
+</ion-row>

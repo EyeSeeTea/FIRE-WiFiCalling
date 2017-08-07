@@ -1,0 +1,13 @@
+<div class="user-img">
+  <img [src]="item.avatarUrl"/>
+</div>
+
+<div class="user-content">
+  <p> {{ item.name }} </p>
+</div>
+
+<div class="user-created">
+  <p> {{ item.lastAccess | date: 'dd MMM, HH:mm a' }} </p>
+</div>
+
+<ion-checkbox [(ngModel)]="checked"></ion-checkbox>

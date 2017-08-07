@@ -1,0 +1,18 @@
+<ion-grid no-padding>
+
+  <ion-row padding text-center class="dialog-title">
+    <ion-col text-center>
+      <h3>Message to {{ params.get('usersNumber') }} users</h3>
+    </ion-col>
+  </ion-row>
+
+  <ion-row padding text-center class="dialog-content">
+    <ion-col text-center>
+      <textarea placeholder="Write your message here." [(ngModel)]="message"></textarea>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="dialog-actions">
+    <button ion-button full color="link" (click)="viewCtrl.dismiss(message)">Send Message</button>
+  </ion-row>
+</ion-grid>
