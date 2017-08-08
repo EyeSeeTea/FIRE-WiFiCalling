@@ -1,16 +1,13 @@
 import { Component, Input } from '@angular/core';
+import { AppState } from '../../store/app.state';
 
 @Component({
   selector: 'header',
   templateUrl: 'header.html'
 })
 export class HeaderComponent {
-  @Input()
-  userData: {
-    name: string,
-    phoneNumber: string,
-    credit: string,
-  };
+
+  @Input() state: AppState;
 
   constructor() {
   }

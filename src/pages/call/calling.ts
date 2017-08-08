@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { UserData } from '../../providers/user-data';
+import { AppState } from '../../store/app.state';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'page-calling',
@@ -9,11 +10,11 @@ import { UserData } from '../../providers/user-data';
 export class CallingPage {
   phoneNumber: string = '';
 
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public userData: UserData) {
-    this.phoneNumber = this.navParams.get('phoneNumber');
-  }
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                public store: Store<AppState>) {
+       this.phoneNumber = this.navParams.get('phoneNumber');
+    }
 
   gsm() {
     console.log('Tried to call %s using GSM', this.phoneNumber);
