@@ -11,7 +11,6 @@ import { CallingPage } from './calling';
 })
 export class CallPage {
   phoneNumber: string = '';
-  callButtonHidden: boolean = true;
 
   constructor(public navCtrl: NavController,
               public store: Store<AppState>,
