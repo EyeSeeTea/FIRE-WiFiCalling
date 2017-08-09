@@ -24,17 +24,18 @@ export class CallingPage {
     let headers = new Headers();
     headers.append('Authorization', 'Basic ' + btoa(name + ':' + pass));
     var url = `http://dev.eyeseetea.com:5000/callPricing/${this.phoneNumber}`;
-    console.log(url);
     this.http.get(url, {headers: headers}).map(
       res => res.json()).subscribe(data => {
         if (data.status == 'success') {
           this.rates = data.data;
         }
         else {
-          console.log('meh');
+          console.log('Trouble with the data');
           console.log(data);
         }
-    });
+    }), (err) => {
+        console.log('Authorization failed');
+    };
   }
 
   gsm() {
