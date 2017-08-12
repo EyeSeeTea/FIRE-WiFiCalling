@@ -1,10 +1,20 @@
 <ion-header>
   <header></header>
+  <user-nav [(options)]="options"></user-nav>
 </ion-header>
 
 <ion-content>
 
-  <user-list [users]="users$ | async"></user-list>
+  <ion-refresher (ionRefresh)="refreshUserList($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <user-list [users]="users$ | async" [options]="options" (message)="sendMessage($event)"></user-list>
 
 </ion-content>
 

@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { LoadingController, ModalController } from 'ionic-angular';
 import { Effect, Actions } from '@ngrx/effects';
 
 import { UsersService } from '../services/users.service';
@@ -25,7 +25,14 @@ export class UsersEffects {
     .map((action: Users.GetList) => action.payload)
     .exhaustMap(() =>
       this.usersService.getUsers()
-        .map((users: User[]) => new Users.GetListSuccess(users))
+        .map((users: User[]) => {
+          /** Transform User to UserItem for users view */
+          const userItems = [];
+          users.map((user: User) => {
+            userItems.push({...user, checked: false});
+          });
+          return new Users.GetListSuccess(userItems)
+        })
         .catch(error => of(new Users.GetListFailure(error)))
     );
 
@@ -42,22 +49,53 @@ export class UsersEffects {
           title: 'Error',
           content: err,
           buttons: [
-            {label: 'Ok', color: 'primary'}
+            {label: 'Ok', color: 'link'}
           ]
         }).present();
     });
 
-  /** Send Message To Users */
+  /** Send Message To Selected Users */
 
   @Effect()
   sendMessage$ = this.actions$
     .ofType(Users.SEND_MESSAGE)
     .map((action: Users.SendMessage) => action.payload)
-    .exhaustMap(({ message, users }) =>
-      this.usersService.sendMessage(message, users)
-        .map((notifications: Notification) => new Users.SendMessageSuccess())
+    .exhaustMap(({message, users}) => {
+
+      /** Show loading dialog */
+      this.loadingDialog = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+      this.loadingDialog.present();
+
+      return this.usersService.sendMessage(message, users)
+        .map((notifications: Notification) => new Users.SendMessageSuccess(users.length))
         .catch(error => of(new Users.SendMessageFailure(error)))
-    );
+    });
+
+  /** Send Message Success */
+
+  @Effect({dispatch: false})
+  sendMessageSuccess$ = this.actions$
+    .ofType(Users.SEND_MESSAGE_SUCCESS)
+    .map((action: Users.SendMessageSuccess) => action.payload)
+    .map((usersCount: number) => {
+
+      /** Close loading dialog */
+      this.loadingDialog.dismiss();
+
+      /** Show success dialog */
+      this.modalCtrl.create(DialogComponent,
+        {
+          title: 'Success',
+          content: `Message was sent to ${usersCount} users!`,
+          buttons: [
+            {label: 'Ok', color: 'success'}
+          ]
+        }).present();
+    });
+
+  /** Send Message Failure */
 
   @Effect({dispatch: false})
   sendMessageFailure$ = this.actions$
@@ -65,19 +103,26 @@ export class UsersEffects {
     .map((action: Users.SendMessageFailure) => action.payload)
     .map((err) => {
 
+      /** Close loading dialog */
+      this.loadingDialog.dismiss();
+
+      /** Show error dialog */
       this.modalCtrl.create(DialogComponent,
         {
           title: 'Error',
           content: err,
           buttons: [
-            {label: 'Ok', color: 'primary'}
+            {label: 'Ok', color: 'link'}
           ]
         }).present();
     });
 
+  /** Loading dialog ref */
+  loadingDialog;
 
   constructor(private actions$: Actions,
               private usersService: UsersService,
-              private modalCtrl: ModalController) {
+              private modalCtrl: ModalController,
+              public loadingCtrl: LoadingController) {
   }
 }

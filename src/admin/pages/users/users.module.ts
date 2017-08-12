@@ -5,7 +5,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { UsersPage } from './users';
 import { SharedModule } from '../../../shared/shared.module';
 import { UserItemComponent } from './user-item/user-item.component';
-import { UserListComponent } from "./user-list/user-list.component";
+import { UserListComponent } from './user-list/user-list.component';
+import { UserNavComponent } from './user-nav/user-nav.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { UserListComponent } from "./user-list/user-list.component";
   declarations: [
     UsersPage,
     UserItemComponent,
-    UserListComponent
+    UserListComponent,
+    UserNavComponent
   ],
   exports: [
     UsersPage
