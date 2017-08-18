@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import { AppState } from '../../store/app.state';
 import { Store } from '@ngrx/store';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+@IonicPage()
 @Component({
   selector: 'page-calling',
   templateUrl: 'calling.html',

@@ -3,8 +3,6 @@ import { NavController } from 'ionic-angular';
 import { AppService, AppState } from '../../store';
 import { Store } from '@ngrx/store';
 
-import { CallingPage } from './calling';
-
 @Component({
   selector: 'page-call',
   templateUrl: 'call.html',
@@ -27,7 +25,7 @@ export class CallPage {
   }
 
   call() {
-    this.navCtrl.push(CallingPage, {'phoneNumber': this.phoneNumber});
+    this.navCtrl.push('CallingPage', {'phoneNumber': this.phoneNumber});
   }
 
   personAdd() {
