@@ -18,11 +18,11 @@ import { DialogComponent } from '../../shared/dialog/dialog';
 @Injectable()
 export class NotificationsEffects {
 
-  /** Get Notifications */
+  /** Get Notifications when GET_LIST, SET_FILTER, SET_ORDER is used */
 
   @Effect()
   getNotifications$ = this.actions$
-    .ofType(Notifications.GET_LIST, Notifications.SET_FILTER)
+    .ofType(Notifications.GET_LIST, Notifications.SET_FILTER, Notifications.SET_ORDER)
     .map((action: Notifications.GetList) => action.payload)
     .exhaustMap((filter) =>
       this.notificationsService.getNotifications(filter)
@@ -54,14 +54,14 @@ export class NotificationsEffects {
         .catch(error => of(new Notifications.RejectUserFailure(error)))
     );
 
-  /** Mark notification as read */
+  /** Mark notification as seen */
 
   @Effect()
   markSeen$ = this.actions$
     .ofType(Notifications.MARK_SEEN)
     .map((action: Notifications.MarkSeen) => action.payload)
-    .exhaustMap(({id, seen }) =>
-      this.notificationsService.markSeen(id, seen)
+    .exhaustMap((id: number) =>
+      this.notificationsService.markSeen(id, true)
         .map((notifications: Notification) => new Notifications.MarkSeenSuccess())
         .catch(error => of(new Notifications.MarkSeenFailure(error)))
     );
@@ -79,7 +79,7 @@ export class NotificationsEffects {
           title: 'Error',
           content: err,
           buttons: [
-            {label: 'Ok', color: 'primary'}
+            {label: 'Ok', color: 'link'}
           ]
         }).present();
     });

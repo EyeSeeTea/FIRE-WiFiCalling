@@ -1,16 +1,20 @@
 import * as notifications from '../actions/notifications';
-import { Notification, Filter } from '../models/notification';
+import { Notification, Filter, NotificationFilter } from '../models/notification';
 
 export interface State {
   list: Notification[];
+  showFilterMenu: boolean;
   filter: Filter;
+  order: boolean;
   error: any;
   pending: boolean;
 }
 
 export const initialState: State = {
   list: null,
+  showFilterMenu: false,
   filter: null,
+  order: false,
   error: null,
   pending: false,
 };
@@ -19,13 +23,33 @@ export function reducer(state = initialState, action: notifications.Actions): St
 
   switch (action.type) {
 
-    case notifications.SET_FILTER: {
+    /** Toggle notification filter menu */
+    case notifications.TOGGLE_FILTER_MENU: {
       return {
         ...state,
-        filter: action.payload
+        showFilterMenu: action.payload
       };
     }
 
+    /** Set notification filter */
+    case notifications.SET_FILTER: {
+      return {
+        ...state,
+        filter: action.payload,
+        /** Close the menu for filters other than filter by username */
+        showFilterMenu:  action.payload && (<Filter>action.payload).name === NotificationFilter.USER_NAME
+      };
+    }
+
+    /** Set notification date order */
+    case notifications.SET_ORDER: {
+      return {
+        ...state,
+        order: action.payload
+      };
+    }
+
+    /** Get notification */
     case notifications.GET_LIST: {
       return {
         ...state,
@@ -34,6 +58,7 @@ export function reducer(state = initialState, action: notifications.Actions): St
       };
     }
 
+    /** Get notification success */
     case notifications.GET_LIST_SUCCESS: {
       return {
         ...state,
@@ -43,6 +68,7 @@ export function reducer(state = initialState, action: notifications.Actions): St
       };
     }
 
+    /** Get notification failure */
     case notifications.GET_LIST_FAILURE: {
       return {
         ...state,
@@ -51,6 +77,7 @@ export function reducer(state = initialState, action: notifications.Actions): St
       };
     }
 
+    /** Accept user request */
     case notifications.ACCEPT_USER: {
       return {
         ...state,
@@ -59,6 +86,7 @@ export function reducer(state = initialState, action: notifications.Actions): St
       };
     }
 
+    /** Accept user request success */
     case notifications.ACCEPT_USER_SUCCESS: {
       return {
         ...state,
@@ -67,6 +95,7 @@ export function reducer(state = initialState, action: notifications.Actions): St
       };
     }
 
+    /** Accept user request failure */
     case notifications.ACCEPT_USER_FAILURE: {
       return {
         ...state,
@@ -75,6 +104,7 @@ export function reducer(state = initialState, action: notifications.Actions): St
       };
     }
 
+    /** Reject user request */
     case notifications.REJECT_USER: {
       return {
         ...state,
@@ -83,6 +113,7 @@ export function reducer(state = initialState, action: notifications.Actions): St
       };
     }
 
+    /** Reject user request success */
     case notifications.REJECT_USER_SUCCESS: {
       return {
         ...state,
@@ -91,6 +122,7 @@ export function reducer(state = initialState, action: notifications.Actions): St
       };
     }
 
+    /** Reject user request failure  */
     case notifications.REJECT_USER_FAILURE: {
       return {
         ...state,
@@ -106,5 +138,7 @@ export function reducer(state = initialState, action: notifications.Actions): St
 
 export const getNotifications = (state: State) => state.list;
 export const getFilter = (state: State) => state.filter;
+export const getShowFilterMenu = (state: State) => state.showFilterMenu;
+export const getOrder = (state: State) => state.order;
 export const getError = (state: State) => state.error;
 export const getPending = (state: State) => state.pending;

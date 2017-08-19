@@ -7,22 +7,22 @@ import { NotificationsPage } from './notifications';
 import { FilterMenuComponent } from './filter-menu/filter-menu.component';
 import { FilterStateComponent } from './filter-state/filter-state.component';
 import { NotifItemComponent } from './notif-item/notif-item.component';
-import { ReactiveFormsModule } from "@angular/forms";
-import { NotifListComponent } from "./notif-list/notif-list.component";
+import { NotifListComponent } from './notif-list/notif-list.component';
+import { NotifNavComponent } from './notif-nav/notif-nav.component';
 
 @NgModule({
   imports: [
     IonicPageModule.forChild(NotificationsPage),
     TranslateModule.forChild(),
-    SharedModule,
-    ReactiveFormsModule
+    SharedModule
   ],
   declarations: [
     FilterMenuComponent,
     FilterStateComponent,
     NotifItemComponent,
     NotificationsPage,
-    NotifListComponent
+    NotifListComponent,
+    NotifNavComponent
   ],
   exports: [
     NotificationsPage

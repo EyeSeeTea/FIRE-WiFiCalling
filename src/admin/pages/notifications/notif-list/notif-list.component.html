@@ -1,37 +1,18 @@
-<ion-navbar color="brown" padding-horizontal>
-
-  <div class="notif-navbar">
-    <ion-buttons>
-      <button ion-button (click)="filterMenu = !filterMenu">
-        <ion-icon name="funnel"></ion-icon>
-        Filter
-      </button>
-    </ion-buttons>
-
-    <div class="fill-space"></div>
-
-    <ion-buttons class="notif-date">
-      <button ion-button (click)="dateUp = !dateUp">
-        <ion-icon [name]="(dateUp) ? 'arrow-dropdown' : 'arrow-dropup'"></ion-icon>
-        Date
-      </button>
-    </ion-buttons>
-
-    <ion-buttons class="notif-mark">
-      <button ion-button (click)="presentPopover($event)">
-        <ion-icon name="checkbox"></ion-icon>
-      </button>
-    </ion-buttons>
-  </div>
-
-  <filter-menu *ngIf="filterMenu" [@slideDown] (filterChange)="setFilter($event)"></filter-menu>
-
-</ion-navbar>
-
 <div class="notif-list">
 
-  <filter-state [filter]="filter" (filterChange)="setFilter($event)"></filter-state>
+  <filter-menu *ngIf="showMenu" [@slideDown]></filter-menu>
 
-  <notif-item *ngFor="let notification of notifications" [item]="notification"></notif-item>
+  <filter-state *ngIf="filter" [filter]="filter"></filter-state>
 
+  <ion-scroll scrollY="true">
+    <notif-item *ngFor="let notification of notifications | orderBy: 'created' : order"
+                [item]="notification" (actions)="actions.emit($event)"></notif-item>
+
+  </ion-scroll>
 </div>
+
+<ion-row>
+  <button ion-button full color="link" *ngIf="selectedNotifications.length" (click)="markAsSeen()">
+    Mark As Read
+  </button>
+</ion-row>

@@ -11,17 +11,14 @@ export const REJECT_USER_FAILURE = '[Admin] Reject User Failure';
 export const GET_LIST = '[Admin] Get Notifications';
 export const GET_LIST_SUCCESS = '[Admin] Get Notifications Success';
 export const GET_LIST_FAILURE = '[Admin] Get Notifications Failure';
+export const TOGGLE_FILTER_MENU = '[Admin] Toggle Notifications Filter Menu';
 export const SET_FILTER = '[Admin] Set Notifications Filter';
+export const SET_ORDER = '[Admin] Set Notifications Date Order';
 export const MARK_SEEN = '[Admin] Mark Notifications As Read';
 export const MARK_SEEN_SUCCESS = '[Admin] Mark Notifications As Read Success';
 export const MARK_SEEN_FAILURE = '[Admin] Mark Notifications As Read Failure';
 
-export class SetFilter implements Action {
-  readonly type = SET_FILTER;
-
-  constructor(public payload: any) {
-  }
-}
+/** Get notification list */
 
 export class GetList implements Action {
   readonly type = GET_LIST;
@@ -44,6 +41,8 @@ export class GetListFailure implements Action {
   }
 }
 
+/** Accept user request */
+
 export class AcceptUser implements Action {
   readonly type = ACCEPT_USER;
 
@@ -61,6 +60,8 @@ export class AcceptUserFailure implements Action {
   constructor(public payload: any) {
   }
 }
+
+/** Reject user request */
 
 export class RejectUser implements Action {
   readonly type = REJECT_USER;
@@ -80,6 +81,8 @@ export class RejectUserFailure implements Action {
   }
 }
 
+/** Mark notification as seen */
+
 export class MarkSeen implements Action {
   readonly type = MARK_SEEN;
 
@@ -98,9 +101,37 @@ export class MarkSeenFailure implements Action {
   }
 }
 
+/** Open filter menu */
+
+export class ToggleFilterMenu implements Action {
+  readonly type = TOGGLE_FILTER_MENU;
+
+  constructor(public payload: any) {
+  }
+}
+
+/** Set notification filter */
+
+export class SetFilter implements Action {
+  readonly type = SET_FILTER;
+
+  constructor(public payload: any) {
+  }
+}
+
+/** Set notification date order */
+
+export class SetOrder implements Action {
+  readonly type = SET_ORDER;
+
+  constructor(public payload: any) {
+  }
+}
 
 export type Actions =
+  | ToggleFilterMenu
   | SetFilter
+  | SetOrder
   | GetList
   | GetListSuccess
   | GetListFailure

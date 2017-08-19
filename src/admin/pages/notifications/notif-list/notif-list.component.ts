@@ -1,89 +1,92 @@
-import { Component, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { PopoverController, Select } from 'ionic-angular';
-import { Store } from '@ngrx/store';
-
+import {
+  AfterViewChecked,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  QueryList,
+  ViewChildren
+} from '@angular/core';
+import { Filter, Notification, NotificationAction, NotificationSelect } from '../../../models/notification';
 import { NotifItemComponent } from '../notif-item/notif-item.component';
-import { MarkPopupComponent } from '../mark-popup/mark-popup.component';
-
 import { filterMenuAnimation } from '../../../animations/admin.animations';
-import { Filter, Notification } from '../../../models/notification';
+import { Store } from '@ngrx/store';
 import * as notifications from '../../../actions/notifications';
 
 @Component({
   selector: 'notif-list',
   templateUrl: 'notif-list.component.html',
-  animations: [filterMenuAnimation],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  animations: [filterMenuAnimation]
 })
-export class NotifListComponent {
+export class NotifListComponent implements AfterViewChecked {
 
-  @Input() notifications: Notification [];
+  /** Current selected notifications */
+  selectedNotifications = [];
+
+  /** Show filter menu */
+  @Input() showMenu: boolean;
+
+  /** Notifications list */
+  @Input() notifications: Notification[];
+
+  /** Filter notification */
   @Input() filter: Filter;
 
-  selectedItems: Notification[] = [];
+  /** Notification date order */
+  @Input() order: boolean;
 
-  @ViewChild('filterSelect') filterSelect: Select;
+  /** Select (check) notifications */
+  @Input('select')
+  set selectNotifications(choice: string) {
 
-  /** Notification items to (check all/check unread) */
-  @ViewChildren(NotifItemComponent) notifItems: QueryList<NotifItemComponent>;
-
-  /** Show/hide menu */
-  filterMenu = false;
-
-  /** Toggle date up/down */
-  dateUp = false;
-
-  constructor(public store: Store<any>, public popoverCtrl: PopoverController) {
-  }
-
-  presentPopover(myEvent) {
-    /** Get the number of unread notifications */
-    const unread = this.notifications.filter((item: Notification) => !item.seen).length;
-
-    let popover = this.popoverCtrl.create(MarkPopupComponent, {
-      unread: unread
-    });
-
-    popover.onWillDismiss((popoverData) => {
-      /** Loop over notification items to check them */
-
-      if (popoverData === 'SELLECT_ALL') {
-        /** Select all notifications */
-        this.notifications
-          .forEach((item: Notification) => {
-            item.checked = true;
-            // item.cd.markForCheck();
-            this.selectedItems.push(item);
-          });
-      } else {
-        /** Select only unseen notifications */
+    switch (choice) {
+      /** Check all notifications */
+      case NotificationSelect.ALL:
+        this.notifItems.map((notification: NotifItemComponent) => notification.checked = true);
+        break;
+      /** Check only unseen notifications */
+      case NotificationSelect.UNSEEN:
         this.notifItems
-          .filter((item: NotifItemComponent) => !item.item.seen)
-          .map((item: NotifItemComponent) => {
-            item.checked = true;
-            item.cd.markForCheck();
-          });
-      }
-    });
-
-    /** Show popover */
-    popover.present({ev: myEvent})
-  }
-
-
-  // ionViewWillLeave() {
-  //   this.filterMenu = false;
-  // }
-
-  /** Set notifications filter */
-  setFilter(filter: Filter) {
-    this.store.dispatch(new notifications.SetFilter(filter));
-
-    /** Close the menu on a filter is selected, unless it is 'filter by user' */
-    if (filter) {
-      this.filterMenu = filter.name === 'USER_NAME';
+          .filter((notification: NotifItemComponent) => !notification.item.seen)
+          .map((notification: NotifItemComponent) => notification.checked = true);
+        break;
+      /** Uncheck all */
+      case NotificationSelect.NONE:
+        this.notifItems.map((notification: NotifItemComponent) => notification.checked = false);
+        break;
+      default:
+        return;
     }
   }
 
+  /** Filter emitter for (user_request/user_accepted/topped_up...etc) */
+  @Output() filterChange = new EventEmitter<Filter>();
+
+  /** Actions emitter for (accept/reject/mark as seen) */
+  @Output() actions = new EventEmitter<NotificationAction>();
+
+  /** Query notifications' components */
+  @ViewChildren(NotifItemComponent) notifItems: QueryList<NotifItemComponent>;
+
+  constructor(private store: Store<any>, private cd: ChangeDetectorRef) {
+
+  }
+
+  /** Mark selected notification as seen */
+  markAsSeen() {
+    this.store.dispatch(new notifications.MarkSeen(this.selectedNotifications));
+  }
+
+  ngAfterViewChecked() {
+
+    /** Show the "mark as read" button if admin has checked notifications  */
+    if (this.notifItems) {
+      this.selectedNotifications = this.notifItems
+        .filter((notification: NotifItemComponent) => notification.checked)
+        .map((notification: NotifItemComponent) => notification.item.id);
+      this.cd.detectChanges();
+    }
+  }
 }
 

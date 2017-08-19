@@ -10,7 +10,11 @@ export interface Notification {
   message: Message;
   voucher: Voucher;
   user: User;
-  checked: boolean;
+}
+
+export interface NotificationAction {
+  type: string;
+  payload: any;
 }
 
 export const NotificationFilter = {
@@ -20,6 +24,12 @@ export const NotificationFilter = {
   PROFILE_UPDATED: 'PROFILE_UPDATED',
   TOPPED_UP: 'TOPPED_UP ',
   USER_NAME: 'USER_NAME'
+};
+
+export const NotificationSelect = {
+  ALL: 'ALL',
+  UNSEEN: 'UNSEEN',
+  NONE: 'NONE'
 };
 
 export interface UserRequest {

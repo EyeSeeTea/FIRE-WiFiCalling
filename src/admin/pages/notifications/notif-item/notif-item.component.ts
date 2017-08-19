@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Notification } from '../../../models/notification';
 import { Store } from "@ngrx/store";
+import * as notifications from '../../../actions/notifications';
 
 @Component({
   selector: 'notif-item',
-  templateUrl: 'notif-item.component.html',
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: 'notif-item.component.html'
 })
 export class NotifItemComponent {
 
@@ -13,33 +13,24 @@ export class NotifItemComponent {
   item: Notification;
   @Input() checked = false;
 
+  /** Workaround until the server returns a fixed properties */
   @Input('item')
   set setItem(item) {
     this.item = item;
     this.temp = item.newUserAccepted || item.newUserRequest || item.message || item.voucher || item;
   }
 
-  @Output() itemChange = new EventEmitter<Notification>();
-
-  constructor(private store: Store<any>, public cd: ChangeDetectorRef) {
-
+  constructor(private store: Store<any>) {
   }
 
-  removeFilter() {
-    // this.itemChange.emit({
-    //   type:
-    // });
-  }
-
+  /** Accept user */
   acceptUser() {
-    // this.store.dispatch();
-    // this.itemChange.emit({
-    //   type: Notification
-    // });
+    this.store.dispatch(new notifications.AcceptUser(this.item.id));
   }
 
+  /** Reject user */
   rejectUser() {
-
+    this.store.dispatch(new notifications.RejectUser(this.item.id));
   }
 }
 

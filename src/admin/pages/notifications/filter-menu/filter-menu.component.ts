@@ -1,72 +1,40 @@
-import { Component, EventEmitter, Output, AfterViewInit, OnDestroy } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
-import { NotificationFilter } from '../../../models/notification';
-
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
+import { Component, OnInit } from '@angular/core';
+import { Filter, NotificationFilter } from '../../../models/notification';
+import { Store } from '@ngrx/store';
+import * as notifications from '../../../actions/notifications';
 
 @Component({
   selector: 'filter-menu',
   templateUrl: 'filter-menu.component.html'
 })
-export class FilterMenuComponent implements AfterViewInit, OnDestroy {
+export class FilterMenuComponent implements OnInit {
 
-  @Output() filterChange = new EventEmitter();
+  filterOptions = [];
 
-  searchControl = new FormControl();
-  sub: Subscription;
+  constructor(private store: Store<any>) {
 
-  filterByUserRequest() {
-    this.filterChange.emit({
-      name: NotificationFilter.USER_REQUEST
-    });
   }
 
-  filterByUserAccepted() {
-    this.filterChange.emit({
-      name: NotificationFilter.USER_ACCEPTED
-    });
+  ngOnInit() {
+    /** Show available filters */
+    for (let key in NotificationFilter) {
+
+      /** exclude username filter since it has an input */
+      if (key !== NotificationFilter.USER_NAME) {
+        this.filterOptions.push({ name: NotificationFilter[key]});
+      }
+    }
   }
 
-  filterByMessageSent() {
-    this.filterChange.emit({
-      name: NotificationFilter.MESSAGE_SENT
-    });
+  /** Set notifications filter */
+  setFilter(filter: Filter) {
+    this.store.dispatch(new notifications.SetFilter(filter));
   }
 
-  filterByProfileUpdate() {
-    this.filterChange.emit({
-      name: NotificationFilter.PROFILE_UPDATED
-    });
+  /** Filter notifications by username */
+  filterByName(key: string) {
+    const filter: Filter = {name: NotificationFilter.USER_NAME, value: key};
+    this.setFilter(filter);
   }
-
-  filterByToppedUp() {
-    this.filterChange.emit({
-      name: NotificationFilter.TOPPED_UP
-    });
-  }
-
-  ngAfterViewInit() {
-
-    this.sub = this.searchControl.valueChanges
-      .debounceTime(200)
-      .distinctUntilChanged()
-      .subscribe((text: string) => {
-        if (text) {
-          this.filterChange.emit({
-            name: NotificationFilter.USER_NAME,
-            value: text
-          });
-        } else {
-          this.filterChange.emit(null);
-        }
-      })
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
-
 }
 
