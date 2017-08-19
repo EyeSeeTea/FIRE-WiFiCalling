@@ -19,6 +19,7 @@ import { SearchInputComponent } from './input/search-input.component';
 
 import { MarkPopupComponent } from '../admin/pages/notifications/mark-popup/mark-popup.component';
 import { MessageDialogComponent } from '../admin/pages/users/message-dialog/message-dialog.component';
+import { MenuDialogComponent } from './menu-dialog/menu-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MessageDialogComponent } from '../admin/pages/users/message-dialog/mess
     TimeAgoPipe,
     DialogComponent,
     MessageDialogComponent,
+    MenuDialogComponent,
     MarkPopupComponent,
     SearchInputComponent
   ],
@@ -50,6 +52,7 @@ import { MessageDialogComponent } from '../admin/pages/users/message-dialog/mess
   entryComponents: [
     DialogComponent,
     MessageDialogComponent,
+    MenuDialogComponent,
     MarkPopupComponent
   ]
 })
