@@ -6,6 +6,7 @@ import { TopupPage } from '../topup/topup';
 import { ContactsPage } from '../contacts/contacts';
 
 @Component({
+  selector: 'tabs',
   templateUrl: 'tabs.html'
 })
 export class TabsPage {

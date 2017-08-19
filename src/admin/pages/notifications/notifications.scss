@@ -13,47 +13,6 @@ page-notifications {
     }
   }
 
-  .notif-navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    ion-buttons {
-      order: 0;
-      .button-inner {
-        text-transform: capitalize;
-        font-size: 18px;
-      }
-      ion-icon {
-        margin-right: 10px;
-      }
-    }
-
-    .notif-date {
-      min-width: 60px;
-      margin: 0 30px;
-    }
-
-    .notif-mark {
-      margin: 0;
-      color: white;
-      button {
-        padding: 0;
-        margin: 0;
-        text-align: right;
-      }
-      ion-icon {
-        margin: 0;
-      }
-    }
-  }
-
-  ion-avatar {
-    img {
-      object-fit: cover;
-    }
-  }
-
   filter-state {
     line-height: 40px;
     padding: 0 15px;
