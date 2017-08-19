@@ -1,19 +1,21 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NavParams, ViewController } from 'ionic-angular';
 import { User } from '../../../models/user';
-import { NavParams, ViewController } from "ionic-angular";
 
 @Component({
   selector: 'message-dialog',
   templateUrl: 'message-dialog.component.html'
 })
-export class MessageDialogComponent {
+export class MessageDialogComponent implements OnInit {
 
-  @Input() item: User;
-  @Output() itemChange = new EventEmitter<User>();
   message: string;
-
+  users: User[];
 
   constructor(public params: NavParams, public viewCtrl: ViewController) {
+  }
+
+  ngOnInit() {
+    this.users = this.params.get('users');
   }
 
 }
