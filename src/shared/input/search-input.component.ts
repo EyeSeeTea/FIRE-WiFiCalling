@@ -15,9 +15,9 @@ export class SearchInputComponent implements AfterViewInit, OnDestroy {
   searchControl = new FormControl();
   sub: Subscription;
 
-  @Input() placeholder: string;
+  @Input() placeholder = '';
   @Input() debounce = 250;
-  @Input() text: string;
+  @Input() text = '';
   @Output() textChange = new EventEmitter<string>();
 
   ngAfterViewInit() {

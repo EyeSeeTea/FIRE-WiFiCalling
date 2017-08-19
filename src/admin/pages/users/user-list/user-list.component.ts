@@ -18,7 +18,7 @@ import { UserItemComponent } from '../user-item/user-item.component';
 export class UserListComponent implements AfterViewChecked {
 
   /** Current selected users */
-  selectedUsers = [];
+  selectedUsers: User[] = [];
 
   /** User list options */
   @Input() options: UserListOptions;
@@ -40,7 +40,9 @@ export class UserListComponent implements AfterViewChecked {
 
     /** Set selected users and show send message button if they exist  */
     if (this.userItems) {
-      this.selectedUsers = this.userItems.filter((user: UserItemComponent) => user.checked);
+      this.selectedUsers = this.userItems
+        .filter((user: UserItemComponent) => user.checked)
+        .map((user: UserItemComponent) => user.item);
       this.cd.detectChanges();
     }
   }

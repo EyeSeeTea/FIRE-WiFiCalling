@@ -9,6 +9,7 @@ export const UPDATE_PRICING = '[Admin] Update Billing';
 export const UPDATE_PRICING_SUCCESS = '[Admin] Update Billing Success';
 export const UPDATE_PRICING_FAILURE = '[Admin] Update Billing Failure';
 
+/** Get billing data */
 
 export class GetPricing implements Action {
   readonly type = GET_PRICING;
@@ -27,6 +28,8 @@ export class GetPricingFailure implements Action {
   constructor(public payload: any) {
   }
 }
+
+/** Update billing */
 
 export class UpdatePricing implements Action {
   readonly type = UPDATE_PRICING;

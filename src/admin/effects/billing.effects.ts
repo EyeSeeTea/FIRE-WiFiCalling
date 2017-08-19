@@ -41,7 +41,7 @@ export class BillingEffects {
           title: 'Error',
           content: err,
           buttons: [
-            {label: 'Ok', color: 'primary'}
+            {label: 'Ok', color: 'link'}
           ]
         }).present();
     });
@@ -70,7 +70,7 @@ export class BillingEffects {
           title: 'Success',
           content: 'Pricing updated successfully.',
           buttons: [
-            {label: 'Ok', color: 'primary'}
+            {label: 'Ok', color: 'link'}
           ]
         }).present();
     });

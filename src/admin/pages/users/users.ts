@@ -27,7 +27,7 @@ export class UsersPage implements OnInit, OnDestroy {
   /** User list options */
   options: UserListOptions = {
     key: '',
-    search: true,
+    search: false,
     orderReverse: false,
     checkAll: false
   };
@@ -44,19 +44,27 @@ export class UsersPage implements OnInit, OnDestroy {
     /** Show message dialog */
     const messageDialog = this.modalCtrl.create(MessageDialogComponent,
       {
-        usersCount: selectedUsers.length
+        users: selectedUsers
       });
 
     messageDialog.onDidDismiss(message => {
-      /** Send message confirmed */
-      this.store.dispatch(new users.SendMessage({message: message, users: selectedUsers}));
+      /** Send message to users if it exists */
+      if (message) {
+        this.store.dispatch(new users.SendMessage({message: message, users: selectedUsers}));
+      }
     });
+
     messageDialog.present();
   }
 
-  ionViewWillEnter() {
-    /** Request users' list from the store */
+  getUserList() {
+    /** Refresh user list */
     this.store.dispatch(new users.GetList(null));
+  }
+
+  ionViewWillEnter() {
+    /** Request user list on page enter */
+    this.getUserList();
   }
 
   ngOnInit() {
@@ -66,10 +74,6 @@ export class UsersPage implements OnInit, OnDestroy {
         this.refresher.complete();
       }
     });
-  }
-
-  refreshUserList() {
-    this.store.dispatch(new users.GetList(null));
   }
 
   ngOnDestroy() {

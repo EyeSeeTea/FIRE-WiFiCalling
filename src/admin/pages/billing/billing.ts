@@ -21,7 +21,6 @@ export class BillingPage {
   }
 
   ionViewWillEnter() {
-    console.log("I'm alive!")
     this.store.dispatch(new billing.GetPricing());
   }
 

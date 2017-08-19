@@ -142,21 +142,4 @@ input[type=number]::-webkit-outer-spin-button {
   color: color($colors, gray);
 }
 
-.text-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color: color($colors, gray);
-  opacity: 1;
-}
-
-.text-input::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color: color($colors, gray);
-  opacity: 1;
-}
-
-.text-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: color($colors, gray);
-}
-
-.text-input::-ms-input-placeholder { /* Microsoft Edge */
-  color: color($colors, gray);
-}
 

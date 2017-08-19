@@ -16,6 +16,18 @@
     "ADMIN": "Admin",
     "LOGOUT": "Log Out"
   },
+  "ADMIN": {
+    "NOTIF": {
+      "FILTER": {
+        "TOPPED_UP": "topped up",
+        "USER_REQUEST": "user request",
+        "USER_ACCEPTED": "user accepted",
+        "MESSAGE_SENT": "message sent",
+        "PROFILE_UPDATED": "profile updated",
+        "USER_NAME": "user name"
+      }
+    }
+  },
   "ACCESS": {
     "LOGIN": "Log In",
     "REQUEST_USER": "Request User",

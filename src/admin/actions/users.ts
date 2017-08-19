@@ -8,7 +8,8 @@ export const GET_LIST_FAILURE = '[Admin] Get Users Failure';
 export const SEND_MESSAGE = '[Admin] Send Message';
 export const SEND_MESSAGE_SUCCESS = '[Admin] Send Message Success';
 export const SEND_MESSAGE_FAILURE = '[Admin] Send Message Failure';
-export const CHECK_USER = '[Admin] Check User';
+
+/** Get users list */
 
 export class GetList implements Action {
   readonly type = GET_LIST;
@@ -27,6 +28,8 @@ export class GetListFailure implements Action {
   constructor(public payload: any) {
   }
 }
+
+/** Send message to (n) users */
 
 export class SendMessage implements Action {
   readonly type = SEND_MESSAGE;

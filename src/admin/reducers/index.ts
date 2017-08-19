@@ -32,6 +32,8 @@ export const getUsersPending = createSelector(selectUsersState, fromUsers.getPen
 
 export const getNotifications = createSelector(selectNotificationsState, fromNotifications.getNotifications);
 export const getNotifFilter = createSelector(selectNotificationsState, fromNotifications.getFilter);
+export const getNotifShowFilterMenu = createSelector(selectNotificationsState, fromNotifications.getShowFilterMenu);
+export const getNotifOrder = createSelector(selectNotificationsState, fromNotifications.getOrder);
 export const getNotifError = createSelector(selectNotificationsState, fromNotifications.getError);
 export const getNotifPending = createSelector(selectNotificationsState, fromNotifications.getPending);
 
