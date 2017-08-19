@@ -1,76 +1,89 @@
 page-auth {
-    .header-bg {
-        background: linear-gradient(0deg, rgba(201, 39, 34, 1) 0%, rgba(242, 86, 53, 1) 100%);
-        color: white;
-        width: 100%;
-        .login-logo {
-            height: 20vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .logo-title {
-            font-size: 3em;
-            font-style: italic;
-        }
-        img {
-            width: 70px;
-            height: 70px;
-        }
+  .auth-header {
+    background: $fire-nav-bg;
+    color: white;
+    width: 100%;
+    .auth-logo {
+      height: 17vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    ion-grid {
-        flex: 1;
+    .auth-title {
+      margin-left: 15px;
+      font-size: 2.5em;
+      font-style: italic;
     }
-    form {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
+    img {
+      width: 60px;
+      height: 60px;
     }
-    login,
-    register {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
+  }
+  ion-grid {
+    flex: 1;
+  }
+  form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  login,
+  register {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    .col {
+      margin-bottom: 10px;
+    }
+  }
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    span {
+      margin-left: 1em;
+    }
+  }
+  .auth-tabs {
+    display: flex;
+    .auth-tab {
+      cursor: pointer;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      span {
+        position: relative;
+        padding: 15px;
+        width: 140px;
+        text-align: center;
+      }
+    }
+    .active span {
+      font-weight: bold;
+      &:after {
+        bottom: -5px;
         left: 0;
         right: 0;
-        top: 0;
-        bottom: 0;
-        .col {
-            margin-bottom: 10px;
-        }
+        position: absolute;
+        content: '';
+        height: 5px;
+        background-color: color($colors, link);
+      }
     }
-    .checkbox-item {
-        display: flex;
-        align-items: center;
-        span {
-            margin-left: 1em;
-        }
+  }
+
+  ion-scroll {
+    flex: 1;
+    white-space: nowrap;
+    .scroll-zoom-wrapper {
+      min-height: 100%;
     }
-    .login-tabs {
-        display: flex;
-        .login-tab {
-            cursor: pointer;
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            span {
-                position: relative;
-                padding: 15px;
-                width: 140px;
-                text-align: center;
-            }
-        }
-        .active span {
-            font-weight: bold;
-            &:after {
-                bottom: -5px;
-                left: 0;
-                right: 0;
-                position: absolute;
-                content: '';
-                height: 5px;
-                background-color: color($colors, link);
-            }
-        }
+    .scroll-zoom-wrapper {
+      display: flex;
     }
+  }
 }
