@@ -13,6 +13,7 @@ import { NotifItemComponent } from '../notif-item/notif-item.component';
 import { filterMenuAnimation } from '../../../animations/admin.animations';
 import { Store } from '@ngrx/store';
 import * as notifications from '../../../actions/notifications';
+import * as fromAdmin from '../../../reducers';
 
 @Component({
   selector: 'notif-list',
@@ -69,7 +70,7 @@ export class NotifListComponent implements AfterViewChecked {
   /** Query notifications' components */
   @ViewChildren(NotifItemComponent) notifItems: QueryList<NotifItemComponent>;
 
-  constructor(private store: Store<any>, private cd: ChangeDetectorRef) {
+  constructor(private store: Store<fromAdmin.State>, private cd: ChangeDetectorRef) {
 
   }
 

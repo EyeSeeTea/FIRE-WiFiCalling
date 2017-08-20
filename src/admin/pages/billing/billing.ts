@@ -16,7 +16,7 @@ export class BillingPage {
   pricing$ = this.store.select(fromAdmin.getBilling);
   pending$ = this.store.select(fromAdmin.getBillingPending);
 
-  constructor(public store: Store<any>) {
+  constructor(public store: Store<fromAdmin.State>) {
 
   }
 

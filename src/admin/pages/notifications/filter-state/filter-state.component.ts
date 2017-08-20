@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Filter } from '../../../models/notification';
 import * as notifications from '../../../actions/notifications';
+import * as fromAdmin from '../../../reducers';
 
 @Component({
   selector: 'filter-state',
@@ -12,7 +13,7 @@ export class FilterStateComponent {
   @Input() filter: Filter;
   @Output() filterChange = new EventEmitter();
 
-  constructor(private store: Store<any>) {
+  constructor(private store: Store<fromAdmin.State>) {
 
   }
 

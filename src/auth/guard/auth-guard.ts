@@ -1,7 +1,7 @@
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
 import { Store } from '@ngrx/store';
-import * as Auth from '../actions/auth';
+// import * as Auth from '../actions/auth';
 
 export class AuthGuard {
 

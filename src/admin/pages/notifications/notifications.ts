@@ -38,7 +38,7 @@ export class NotificationsPage implements OnInit, OnDestroy {
   /** Refresher ref */
   @ViewChild(Refresher) refresher: Refresher;
 
-  constructor(public store: Store<any>) {
+  constructor(public store: Store<fromAdmin.State>) {
 
   }
 

@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core
 import { Store } from '@ngrx/store';
 import { PopoverController, Select } from 'ionic-angular';
 import * as notifications from '../../../actions/notifications';
+import * as fromAdmin from '../../../reducers';
 import { Notification } from '../../../models/notification';
 import { MarkPopupComponent } from '../mark-popup/mark-popup.component';
 
@@ -32,7 +33,7 @@ export class NotifNavComponent {
   /** Select ref */
   @ViewChild(Select) filterSelect: Select;
 
-  constructor(public store: Store<any>, private popoverCtrl: PopoverController) {
+  constructor(public store: Store<fromAdmin.State>, private popoverCtrl: PopoverController) {
 
   }
 

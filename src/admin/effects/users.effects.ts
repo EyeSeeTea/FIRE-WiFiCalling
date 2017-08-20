@@ -123,6 +123,6 @@ export class UsersEffects {
   constructor(private actions$: Actions,
               private usersService: UsersService,
               private modalCtrl: ModalController,
-              public loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController) {
   }
 }

@@ -35,7 +35,7 @@ export class UsersPage implements OnInit, OnDestroy {
   /** Refresher ref */
   @ViewChild(Refresher) refresher: Refresher;
 
-  constructor(public store: Store<any>, private modalCtrl: ModalController,) {
+  constructor(public store: Store<fromAdmin.State>, private modalCtrl: ModalController,) {
   }
 
   /** Send message to selected users */

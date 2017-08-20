@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Notification } from '../../../models/notification';
 import { Store } from "@ngrx/store";
 import * as notifications from '../../../actions/notifications';
+import * as fromAdmin from '../../../reducers';
 
 @Component({
   selector: 'notif-item',
@@ -20,7 +21,7 @@ export class NotifItemComponent {
     this.temp = item.newUserAccepted || item.newUserRequest || item.message || item.voucher || item;
   }
 
-  constructor(private store: Store<any>) {
+  constructor(private store: Store<fromAdmin.State>) {
   }
 
   /** Accept user */
