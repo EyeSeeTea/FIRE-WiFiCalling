@@ -24,10 +24,10 @@ export class AuthGuard {
   ionViewCanEnter() {
 
     /** Auth Guard is disabled for dev. uncomment the following to activate */
-    if (!this.authenticated) {
-      this.store.dispatch(new Auth.LoginRedirect());
-    }
-
-    return this.authenticated;
+    // if (!this.authenticated) {
+    //   this.store.dispatch(new Auth.LoginRedirect());
+    // }
+    //
+    // return this.authenticated;
   }
 }

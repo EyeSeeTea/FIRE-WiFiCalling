@@ -19,7 +19,7 @@
 @import '../theme/buttons';
 
 .activeHighlight {
-	background-color: color($colors, light); 
+	background-color: color($colors, light);
 }
 
 .fill-space{
@@ -36,4 +36,8 @@ ion-scroll{
   .scroll-zoom-wrapper{
     display: flex;
   }
+}
+
+.modal-wrapper{
+  height: 300px;
 }

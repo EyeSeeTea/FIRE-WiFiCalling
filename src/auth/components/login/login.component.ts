@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
 import { errAnimation } from '../../animations/auth.animations';
 
 @Component({
@@ -8,7 +9,7 @@ import { errAnimation } from '../../animations/auth.animations';
   animations: [errAnimation]
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   /** Display errors */
   showErrors = false;
@@ -16,12 +17,17 @@ export class LoginComponent implements OnInit {
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
+  sub: Subscription;
 
   @Output() submitted = new EventEmitter();
 
   ngOnInit() {
-    this.form.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.sub = this.form.valueChanges.subscribe(data => this.onValueChanged(data));
     this.onValueChanged(); // (re)set validation messages now
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   onValueChanged(data?) {

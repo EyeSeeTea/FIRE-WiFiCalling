@@ -1,0 +1,6 @@
+<span>
+  Filter by {{ 'ADMIN.NOTIF.FILTER.' + filter.name | translate }}
+</span>
+<b *ngIf="filter.name === 'USER_NAME'"> {{ filter.value }} </b>
+<ion-icon (click)="setFilter(null)" name="close-circle"></ion-icon>
+

@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Http } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -25,17 +25,16 @@ import { HistoryPage } from '../pages/history/history';
 import { TopupPage } from '../pages/topup/topup';
 import { ContactsPage } from '../pages/contacts/contacts';
 
-import { AdminPage } from '../pages/admin/admin';
-import { NotificationsPage } from '../pages/notifications/notifications';
-
 import { SharedModule } from '../shared/shared.module';
 import { metaReducers, reducers } from '../reducers/index';
 import { FireHttpModule } from '../auth/http/fire-http.module';
 
 import { AuthEffects } from '../auth/effects/auth.effects';
 
-export function createTranslateLoader(http: Http) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
 }
 
 @NgModule({
@@ -46,18 +45,17 @@ export function createTranslateLoader(http: Http) {
     CallingPage,
     HistoryPage,
     TopupPage,
-    AdminPage,
-    NotificationsPage,
     ContactsPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(WiFiCalling),
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [Http]
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
       }
     }),
     BrowserAnimationsModule,
@@ -74,8 +72,6 @@ export function createTranslateLoader(http: Http) {
     CallingPage,
     HistoryPage,
     TopupPage,
-    AdminPage,
-    NotificationsPage,
     ContactsPage
   ],
   providers: [

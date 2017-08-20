@@ -1,15 +1,17 @@
 fire-dialog {
-    display: flex !important;
-    flex-direction: column;
-    background-color: white;
-    ion-grid {
-        flex: 1;
-    }
-    .dialog-title h3 {
-        margin-top: 0.5em !important;
-        margin-bottom: 0;
-    }
-    .dialog-content {
-        color: color($colors, gray);
-    }
+  display: flex !important;
+  flex-direction: column;
+  background-color: white;
+  ion-grid {
+    flex: 1;
+  }
+  .dialog-title h3 {
+    font-size: 18px;
+    margin-top: 0.5em !important;
+    margin-bottom: 0;
+  }
+  .dialog-content {
+    flex: 1;
+    color: color($colors, gray);
+  }
 }

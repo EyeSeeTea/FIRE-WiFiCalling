@@ -1,0 +1,26 @@
+<ion-header>
+  <header></header>
+  <notif-nav [notifications]="notifications$ | async"
+             [showMenu]="showFilterMenu$ | async"
+             [order]="order$ | async"
+             (select)="selectNotif = $event"></notif-nav>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="getNotificationsList()">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <notif-list [notifications]="notifications$ | async"
+              [showMenu]="showFilterMenu$ | async"
+              [order]="order$ | async"
+              [filter]="filter$ | async"
+              [select]="selectNotif"></notif-list>
+
+</ion-content>

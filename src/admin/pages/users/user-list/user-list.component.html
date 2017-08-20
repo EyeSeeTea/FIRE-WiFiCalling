@@ -1,0 +1,18 @@
+<div class="user-list">
+
+  <ion-scroll scrollY="true">
+
+    <!-- Filter users with search key and order them by name -->
+
+    <user-item *ngFor="let user of users | filterBy: { name: options.key } | orderBy: 'name' : options.orderReverse"
+               [item]="user" [checked]="options.checkAll"></user-item>
+
+  </ion-scroll>
+
+</div>
+
+<ion-row>
+  <button ion-button full color="link" *ngIf="selectedUsers.length" (click)="message.next(selectedUsers)">
+    Send Message
+  </button>
+</ion-row>

@@ -1,4 +1,4 @@
-import 'web-animations-js';
+import 'web-animations-js'; 
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 

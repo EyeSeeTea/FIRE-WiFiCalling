@@ -1,0 +1,27 @@
+<ion-navbar color="brown" padding-horizontal>
+
+  <div class="notif-navbar">
+    <ion-buttons>
+      <button ion-button (click)="toggleMenu(!showMenu)">
+        <ion-icon name="funnel"></ion-icon>
+        Filter
+      </button>
+    </ion-buttons>
+
+    <div class="fill-space"></div>
+
+    <ion-buttons class="notif-date">
+      <button ion-button (click)="setOrder(!order)">
+        <ion-icon [name]="(order) ? 'arrow-dropdown' : 'arrow-dropup'"></ion-icon>
+        Date
+      </button>
+    </ion-buttons>
+
+    <ion-buttons class="notif-mark">
+      <button ion-button (click)="showPopover($event)">
+        <ion-icon name="checkbox"></ion-icon>
+      </button>
+    </ion-buttons>
+  </div>
+
+</ion-navbar>
