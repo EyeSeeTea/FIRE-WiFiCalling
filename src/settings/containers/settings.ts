@@ -5,6 +5,7 @@ import { ISettings } from '../models/settings';
 
 import * as SettingsActions from '../actions/settings';
 import * as fromSettings from '../reducers';
+import { of } from 'rxjs/observable/of';
 
 @IonicPage()
 @Component({
@@ -18,6 +19,17 @@ export class SettingsPage {
   pending$; // = this.store.select(fromSettings.getSettingsPagePending);
 
   constructor(private store: Store<fromSettings.State>) {
+  }
+
+  ngOnInit() {
+
+    /** Workaround until we figure out settings */
+    this.settings$ = of({
+      user: 'joel',
+      password: 'joel1234',
+      server: 'dev.eyeseetea.com:5000'
+    });
+    this.pending$ = of(false);
   }
 
   ionViewWillEnter() {

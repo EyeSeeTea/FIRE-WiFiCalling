@@ -1,2 +1,30 @@
 page-settings {
+  .fire-input {
+    margin-top: 5px;
+  }
+
+  ion-grid {
+    flex: 1;
+  }
+  ion-content {
+    .col {
+      margin: 0.5em;
+    }
+  }
+
+  .scroll-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    font-size: 13px;
+    font-weight: bold;
+    color: color($colors, dark);
+  }
+
+  settings-form, form {
+    display: flex;
+    flex: 1;
+  }
 }

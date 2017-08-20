@@ -14,11 +14,11 @@ export class SettingsFormComponent {
   @Input() pending: boolean;
 
   /** Settings output */
-  @Output() pricingChange = new EventEmitter<ISettings>();
+  @Output() settingsChange = new EventEmitter<ISettings>();
 
   /** Submit new settings */
   onSubmit() {
-    this.pricingChange.emit(this.settings);
+    this.settingsChange.emit(this.settings);
   }
 
 }
