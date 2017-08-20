@@ -16,5 +16,5 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<any, any> {
   };
 }
 
-export const metaReducers: ActionReducer<any, any>[] = [logger];
+export const metaReducers = [logger];
 
