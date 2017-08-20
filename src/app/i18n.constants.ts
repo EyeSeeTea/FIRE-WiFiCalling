@@ -11,8 +11,7 @@ export const availableLanguages = [{
 }, {
     code: 'xh',
     name: 'Xhosa'
-}
-];
+}];
 
 export function getSuitableLanguage(language) {
     language = language.substring(0, 2).toLowerCase();
