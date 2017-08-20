@@ -8,6 +8,9 @@ export const availableLanguages = [{
 }, {
     code: 'tr',
     name: 'Turkish'
+}, {
+    code: 'xh',
+    name: 'Xhosa'
 }];
 
 export function getSuitableLanguage(language) {
