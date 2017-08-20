@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { LoadingController, ModalController } from 'ionic-angular';
 import { Effect, Actions } from '@ngrx/effects';
 
 import { BillingService } from '../services/billing.service';
@@ -52,11 +52,18 @@ export class BillingEffects {
   updateBilling$ = this.actions$
     .ofType(Billing.UPDATE_PRICING)
     .map((action: Billing.UpdatePricing) => action.payload)
-    .exhaustMap((pricing) =>
-      this.billingService.updatePricing(pricing)
+    .exhaustMap((pricing) => {
+
+      /** Show loading dialog */
+      this.loadingDialog = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+      this.loadingDialog.present();
+
+      return this.billingService.updatePricing(pricing)
         .map(() => new Billing.UpdatePricingSuccess())
         .catch(error => of(new Billing.UpdatePricingFailure(error)))
-    );
+    });
 
   /** Update Billing Success */
 
@@ -64,6 +71,8 @@ export class BillingEffects {
   updateBillingSuccess$ = this.actions$
     .ofType(Billing.UPDATE_PRICING_SUCCESS)
     .do(() => {
+      /** Close loading dialog */
+      this.loadingDialog.dismiss();
 
       this.modalCtrl.create(DialogComponent,
         {
@@ -83,6 +92,9 @@ export class BillingEffects {
     .map((action: Billing.UpdatePricingFailure) => action.payload)
     .map((err) => {
 
+      /** Close loading dialog */
+      this.loadingDialog.dismiss();
+
       this.modalCtrl.create(DialogComponent,
         {
           title: 'Error',
@@ -93,9 +105,12 @@ export class BillingEffects {
         }).present();
     });
 
+  /** Loading dialog ref */
+  loadingDialog;
 
   constructor(private actions$: Actions,
               private billingService: BillingService,
-              private modalCtrl: ModalController) {
+              private modalCtrl: ModalController,
+              private loadingCtrl: LoadingController) {
   }
 }
