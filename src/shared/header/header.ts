@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { App, ModalController, NavController } from 'ionic-angular';
+import { App, ModalController } from 'ionic-angular';
 import { MenuDialogComponent } from '../menu-dialog/menu-dialog.component';
 import { TabsPage } from '../../pages/tabs/tabs';
 import { Store } from '@ngrx/store';
@@ -14,8 +14,9 @@ type Page = { title: string, component?: any, classes?: string };
 })
 export class HeaderComponent {
 
-  @Input() state: any;
+  @Input() title: string;
 
+  /** Initial auth state */
   auth: State = {loggedIn: false, user: null};
 
   /** Menu items */
@@ -28,7 +29,9 @@ export class HeaderComponent {
     {title: 'MENU.LOGOUT'}
   ];
 
-  constructor(private store: Store<any>, private app: App, private nav: NavController, private modal: ModalController) {
+  constructor(private store: Store<any>, private app: App, private modal: ModalController) {
+
+    /** Get auth state from the store */
     store.subscribe((state: any) => this.auth = state.auth.status || null);
   }
 
@@ -50,11 +53,6 @@ export class HeaderComponent {
           && page.title !== 'MENU.ADMIN'
           && page.title !== 'MENU.LOGOUT'
       });
-    } else {
-      /** If the user is not admin, remove the admin button */
-      // if (!this.auth.user.admin) {
-      //   pages = this.pages.filter((page: Page) => page.title !== 'MENU.ADMIN');
-      // }
     }
 
     const menu = this.modal.create(MenuDialogComponent,
@@ -70,7 +68,8 @@ export class HeaderComponent {
         } else if (page.title === 'MENU.ADMIN' || page.title === 'MENU.HOME') {
           this.app.getRootNavs()[0].push(page.component);
         } else {
-          this.nav.push(page.component);
+          // this.nav.push(page.component);
+          this.app.getRootNavs()[0].push(page.component);
         }
       }
     });
