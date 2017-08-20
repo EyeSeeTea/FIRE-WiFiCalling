@@ -1,0 +1,46 @@
+<form #settingsForm="ngForm" (ngSubmit)="onSubmit()">
+
+  <ion-grid no-padding >
+
+    <ion-grid padding>
+
+      <ion-row padding-horizontal>
+        <ion-col>
+          <label>User</label>
+          <div class="fire-input">
+            <ion-icon name="person"></ion-icon>
+            <ion-input type="text" name="username" [(ngModel)]="settings?.user"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row padding-horizontal>
+        <ion-col>
+          <label>Current Password</label>
+          <div class="fire-input">
+            <ion-icon name="lock"></ion-icon>
+            <ion-input type="text" name="password" placeholder="******" [(ngModel)]="settings?.password"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row padding-horizontal>
+        <ion-col>
+          <label>Server</label>
+          <div class="fire-input">
+            <ion-icon name="cloud"></ion-icon>
+            <ion-input type="text" name="server" placeholder="XXX.XXX.XXX.XX" [(ngModel)]="settings?.server"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="fill-space"></ion-row>
+
+    </ion-grid>
+
+    <ion-row>
+      <button ion-button type="submit" full color="link" *ngIf="!pending && !settingsForm.pristine">Save changes</button>
+    </ion-row>
+
+  </ion-grid>
+</form>
