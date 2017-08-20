@@ -36,6 +36,7 @@
     "PHONE_NUMBER": "Teléfono"
   },
   "ERR": {
+    "USERNAME_REQUIRED": "Username is required",
     "NAME_REQUIRED": "Nombre es obligatorio",
     "SURNAME_REQUIRED": "Apellido es obligatorio",
     "PASSWORD_REQUIRED": "Contraseña es obligatorio",

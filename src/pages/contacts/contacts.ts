@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Contacts, IContactProperties, IContactFindOptions } from '@ionic-native/contacts';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/switchMap';
@@ -19,7 +18,7 @@ export class ContactsPage implements OnInit {
   /** Contact list */
   list = new Subject<IContactProperties[]>();
 
-  constructor(public contacts: Contacts, public store: Store<AppState>) {
+  constructor(public contacts: Contacts, public store: Store<any>) {
 
   }
 
