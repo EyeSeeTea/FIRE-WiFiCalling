@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
-import { AlertController, App } from 'ionic-angular';
+import { ModalController, App } from 'ionic-angular';
 import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage';
 import { Effect, Actions } from '@ngrx/effects';
 
@@ -14,6 +14,7 @@ import * as Auth from '../actions/auth';
 
 import { TabsPage } from '../../pages/tabs/tabs';
 import { Authenticate, RegisterForm, User } from '../models/user';
+import { DialogComponent } from '../../shared/dialog/dialog';
 
 @Injectable()
 export class AuthEffects {
@@ -26,13 +27,13 @@ export class AuthEffects {
     .map((action: Auth.Login) => action.payload)
     .exhaustMap((keys: Authenticate) =>
       this.authService.login(keys)
-        .map((user: User) => new Auth.LoginSuccess({user}))
+        .map((user: User) => new Auth.LoginSuccess({ user }))
         .catch(error => of(new Auth.LoginFailure(error)))
     );
 
   /** Login success */
 
-  @Effect({dispatch: false})
+  @Effect({ dispatch: false })
   loginSuccess$ = this.actions$
     .ofType(Auth.LOGIN_SUCCESS)
     .map((action: Auth.Login) => action.payload)
@@ -45,7 +46,7 @@ export class AuthEffects {
 
   /** Redirect to login page */
 
-  @Effect({dispatch: false})
+  @Effect({ dispatch: false })
   loginRedirect$ = this.actions$
     .ofType(Auth.LOGIN_REDIRECT, Auth.LOGOUT)
     .do(() => {
@@ -71,41 +72,44 @@ export class AuthEffects {
   /** TODO: Autologin after register, replace form.email with form.username
    * (waiting for a decision https://github.com/EyeSeeTea/FIRE-WiFiCalling/issues/37) */
 
-  @Effect({dispatch: false})
+  @Effect({ dispatch: false })
   registerSuccess$ = this.actions$
     .ofType(Auth.REGISTER_SUCCESS)
     .do(() => {
 
-      const alert = this.alerts.create({
-        title: 'Success',
-        message: 'Your account request will be reviewed by the admin.',
-        buttons: ['OK']
-      });
-      alert.present();
+      this.modalCtrl.create(DialogComponent,
+        {
+          title: 'Success',
+          content: 'Your account request will be reviewed by the admin.',
+          buttons: [
+            { label: 'Ok', color: 'primary' }
+          ]
+        }).present();
     });
 
 
   /** Login/Register Fail */
 
-  @Effect({dispatch: false})
+  @Effect({ dispatch: false })
   failure$ = this.actions$
     .ofType(Auth.REGISTER_FAILURE, Auth.LOGIN_FAILURE)
     .map((action: Auth.LoginFailure) => action.payload)
     .map((err) => {
-      // handle errors here
 
-      const alert = this.alerts.create({
-        title: 'Error',
-        message: JSON.stringify(err),
-        buttons: ['OK']
-      });
-      alert.present();
+      this.modalCtrl.create(DialogComponent,
+        {
+          title: 'Error',
+          content: 'Login/Register failed',
+          buttons: [
+            { label: 'Ok', color: 'primary' }
+          ]
+        }).present();
     });
 
   constructor(private actions$: Actions,
-              private authService: AuthService,
-              private appCtrl: App,
-              private secureStorage: SecureStorage,
-              private alerts: AlertController) {
+    private authService: AuthService,
+    private appCtrl: App,
+    private secureStorage: SecureStorage,
+    private modalCtrl: ModalController) {
   }
 }
