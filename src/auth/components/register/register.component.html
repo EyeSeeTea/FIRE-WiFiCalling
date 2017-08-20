@@ -121,24 +121,6 @@
           </ion-col>
         </ion-row>
 
-
-        <!-- ERRORS PANEL -->
-
-        <!--<ion-row *ngIf="showErrors && formErrors" padding-horizontal>-->
-          <!--<ion-col>-->
-            <!--<div class="form-errors">-->
-              <!--<div padding class="error-header">-->
-                <!--<h3>ERROR</h3>-->
-                <!--<span (tap)="showErrors = false"><ion-icon name="close"></ion-icon></span>-->
-              <!--</div>-->
-              <!--<div class="error-body">-->
-                <!--<h5>Error Message</h5>-->
-                <!--<span>Error Code: XXX</span>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</ion-col>-->
-        <!--</ion-row>-->
-
         <ion-row class="fill-space"></ion-row>
 
       </ion-grid>
@@ -146,8 +128,9 @@
     </ion-scroll>
 
     <ion-row>
-      <button ion-button full color="link" type="submit">{{ 'ACCESS.REQUEST_USER' | translate }}</button>
+      <button ion-button type="submit" full color="link">{{ 'ACCESS.REQUEST_USER' | translate }}</button>
     </ion-row>
 
   </ion-grid>
+
 </form>
