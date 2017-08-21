@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 import { PopoverController, Select } from 'ionic-angular';
 import * as notifications from '../../../actions/notifications';
 import { Notification } from '../../../models/notification';
-import { MarkPopupComponent } from "../mark-popup/mark-popup.component";
+import { MarkPopupComponent } from '../mark-popup/mark-popup.component';
 
 @Component({
   selector: 'notif-nav',
@@ -23,7 +23,7 @@ export class NotifNavComponent {
   /** Notifications list to determine seen count in select popover */
   @Input() notifications: Notification[];
 
-  /** Notification date order*/
+  /** Notification date order */
   @Input() order: boolean;
 
   /** Emit the action from the select popover */

@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { SharedModule } from '../../shared/shared.module';
 import { AuthEffects } from '../effects/auth.effects';
 import { reducers } from '../reducers';
 
@@ -17,6 +18,7 @@ import { RegisterComponent } from '../components/register/register.component';
     TranslateModule.forChild(),
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature([AuthEffects]),
+    SharedModule
   ],
   declarations: [
     AuthPage,

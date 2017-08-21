@@ -2,13 +2,13 @@ import * as users from '../actions/users';
 import { User } from '../../auth/models/user';
 
 export interface State {
-  users: User[];
+  list: User[];
   error: any;
   pending: boolean;
 }
 
 export const initialState: State = {
-  users: null,
+  list: null,
   error: null,
   pending: false,
 };
@@ -28,7 +28,7 @@ export function reducer(state = initialState, action: users.Actions): State {
     case users.GET_LIST_SUCCESS: {
       return {
         ...state,
-        users: action.payload,
+        list: action.payload,
         error: null,
         pending: false,
       };
@@ -71,6 +71,6 @@ export function reducer(state = initialState, action: users.Actions): State {
   }
 }
 
-export const getUsers = (state: State) => state.users;
+export const getUsers = (state: State) => state.list;
 export const getError = (state: State) => state.error;
 export const getPending = (state: State) => state.pending;

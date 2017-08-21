@@ -1,26 +1,20 @@
-<ion-navbar>
-	<ion-title text-center>
-		<ion-grid>
-			<ion-row>
-				<ion-col>
-					<img src="assets/img/wifi_logo.svg">
-				</ion-col>
-				<ion-col>
-					<span class="name">{{state?.user?.name}}</span>
-				</ion-col>
-				<ion-col>
-					<span class="phone-number">{{state?.user?.phoneNumber}}</span>
-				</ion-col>
-				<ion-col>
-					<span class="credit">{{state?.user?.credit}}</span>
-				</ion-col>
-			</ion-row>
-		</ion-grid>
-	</ion-title>
+<ion-navbar padding-horizontal>
+  <div class="header">
 
-	<ion-buttons end>
-	  <button ion-button menuToggle>
-	    <ion-icon name="menu"></ion-icon>
-	  </button>
-	</ion-buttons>
+      <ion-buttons>
+        <button ion-button icon-only>
+          <img src="assets/img/wifi_logo.svg">
+        </button>
+      </ion-buttons>
+
+      <div class="fill-space"></div>
+
+      <ion-buttons>
+        <button ion-button icon-only (click)="openMenu()">
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+
+  </div>
 </ion-navbar>
+

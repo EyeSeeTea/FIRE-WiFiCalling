@@ -1,27 +1,29 @@
 <ion-header>
-  <div class="login-header header-bg">
+  <header></header>
+
+  <div class="auth-header">
 
     <!-- LOGO -->
 
-    <div class="login-logo">
-      <!-- TODO: Use logo with title svg -->
+    <div class="auth-logo">
       <img src="assets/img/wifi_logo.svg">
-      <span class="logo-title">WiFiCall</span>
+      <span class="auth-title">WiFiCall</span>
     </div>
 
     <!-- LOGIN/REGISTER TABS -->
 
-    <div class="login-tabs">
-      <div class="login-tab" [class.active]="selectedTab === 'Login'" (tap)="selectedTab = 'Login'">
+    <div class="auth-tabs">
+      <div class="auth-tab" [class.active]="selectedTab === 'Login'" (tap)="selectedTab = 'Login'">
         <span>{{ 'ACCESS.EXISTING_USER' | translate }}</span>
       </div>
-      <div class="login-tab" [class.active]="selectedTab === 'Register'" (tap)="selectedTab = 'Register'">
+      <div class="auth-tab" [class.active]="selectedTab === 'Register'" (tap)="selectedTab = 'Register'">
         <span>{{ 'ACCESS.NEW_USER' | translate }}</span>
       </div>
     </div>
 
   </div>
 </ion-header>
+
 
 <ion-content no-bounce>
 

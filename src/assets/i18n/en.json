@@ -10,6 +10,7 @@
     "BILLING": "Billing"
   },
   "MENU": {
+    "HOME": "Home",
     "LICENSE": "License",
     "ABOUT": "About",
     "SETTINGS": "Settings",

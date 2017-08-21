@@ -10,6 +10,7 @@
     "BILLING": "Recibos"
   },
   "MENU": {
+    "HOME": "Home",
     "LICENSE": "Licencia",
     "ABOUT": "About",
     "SETTINGS": "Preferencias",

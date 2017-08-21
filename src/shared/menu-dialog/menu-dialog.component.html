@@ -1,0 +1,5 @@
+<div class="menu-item" *ngFor="let page of pages">
+  <button [class]="page.classes" (click)="viewCtrl.dismiss(page)">
+    {{ page.title | translate }}
+  </button>
+</div>
