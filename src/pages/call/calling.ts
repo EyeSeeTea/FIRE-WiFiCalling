@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 import { AlertController } from 'ionic-angular';
-import { Http, Headers } from '@angular/http';
+import { FireHttp } from '../../auth/http/fire-http';
 import 'rxjs/add/operator/map';
 
 @IonicPage()
@@ -17,19 +17,15 @@ export class CallingPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public http: Http,
+              private fireHttp: FireHttp,
               private alertCtrl: AlertController,
               public store: Store<any>) {
     this.phoneNumber = this.navParams.get('phoneNumber');
   }
 
   ionViewDidLoad() {
-    var name = 'joel';
-    var pass = 'joel1234';
-    let headers = new Headers();
-    headers.append('Authorization', 'Basic ' + btoa(name + ':' + pass));
-    var url = `http://dev.eyeseetea.com:5000/callPricing/${this.phoneNumber}`;
-    this.http.get(url, {headers: headers}).map(res => res.json()).subscribe(
+    this.fireHttp.get(`/callPricing/${this.phoneNumber}`)
+      .map(res => res.json()).subscribe(
       data => {
         if (data.status == 'success') {
           this.rates = data.data;
