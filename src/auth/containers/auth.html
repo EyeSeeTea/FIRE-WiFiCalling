@@ -1,0 +1,34 @@
+<ion-header>
+  <header></header>
+
+  <div class="auth-header">
+
+    <!-- LOGO -->
+
+    <div class="auth-logo">
+      <img src="assets/img/wifi_logo.svg">
+      <span class="auth-title">WiFiCall</span>
+    </div>
+
+    <!-- LOGIN/REGISTER TABS -->
+
+    <div class="auth-tabs">
+      <div class="auth-tab" [class.active]="selectedTab === 'Login'" (tap)="selectedTab = 'Login'">
+        <span>{{ 'ACCESS.EXISTING_USER' | translate }}</span>
+      </div>
+      <div class="auth-tab" [class.active]="selectedTab === 'Register'" (tap)="selectedTab = 'Register'">
+        <span>{{ 'ACCESS.NEW_USER' | translate }}</span>
+      </div>
+    </div>
+
+  </div>
+</ion-header>
+
+
+<ion-content no-bounce>
+
+  <login [@slideLogin] *ngIf="selectedTab === 'Login'" (submitted)="onLogin($event)"></login>
+
+  <register [@slideRegister] *ngIf="selectedTab === 'Register'" (submitted)="onRegister($event)"></register>
+
+</ion-content>

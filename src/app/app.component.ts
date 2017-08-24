@@ -1,35 +1,37 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateService } from '@ngx-translate/core';
-
-import { TabsPage } from '../pages/tabs/tabs';
-import { AdminPage } from '../pages/admin/admin';
-import { Store } from '@ngrx/store';
-import { AppState } from '../store';
 import { Globalization } from '@ionic-native/globalization';
 import { defaultLang, getSuitableLanguage } from './i18n.constants';
 
+import { TabsPage } from '../pages/tabs/tabs';
+
 @Component({
-  template: `
-    <main [state]="store | async" [pages]="pages"></main>
-  `
+  template: `<ion-nav [root]="rootPage"></ion-nav>`
 })
 export class WiFiCalling {
 
-  pages;
+  @ViewChild(Nav) nav: Nav;
 
-  constructor(platform: Platform, translate: TranslateService, statusBar: StatusBar, splashScreen: SplashScreen, public store: Store<AppState>, private globalization: Globalization) {
+  /** Root page tabs */
+  rootPage = TabsPage;
+
+  constructor(platform: Platform,
+              translate: TranslateService,
+              statusBar: StatusBar,
+              splashScreen: SplashScreen,
+              globalization: Globalization) {
 
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
 
+      /** Initialize translation */
       translate.setDefaultLang(defaultLang);
 
-
-      this.globalization.getPreferredLanguage()
+      globalization.getPreferredLanguage()
         .then(result => {
           const language = getSuitableLanguage(result.value);
           translate.use(language);
@@ -41,15 +43,6 @@ export class WiFiCalling {
         })
     });
 
-    this.pages = [
-      { title: 'WifiCall', component: TabsPage },
-      { title: 'ACCESS.LOGIN', component: 'AccessPage' },
-      { title: 'MENU.ADMIN', component: AdminPage },
-      { title: 'MENU.SETTINGS', component: TabsPage },
-      { title: 'Check Network', component: TabsPage },
-      { title: 'MENU.ABOUT', component: TabsPage },
-      { title: 'MENU.LICENSE', component: TabsPage },
-      { title: 'MENU.LOGOUT', component: TabsPage },
-    ];
   }
+
 }

@@ -16,7 +16,7 @@ page-history, page-contacts {
   button {
   }
 
-  div {
+  .item-content {
     color: color($colors, dark);
     display: flex;
     flex-direction: column;

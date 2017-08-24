@@ -1,0 +1,13 @@
+<ion-header>
+  <header></header>
+</ion-header>
+
+<ion-content>
+
+  <ion-navbar color="brown" padding-horizontal>
+    <ion-title>Billing Preference</ion-title>
+  </ion-navbar>
+
+  <pricing-form [pricing]="pricing$ | async" [pending]="pending$ | async" (pricingChange)="saveChanges($event)"></pricing-form>
+
+</ion-content>

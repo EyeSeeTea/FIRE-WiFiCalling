@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
-import { AppState } from '../../store/app.state';
 import { Store } from '@ngrx/store';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -18,7 +17,7 @@ export class CallingPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http,
-              public store: Store<AppState>) {
+              public store: Store<any>) {
     this.phoneNumber = this.navParams.get('phoneNumber');
 
     var name = 'joel';

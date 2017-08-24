@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule, Http } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -12,11 +12,9 @@ import { Contacts } from '@ionic-native/contacts';
 import { Globalization } from '@ionic-native/globalization';
 
 import { StoreModule } from '@ngrx/store';
-import { appReducer } from '../store/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { AppEffects, AppService } from '../store';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { WiFiCalling } from './app.component';
@@ -26,14 +24,16 @@ import { HistoryPage } from '../pages/history/history';
 import { TopupPage } from '../pages/topup/topup';
 import { ContactsPage } from '../pages/contacts/contacts';
 
-import { AdminPage } from '../pages/admin/admin';
-import { NotificationsPage } from '../pages/notifications/notifications';
-
-import { Core } from '../core/core';
 import { SharedModule } from '../shared/shared.module';
+import { metaReducers, reducers } from '../reducers/index';
+import { FireHttpModule } from '../auth/http/fire-http.module';
 
-export function createTranslateLoader(http: Http) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+import { AuthEffects } from '../auth/effects/auth.effects';
+
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
 }
 
 @NgModule({
@@ -43,51 +43,42 @@ export function createTranslateLoader(http: Http) {
     CallPage,
     HistoryPage,
     TopupPage,
-    AdminPage,
-    NotificationsPage,
-    ContactsPage,
-    Core,
+    ContactsPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(WiFiCalling),
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [Http]
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
       }
     }),
     BrowserAnimationsModule,
-    HttpModule,
     SharedModule,
-    StoreModule.provideStore(appReducer),
-    EffectsModule.run(AppEffects),
-    /** StoreDevtoolsModule is only for dev, will be removed in Production */
-    StoreDevtoolsModule.instrumentOnlyWithExtension({
-      maxAge: 5
-    })
+    FireHttpModule.forRoot(),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument()
   ],
-  bootstrap: [IonicApp],
   entryComponents: [
     WiFiCalling,
     TabsPage,
     CallPage,
     HistoryPage,
     TopupPage,
-    AdminPage,
-    NotificationsPage,
     ContactsPage
   ],
   providers: [
-    AppService,
     StatusBar,
     SplashScreen,
     Contacts,
     Globalization,
-
     { provide: ErrorHandler, useClass: IonicErrorHandler }
-  ]
+  ],
+  bootstrap: [IonicApp]
 })
 export class AppModule {
 }

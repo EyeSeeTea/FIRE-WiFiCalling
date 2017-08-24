@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 
-import { CallingPage } from '../call/calling';
+import { CallingPage } from './calling';
 
 @NgModule({
   declarations: [
@@ -10,8 +10,8 @@ import { CallingPage } from '../call/calling';
   imports: [
     IonicPageModule.forChild(CallingPage)
   ],
-  entryComponents: [
+  exports: [
     CallingPage
   ]
 })
-export class CallingPageModule {};
+export class CallingPageModule {}

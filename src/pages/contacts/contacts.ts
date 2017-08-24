@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Contacts, IContactProperties, IContactFindOptions } from '@ionic-native/contacts';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/switchMap';
@@ -11,7 +10,7 @@ import 'rxjs/add/operator/switchMap';
   templateUrl: 'contacts.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContactsPage implements OnInit {
+export class ContactsPage implements OnInit, OnDestroy {
 
   /** Filter contacts with name or phone number */
   filterKey = new BehaviorSubject('');
@@ -19,7 +18,7 @@ export class ContactsPage implements OnInit {
   /** Contact list */
   list = new Subject<IContactProperties[]>();
 
-  constructor(public contacts: Contacts, public store: Store<AppState>) {
+  constructor(public contacts: Contacts, public store: Store<any>) {
 
   }
 
@@ -39,6 +38,9 @@ export class ContactsPage implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    this.filterKey.unsubscribe();
+  }
 }
 
 const mockList = [

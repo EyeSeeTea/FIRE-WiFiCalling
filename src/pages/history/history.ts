@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store/app.state';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
   selector: 'page-history',
@@ -12,8 +10,7 @@ export class HistoryPage {
 
   history;
 
-  constructor(public store: Store<AppState>,
-              private inAppBrowser: InAppBrowser) {
+  constructor(public store: Store<any>) {
 
     const minDate = new Date('October 13, 2016 11:13:00');
     const maxDate = Date.now();

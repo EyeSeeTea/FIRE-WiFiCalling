@@ -1,0 +1,23 @@
+message-dialog {
+  display: flex !important;
+  flex-direction: column;
+  background-color: white;
+  ion-grid {
+    flex: 1;
+  }
+  .dialog-title h3 {
+    font-size: 18px;
+    margin-top: 0.5em !important;
+    margin-bottom: 0;
+  }
+  .dialog-content {
+    color: color($colors, gray);
+    flex: 1;
+  }
+
+  textarea {
+    padding: 6px;
+    width: 100%;
+    height: 100%;
+  }
+}

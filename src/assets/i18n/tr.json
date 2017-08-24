@@ -10,6 +10,7 @@
     "BILLING": "Fatura"
   },
   "MENU": {
+    "HOME": "Home",
     "LICENSE": "Lisansları",
     "ABOUT": "Hakkinda",
     "SETTINGS": "Ayarlar",
@@ -36,6 +37,7 @@
     "PHONE_NUMBER": "Telefon Numarası"
   },
   "ERR": {
+    "USERNAME_REQUIRED": "Username is required",
     "NAME_REQUIRED": "Name is required.",
     "SURNAME_REQUIRED": "Surname is required.",
     "PASSWORD_REQUIRED": "Password is required.",

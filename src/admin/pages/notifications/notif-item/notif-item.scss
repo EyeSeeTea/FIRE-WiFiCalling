@@ -1,0 +1,85 @@
+notif-item {
+  position: relative;
+  display: block;
+  padding: 6px 16px;
+  border-bottom: 1px solid color($colors, lightgray);
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f5f6+0,f4f1ef+37,e8e0dc+100 */
+  background: #f2f5f6; /* Old browsers */
+  background: -moz-linear-gradient(top, #f2f5f6 0%, #f4f1ef 37%, #e8e0dc 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #f2f5f6 0%,#f4f1ef 37%,#e8e0dc 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #f2f5f6 0%,#f4f1ef 37%,#e8e0dc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#e8e0dc',GradientType=0 ); /* IE6-9 */
+
+  p {
+    font-size: 13px;
+  }
+
+  .notif-item {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+  }
+
+  .notif-img {
+    display: flex;
+    align-items: center;
+    width: 60px;
+    img {
+      object-fit: cover;
+      width: 48px;
+      height: 48px;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+  }
+
+  .notif-seen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: color($colors, primary);
+  }
+
+  .notif-content {
+    flex: 1;
+    display: flex;
+    h2 {
+      color: color($colors, brown);
+      font-size: 14px;
+      margin: 3px 0;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    p {
+      margin: 3px 0;
+      color: color($colors, gray);
+    }
+  }
+
+  .notif-desc {
+    flex: 1;
+  }
+  .notif-date {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 15px;
+    text-align: right;
+    p {
+      color: color($colors, gray);
+    }
+  }
+
+  .notif-actions {
+    flex: 1;
+    display: flex;
+    margin-bottom: 4px;
+    button {
+      flex: 1;
+      margin: 2px 0;
+    }
+  }
+}

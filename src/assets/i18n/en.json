@@ -10,11 +10,24 @@
     "BILLING": "Billing"
   },
   "MENU": {
+    "HOME": "Home",
     "LICENSE": "License",
     "ABOUT": "About",
     "SETTINGS": "Settings",
     "ADMIN": "Admin",
     "LOGOUT": "Log Out"
+  },
+  "ADMIN": {
+    "NOTIF": {
+      "FILTER": {
+        "TOPPED_UP": "topped up",
+        "USER_REQUEST": "user request",
+        "USER_ACCEPTED": "user accepted",
+        "MESSAGE_SENT": "message sent",
+        "PROFILE_UPDATED": "profile updated",
+        "USER_NAME": "user name"
+      }
+    }
   },
   "ACCESS": {
     "LOGIN": "Log In",
@@ -36,6 +49,7 @@
     "PHONE_NUMBER": "Phone Number"
   },
   "ERR": {
+    "USERNAME_REQUIRED": "Username is required",
     "NAME_REQUIRED": "Name is required.",
     "SURNAME_REQUIRED": "Surname is required.",
     "PASSWORD_REQUIRED": "Password is required.",
