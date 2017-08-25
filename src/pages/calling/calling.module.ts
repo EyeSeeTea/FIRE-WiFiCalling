@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
+import { SharedModule } from '../../shared/shared.module';
 
 import { CallingPage } from './calling';
 
@@ -8,7 +9,8 @@ import { CallingPage } from './calling';
     CallingPage
   ],
   imports: [
-    IonicPageModule.forChild(CallingPage)
+    IonicPageModule.forChild(CallingPage),
+    SharedModule
   ],
   exports: [
     CallingPage
