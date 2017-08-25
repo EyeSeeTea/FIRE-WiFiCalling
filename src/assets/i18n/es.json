@@ -48,5 +48,11 @@
     "ADDRESS_REQUIRED": "Direccion es obligatoria",
     "PHONE_NUMBER_REQUIRED": "Teléfono es obligatorio",
     "PHONE_NUMBER_LENGTH": "Teléfono debe tener una longitud minima de 10"
+  },
+  "CALLING": {
+    "CALL": "Llamar",
+    "CALLING_TO": "Llamando a",
+    "USE_GSM": "Usar GSM",
+    "USE_VOIP": "Usar VOIP"
   }
 }

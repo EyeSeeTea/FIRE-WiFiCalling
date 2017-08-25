@@ -47,5 +47,11 @@
     "ADDRESS_REQUIRED": "Address is required.",
     "PHONE_NUMBER_REQUIRED": "Phone number is required.",
     "PHONE_NUMBER_LENGTH": "Phone number must be 10 digit."
+  },
+  "CALLING": {
+    "CALL": "Call",
+    "CALLING_TO": "Calling to",
+    "USE_GSM": "Use GSM",
+    "USE_VOIP": "Use VoIP"
   }
 }

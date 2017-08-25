@@ -6,7 +6,7 @@
   <ion-grid text-center>
     <ion-row>
       <ion-col>
-        <h1>Calling to</h1>
+        <h1>{{'CALLING.CALLING_TO' | translate}}</h1>
         <h1>{{phoneNumber}}</h1>
       </ion-col>
     </ion-row>
@@ -36,10 +36,12 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <button ion-button class="call_button" (click)="gsm()">Use GSM</button>
+        <button ion-button class="call_button" (click)="gsm()">
+          {{'CALLING.USE_GSM' | translate}}</button>
       </ion-col>
       <ion-col>
-        <button ion-button class="call_button" (click)="voip()">Use VoIP</button>
+        <button ion-button class="call_button" (click)="voip()">
+          {{'CALLING.USE_VOIP' | translate}}</button>
       </ion-col>
     </ion-row>
   </ion-grid>
