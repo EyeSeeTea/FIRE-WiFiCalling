@@ -6,7 +6,9 @@ import { AlertController } from 'ionic-angular';
 import { FireHttp } from '../../auth/http/fire-http';
 import 'rxjs/add/operator/map';
 
-@IonicPage()
+@IonicPage({
+  segment: 'calling/:phoneNumber'
+})
 @Component({
   selector: 'page-calling',
   templateUrl: 'calling.html',
