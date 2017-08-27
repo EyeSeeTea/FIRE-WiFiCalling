@@ -13,6 +13,6 @@
 
 <ion-row>
   <button ion-button full color="link" *ngIf="selectedUsers.length" (click)="message.next(selectedUsers)">
-    Send Message
+    {{ 'ADMIN.USERS.SEND_MESSAGE' | translate }}
   </button>
 </ion-row>

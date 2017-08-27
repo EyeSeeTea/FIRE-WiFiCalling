@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   });
   sub: Subscription;
 
-  @Output() submitted = new EventEmitter();
+  @Output() submit = new EventEmitter();
 
   ngOnInit() {
     this.sub = this.form.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.form.valid) {
-      this.submitted.emit(this.form.value);
+      this.submit.emit(this.form.value);
     } else {
       this.showErrors = true;
     }
@@ -65,10 +65,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   validationMessages = {
     username: {
-      required: 'ERR.USERNAME_REQUIRED'
+      required: 'FORMS.ERR.USERNAME_REQUIRED'
     },
     password: {
-      required: 'ERR.PASSWORD_REQUIRED'
+      required: 'FORMS.ERR.PASSWORD_REQUIRED'
     },
   };
 

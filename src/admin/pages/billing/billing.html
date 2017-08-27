@@ -5,7 +5,7 @@
 <ion-content>
 
   <ion-navbar padding-horizontal>
-    <ion-title>Billing Preference</ion-title>
+    <ion-title>{{ 'ADMIN.BILLING.TITLE' | translate }}</ion-title>
   </ion-navbar>
 
   <pricing-form [pricing]="pricing$ | async" [pending]="pending$ | async" (pricingChange)="saveChanges($event)"></pricing-form>

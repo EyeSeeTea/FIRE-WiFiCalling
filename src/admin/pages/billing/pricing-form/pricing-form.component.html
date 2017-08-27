@@ -1,4 +1,4 @@
-<form #pricingForm="ngForm"  (ngSubmit)="onSubmit()">
+<form #pricingForm="ngForm" (ngSubmit)="onSubmit()">
 
   <ion-grid no-padding *ngIf="pricing">
 
@@ -6,14 +6,14 @@
 
       <ion-row>
         <ion-col text-center>
-          <h6>VOIP Calls Prices (R/min)</h6>
+          <h6> {{ 'ADMIN.BILLING.VOIP_CALL_PRICES' | translate }} </h6>
         </ion-col>
       </ion-row>
       <ion-row>
 
         <ion-col>
           <div class="input-label">
-            Mobile local
+            {{ 'ADMIN.BILLING.MOBILE_LOCAL' | translate }}
           </div>
           <div class="fire-input">
             <div class="currency">R</div>
@@ -23,7 +23,7 @@
 
         <ion-col>
           <div class="input-label">
-            Land lines local
+            {{ 'ADMIN.BILLING.LAND_LINES_LOCAL' | translate }}
           </div>
           <div class="fire-input">
             <div class="currency">R</div>
@@ -37,7 +37,8 @@
 
         <ion-col>
           <div class="input-label">
-            Mobile national
+            {{ 'ADMIN.BILLING.MOBILE_NATIONAL' | translate }}
+
           </div>
           <div class="fire-input">
             <div class="currency">R</div>
@@ -47,7 +48,7 @@
 
         <ion-col>
           <div class="input-label">
-            Land lines national
+            {{ 'ADMIN.BILLING.LAND_LINES_NATIONAL' | translate }}
           </div>
           <div class="fire-input">
             <div class="currency">R</div>
@@ -74,21 +75,23 @@
 
         <ion-col>
           <div class="input-label">
-            Mobile international
+            {{ 'ADMIN.BILLING.LAND_LINES_NATIONAL' | translate }}
           </div>
           <div class="fire-input">
             <div class="currency">R</div>
-            <ion-input name="interMobile" type="number" [(ngModel)]="pricing.international[selectedIndex].mobile"></ion-input>
+            <ion-input name="interMobile" type="number"
+                       [(ngModel)]="pricing.international[selectedIndex].mobile"></ion-input>
           </div>
         </ion-col>
 
         <ion-col>
           <div class="input-label">
-            Land lines international
+            {{ 'ADMIN.BILLING.LAND_LINES_INTERNATIONAL' | translate }}
           </div>
           <div class="fire-input">
             <div class="currency">R</div>
-            <ion-input name="interLandLines" type="number" [(ngModel)]="pricing.international[selectedIndex].landLines"></ion-input>
+            <ion-input name="interLandLines" type="number"
+                       [(ngModel)]="pricing.international[selectedIndex].landLines"></ion-input>
           </div>
         </ion-col>
 
@@ -98,7 +101,9 @@
     </ion-grid>
 
     <ion-row>
-      <button ion-button type="submit" full color="link" *ngIf="!pending && !pricingForm.pristine">Save changes</button>
+      <button ion-button type="submit" full color="link" *ngIf="!pending && !pricingForm.pristine">
+        {{ 'FORMS.SAVE_CHANGES' | translate }}
+      </button>
     </ion-row>
 
   </ion-grid>

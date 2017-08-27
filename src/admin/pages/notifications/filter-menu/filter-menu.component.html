@@ -1,9 +1,13 @@
-<div class="item" *ngFor="let filter of filterOptions">
-  <button ion-button clear full class="item" (click)="setFilter(filter)">
-    {{ 'ADMIN.NOTIF.FILTER.' + filter.name | translate }}
-  </button>
-</div>
+<div padding class="main-menu">
 
-<div class="item search-item">
-  <search-input (textChange)="filterByName($event)" placeholder="Filter by user name"></search-input>
+  <div class="item" *ngFor="let filter of filterOptions">
+    <button ion-button clear full class="item" (click)="setFilter(filter)">
+      {{ ('ADMIN.NOTIF.' + filter.name) | translate }}
+    </button>
+  </div>
+
+  <div class="item search-item">
+    <search-input (textChange)="filterByName($event)"
+                  [placeholder]="'ADMIN.NOTIF.FILTER_NAME' | translate"></search-input>
+  </div>
 </div>

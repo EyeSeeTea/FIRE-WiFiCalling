@@ -4,7 +4,7 @@
     <ion-buttons>
       <button ion-button (click)="toggleMenu(!showMenu)">
         <ion-icon name="funnel"></ion-icon>
-        Filter
+        {{ 'ADMIN.NOTIF.FILTER' | translate }}
       </button>
     </ion-buttons>
 
@@ -13,7 +13,7 @@
     <ion-buttons class="notif-date">
       <button ion-button (click)="setOrder(!order)">
         <ion-icon [name]="(order) ? 'arrow-dropdown' : 'arrow-dropup'"></ion-icon>
-        Date
+        {{ 'ADMIN.NOTIF.DATE' | translate }}
       </button>
     </ion-buttons>
 

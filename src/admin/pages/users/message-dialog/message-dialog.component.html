@@ -2,9 +2,9 @@
 
   <ion-row padding text-center class="dialog-title">
     <ion-col text-center>
-      <h3 *ngIf="users.length === 1;else manyUsers">Message to {{ users[0]?.name }}</h3>
+      <h3 *ngIf="users.length === 1;else manyUsers">{{ 'ADMIN.USERS.MESSAGE_TO' | translate }} {{ users[0]?.name }}</h3>
       <ng-template #manyUsers>
-        <h3>Message to {{ users.length }} users</h3>
+        <h3>{{ 'ADMIN.USERS.MESSAGE_TO' | translate }} {{ users.length }} {{ 'ADMIN.USERS.USERS' | translate }}</h3>
       </ng-template>
     </ion-col>
   </ion-row>
@@ -16,6 +16,8 @@
   </ion-row>
 
   <ion-row class="dialog-actions">
-    <button ion-button full color="link" (click)="viewCtrl.dismiss(message)">Send Message</button>
+    <button ion-button full color="link" (click)="viewCtrl.dismiss(message)">
+      {{ 'ADMIN.USERS.SEND_MESSAGE' | translate }}
+    </button>
   </ion-row>
 </ion-grid>

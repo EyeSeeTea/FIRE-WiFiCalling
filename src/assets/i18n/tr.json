@@ -1,5 +1,4 @@
 {
-  "TOP_UP_CONTENT": "Top up content",
   "TABS": {
     "CALL": "Klavye",
     "CONTACTS": "Kişiler",
@@ -10,19 +9,55 @@
     "BILLING": "Fatura"
   },
   "MENU": {
-    "HOME": "Home",
+    "HOME": "Ana",
     "LICENSE": "Lisansları",
     "ABOUT": "Hakkinda",
     "SETTINGS": "Ayarlar",
     "ADMIN": "Yönetici",
     "LOGOUT": "Çikiş Yap"
   },
-  "ACCESS": {
+  "ADMIN": {
+    "USERS": {
+      "SEND_MESSAGE": "Mesaj gönder",
+      "LAST_ACCESS": "Son erişim",
+      "SEARCH_USER": "Kullanıcı ara",
+      "USERS": "Kullanıcılar",
+      "MESSAGE_TO": "Mesajı"
+    },
+    "BILLING": {
+      "TITLE": "Faturalandırma Tercihi",
+      "VOIP_CALL_PRICES": "VOIP Çağrı Fiyatları (R/min)",
+      "MOBILE_LOCAL": "Mobil Yerel",
+      "MOBILE_NATIONAL": "Mobil Ulusal",
+      "MOBILE_INTERNATIONAL": "Mobil Uluslararası",
+      "LAND_LINES_LOCAL": "Yerel sabit hatlar",
+      "LAND_LINES_NATIONAL": "Ulusal sabit hatlar",
+      "LAND_LINES_INTERNATIONAL": "Uluslararası sabit hatlar"
+    },
+    "NOTIF": {
+      "TOPPED_UP": "tepesinde",
+      "USER_REQUEST": "kullanıcı isteği",
+      "USER_ACCEPTED": "kullanıcı kabul etti",
+      "MESSAGE_SENT": "mesaj gönderildi",
+      "PROFILE_UPDATED": "profile updated",
+      "USER_NAME": "kullanıcı adı",
+      "FILTER": "Filtre",
+      "DATE": "Tarih",
+      "FILTER_NAME": "Kullanıcı adına göre filtrele"
+    }
+  },
+  "AUTH": {
     "LOGIN": "Oturum Aç",
     "REQUEST_USER": "Kayıt Olmak",
     "EXISTING_USER": "Mevcut Kullanıcı",
     "NEW_USER": "Yeni Kullanıcı",
     "FORGOT_PASSWORD": "Şifre Unuttum?"
+  },
+  "VOUCHER": {
+    "ADD": "Add Voucher",
+    "LIST": "Vouchers List",
+    "VOUCHER_CODE": "Voucher Code",
+    "ENTER_CODE": "Enter Voucher Code"
   },
   "FORMS": {
     "NAME": "Adı",
@@ -34,19 +69,21 @@
     "REPEAT_PASSWORD": "Tekrar Şifre",
     "EMAIL": "Eposta",
     "ADDRESS": "Adres",
-    "PHONE_NUMBER": "Telefon Numarası"
-  },
-  "ERR": {
-    "USERNAME_REQUIRED": "Username is required",
-    "NAME_REQUIRED": "Name is required.",
-    "SURNAME_REQUIRED": "Surname is required.",
-    "PASSWORD_REQUIRED": "Password is required.",
-    "CPASSWORD_REQUIRED": "Confirm Password is required.",
-    "PASSWORD_MATCH": "Passwords do not match.",
-    "EMAIL_REQUIRED": "Email is required.",
-    "EMAIL_VALID": "Email is not valid.",
-    "ADDRESS_REQUIRED": "Address is required.",
-    "PHONE_NUMBER_REQUIRED": "Phone number is required.",
-    "PHONE_NUMBER_LENGTH": "Phone number must be 10 digit."
+    "PHONE_NUMBER": "Telefon Numarası",
+    "SERVER": "Sunucu",
+    "SAVE_CHANGES": "Değişiklikleri Kaydet",
+    "ERR": {
+      "USERNAME_REQUIRED": "Kullanıcı adı gerekiyor",
+      "NAME_REQUIRED": "Ad gerekli",
+      "SURNAME_REQUIRED": "Soyadı gerekiyor",
+      "PASSWORD_REQUIRED": "Şifre gereklidir",
+      "CPASSWORD_REQUIRED": "Şifreyi Onayla Gerekli Onaylama",
+      "PASSWORD_MATCH": "Şifreler eşleşmedi",
+      "EMAIL_REQUIRED": "Email gereklidir",
+      "EMAIL_VALID": "Email geçerli değil",
+      "ADDRESS_REQUIRED": "Adres gerekiyor",
+      "PHONE_NUMBER_REQUIRED": "Telefon numarası gerekiyor",
+      "PHONE_NUMBER_LENGTH": "Telefon numarası 10 basamaklı olmalıdır"
+    }
   }
 }

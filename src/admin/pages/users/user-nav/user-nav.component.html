@@ -14,20 +14,20 @@
       <ion-buttons [@toggleIn] *ngIf="!options.search" class="user-name">
         <button ion-button (click)="options.orderReverse = !options.orderReverse">
           <ion-icon [name]="options.orderReverse ? 'arrow-dropup': 'arrow-dropdown'"></ion-icon>
-          Name
+          {{ 'FORMS.NAME' | translate }}
         </button>
       </ion-buttons>
 
       <!-- Search User Navbar -->
 
       <search-input [@toggleIn] *ngIf="options.search" [(text)]="options.key"
-                    placeholder="Search for user"></search-input>
+                    [placeholder]="'ADMIN.USERS.SEARCH_USER' | translate"></search-input>
     </div>
 
     <div class="fill-space"></div>
 
     <div class="user-last-access">
-      Last Access
+      {{ 'ADMIN.USERS.LAST_ACCESS' | translate }}
     </div>
 
     <ion-checkbox class="user-check" [(ngModel)]="options.checkAll"></ion-checkbox>
