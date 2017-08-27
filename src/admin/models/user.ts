@@ -8,7 +8,6 @@ export interface User {
   gender: string;
   state: string;
   phoneNumber: string;
-  serverHost: string;
   admin: boolean;
   created: Date;
   updated: Date;
