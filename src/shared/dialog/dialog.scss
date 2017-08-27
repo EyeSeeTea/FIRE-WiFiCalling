@@ -14,4 +14,9 @@ fire-dialog {
     flex: 1;
     color: color($colors, gray);
   }
+
+  button[color=light] {
+    color: color($colors, dark);
+    text-decoration: none;
+  }
 }
