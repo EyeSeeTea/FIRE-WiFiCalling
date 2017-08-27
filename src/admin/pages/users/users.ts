@@ -3,8 +3,8 @@ import { IonicPage, ModalController, Refresher } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 
-import * as users from '../../actions/users';
-import * as fromAdmin from '../../reducers';
+import { GetList, SendMessage } from '../../actions/users';
+import { getUsers, getUsersPending } from '../../reducers';
 import { MessageDialogComponent } from './message-dialog/message-dialog.component';
 import { User, UserListOptions } from '../../models/user';
 
@@ -16,10 +16,10 @@ import { User, UserListOptions } from '../../models/user';
 export class UsersPage implements OnInit, OnDestroy {
 
   /** Select user list from store */
-  users$ = this.store.select(fromAdmin.getUsers);
+  users$ = this.store.select(getUsers);
 
   /** Select user list pending state from store */
-  pending$ = this.store.select(fromAdmin.getUsersPending);
+  pending$ = this.store.select(getUsersPending);
 
   /** User list pending observer */
   pendingObs: Subscription;
@@ -35,7 +35,7 @@ export class UsersPage implements OnInit, OnDestroy {
   /** Refresher ref */
   @ViewChild(Refresher) refresher: Refresher;
 
-  constructor(public store: Store<fromAdmin.State>, private modalCtrl: ModalController,) {
+  constructor(public store: Store<any>, private modalCtrl: ModalController) {
   }
 
   /** Send message to selected users */
@@ -43,14 +43,14 @@ export class UsersPage implements OnInit, OnDestroy {
 
     /** Show message dialog */
     const messageDialog = this.modalCtrl.create(MessageDialogComponent,
-      {
-        users: selectedUsers
-      });
+      {users: selectedUsers},
+      {cssClass: 'message-dialog'}
+    );
 
     messageDialog.onDidDismiss(message => {
       /** Send message to users if it exists */
       if (message) {
-        this.store.dispatch(new users.SendMessage({message: message, users: selectedUsers}));
+        this.store.dispatch(new SendMessage({message: message, users: selectedUsers}));
       }
     });
 
@@ -59,7 +59,7 @@ export class UsersPage implements OnInit, OnDestroy {
 
   getUserList() {
     /** Refresh user list */
-    this.store.dispatch(new users.GetList(null));
+    this.store.dispatch(new GetList(null));
   }
 
   ionViewWillEnter() {

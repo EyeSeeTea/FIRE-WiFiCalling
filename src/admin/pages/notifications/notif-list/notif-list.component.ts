@@ -8,12 +8,11 @@ import {
   QueryList,
   ViewChildren
 } from '@angular/core';
-import { Filter, Notification, NotificationAction, NotificationSelect } from '../../../models/notification';
+import { Filter, Notification, NotificationSelect } from '../../../models/notification';
 import { NotifItemComponent } from '../notif-item/notif-item.component';
 import { filterMenuAnimation } from '../../../animations/admin.animations';
 import { Store } from '@ngrx/store';
-import * as notifications from '../../../actions/notifications';
-import * as fromAdmin from '../../../reducers';
+import { MarkSeen } from '../../../actions/notifications';
 
 @Component({
   selector: 'notif-list',
@@ -64,19 +63,16 @@ export class NotifListComponent implements AfterViewChecked {
   /** Filter emitter for (user_request/user_accepted/topped_up...etc) */
   @Output() filterChange = new EventEmitter<Filter>();
 
-  /** Actions emitter for (accept/reject/mark as seen) */
-  @Output() actions = new EventEmitter<NotificationAction>();
-
   /** Query notifications' components */
   @ViewChildren(NotifItemComponent) notifItems: QueryList<NotifItemComponent>;
 
-  constructor(private store: Store<fromAdmin.State>, private cd: ChangeDetectorRef) {
+  constructor(private store: Store<any>, private cd: ChangeDetectorRef) {
 
   }
 
   /** Mark selected notification as seen */
   markAsSeen() {
-    this.store.dispatch(new notifications.MarkSeen(this.selectedNotifications));
+    this.store.dispatch(new MarkSeen(this.selectedNotifications));
   }
 
   ngAfterViewChecked() {

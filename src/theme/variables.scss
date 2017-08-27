@@ -5,15 +5,12 @@
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
 
-
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
 
-
 @import "ionic.globals";
-
 
 // Shared Variables
 // --------------------------------------------------
@@ -22,7 +19,6 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.
@@ -30,7 +26,6 @@ $app-direction: ltr;
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
-
 
 $colors: (
   primary: #d95e2a,
@@ -50,18 +45,17 @@ $fire-nav-bg: linear-gradient(180deg, #E55200 0%, #C01600 100%);
 
 $admin-nav-bg: linear-gradient(180deg, #700015 0%, #431C00 100%);
 
-
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
-
+$tabs-ios-tab-icon-color-active: color($colors, light);
+$tabs-ios-tab-text-color-active: color($colors, light);
+$tabs-ios-tab-text-color: color($colors, light);
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
 
 // Toolbar
 $toolbar-md-background: color($colors, primary);
@@ -76,9 +70,6 @@ $tabs-md-tab-color-inactive: #fdb2a1;
 // --------------------------------------------------
 // Windows only Sass variables can go here
 
-
-
-
 // App Theme
 // --------------------------------------------------
 // Ionic apps can have different themes applied, which can
@@ -88,7 +79,6 @@ $tabs-md-tab-color-inactive: #fdb2a1;
 
 @import "ionic.theme.default";
 
-
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
@@ -96,13 +86,11 @@ $tabs-md-tab-color-inactive: #fdb2a1;
 
 @import "ionic.ionicons";
 
-
 // Fonts
 // --------------------------------------------------
 
 @import "roboto";
 @import "noto-sans";
-
 
 // Dialog
 

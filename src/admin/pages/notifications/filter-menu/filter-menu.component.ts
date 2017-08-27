@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Filter, NotificationFilter } from '../../../models/notification';
 import { Store } from '@ngrx/store';
-import * as notifications from '../../../actions/notifications';
-import * as fromAdmin from '../../../reducers';
+import { SetFilter } from '../../../actions/notifications';
 
 @Component({
   selector: 'filter-menu',
@@ -12,7 +11,7 @@ export class FilterMenuComponent implements OnInit {
 
   filterOptions = [];
 
-  constructor(private store: Store<fromAdmin.State>) {
+  constructor(private store: Store<any>) {
 
   }
 
@@ -29,7 +28,7 @@ export class FilterMenuComponent implements OnInit {
 
   /** Set notifications filter */
   setFilter(filter: Filter) {
-    this.store.dispatch(new notifications.SetFilter(filter));
+    this.store.dispatch(new SetFilter(filter));
   }
 
   /** Filter notifications by username */

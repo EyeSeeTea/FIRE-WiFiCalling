@@ -24,12 +24,12 @@ import { MenuDialogComponent } from './menu-dialog/menu-dialog.component';
 @NgModule({
   declarations: [
     HeaderComponent,
-    TimeAgoPipe,
     DialogComponent,
     MessageDialogComponent,
     MenuDialogComponent,
     MarkPopupComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    TimeAgoPipe
   ],
   imports: [
     IonicModule,
@@ -41,13 +41,13 @@ import { MenuDialogComponent } from './menu-dialog/menu-dialog.component';
     ReactiveFormsModule
   ],
   exports: [
-    HeaderComponent,
-    OrderModule,
-    TimeAgoPipe,
     TranslateModule,
     FilterPipeModule,
     ReactiveFormsModule,
-    SearchInputComponent
+    OrderModule,
+    HeaderComponent,
+    SearchInputComponent,
+    TimeAgoPipe
   ],
   entryComponents: [
     DialogComponent,

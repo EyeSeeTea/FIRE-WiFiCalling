@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ISettings } from '../models/settings';
 
-import * as SettingsActions from '../actions/settings';
-import * as fromSettings from '../reducers';
+import { UpdateSettings } from '../actions/settings';
 import { of } from 'rxjs/observable/of';
 
 @IonicPage()
@@ -18,7 +17,7 @@ export class SettingsPage {
   settings$; // = this.store.select(fromSettings.getSettings);
   pending$; // = this.store.select(fromSettings.getSettingsPagePending);
 
-  constructor(private store: Store<fromSettings.State>) {
+  constructor(private store: Store<any>) {
   }
 
   ngOnInit() {
@@ -37,7 +36,7 @@ export class SettingsPage {
   }
 
   saveChanges(settings: ISettings) {
-    this.store.dispatch(new SettingsActions.UpdateSettings(settings));
+    this.store.dispatch(new UpdateSettings(settings));
   }
 
 }

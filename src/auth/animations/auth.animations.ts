@@ -11,27 +11,24 @@ export const errAnimation = trigger('slideDown', [
   ])
 ]);
 
-export const registerAnimation = trigger(
-  'slideRegister', [
-    transition(':enter', [
-      style({transform: 'translateX(100%)'}),
-      animate('300ms', style({transform: 'translateX(0)'}))
-    ]),
-    transition(':leave', [
-      style({transform: 'translateX(0)'}),
-      animate('300ms', style({transform: 'translateX(100%)'}))
-    ])
-  ]
-);
+export const registerAnimation = trigger('slideRegister', [
+  transition(':enter', [
+    style({transform: 'translateX(100%)'}),
+    animate('300ms', style({transform: 'translateX(0)'}))
+  ]),
+  transition(':leave', [
+    style({transform: 'translateX(0)'}),
+    animate('300ms', style({transform: 'translateX(100%)'}))
+  ])
+]);
 
-export const loginAnimation = trigger(
-  'slideLogin', [
-    transition(':enter', [
-      style({transform: 'translateX(-100%)'}),
-      animate('300ms', style({transform: 'translateX(0%)'}))
-    ]),
-    transition(':leave', [
-      style({transform: 'translateX(0)'}),
-      animate('300ms', style({transform: 'translateX(-100%)'}))
-    ])
-  ]);
+export const loginAnimation = trigger('slideLogin', [
+  transition(':enter', [
+    style({transform: 'translateX(-100%)'}),
+    animate('300ms', style({transform: 'translateX(0%)'}))
+  ]),
+  transition(':leave', [
+    style({transform: 'translateX(0)'}),
+    animate('300ms', style({transform: 'translateX(-100%)'}))
+  ])
+]);

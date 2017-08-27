@@ -12,11 +12,6 @@ export interface Notification {
   user: User;
 }
 
-export interface NotificationAction {
-  type: string;
-  payload: any;
-}
-
 export const NotificationFilter = {
   USER_REQUEST: 'USER_REQUEST',
   USER_ACCEPTED: 'USER_ACCEPTED',

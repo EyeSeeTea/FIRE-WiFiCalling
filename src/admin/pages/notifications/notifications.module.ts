@@ -9,6 +9,7 @@ import { FilterStateComponent } from './filter-state/filter-state.component';
 import { NotifItemComponent } from './notif-item/notif-item.component';
 import { NotifListComponent } from './notif-list/notif-list.component';
 import { NotifNavComponent } from './notif-nav/notif-nav.component';
+import { NotifWrapperComponent } from './notif-wrapper/notif-wrapper.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { NotifNavComponent } from './notif-nav/notif-nav.component';
     NotifItemComponent,
     NotificationsPage,
     NotifListComponent,
-    NotifNavComponent
+    NotifNavComponent,
+    NotifWrapperComponent
   ],
   exports: [
     NotificationsPage
