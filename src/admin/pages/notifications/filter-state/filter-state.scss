@@ -1,0 +1,14 @@
+filter-state {
+  line-height: 40px;
+  height: 40px;
+  padding: 0 15px;
+  background-color: color($colors, lightgray);
+  text-transform: uppercase;
+  font-size: 13px;
+  ion-icon {
+    line-height: 40px;
+    margin-right: 2px;
+    float: right;
+    cursor: pointer;
+  }
+}

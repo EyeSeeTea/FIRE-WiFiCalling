@@ -1,3 +1,13 @@
 message-dialog {
 
 }
+
+
+.modal-wrapper{
+  height: 300px;
+}
+
+// Notif. Select all popover, remove default bg
+.popover-content{
+  background-color: transparent !important;
+}

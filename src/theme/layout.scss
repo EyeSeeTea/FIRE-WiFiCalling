@@ -1,0 +1,13 @@
+ion-grid {
+  flex: 1;
+}
+
+ion-scroll {
+  flex: 1;
+  white-space: nowrap;
+  .scroll-zoom-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+}

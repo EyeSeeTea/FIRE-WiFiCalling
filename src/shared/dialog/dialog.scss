@@ -2,9 +2,7 @@ fire-dialog {
   display: flex !important;
   flex-direction: column;
   background-color: white;
-  ion-grid {
-    flex: 1;
-  }
+
   .dialog-title h3 {
     font-size: 18px;
     margin-top: 0.5em !important;

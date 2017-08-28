@@ -1,6 +1,6 @@
 page-auth {
   .auth-header {
-    background: $fire-nav-bg;
+    background: $fire-nav-tabs-bg;
     color: white;
     width: 100%;
     .auth-logo {
@@ -18,9 +18,6 @@ page-auth {
       width: 60px;
       height: 60px;
     }
-  }
-  ion-grid {
-    flex: 1;
   }
   form {
     height: 100%;
@@ -58,7 +55,7 @@ page-auth {
       span {
         position: relative;
         padding: 15px;
-        width: 140px;
+        width: 160px;
         text-align: center;
       }
     }
@@ -76,14 +73,4 @@ page-auth {
     }
   }
 
-  ion-scroll {
-    flex: 1;
-    white-space: nowrap;
-    .scroll-zoom-wrapper {
-      min-height: 100%;
-    }
-    .scroll-zoom-wrapper {
-      display: flex;
-    }
-  }
 }

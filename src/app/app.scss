@@ -1,5 +1,7 @@
 @import '../theme/forms';
 @import '../theme/buttons';
+@import '../theme/dialogs';
+@import '../theme/layout';
 
 .activeHighlight {
 	background-color: color($colors, light);
@@ -7,8 +9,4 @@
 
 .fill-space{
   flex: 1;
-}
-
-.modal-wrapper{
-  height: 300px;
 }

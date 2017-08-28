@@ -64,6 +64,17 @@
   }
 }
 
+// TOGGLE BUTTON (male/female) */
+.btn-toggle-option {
+  position: relative;
+  flex: 1;
+}
+
+.btn-toggle {
+  background-color: color($colors, gray);
+}
+
+// FORMS ERRORS
 .fire-input-error {
   display: flex;
   align-items: center;
@@ -74,61 +85,6 @@
   z-index: 50;
 }
 
-// TOGGLE BUTTON
-
-.btn-toggle-option {
-  position: relative;
-  flex: 1;
-}
-
-.btn-toggle {
-  background-color: color($colors, gray);
-}
-
-.form-errors {
-  background-color: color($colors, danger);
-  color: white;
-  text-align: center;
-  padding: 3px;
-  .error-header {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 42px;
-    h3 {
-      margin: 0;
-    }
-    span {
-      font-size: 20px;
-      position: absolute;
-      right: 12px;
-      top: 0;
-      bottom: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      ion-icon {
-        font-weight: bold;
-      }
-    }
-  }
-  .error-body {
-    background-color: white;
-    color: color($colors, danger);
-    display: flex;
-    flex-direction: column;
-    h5 {
-      margin-top: 1em;
-    }
-    span {
-      margin-top: 0.5em;
-      margin-bottom: 2em;
-    }
-  }
-}
-
 /** hide arrow buttons from number input */
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -136,8 +92,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-/** Input placholder color */
-
+/** Input placeholder color */
 .text-input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
   color: color($colors, gray);
 }

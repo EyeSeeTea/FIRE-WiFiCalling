@@ -40,8 +40,13 @@ $colors: (
   form: #E0E0E0
 );
 
+// LIST ITEM BACKGROUND
+
+$list-item-bg: linear-gradient(to bottom, #f2f5f6 0%,#f4f1ef 37%,#e8e0dc 100%);
+
 // FIRE BAR BACKGROUND
 $fire-nav-bg: linear-gradient(180deg, #E55200 0%, #C01600 100%);
+$fire-nav-tabs-bg: linear-gradient(180deg, #C01600 0%, #E55200 100%);
 
 $admin-nav-bg: linear-gradient(180deg, #700015 0%, #431C00 100%);
 
