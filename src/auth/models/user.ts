@@ -18,6 +18,8 @@ export interface User {
   id: number;
   name: string;
   username: string;
+  password: string;
+  serverHost: string;
   address: string;
   avatarUrl: string;
   email: string;

@@ -4,7 +4,7 @@ import { loginAnimation, registerAnimation } from '../animations/auth.animations
 import { Store } from '@ngrx/store';
 import { Authenticate, RegisterForm } from '../models/user';
 
-import { Login, Register } from '../actions/auth';
+import * as Auth from '../actions/auth';
 
 @IonicPage()
 @Component({
@@ -21,12 +21,12 @@ export class AuthPage {
   constructor(private store: Store<any>) {
   }
 
-  onLogin(e: Authenticate) {
-    this.store.dispatch(new Login(e));
+  onLogin(keys: Authenticate) {
+    this.store.dispatch(new Auth.Login(keys));
   }
 
-  onRegister(e: RegisterForm) {
-    this.store.dispatch(new Register(e));
+  onRegister(form: RegisterForm) {
+    this.store.dispatch(new Auth.Register(form));
   }
 
 }

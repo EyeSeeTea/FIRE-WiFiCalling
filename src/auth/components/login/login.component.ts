@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   });
   sub: Subscription;
 
-  @Output() submit = new EventEmitter();
+  @Output() login = new EventEmitter();
 
   ngOnInit() {
     this.sub = this.form.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.form.valid) {
-      this.submit.emit(this.form.value);
+      this.login.emit(this.form.value);
     } else {
       this.showErrors = true;
     }

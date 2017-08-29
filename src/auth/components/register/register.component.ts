@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   );
   sub: Subscription;
 
-  @Output() submit = new EventEmitter();
+  @Output() register = new EventEmitter();
 
   ngOnInit() {
     this.sub = this.form.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   onSubmit() {
 
     if (this.form.valid) {
-      this.submit.emit(this.form.value);
+      this.register.emit(this.form.value);
     } else {
       this.showErrors = true;
     }

@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
-import { ModalController, App, LoadingController } from 'ionic-angular';
+import { ModalController, App, LoadingController, Loading } from 'ionic-angular';
 import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage';
 import { Effect, Actions } from '@ngrx/effects';
 
@@ -47,7 +47,9 @@ export class AuthEffects {
     .map((keys: Authenticate) => {
 
       /** Close loading dialog */
-      this.loadingDialog.dismiss();
+      if(this.loadingDialog){
+        this.loadingDialog.dismiss();
+      }
 
       this.secureStorage.create('fire-app')
         .then((storage: SecureStorageObject) => storage.set('auth-keys', JSON.stringify(keys)))
@@ -55,16 +57,6 @@ export class AuthEffects {
 
       /** Navigate to home page */
       this.appCtrl.getRootNav().setRoot(TabsPage);
-    });
-
-  /** Redirect to login page */
-
-  @Effect({dispatch: false})
-  loginRedirect$ = this.actions$
-    .ofType(Auth.LOGIN_REDIRECT, Auth.LOGOUT)
-    .do(() => {
-      console.log('REDIRECTING...');
-      this.appCtrl.getRootNavs()[0].push('AuthPage');
     });
 
   /** Register new user */
@@ -97,7 +89,9 @@ export class AuthEffects {
     .do(() => {
 
       /** Close loading dialog */
-      this.loadingDialog.dismiss();
+      if(this.loadingDialog){
+        this.loadingDialog.dismiss();
+      }
 
       this.modalCtrl.create(DialogComponent,
         {
@@ -119,7 +113,9 @@ export class AuthEffects {
     .map((err) => {
 
       /** Close loading dialog */
-      this.loadingDialog.dismiss();
+      if(this.loadingDialog){
+        this.loadingDialog.dismiss();
+      }
 
       this.modalCtrl.create(DialogComponent,
         {
@@ -132,7 +128,7 @@ export class AuthEffects {
     });
 
   /** Loading dialog ref */
-  loadingDialog;
+  loadingDialog: Loading;
 
   constructor(private actions$: Actions,
               private authService: AuthService,

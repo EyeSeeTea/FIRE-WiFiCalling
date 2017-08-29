@@ -27,8 +27,8 @@
 
 <ion-content no-bounce>
 
-  <login [@slideLogin] *ngIf="selectedTab === 'Login'" (submit)="onLogin($event)"></login>
+  <login [@slideLogin] *ngIf="selectedTab === 'Login'" (login)="onLogin($event)"></login>
 
-  <register [@slideRegister] *ngIf="selectedTab === 'Register'" (submit)="onRegister($event)"></register>
+  <register [@slideRegister] *ngIf="selectedTab === 'Register'" (register)="onRegister($event)"></register>
 
 </ion-content>
