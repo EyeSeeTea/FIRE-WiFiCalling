@@ -3,7 +3,7 @@ import { Component, Input, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { State } from '../../../reducers/notificiations-page';
-import { GetList } from '../../../actions/notifications';
+import * as Notifications from '../../../actions/notifications';
 
 @Component({
   selector: 'notif-wrapper',
@@ -34,8 +34,9 @@ export class NotifWrapperComponent {
   constructor(public store: Store<any>) {
   }
 
-  getNotificationsList() {
-    this.store.dispatch(new GetList(null));
+  /** Refresh notifications list */
+  onRefresh() {
+    this.store.dispatch(new Notifications.GetList(null));
   }
 
 }

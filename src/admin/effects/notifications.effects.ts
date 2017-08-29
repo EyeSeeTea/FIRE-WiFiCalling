@@ -6,14 +6,14 @@ import 'rxjs/add/operator/take';
 
 import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
-import { LoadingController, ModalController } from 'ionic-angular';
+import { Loading, LoadingController, ModalController } from 'ionic-angular';
 import { Effect, Actions } from '@ngrx/effects';
 
-import { NotificationsService } from '../services/notifications.service';
-import * as Notifications from '../actions/notifications';
+import { DialogComponent } from '../../shared/dialog/dialog';
 
 import { Notification } from '../models/notification';
-import { DialogComponent } from '../../shared/dialog/dialog';
+import { NotificationsService } from '../services/notifications.service';
+import * as Notifications from '../actions/notifications';
 
 @Injectable()
 export class NotificationsEffects {
@@ -25,6 +25,7 @@ export class NotificationsEffects {
     .ofType(Notifications.GET_LIST, Notifications.SET_FILTER, Notifications.SET_ORDER)
     .map((action: Notifications.GetList) => action.payload)
     .exhaustMap((filter) =>
+
       this.notificationsService.getNotifications(filter)
         .map((notifications: Notification[]) => new Notifications.GetListSuccess(notifications))
         .catch(error => of(new Notifications.GetListFailure(error)))
@@ -52,8 +53,11 @@ export class NotificationsEffects {
   acceptUserSuccess$ = this.actions$
     .ofType(Notifications.ACCEPT_USER_SUCCESS)
     .map(() => {
+
       /** Close loading dialog */
-      this.loadingDialog.dismiss();
+      if(this.loadingDialog){
+        this.loadingDialog.dismiss();
+      }
 
       /** Show success dialog */
       this.modalCtrl.create(DialogComponent,
@@ -108,11 +112,15 @@ export class NotificationsEffects {
   markSeen$ = this.actions$
     .ofType(Notifications.MARK_SEEN)
     .map((action: Notifications.MarkSeen) => action.payload)
-    .exhaustMap((id: number) =>
-      this.notificationsService.markSeen(id, true)
+    .exhaustMap((selectedItems: Notification[]) => {
+
+      /** Extract the ids from the selected notifications */
+      const selectedIds = selectedItems.map(item => item.id);
+
+      return this.notificationsService.markSeen(selectedIds, true)
         .map((notifications: Notification) => new Notifications.MarkSeenSuccess())
         .catch(error => of(new Notifications.MarkSeenFailure(error)))
-    );
+    });
 
   /** Handle notifications failures */
 
@@ -123,7 +131,9 @@ export class NotificationsEffects {
     .map((err) => {
 
       /** Close loading dialog */
-      this.loadingDialog.dismiss();
+      if(this.loadingDialog) {
+        this.loadingDialog.dismiss();
+      }
 
       /** Show error dialog */
       this.modalCtrl.create(DialogComponent,
@@ -137,7 +147,7 @@ export class NotificationsEffects {
     });
 
   /** Loading dialog ref */
-  loadingDialog;
+  loadingDialog: Loading;
 
   constructor(private actions$: Actions,
               private notificationsService: NotificationsService,

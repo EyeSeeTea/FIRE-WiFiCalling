@@ -6,8 +6,7 @@
 
   <ion-scroll scrollY="true">
     <notif-item *ngFor="let notification of notifications | orderBy: 'created' : order"
-                [item]="notification" (actions)="actions.emit($event)"></notif-item>
-
+                [item]="notification"></notif-item>
   </ion-scroll>
 </div>
 

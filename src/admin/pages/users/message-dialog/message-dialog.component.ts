@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
-import { User } from '../../../models/user';
+import { User } from '../../../../auth/models/user';
 
 @Component({
   selector: 'message-dialog',

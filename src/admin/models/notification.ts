@@ -1,4 +1,4 @@
-import { User } from './user';
+import { User } from '../../auth/models/user';
 
 export interface Notification {
   id: number;

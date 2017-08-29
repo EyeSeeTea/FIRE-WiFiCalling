@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Pricing } from '../../models/billing';
 
 import { getBilling, getBillingPending } from '../../reducers';
-import { GetPricing, UpdatePricing } from '../../actions/billing'
+import * as Billing from '../../actions/billing'
 
 @IonicPage()
 @Component({
@@ -21,10 +21,10 @@ export class BillingPage {
   }
 
   ionViewWillEnter() {
-    this.store.dispatch(new GetPricing());
+    this.store.dispatch(new Billing.GetPricing());
   }
 
   saveChanges(newPricing: Pricing) {
-    this.store.dispatch(new UpdatePricing(newPricing));
+    this.store.dispatch(new Billing.UpdatePricing(newPricing));
   }
 }

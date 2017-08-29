@@ -12,7 +12,7 @@ import { Filter, Notification, NotificationSelect } from '../../../models/notifi
 import { NotifItemComponent } from '../notif-item/notif-item.component';
 import { filterMenuAnimation } from '../../../animations/admin.animations';
 import { Store } from '@ngrx/store';
-import { MarkSeen } from '../../../actions/notifications';
+import * as Notifications from '../../../actions/notifications';
 
 @Component({
   selector: 'notif-list',
@@ -72,7 +72,7 @@ export class NotifListComponent implements AfterViewChecked {
 
   /** Mark selected notification as seen */
   markAsSeen() {
-    this.store.dispatch(new MarkSeen(this.selectedNotifications));
+    this.store.dispatch(new Notifications.MarkSeen(this.selectedNotifications));
   }
 
   ngAfterViewChecked() {

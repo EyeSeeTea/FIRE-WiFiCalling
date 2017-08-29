@@ -7,9 +7,9 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { PopoverController, Select } from 'ionic-angular';
-import { SetOrder, ToggleFilterMenu } from '../../../actions/notifications';
-import { Notification } from '../../../models/notification';
 import { MarkPopupComponent } from '../mark-popup/mark-popup.component';
+import { Notification } from '../../../models/notification';
+import * as Notifications from '../../../actions/notifications';
 
 @Component({
   selector: 'notif-nav',
@@ -38,12 +38,12 @@ export class NotifNavComponent {
 
   /** Set notification date order */
   setOrder(order: boolean) {
-    this.store.dispatch(new SetOrder(order));
+    this.store.dispatch(new Notifications.SetOrder(order));
   }
 
   /** Toggle filter menu */
   toggleMenu(toggle: boolean) {
-    this.store.dispatch(new ToggleFilterMenu(toggle));
+    this.store.dispatch(new Notifications.ToggleFilterMenu(toggle));
   }
 
   /** Show select popover for selecting (all/unread/none) notifications */

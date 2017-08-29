@@ -5,13 +5,13 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
-import { LoadingController, ModalController } from 'ionic-angular';
+import { Loading, LoadingController, ModalController } from 'ionic-angular';
 import { Effect, Actions } from '@ngrx/effects';
 
 import { UsersService } from '../services/users.service';
 import * as Users from '../actions/users';
 
-import { User } from '../models/user';
+import { User } from '../../auth/models/user';
 import { DialogComponent } from '../../shared/dialog/dialog';
 
 @Injectable()
@@ -82,7 +82,9 @@ export class UsersEffects {
     .map((usersCount: number) => {
 
       /** Close loading dialog */
-      this.loadingDialog.dismiss();
+      if(this.loadingDialog){
+        this.loadingDialog.dismiss();
+      }
 
       /** Show success dialog */
       this.modalCtrl.create(DialogComponent,
@@ -104,7 +106,9 @@ export class UsersEffects {
     .map((err) => {
 
       /** Close loading dialog */
-      this.loadingDialog.dismiss();
+      if(this.loadingDialog){
+        this.loadingDialog.dismiss();
+      }
 
       /** Show error dialog */
       this.modalCtrl.create(DialogComponent,
@@ -118,7 +122,7 @@ export class UsersEffects {
     });
 
   /** Loading dialog ref */
-  loadingDialog;
+  loadingDialog: Loading;
 
   constructor(private actions$: Actions,
               private usersService: UsersService,

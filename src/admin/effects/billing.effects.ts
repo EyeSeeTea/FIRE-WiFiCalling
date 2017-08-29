@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
-import { LoadingController, ModalController } from 'ionic-angular';
+import { Loading, LoadingController, ModalController } from 'ionic-angular';
 import { Effect, Actions } from '@ngrx/effects';
 
 import { BillingService } from '../services/billing.service';
@@ -52,7 +52,7 @@ export class BillingEffects {
   updateBilling$ = this.actions$
     .ofType(Billing.UPDATE_PRICING)
     .map((action: Billing.UpdatePricing) => action.payload)
-    .exhaustMap((pricing) => {
+    .exhaustMap((pricing: Pricing) => {
 
       /** Show loading dialog */
       this.loadingDialog = this.loadingCtrl.create({
@@ -71,8 +71,11 @@ export class BillingEffects {
   updateBillingSuccess$ = this.actions$
     .ofType(Billing.UPDATE_PRICING_SUCCESS)
     .do(() => {
+
       /** Close loading dialog */
-      this.loadingDialog.dismiss();
+      if(this.loadingDialog){
+        this.loadingDialog.dismiss();
+      }
 
       this.modalCtrl.create(DialogComponent,
         {
@@ -93,7 +96,9 @@ export class BillingEffects {
     .map((err) => {
 
       /** Close loading dialog */
-      this.loadingDialog.dismiss();
+      if(this.loadingDialog){
+        this.loadingDialog.dismiss();
+      }
 
       this.modalCtrl.create(DialogComponent,
         {
@@ -106,7 +111,7 @@ export class BillingEffects {
     });
 
   /** Loading dialog ref */
-  loadingDialog;
+  loadingDialog: Loading;
 
   constructor(private actions$: Actions,
               private billingService: BillingService,

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { selectNotificationsState } from '../../reducers';
-import { GetList } from '../../actions/notifications';
+import * as Notifications from '../../actions/notifications';
 
 @IonicPage()
 @Component({
@@ -18,7 +18,7 @@ export class NotificationsPage {
   }
 
   getNotificationsList() {
-    this.store.dispatch(new GetList(null));
+    this.store.dispatch(new Notifications.GetList(null));
   }
 
   ionViewWillEnter() {

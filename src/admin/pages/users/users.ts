@@ -3,10 +3,11 @@ import { IonicPage, ModalController, Refresher } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 
-import { GetList, SendMessage } from '../../actions/users';
-import { getUsers, getUsersPending } from '../../reducers';
 import { MessageDialogComponent } from './message-dialog/message-dialog.component';
-import { User, UserListOptions } from '../../models/user';
+import { UserListOptions } from '../../models/user';
+import { User } from '../../../auth/models/user';
+import { getUsers, getUsersPending } from '../../reducers';
+import * as Users from '../../actions/users';
 
 @IonicPage()
 @Component({
@@ -50,7 +51,7 @@ export class UsersPage implements OnInit, OnDestroy {
     messageDialog.onDidDismiss(message => {
       /** Send message to users if it exists */
       if (message) {
-        this.store.dispatch(new SendMessage({message: message, users: selectedUsers}));
+        this.store.dispatch(new Users.SendMessage({message: message, users: selectedUsers}));
       }
     });
 
@@ -59,7 +60,7 @@ export class UsersPage implements OnInit, OnDestroy {
 
   getUserList() {
     /** Refresh user list */
-    this.store.dispatch(new GetList(null));
+    this.store.dispatch(new Users.GetList(null));
   }
 
   ionViewWillEnter() {

@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { ModalController } from 'ionic-angular';
 import { Store } from '@ngrx/store';
-import { AcceptUser, RejectUser } from '../../../actions/notifications';
 import { DialogComponent } from '../../../../shared/dialog/dialog';
 import { Notification } from '../../../models/notification';
+import * as Notifications from '../../../actions/notifications';
 
 @Component({
   selector: 'notif-item',
@@ -40,7 +40,7 @@ export class NotifItemComponent {
 
     acceptDialog.onDidDismiss(confirmed => {
       if (confirmed) {
-        this.store.dispatch(new AcceptUser(this.item.id));
+        this.store.dispatch(new Notifications.AcceptUser(this.item.id));
       }
     });
 
@@ -63,7 +63,7 @@ export class NotifItemComponent {
 
     rejectDialog.onDidDismiss(confirmed => {
       if (confirmed) {
-        this.store.dispatch(new RejectUser(this.item.id));
+        this.store.dispatch(new Notifications.RejectUser(this.item.id));
       }
     });
 

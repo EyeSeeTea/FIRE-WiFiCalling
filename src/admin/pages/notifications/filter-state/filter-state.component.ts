@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Filter } from '../../../models/notification';
-import { SetFilter } from '../../../actions/notifications';
+import * as Notifications from '../../../actions/notifications';
 
 @Component({
   selector: 'filter-state',
@@ -17,7 +17,7 @@ export class FilterStateComponent {
 
   /** Set notification filter */
   setFilter(filter: Filter) {
-    this.store.dispatch(new SetFilter(filter));
+    this.store.dispatch(new Notifications.SetFilter(filter));
   }
 }
 
