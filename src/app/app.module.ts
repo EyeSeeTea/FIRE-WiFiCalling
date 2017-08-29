@@ -22,11 +22,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { CallPage } from '../pages/call/call';
 import { CallingPage } from '../pages/call/calling';
 import { HistoryPage } from '../pages/history/history';
-import { TopupPage } from '../pages/topup/topup';
 import { ContactsPage } from '../pages/contacts/contacts';
 
 import { SharedModule } from '../shared/shared.module';
-import { metaReducers, reducers } from '../reducers/index';
+import { metaReducers, reducers } from '../reducers';
+import * as auth from '../auth/reducers';
 import { FireHttpModule } from '../auth/http/fire-http.module';
 
 import { AuthEffects } from '../auth/effects/auth.effects';
@@ -44,7 +44,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     CallPage,
     CallingPage,
     HistoryPage,
-    TopupPage,
     ContactsPage
   ],
   imports: [
@@ -61,7 +60,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     SharedModule,
     FireHttpModule.forRoot(),
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers, {metaReducers}),
+    StoreModule.forFeature('auth', auth.reducers),
     EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument()
   ],
@@ -71,7 +71,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     CallPage,
     CallingPage,
     HistoryPage,
-    TopupPage,
     ContactsPage
   ],
   providers: [
@@ -79,7 +78,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SplashScreen,
     Contacts,
     Globalization,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ],
   bootstrap: [IonicApp]
 })
