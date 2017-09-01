@@ -4,22 +4,22 @@
 
     <ion-grid padding>
 
-      <ion-row padding-horizontal>
+      <ion-row padding-horizontal *ngIf="loggedIn">
         <ion-col>
           <label> {{ 'FORMS.USERNAME' | translate }} </label>
-          <div class="fire-input">
+          <div class="fire-input" (click)="redirectToAuthPage()">
             <ion-icon name="person"></ion-icon>
-            <ion-input type="text" name="username" [(ngModel)]="settings.user"></ion-input>
+            <ion-input type="text" name="username" [(ngModel)]="user.username" disabled></ion-input>
           </div>
         </ion-col>
       </ion-row>
 
-      <ion-row padding-horizontal>
+      <ion-row padding-horizontal *ngIf="loggedIn">
         <ion-col>
           <label> {{ 'FORMS.PASSWORD' | translate }} </label>
-          <div class="fire-input">
+          <div class="fire-input" (click)="redirectToAuthPage()">
             <ion-icon name="lock"></ion-icon>
-            <ion-input type="text" name="password" placeholder="******" [(ngModel)]="settings.password"></ion-input>
+            <ion-input type="text" name="password" [(ngModel)]="user.password" disabled></ion-input>
           </div>
         </ion-col>
       </ion-row>
@@ -29,7 +29,7 @@
           <label> {{ 'FORMS.SERVER' | translate }} </label>
           <div class="fire-input">
             <ion-icon name="cloud"></ion-icon>
-            <ion-input type="text" name="server" placeholder="XXX.XXX.XXX.XX" [(ngModel)]="settings.server"></ion-input>
+            <ion-input type="text" name="server" [(ngModel)]="user.serverHost"></ion-input>
           </div>
         </ion-col>
       </ion-row>

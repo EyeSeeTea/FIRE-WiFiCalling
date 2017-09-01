@@ -14,30 +14,6 @@ export function reducer(state = initialState, action: settings.Actions): State {
 
   switch (action.type) {
 
-    case settings.GET_SETTINGS: {
-      return {
-        ...state,
-        error: null,
-        pending: true,
-      };
-    }
-
-    case settings.GET_SETTINGS_SUCCESS: {
-      return {
-        ...state,
-        error: null,
-        pending: false,
-      };
-    }
-
-    case settings.GET_SETTINGS_FAILURE: {
-      return {
-        ...state,
-        error: action.payload,
-        pending: false,
-      };
-    }
-
     case settings.UPDATE_SETTINGS: {
       return {
         ...state,

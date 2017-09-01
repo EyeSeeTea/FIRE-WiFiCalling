@@ -1,10 +1,11 @@
 import { IonicPage } from 'ionic-angular';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ISettings } from '../models/settings';
 
-import { UpdateSettings } from '../actions/settings';
 import { of } from 'rxjs/observable/of';
+import { User } from '../../auth/models/user';
+import { getLoggedIn, getUser } from '../../auth/reducers';
+import * as Settings from '../actions/settings';
 
 @IonicPage()
 @Component({
@@ -12,31 +13,30 @@ import { of } from 'rxjs/observable/of';
   templateUrl: 'settings.html'
 })
 
-export class SettingsPage {
+export class SettingsPage implements OnInit {
 
-  settings$; // = this.store.select(fromSettings.getSettings);
-  pending$; // = this.store.select(fromSettings.getSettingsPagePending);
+  /** Settings values */
+  settings$; // = this.store.select(getSettings);
+
+  /** User logged in state */
+  loggedIn$ = this.store.select(getLoggedIn);
+  user$ = this.store.select(getUser);
 
   constructor(private store: Store<any>) {
   }
 
   ngOnInit() {
 
-    /** Workaround until we figure out settings */
+    /** TODO: Replace with store auth state when login endpoint is ready */
     this.settings$ = of({
-      user: 'joel',
-      password: 'joel1234',
-      server: 'dev.eyeseetea.com:5000'
+      username: '',
+      password: '',
+      serverHost: 'dev.est:5000'
     });
-    this.pending$ = of(false);
   }
 
-  ionViewWillEnter() {
-    // this.store.dispatch(new SettingsActions.GetSettings());
-  }
-
-  saveChanges(settings: ISettings) {
-    this.store.dispatch(new UpdateSettings(settings));
+  saveChanges(user: User) {
+    this.store.dispatch(new Settings.UpdateSettings(user));
   }
 
 }

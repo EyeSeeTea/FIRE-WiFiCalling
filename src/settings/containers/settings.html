@@ -4,6 +4,7 @@
 
 <ion-content>
 
-  <settings-form [settings]="settings$ | async" [pending]="pending$ | async" (settingsChange)="saveChanges($event)"></settings-form>
+  <settings-form [user]="settings$ | async" [loggedIn]="loggedIn$ | async"
+                 (settingsChange)="saveChanges($event)"></settings-form>
 
 </ion-content>

@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { FireHttp } from '../../auth/http/fire-http';
-import { ISettings } from '../models/settings';
+import { User } from '../../auth/models/user';
 
 @Injectable()
 export class SettingsService {
 
-  endpoint = '/settings';
+  endpoint = '/users';
 
   constructor(private fireHttp: FireHttp) {
   }
 
-  getSettings() {
-    return this.fireHttp.get(this.endpoint).map(res => res.json());
-  }
-
-  updateSettings(settings: ISettings) {
-    return this.fireHttp.post(this.endpoint, { settings: { ...settings } }).map(res => res.json());
+  /** Update settings */
+  updateSettings(user: User) {
+    return this.fireHttp.post(this.endpoint + '/' + user.id, {...user, password: ''})
+      .map(res => res.json());
   }
 }

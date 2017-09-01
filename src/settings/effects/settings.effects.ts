@@ -5,46 +5,17 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { Loading, LoadingController, ModalController } from 'ionic-angular';
 import { Effect, Actions } from '@ngrx/effects';
 
 import { SettingsService } from '../services/settings.service';
 import * as Settings from '../actions/settings';
 
-import { ISettings } from '../models/settings';
 import { DialogComponent } from '../../shared/dialog/dialog';
+import { User } from "../../auth/models/user";
 
 @Injectable()
 export class SettingsEffects {
-
-  /** Get Settings */
-
-  @Effect()
-  getSettings$ = this.actions$
-    .ofType(Settings.GET_SETTINGS)
-    .exhaustMap(() =>
-      this.settingsService.getSettings()
-        .map((settings: ISettings) => new Settings.GetSettingsSuccess(settings))
-        .catch(error => of(new Settings.GetSettingsFailure(error)))
-    );
-
-  /** Get Settings Fail */
-
-  @Effect({dispatch: false})
-  getSettingsFailure$ = this.actions$
-    .ofType(Settings.GET_SETTINGS_FAILURE)
-    .map((action: Settings.GetSettingsFailure) => action.payload)
-    .map((err) => {
-
-      this.modalCtrl.create(DialogComponent,
-        {
-          title: 'Error',
-          content: err,
-          buttons: [
-            {label: 'Ok', color: 'link'}
-          ]
-        }).present();
-    });
 
   /** Update Settings */
 
@@ -52,11 +23,18 @@ export class SettingsEffects {
   updateSettings$ = this.actions$
     .ofType(Settings.UPDATE_SETTINGS)
     .map((action: Settings.UpdateSettings) => action.payload)
-    .exhaustMap((pricing) =>
-      this.settingsService.updateSettings(pricing)
+    .exhaustMap((user: User) => {
+
+      /** Show loading dialog */
+      this.loadingDialog = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+      this.loadingDialog.present();
+
+      return this.settingsService.updateSettings(user)
         .map(() => new Settings.UpdateSettingsSuccess())
-        .catch(error => of(new Settings.UpdateSettingsFailure(error)))
-    );
+        .catch(error => of(new Settings.UpdateSettingsFailure(error)));
+    });
 
   /** Update Settings Success */
 
@@ -65,10 +43,15 @@ export class SettingsEffects {
     .ofType(Settings.UPDATE_SETTINGS_SUCCESS)
     .do(() => {
 
+      /** Close loading dialog */
+      if (this.loadingDialog) {
+        this.loadingDialog.dismiss();
+      }
+
       this.modalCtrl.create(DialogComponent,
         {
           title: 'Success',
-          content: 'Pricing updated successfully.',
+          content: 'Settings has been updated.',
           buttons: [
             {label: 'Ok', color: 'link'}
           ]
@@ -83,6 +66,11 @@ export class SettingsEffects {
     .map((action: Settings.UpdateSettingsFailure) => action.payload)
     .map((err) => {
 
+      /** Close loading dialog */
+      if (this.loadingDialog) {
+        this.loadingDialog.dismiss();
+      }
+
       this.modalCtrl.create(DialogComponent,
         {
           title: 'Error',
@@ -93,9 +81,11 @@ export class SettingsEffects {
         }).present();
     });
 
+  loadingDialog: Loading;
 
   constructor(private actions$: Actions,
               private settingsService: SettingsService,
-              private modalCtrl: ModalController) {
+              private modalCtrl: ModalController,
+              private loadingCtrl: LoadingController) {
   }
 }

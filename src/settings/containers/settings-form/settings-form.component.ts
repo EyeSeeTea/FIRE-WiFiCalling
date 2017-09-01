@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ISettings } from '../../models/settings';
+import { User } from '../../../auth/models/user';
+import { NavController } from "ionic-angular";
 
 @Component({
   selector: 'settings-form',
@@ -8,18 +9,24 @@ import { ISettings } from '../../models/settings';
 export class SettingsFormComponent {
 
   /** Settings data */
-  @Input() settings: ISettings;
+  @Input() user: User;
 
-  /** Pending state */
-  @Input() pending: boolean;
+  /** User logged in state */
+  @Input() loggedIn: boolean;
 
   /** Settings output */
-  @Output() settingsChange = new EventEmitter<ISettings>();
+  @Output() settingsChange = new EventEmitter<User>();
 
   /** Submit new settings */
   onSubmit() {
-    this.settingsChange.emit(this.settings);
+    this.settingsChange.emit(this.user);
   }
 
+  constructor(private navCtrl: NavController) {
+  }
+
+  redirectToAuthPage() {
+    this.navCtrl.setRoot('AuthPage');
+  }
 }
 
