@@ -1,0 +1,19 @@
+voucher-item {
+  .voucher {
+    height: 80px;
+
+    &.voucher-depleted {
+      color: lighten(color($colors, medgray), 20%);
+      &:before {
+        background-color: lighten(color($colors, medgray), 20%);
+      }
+      .voucher-state {
+        color: lighten(color($colors, medgray), 20%);
+      }
+      .voucher-link {
+        background-color: lighten(color($colors, medgray), 20%);
+      }
+    }
+  }
+}
+
