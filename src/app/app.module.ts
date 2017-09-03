@@ -48,7 +48,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(WiFiCalling),
+    IonicModule.forRoot(WiFiCalling, {
+      backButtonText: ''
+    }),
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
