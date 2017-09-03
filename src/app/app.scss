@@ -2,11 +2,28 @@
 @import '../theme/buttons';
 @import '../theme/dialogs';
 @import '../theme/layout';
+@import '../theme/tabs';
+
+body {
+  color: color($colors, gray);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: color($colors, gray);
+}
+
+.item-md {
+  color: unset;
+}
+.content-md {
+  color: unset;
+}
 
 .activeHighlight {
-	background-color: color($colors, light);
+  background-color: color($colors, light);
 }
 
-.fill-space{
+.fill-space {
   flex: 1;
 }
+
