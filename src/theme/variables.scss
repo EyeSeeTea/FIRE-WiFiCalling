@@ -31,18 +31,36 @@ $colors: (
   primary: #d95e2a,
   secondary: #32db64,
   danger: #D0021B,
+  pending: #FDA900,
   brown: #421C00,
   light: #f4f4f4,
   dark: #222,
   gray: #4A4A4A,
   lightgray: #D8D8D8,
+  medgray: #797979,
   link: #0064B6,
   form: #E0E0E0
 );
 
+// REFRESHER
+$refresher-border-color: #ddd;
+$refresher-height: 60px;
+$refresher-icon-color: color($colors, gray);
+$refresher-icon-font-size: 30px;
+$refresher-text-color: color($colors, gray);
+$refresher-text-font-size: 16px;
+
+// DIALOGS
+
+$modal-inset-min-width: 250px;
+$modal-inset-width: 275px;
+$modal-inset-min-height-small: 200px;
+$modal-inset-height-small: 250px;
+
+
 // LIST ITEM BACKGROUND
 
-$list-item-bg: linear-gradient(to bottom, #f2f5f6 0%,#f4f1ef 37%,#e8e0dc 100%);
+$list-item-bg: linear-gradient(to bottom, #f2f5f6 0%, #f4f1ef 37%, #e8e0dc 100%);
 
 // FIRE BAR BACKGROUND
 $fire-nav-bg: linear-gradient(180deg, #E55200 0%, #C01600 100%);
@@ -57,6 +75,9 @@ $admin-nav-bg: linear-gradient(180deg, #700015 0%, #431C00 100%);
 $tabs-ios-tab-icon-color-active: color($colors, light);
 $tabs-ios-tab-text-color-active: color($colors, light);
 $tabs-ios-tab-text-color: color($colors, light);
+$toolbar-ios-text-color: color($colors, light);
+$toolbar-ios-title-text-color: color($colors, light);
+$toolbar-ios-button-color: lighten(color($colors, light), 20%);
 
 // App Material Design Variables
 // --------------------------------------------------
@@ -70,6 +91,7 @@ $toolbar-md-active-color: #fff;
 $tabs-background: color($colors, primary);
 $tabs-md-tab-color-active: #fff;
 $tabs-md-tab-color-inactive: #fdb2a1;
+
 
 // App Windows Variables
 // --------------------------------------------------
@@ -97,16 +119,3 @@ $tabs-md-tab-color-inactive: #fdb2a1;
 @import "roboto";
 @import "noto-sans";
 
-// Dialog
-
-// Min width of the modal inset
-$modal-inset-min-width: 250px;
-
-// Width of the large modal inset
-$modal-inset-width: 275px;
-
-// Minimum height of the small modal inset
-$modal-inset-min-height-small: 200px;
-
-// Height of the small modal inset
-$modal-inset-height-small: 250px;

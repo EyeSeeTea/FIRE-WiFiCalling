@@ -7,7 +7,7 @@ import { Authenticate } from '../models/user';
 @Injectable()
 export class FireHttp extends Http {
 
-  private baseUrl = 'http://dev.eyeseetea.com:5000';
+  baseUrl = 'http://dev.eyeseetea.com:5000';
   private keys: Authenticate = {username: 'joel', password: 'joel1234'};
 
   constructor(backend: ConnectionBackend, defaultOptions: RequestOptions, secureStorage: SecureStorage) {

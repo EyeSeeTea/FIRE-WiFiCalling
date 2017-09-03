@@ -31,5 +31,5 @@ import { SharedModule } from '../../shared/shared.module';
     SettingsService
   ]
 })
-export class AuthModule {
+export class SettingsModule {
 }

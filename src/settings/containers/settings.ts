@@ -6,6 +6,7 @@ import { of } from 'rxjs/observable/of';
 import { User } from '../../auth/models/user';
 import { getLoggedIn, getUser } from '../../auth/reducers';
 import * as Settings from '../actions/settings';
+import { FireHttp } from '../../auth/http/fire-http';
 
 @IonicPage()
 @Component({
@@ -22,16 +23,16 @@ export class SettingsPage implements OnInit {
   loggedIn$ = this.store.select(getLoggedIn);
   user$ = this.store.select(getUser);
 
-  constructor(private store: Store<any>) {
+  constructor(private store: Store<any>, private http: FireHttp) {
   }
 
   ngOnInit() {
 
-    /** TODO: Replace with store auth state when login endpoint is ready */
+    /** TODO: Replace with auth state when login endpoint is ready */
     this.settings$ = of({
       username: '',
       password: '',
-      serverHost: 'dev.est:5000'
+      serverHost: this.http.baseUrl
     });
   }
 
