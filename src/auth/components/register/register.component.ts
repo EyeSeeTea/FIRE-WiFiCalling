@@ -1,12 +1,12 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
-import { errAnimation } from '../../animations/auth.animations';
+import { slideVerticalAnimation } from '../../../shared/animations/shared.animations';
 
 @Component({
   selector: 'register',
   templateUrl: 'register.component.html',
-  animations: [errAnimation]
+  animations: [slideVerticalAnimation]
 })
 export class RegisterComponent implements OnInit, OnDestroy {
 

@@ -1,12 +1,12 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
-import { errAnimation } from '../../animations/auth.animations';
+import { slideVerticalAnimation } from '../../../shared/animations/shared.animations';
 
 @Component({
   selector: 'login',
   templateUrl: 'login.component.html',
-  animations: [errAnimation]
+  animations: [slideVerticalAnimation]
 })
 
 export class LoginComponent implements OnInit, OnDestroy {

@@ -4,12 +4,19 @@ import { transition, trigger, style, animate } from '@angular/animations';
 
 export const filterMenuAnimation = trigger('slideDown', [
   transition(':enter', [
-    style({opacity: 0, maxHeight: 0 }),
-    animate('300ms ease-in', style({opacity: 1, maxHeight: '380px'}))
+    style({maxHeight: 0}),
+    animate('300ms ease-in', style({maxHeight: '380px'}))
   ]),
   transition(':leave', [
-    style({opacity: 1}),
-    animate('500ms ease-out', style({opacity: 0, height: 0}))
+    style({ overflow: 'hidden'}),
+    animate('500ms ease-out', style({height: 0}))
+  ])
+]);
+
+export const filterMenuListAnimation = trigger('slideListDown', [
+  transition(':enter', [
+    style({transform: 'translateY(-100%)'}),
+    animate('300ms ease-in', style({transform: 'translateY(0)'}))
   ])
 ]);
 

@@ -14,7 +14,7 @@
               <ion-icon name="person"></ion-icon>
               <ion-input type="text" formControlName="name" [placeholder]="'FORMS.NAME' | translate"></ion-input>
             </div>
-            <div [@slideDown] *ngIf="showErrors && formErrors.name.length" class="fire-input-error">
+            <div [@slideVertical] *ngIf="showErrors && formErrors.name.length" class="fire-input-error">
               {{ formErrors.name[0] | translate}}
             </div>
           </ion-col>
@@ -28,7 +28,7 @@
               <ion-icon name="people"></ion-icon>
               <ion-input type="text" formControlName="surname" [placeholder]="'FORMS.SURNAME' | translate"></ion-input>
             </div>
-            <div [@slideDown] *ngIf="showErrors && formErrors.surname.length" class="fire-input-error">
+            <div [@slideVertical] *ngIf="showErrors && formErrors.surname.length" class="fire-input-error">
               {{ formErrors.surname[0] | translate}}
             </div>
           </ion-col>
@@ -42,7 +42,7 @@
               <ion-icon name="card"></ion-icon>
               <ion-input type="email" formControlName="address" [placeholder]="'FORMS.ADDRESS' | translate"></ion-input>
             </div>
-            <div [@slideDown] *ngIf="showErrors && formErrors.address.length" class="fire-input-error">
+            <div [@slideVertical] *ngIf="showErrors && formErrors.address.length" class="fire-input-error">
               {{ formErrors.address[0] | translate}}
             </div>
           </ion-col>
@@ -56,7 +56,7 @@
               <ion-icon name="at"></ion-icon>
               <ion-input type="email" formControlName="email" [placeholder]="'FORMS.EMAIL' | translate"></ion-input>
             </div>
-            <div [@slideDown] *ngIf="showErrors && formErrors.email.length" class="fire-input-error">
+            <div [@slideVertical] *ngIf="showErrors && formErrors.email.length" class="fire-input-error">
               {{ formErrors.email[0] | translate}}
             </div>
           </ion-col>
@@ -87,7 +87,7 @@
               <ion-icon name="phone-portrait"></ion-icon>
               <ion-input type="number" formControlName="phone" [placeholder]="'FORMS.PHONE_NUMBER' | translate"></ion-input>
             </div>
-            <div [@slideDown] *ngIf="showErrors && formErrors.phone.length" class="fire-input-error">
+            <div [@slideVertical] *ngIf="showErrors && formErrors.phone.length" class="fire-input-error">
               {{ formErrors.phone[0] | translate}}
             </div>
           </ion-col>
@@ -101,7 +101,7 @@
               <ion-icon name="lock"></ion-icon>
               <ion-input type="password" formControlName="password" [placeholder]="'FORMS.PASSWORD' | translate"></ion-input>
             </div>
-            <div [@slideDown] *ngIf="showErrors && formErrors.password.length" class="fire-input-error">
+            <div [@slideVertical] *ngIf="showErrors && formErrors.password.length" class="fire-input-error">
               {{ formErrors.password[0] | translate}}
             </div>
           </ion-col>
@@ -115,7 +115,7 @@
               <ion-icon name="lock"></ion-icon>
               <ion-input type="password" formControlName="cPassword" [placeholder]="'FORMS.REPEAT_PASSWORD' | translate"></ion-input>
             </div>
-            <div [@slideDown] *ngIf="showErrors && formErrors.cPassword.length" class="fire-input-error">
+            <div [@slideVertical] *ngIf="showErrors && formErrors.cPassword.length" class="fire-input-error">
               {{ formErrors.cPassword[0] | translate}}
             </div>
           </ion-col>

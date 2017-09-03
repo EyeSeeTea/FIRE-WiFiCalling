@@ -1,16 +1,15 @@
 import { IonicPage } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { loginAnimation, registerAnimation } from '../animations/auth.animations';
 import { Store } from '@ngrx/store';
 import { Authenticate, RegisterForm } from '../models/user';
-
+import { slideRTLAnimation, slideLTRAnimation } from '../../shared/animations/shared.animations';
 import * as Auth from '../actions/auth';
 
 @IonicPage()
 @Component({
   selector: 'page-auth',
   templateUrl: 'auth.html',
-  animations: [loginAnimation, registerAnimation]
+  animations: [slideRTLAnimation, slideLTRAnimation]
 })
 
 export class AuthPage {
