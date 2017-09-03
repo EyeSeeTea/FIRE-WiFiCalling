@@ -1,10 +1,46 @@
-message-dialog {
+fire-dialog {
+  display: flex !important;
+  flex-direction: column;
+  background-color: white;
 
+  .dialog-title h3 {
+    font-size: 18px;
+    margin-top: 0.5em !important;
+    margin-bottom: 0;
+    color: color($colors, dark);
+  }
+  .dialog-content {
+    flex: 1;
+    padding: 1em 2em;
+    line-height: 2em;
+  }
+
+  button[color=light] {
+    color: color($colors, gray);
+    text-decoration: none;
+  }
+
+  .button-md-light {
+    color: unset;
+  }
 }
 
+.message-dialog {
+  .modal-wrapper {
+    min-height: 300px;
+  }
+}
 
-.modal-wrapper{
-  height: 300px;
+.confirm-dialog {
+  .modal-wrapper {
+    min-height: 270px;
+  }
+}
+
+.error-dialog, .success-dialog {
+  .modal-wrapper {
+    min-height: 250px;
+  }
 }
 
 // Notif. Select all popover, remove default bg

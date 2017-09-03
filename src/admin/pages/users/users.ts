@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { IonicPage, ModalController, Refresher } from 'ionic-angular';
+import { IonicPage, Refresher } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 
-import { MessageDialogComponent } from './message-dialog/message-dialog.component';
+import { DialogService } from '../../../shared/dialog/dialog.service';
 import { UserListOptions } from '../../models/user';
 import { User } from '../../../auth/models/user';
 import { getUsers, getUsersPending } from '../../reducers';
@@ -36,17 +36,14 @@ export class UsersPage implements OnInit, OnDestroy {
   /** Refresher ref */
   @ViewChild(Refresher) refresher: Refresher;
 
-  constructor(public store: Store<any>, private modalCtrl: ModalController) {
+  constructor(public store: Store<any>, private dialogs: DialogService) {
   }
 
   /** Send message to selected users */
   sendMessage(selectedUsers: User[]) {
 
     /** Show message dialog */
-    const messageDialog = this.modalCtrl.create(MessageDialogComponent,
-      {users: selectedUsers},
-      {cssClass: 'message-dialog'}
-    );
+    const messageDialog = this.dialogs.messageDialog({users: selectedUsers});
 
     messageDialog.onDidDismiss(message => {
       /** Send message to users if it exists */
@@ -63,12 +60,10 @@ export class UsersPage implements OnInit, OnDestroy {
     this.store.dispatch(new Users.GetList(null));
   }
 
-  ionViewWillEnter() {
+  ngOnInit() {
     /** Request user list on page enter */
     this.getUserList();
-  }
 
-  ngOnInit() {
     /** Complete refresher when user list is loaded */
     this.pendingObs = this.pending$.subscribe((pending) => {
       if (!pending) {

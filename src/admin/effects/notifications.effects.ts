@@ -6,14 +6,13 @@ import 'rxjs/add/operator/take';
 
 import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
-import { Loading, LoadingController, ModalController } from 'ionic-angular';
+import { Loading, LoadingController } from 'ionic-angular';
 import { Effect, Actions } from '@ngrx/effects';
-
-import { DialogComponent } from '../../shared/dialog/dialog';
 
 import { Notification } from '../models/notification';
 import { NotificationsService } from '../services/notifications.service';
 import * as Notifications from '../actions/notifications';
+import { DialogService } from '../../shared/dialog/dialog.service';
 
 @Injectable()
 export class NotificationsEffects {
@@ -38,6 +37,7 @@ export class NotificationsEffects {
     .ofType(Notifications.ACCEPT_USER)
     .map((action: Notifications.AcceptUser) => action.payload)
     .exhaustMap((id: number) => {
+
       /** Show loading dialog */
       this.loadingDialog = this.loadingCtrl.create({
         content: 'Please wait...'
@@ -55,19 +55,12 @@ export class NotificationsEffects {
     .map(() => {
 
       /** Close loading dialog */
-      if(this.loadingDialog){
+      if (this.loadingDialog) {
         this.loadingDialog.dismiss();
       }
 
       /** Show success dialog */
-      this.modalCtrl.create(DialogComponent,
-        {
-          title: 'Success',
-          content: 'Registration accepted',
-          buttons: [
-            {label: 'Ok', color: 'link'}
-          ]
-        }).present();
+      this.dialogs.successDialog('Registration accepted.').present();
     });
 
   /** Reject User */
@@ -77,6 +70,7 @@ export class NotificationsEffects {
     .ofType(Notifications.REJECT_USER)
     .map((action: Notifications.RejectUser) => action.payload)
     .exhaustMap((id: number) => {
+
       /** Show loading dialog */
       this.loadingDialog = this.loadingCtrl.create({
         content: 'Please wait...'
@@ -96,14 +90,7 @@ export class NotificationsEffects {
       this.loadingDialog.dismiss();
 
       /** Show success dialog */
-      this.modalCtrl.create(DialogComponent,
-        {
-          title: 'Success',
-          content: 'Registration rejected',
-          buttons: [
-            {label: 'Ok', color: 'link'}
-          ]
-        }).present();
+      this.dialogs.successDialog('Registration rejected!').present();
     });
 
   /** Mark notification as seen */
@@ -131,19 +118,12 @@ export class NotificationsEffects {
     .map((err) => {
 
       /** Close loading dialog */
-      if(this.loadingDialog) {
+      if (this.loadingDialog) {
         this.loadingDialog.dismiss();
       }
 
       /** Show error dialog */
-      this.modalCtrl.create(DialogComponent,
-        {
-          title: 'Error',
-          content: err,
-          buttons: [
-            {label: 'Ok', color: 'link'}
-          ]
-        }).present();
+      this.dialogs.errorDialog(err).present();
     });
 
   /** Loading dialog ref */
@@ -151,7 +131,7 @@ export class NotificationsEffects {
 
   constructor(private actions$: Actions,
               private notificationsService: NotificationsService,
-              private modalCtrl: ModalController,
-              private loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController,
+              private dialogs: DialogService) {
   }
 }

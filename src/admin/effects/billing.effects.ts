@@ -5,14 +5,14 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
-import { Loading, LoadingController, ModalController } from 'ionic-angular';
+import { Loading, LoadingController } from 'ionic-angular';
 import { Effect, Actions } from '@ngrx/effects';
 
 import { BillingService } from '../services/billing.service';
 import * as Billing from '../actions/billing';
 
 import { Pricing } from '../models/billing';
-import { DialogComponent } from '../../shared/dialog/dialog';
+import { DialogService } from '../../shared/dialog/dialog.service';
 
 @Injectable()
 export class BillingEffects {
@@ -27,24 +27,6 @@ export class BillingEffects {
         .map((pricing: Pricing) => new Billing.GetPricingSuccess(pricing))
         .catch(error => of(new Billing.GetPricingFailure(error)))
     );
-
-  /** Get Billing Fail */
-
-  @Effect({dispatch: false})
-  getBillingFailure$ = this.actions$
-    .ofType(Billing.GET_PRICING_FAILURE)
-    .map((action: Billing.GetPricingFailure) => action.payload)
-    .map((err) => {
-
-      this.modalCtrl.create(DialogComponent,
-        {
-          title: 'Error',
-          content: err,
-          buttons: [
-            {label: 'Ok', color: 'link'}
-          ]
-        }).present();
-    });
 
   /** Update Billing */
 
@@ -77,21 +59,15 @@ export class BillingEffects {
         this.loadingDialog.dismiss();
       }
 
-      this.modalCtrl.create(DialogComponent,
-        {
-          title: 'Success',
-          content: 'Pricing updated successfully.',
-          buttons: [
-            {label: 'Ok', color: 'link'}
-          ]
-        }).present();
+      /** Show success dialog */
+      this.dialogs.successDialog('Pricing updated successfully.').present();
     });
 
-  /** Update Billing Failure */
+  /** Handle billing failures */
 
   @Effect({dispatch: false})
-  updateBillingFailure$ = this.actions$
-    .ofType(Billing.UPDATE_PRICING_FAILURE)
+  billingFailure$ = this.actions$
+    .ofType(Billing.UPDATE_PRICING_FAILURE, Billing.GET_PRICING_FAILURE)
     .map((action: Billing.UpdatePricingFailure) => action.payload)
     .map((err) => {
 
@@ -100,14 +76,8 @@ export class BillingEffects {
         this.loadingDialog.dismiss();
       }
 
-      this.modalCtrl.create(DialogComponent,
-        {
-          title: 'Error',
-          content: err,
-          buttons: [
-            {label: 'Ok', color: 'primary'}
-          ]
-        }).present();
+      /** Show error dialog */
+      this.dialogs.errorDialog(err).present();
     });
 
   /** Loading dialog ref */
@@ -115,7 +85,7 @@ export class BillingEffects {
 
   constructor(private actions$: Actions,
               private billingService: BillingService,
-              private modalCtrl: ModalController,
-              private loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController,
+              private dialogs: DialogService) {
   }
 }

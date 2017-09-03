@@ -5,14 +5,14 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
-import { Loading, LoadingController, ModalController } from 'ionic-angular';
+import { App, Loading, LoadingController } from 'ionic-angular';
 import { Effect, Actions } from '@ngrx/effects';
 
 import { SettingsService } from '../services/settings.service';
 import * as Settings from '../actions/settings';
 
-import { DialogComponent } from '../../shared/dialog/dialog';
-import { User } from "../../auth/models/user";
+import { User } from '../../auth/models/user';
+import { DialogService } from '../../shared/dialog/dialog.service';
 
 @Injectable()
 export class SettingsEffects {
@@ -48,14 +48,15 @@ export class SettingsEffects {
         this.loadingDialog.dismiss();
       }
 
-      this.modalCtrl.create(DialogComponent,
-        {
-          title: 'Success',
-          content: 'Settings has been updated.',
-          buttons: [
-            {label: 'Ok', color: 'link'}
-          ]
-        }).present();
+      /** Show success dialog */
+      const successDialog = this.dialogs.successDialog('Settings has been updated.');
+
+      /** Redirect to Login page */
+      successDialog.onDidDismiss(() => {
+        this.app.getRootNav().setRoot('AuthPage');
+      });
+
+      successDialog.present();
     });
 
   /** Update Settings Failure */
@@ -71,21 +72,17 @@ export class SettingsEffects {
         this.loadingDialog.dismiss();
       }
 
-      this.modalCtrl.create(DialogComponent,
-        {
-          title: 'Error',
-          content: err,
-          buttons: [
-            {label: 'Ok', color: 'primary'}
-          ]
-        }).present();
+      /** Show error dialog */
+      this.dialogs.errorDialog(err).present();
     });
 
   loadingDialog: Loading;
 
   constructor(private actions$: Actions,
               private settingsService: SettingsService,
-              private modalCtrl: ModalController,
-              private loadingCtrl: LoadingController) {
+              private dialogs: DialogService,
+              private loadingCtrl: LoadingController,
+              private app: App) {
   }
+
 }

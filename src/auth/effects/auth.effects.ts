@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
-import { ModalController, App, LoadingController, Loading } from 'ionic-angular';
+import { App, LoadingController, Loading } from 'ionic-angular';
 import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage';
 import { Effect, Actions } from '@ngrx/effects';
 
@@ -14,7 +14,7 @@ import * as Auth from '../actions/auth';
 
 import { TabsPage } from '../../pages/tabs/tabs';
 import { Authenticate, RegisterForm, User } from '../models/user';
-import { DialogComponent } from '../../shared/dialog/dialog';
+import { DialogService } from '../../shared/dialog/dialog.service';
 
 @Injectable()
 export class AuthEffects {
@@ -93,14 +93,8 @@ export class AuthEffects {
         this.loadingDialog.dismiss();
       }
 
-      this.modalCtrl.create(DialogComponent,
-        {
-          title: 'Success',
-          content: 'Your account request will be reviewed by the admin.',
-          buttons: [
-            {label: 'Ok', color: 'primary'}
-          ]
-        }).present();
+      /** Show success dialog */
+      this.dialogs.errorDialog('Your account request will be reviewed by the admin.').present();
     });
 
 
@@ -117,14 +111,8 @@ export class AuthEffects {
         this.loadingDialog.dismiss();
       }
 
-      this.modalCtrl.create(DialogComponent,
-        {
-          title: 'Error',
-          content: 'Login/Register failed',
-          buttons: [
-            {label: 'Ok', color: 'primary'}
-          ]
-        }).present();
+      /** Show error dialog */
+      this.dialogs.errorDialog(err).present();
     });
 
   /** Loading dialog ref */
@@ -134,7 +122,7 @@ export class AuthEffects {
               private authService: AuthService,
               private appCtrl: App,
               private secureStorage: SecureStorage,
-              private modalCtrl: ModalController,
-              private loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController,
+              private dialogs: DialogService) {
   }
 }

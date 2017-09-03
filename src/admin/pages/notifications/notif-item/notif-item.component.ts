@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ModalController } from 'ionic-angular';
 import { Store } from '@ngrx/store';
-import { DialogComponent } from '../../../../shared/dialog/dialog';
+import { DialogService } from '../../../../shared/dialog/dialog.service';
 import { Notification } from '../../../models/notification';
 import * as Notifications from '../../../actions/notifications';
 
@@ -22,21 +21,20 @@ export class NotifItemComponent {
     this.temp = item.newUserAccepted || item.newUserRequest || item.message || item.voucher || item;
   }
 
-  constructor(private store: Store<any>, private modalCtrl: ModalController) {
+  constructor(private store: Store<any>, private dialogs: DialogService) {
   }
 
   /** Accept user */
   acceptUser() {
-    const fireDialogOptions = {
+
+    const acceptDialog = this.dialogs.confirmDialog({
       title: 'Confirmation!',
       content: 'Accept registration request from ' + this.temp.user.name,
       buttons: [
         {label: 'Accept Registration', value: true, color: 'secondary'},
         {label: 'Dismiss', color: 'light'}
       ]
-    };
-
-    const acceptDialog = this.modalCtrl.create(DialogComponent, fireDialogOptions);
+    });
 
     acceptDialog.onDidDismiss(confirmed => {
       if (confirmed) {
@@ -50,16 +48,14 @@ export class NotifItemComponent {
   /** Reject user */
   rejectUser() {
 
-    const fireDialogOptions = {
+    const rejectDialog = this.dialogs.confirmDialog({
       title: 'Confirmation!',
       content: 'Reject registration request from ' + this.temp.user.name,
       buttons: [
         {label: 'Reject Registration', value: true, color: 'danger'},
-        {label: 'Dismiss', color: 'light' }
+        {label: 'Dismiss', color: 'light'}
       ]
-    };
-
-    const rejectDialog = this.modalCtrl.create(DialogComponent, fireDialogOptions);
+    });
 
     rejectDialog.onDidDismiss(confirmed => {
       if (confirmed) {
