@@ -70,7 +70,8 @@
     "AVAILABLE": "Available",
     "PENDING": "Pending",
     "CODE": "Code",
-    "TYPE_TO_SEARCH": "Type to search"
+    "TYPE_TO_SEARCH": "Type to search",
+    "ACTIVATION_DATE": "Activation date"
   },
   "FORMS": {
     "NAME": "Nombre",

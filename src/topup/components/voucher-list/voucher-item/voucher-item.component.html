@@ -1,14 +1,14 @@
 <div [class]="'voucher voucher-' + voucher.state">
   <div class="voucher-inner">
-    <div class="voucher-detail">
+    <div class="voucher-summary">
       <div class="voucher-state">
         {{ voucher.state }}
       </div>
       <div class="voucher-code">
-        Code: {{ voucher.code }}
+        {{ 'VOUCHER.CODE' | translate }}: {{ voucher.code }}
       </div>
       <div class="voucher-activation">
-        Activation date: {{ voucher.activated | date: 'yyyy/MM/dd' }}
+        {{ 'VOUCHER.ACTIVATION_DATE' | translate }}: {{ voucher.activated | date: 'yyyy/MM/dd' }}
       </div>
     </div>
     <div class="voucher-name">
