@@ -3,7 +3,7 @@
   <notif-nav [notifications]="state.list"
              [showMenu]="state.showFilterMenu"
              [order]="state.order"
-             (select)="selectNotif = $event"></notif-nav>
+             (select)="list.check$.next($event)"></notif-nav>
 </ion-header>
 
 <ion-content>
@@ -17,10 +17,9 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <notif-list [notifications]="state.list"
+  <notif-list #list [notifications]="state.list"
               [showMenu]="state.showFilterMenu"
               [order]="state.order"
-              [filter]="state.filter"
-              [select]="selectNotif"></notif-list>
+              [filter]="state.filter"></notif-list>
 
 </ion-content>

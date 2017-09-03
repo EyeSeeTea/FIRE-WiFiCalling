@@ -17,13 +17,9 @@ export class NotificationsPage {
   constructor(public store: Store<any>) {
   }
 
-  getNotificationsList() {
-    this.store.dispatch(new Notifications.GetList(null));
-  }
-
   ionViewWillEnter() {
-    /** Request notification list on page enter */
-    this.getNotificationsList();
+    /** Get notifications list */
+    this.store.dispatch(new Notifications.GetList(null));
   }
 
 }

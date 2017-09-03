@@ -3,7 +3,7 @@
   <div class="notif-navbar">
     <ion-buttons>
       <button ion-button (click)="toggleMenu(!showMenu)">
-        <ion-icon name="funnel"></ion-icon>
+        <ion-icon [name]="filterIcon"></ion-icon>
         {{ 'ADMIN.NOTIF.FILTER' | translate }}
       </button>
     </ion-buttons>

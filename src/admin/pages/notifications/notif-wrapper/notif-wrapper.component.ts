@@ -1,19 +1,16 @@
-import { Refresher } from 'ionic-angular';
+import { NavController, Refresher, Tab, Tabs } from 'ionic-angular';
 import { Component, Input, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { State } from '../../../reducers/notificiations-page';
 import * as Notifications from '../../../actions/notifications';
+import { NotifListComponent } from "../notif-list/notif-list.component";
 
 @Component({
   selector: 'notif-wrapper',
   templateUrl: 'notif-wrapper.component.html'
 })
 export class NotifWrapperComponent {
-
-  /** A variable to check multiple notifications
-   * It is one of the following 'All', 'Unseen', 'None' */
-  selectNotif: string;
 
   /** Notification state */
   state: State;
@@ -31,7 +28,20 @@ export class NotifWrapperComponent {
   /** Refresher ref */
   @ViewChild(Refresher) refresher: Refresher;
 
-  constructor(public store: Store<any>) {
+  /** Notification list ref */
+  @ViewChild(NotifListComponent) notifList: NotifListComponent;
+
+  constructor(public store: Store<any>, private nav: NavController) {
+  }
+
+  ngOnInit() {
+    /** When user switch notifications tab, uncheck all notification items */
+    const tabs: Tabs = this.nav.parent;
+    tabs.ionChange.subscribe((activeTab: Tab) => {
+      if (activeTab.root === 'NotificationsPage') {
+        this.notifList.check$.next('NONE');
+      }
+    });
   }
 
   /** Refresh notifications list */

@@ -9,6 +9,7 @@ import * as Notifications from '../../../actions/notifications';
 })
 export class FilterStateComponent {
 
+  @Input() show: boolean;
   @Input() filter: Filter;
   @Output() filterChange = new EventEmitter();
 
