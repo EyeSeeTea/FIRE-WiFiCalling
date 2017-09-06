@@ -10,7 +10,7 @@ export const ADD_VOUCHER = '[Voucher] Add Voucher';
 export const ADD_VOUCHER_SUCCESS = '[Voucher] Add Voucher Success';
 export const ADD_VOUCHER_FAILURE = '[Voucher] Add Voucher Failure';
 
-/** REGISTER ACTIONS */
+/** VOUCHER ACTIONS */
 
 export class GetList implements Action {
   readonly type = GET_LIST;
@@ -29,8 +29,6 @@ export class GetListFailure implements Action {
   constructor(public payload: any) {
   }
 }
-
-/** VOUCHER ACTIONS */
 
 export class AddVoucher implements Action {
   readonly type = ADD_VOUCHER;
