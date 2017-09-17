@@ -1,0 +1,54 @@
+<ion-header>
+  <header></header>
+</ion-header>
+
+<ion-content padding>
+
+  <h2> {{ 'VOUCHER.DETAILS' | translate }} </h2>
+
+  <div [class]="'voucher voucher-' + voucher.state">
+    <div class="voucher-outer">
+      <div class="voucher-inner">
+        <div class="voucher-summary">
+          <div class="voucher-state">
+            {{ voucher.state }}
+          </div>
+          <div class="voucher-code">
+            {{ 'VOUCHER.CODE' | translate }}: {{ voucher.code }}
+          </div>
+        </div>
+
+        <div class="voucher-name">
+          <div class="voucher-credit">
+            <span class="voucher-remaining">R{{voucher.creditRemaining}}</span>
+            <span class="voucher-total">/{{voucher.creditTotal}}</span>
+          </div>
+          <div class="voucher-status">
+            {{ voucher.state }}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="voucher-details">
+        <div class="details-name-col">
+          {{ 'VOUCHER.BULK' | translate }} #:<br>
+          {{ 'VOUCHER.VENDOR' | translate }}:<br><br>
+          {{ 'VOUCHER.CREATION' | translate }}:<br>
+          {{ 'VOUCHER.ACTIVATION' | translate }}:<br>
+          {{ 'VOUCHER.DEPLETION' | translate }}:<br>
+        </div>
+        <div class="details-value-col">
+          {{ voucher.bulkNumber }}<br>
+          {{ voucher.Vendor }}<br><br>
+          {{ voucher.created | date: 'yyyy/MM/dd' }}<br>
+          {{ voucher.activated | date: 'yyyy/MM/dd' }}<br>
+          {{ voucher.depleted ? ('VOUCHER.DEPLETED' | translate) : ('VOUCHER.NOT_DEPLETED' | translate) }}<br>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <button ion-button full color="gray"> {{ 'VOUCHER.VIEW_PDF' | translate }} </button>
+</ion-content>
