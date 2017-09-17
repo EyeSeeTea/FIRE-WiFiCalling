@@ -1,5 +1,4 @@
 {
-  "TOP_UP_CONTENT": "Contenido de la pestaña de recarga",
   "TABS": {
     "CALL": "Llamar",
     "CONTACTS": "Contactos",
@@ -53,6 +52,26 @@
     "EXISTING_USER": "Usuario Existente",
     "NEW_USER": "Nuevo Usuario",
     "FORGOT_PASSWORD": "Recordar Contraseña?"
+  },
+  "VOUCHER": {
+    "ADD": "Add Voucher",
+    "LIST": "Vouchers List",
+    "DETAILS": "Voucher Details",
+    "VOUCHER_CODE": "Voucher Code",
+    "ENTER_CODE": "Enter Voucher Code",
+    "BULK": "Bulk",
+    "VENDOR": "Vendor",
+    "CREATION": "Creation",
+    "ACTIVATION": "Activation",
+    "DEPLETION": "Depletion",
+    "NOT_DEPLETED": "Not yet depleted",
+    "DEPLETED": "depleted",
+    "VIEW_PDF": "View PDF",
+    "AVAILABLE": "Available",
+    "PENDING": "Pending",
+    "CODE": "Code",
+    "TYPE_TO_SEARCH": "Type to search",
+    "ACTIVATION_DATE": "Activation date"
   },
   "FORMS": {
     "NAME": "Nombre",

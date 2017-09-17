@@ -1,0 +1,30 @@
+<form #topupForm="ngForm" (ngSubmit)="onSubmit()">
+
+  <ion-grid no-padding>
+
+    <ion-grid padding>
+
+      <ion-row padding-horizontal padding-top align-items-end>
+        <h3 text-center class="voucher-title"> {{ 'VOUCHER.ADD' | translate }} </h3>
+      </ion-row>
+
+      <ion-row padding-horizontal padding-top>
+        <ion-col>
+          <div class="fire-input">
+            <ion-icon name="pricetag"></ion-icon>
+            <ion-input type="text" name="code" [placeholder]="'VOUCHER.VOUCHER_CODE' | translate" [(ngModel)]="code"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="fill-space"></ion-row>
+    </ion-grid>
+
+
+    <ion-row>
+      <button ion-button type="submit" full color="link" *ngIf="code">{{ 'VOUCHER.ENTER_CODE' | translate }}</button>
+    </ion-row>
+
+  </ion-grid>
+
+</form>

@@ -1,5 +1,4 @@
 {
-  "TOP_UP_CONTENT": "Top up content",
   "TABS": {
     "CALL": "Klavye",
     "CONTACTS": "Kişiler",
@@ -53,6 +52,26 @@
     "EXISTING_USER": "Mevcut Kullanıcı",
     "NEW_USER": "Yeni Kullanıcı",
     "FORGOT_PASSWORD": "Şifre Unuttum?"
+  },
+  "VOUCHER": {
+    "ADD": "Add Voucher",
+    "LIST": "Vouchers List",
+    "DETAILS": "Voucher Details",
+    "VOUCHER_CODE": "Voucher Code",
+    "ENTER_CODE": "Enter Voucher Code",
+    "BULK": "Bulk",
+    "VENDOR": "Vendor",
+    "CREATION": "Creation",
+    "ACTIVATION": "Activation",
+    "DEPLETION": "Depletion",
+    "NOT_DEPLETED": "Not yet depleted",
+    "DEPLETED": "depleted",
+    "VIEW_PDF": "View PDF",
+    "AVAILABLE": "Available",
+    "PENDING": "Pending",
+    "CODE": "Code",
+    "TYPE_TO_SEARCH": "Type to search",
+    "ACTIVATION_DATE": "Activation date"
   },
   "FORMS": {
     "NAME": "Adı",

@@ -1,4 +1,5 @@
 import { User } from '../../auth/models/user';
+import { Voucher } from '../../topup/models/voucher';
 
 export interface Notification {
   id: number;
@@ -41,21 +42,6 @@ export interface Message {
   text: string;
   fromUser: User;
   toUser: User;
-  created: Date;
-}
-
-export interface Voucher {
-  id: number;
-  state: string;
-  url: string;
-  Vendor: string;
-  bulkNumber: string;
-  code: string;
-  creditRemaining: number;
-  creditTotal: number;
-  depleted: any;
-  user: User;
-  activated: Date;
   created: Date;
 }
 

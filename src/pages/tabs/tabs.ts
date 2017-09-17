@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { HistoryPage } from '../history/history';
-import { TopupPage } from '../topup/topup';
+import { CallPage } from '../call/call';
 import { ContactsPage } from '../contacts/contacts';
 
 @Component({
@@ -11,11 +11,7 @@ import { ContactsPage } from '../contacts/contacts';
 export class TabsPage {
 
   tabContacts = ContactsPage;
-  tabCall = 'CallPage';
+  tabCall = CallPage;
   tabHistory = HistoryPage;
-  tabTopup = TopupPage;
-
-  constructor() {
-  }
 
 }
