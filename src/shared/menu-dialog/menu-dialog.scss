@@ -1,0 +1,41 @@
+menu-dialog {
+  padding: 14px;
+  background-color: color($colors, light);
+
+  button[ion-button] {
+    height: 44px;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  button[color="light"] {
+    color: color($colors, primary);
+  }
+
+  .menu-item {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .admin-button {
+    color: color($colors, light);
+    background-color: color($colors, brown);
+  }
+
+  .home-button {
+    color: color($colors, light);
+    background-color: color($colors, primary);
+  }
+}
+
+.main-menu {
+  .modal-wrapper {
+    top: calc(50% - (344px/2));
+    height: 344px;
+  }
+  &.guest {
+    .modal-wrapper {
+      top: calc(50% - (180px/2));
+      height: 182px;
+    }
+  }
+}

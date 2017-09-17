@@ -1,0 +1,57 @@
+{
+  "TOP_UP_CONTENT": "Top up content",
+  "TABS": {
+    "CALL": "Call",
+    "CONTACTS": "Contacts",
+    "HISTORY": "History",
+    "TOP_UP": "Top Up",
+    "NOTIFICATIONS": "Notifications",
+    "USERS": "Users",
+    "BILLING": "Billing"
+  },
+  "MENU": {
+    "LICENSE": "License",
+    "ABOUT": "About",
+    "SETTINGS": "Settings",
+    "ADMIN": "Admin",
+    "LOGOUT": "Log Out"
+  },
+  "ACCESS": {
+    "LOGIN": "Log In",
+    "REQUEST_USER": "Request User",
+    "EXISTING_USER": "Existing User",
+    "NEW_USER": "New User",
+    "FORGOT_PASSWORD": "Forgot password?"
+  },
+  "FORMS": {
+    "NAME": "Name",
+    "SURNAME": "Surname",
+    "USERNAME": "Username",
+    "FEMALE": "Female",
+    "MALE": "Male",
+    "PASSWORD": "Password",
+    "REPEAT_PASSWORD": "Repeat Password",
+    "EMAIL": "Email",
+    "ADDRESS": "Address",
+    "PHONE_NUMBER": "Phone Number"
+  },
+  "ERR": {
+    "USERNAME_REQUIRED": "Username is required",
+    "NAME_REQUIRED": "Name is required.",
+    "SURNAME_REQUIRED": "Surname is required.",
+    "PASSWORD_REQUIRED": "Password is required.",
+    "CPASSWORD_REQUIRED": "Confirm Password is required.",
+    "PASSWORD_MATCH": "Passwords do not match.",
+    "EMAIL_REQUIRED": "Email is required.",
+    "EMAIL_VALID": "Email is not valid.",
+    "ADDRESS_REQUIRED": "Address is required.",
+    "PHONE_NUMBER_REQUIRED": "Phone number is required.",
+    "PHONE_NUMBER_LENGTH": "Phone number must be 10 digit."
+  },
+  "CALLING": {
+    "CALL": "Call",
+    "CALLING_TO": "Calling to",
+    "USE_GSM": "Use GSM",
+    "USE_VOIP": "Use VoIP"
+  }
+}

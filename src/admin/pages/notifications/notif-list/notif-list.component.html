@@ -1,0 +1,17 @@
+<div class="notif-list">
+
+  <filter-menu [show]="showMenu"></filter-menu>
+
+  <filter-state [filter]="filter"></filter-state>
+
+  <ion-scroll scrollY="true">
+    <notif-item *ngFor="let notification of notifications | orderBy: 'created' : order"
+                [item]="notification"></notif-item>
+  </ion-scroll>
+</div>
+
+<ion-row>
+  <button ion-button full color="link" *ngIf="checkedNotifications.length" (click)="markAsSeen()">
+    Mark As Read
+  </button>
+</ion-row>

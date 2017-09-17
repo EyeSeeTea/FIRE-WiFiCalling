@@ -1,0 +1,136 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <ion-grid no-padding>
+
+    <ion-scroll scrollY="true">
+
+      <ion-grid padding>
+
+        <!-- Name -->
+
+        <ion-row padding-horizontal padding-top>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="person"></ion-icon>
+              <ion-input type="text" formControlName="name" [placeholder]="'FORMS.NAME' | translate"></ion-input>
+            </div>
+            <div [@slideVertical] *ngIf="showErrors && formErrors.name.length" class="fire-input-error">
+              {{ formErrors.name[0] | translate}}
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- SURNAME -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="people"></ion-icon>
+              <ion-input type="text" formControlName="surname" [placeholder]="'FORMS.SURNAME' | translate"></ion-input>
+            </div>
+            <div [@slideVertical] *ngIf="showErrors && formErrors.surname.length" class="fire-input-error">
+              {{ formErrors.surname[0] | translate}}
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- ADDRESS -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="card"></ion-icon>
+              <ion-input type="email" formControlName="address" [placeholder]="'FORMS.ADDRESS' | translate"></ion-input>
+            </div>
+            <div [@slideVertical] *ngIf="showErrors && formErrors.address.length" class="fire-input-error">
+              {{ formErrors.address[0] | translate}}
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- EMAIL -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="at"></ion-icon>
+              <ion-input type="email" formControlName="email" [placeholder]="'FORMS.EMAIL' | translate"></ion-input>
+            </div>
+            <div [@slideVertical] *ngIf="showErrors && formErrors.email.length" class="fire-input-error">
+              {{ formErrors.email[0] | translate}}
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- GENDER -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input btn-toggle">
+              <div class="btn-toggle-option">
+                <input id="female" type="radio" formControlName="gender" value="Female">
+                <label for="female">{{ 'FORMS.FEMALE' | translate }}</label>
+              </div>
+              <div class="btn-toggle-option">
+                <input id="male" type="radio" formControlName="gender" value="Male" [checked]="true">
+                <label for="male">{{ 'FORMS.MALE' | translate }}</label>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- PHONE NUMBER  -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="phone-portrait"></ion-icon>
+              <ion-input type="number" formControlName="phone" [placeholder]="'FORMS.PHONE_NUMBER' | translate"></ion-input>
+            </div>
+            <div [@slideVertical] *ngIf="showErrors && formErrors.phone.length" class="fire-input-error">
+              {{ formErrors.phone[0] | translate}}
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- PASSWORD -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="lock"></ion-icon>
+              <ion-input type="password" formControlName="password" [placeholder]="'FORMS.PASSWORD' | translate"></ion-input>
+            </div>
+            <div [@slideVertical] *ngIf="showErrors && formErrors.password.length" class="fire-input-error">
+              {{ formErrors.password[0] | translate}}
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- CONFIRM PASSWORD -->
+
+        <ion-row padding-horizontal>
+          <ion-col>
+            <div class="fire-input">
+              <ion-icon name="lock"></ion-icon>
+              <ion-input type="password" formControlName="cPassword" [placeholder]="'FORMS.REPEAT_PASSWORD' | translate"></ion-input>
+            </div>
+            <div [@slideVertical] *ngIf="showErrors && formErrors.cPassword.length" class="fire-input-error">
+              {{ formErrors.cPassword[0] | translate}}
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="fill-space"></ion-row>
+
+      </ion-grid>
+
+    </ion-scroll>
+
+    <ion-row>
+      <button ion-button type="submit" full color="link">{{ 'AUTH.REQUEST_USER' | translate }}</button>
+    </ion-row>
+
+  </ion-grid>
+
+</form>

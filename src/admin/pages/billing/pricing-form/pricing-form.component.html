@@ -1,0 +1,111 @@
+<form #pricingForm="ngForm" (ngSubmit)="onSubmit()">
+
+  <ion-grid no-padding *ngIf="pricing">
+
+    <ion-grid padding>
+
+      <ion-row>
+        <ion-col text-center>
+          <h6> {{ 'ADMIN.BILLING.VOIP_CALL_PRICES' | translate }} </h6>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+
+        <ion-col>
+          <div class="input-label">
+            {{ 'ADMIN.BILLING.MOBILE_LOCAL' | translate }}
+          </div>
+          <div class="fire-input">
+            <div class="currency">R</div>
+            <ion-input name="localMobile" type="number" [(ngModel)]="pricing.localMobile"></ion-input>
+          </div>
+        </ion-col>
+
+        <ion-col>
+          <div class="input-label">
+            {{ 'ADMIN.BILLING.LAND_LINES_LOCAL' | translate }}
+          </div>
+          <div class="fire-input">
+            <div class="currency">R</div>
+            <ion-input name="localLandLines" type="number" [(ngModel)]="pricing.localLandLines"></ion-input>
+          </div>
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row>
+
+        <ion-col>
+          <div class="input-label">
+            {{ 'ADMIN.BILLING.MOBILE_NATIONAL' | translate }}
+
+          </div>
+          <div class="fire-input">
+            <div class="currency">R</div>
+            <ion-input name="nationalMobile" type="number" [(ngModel)]="pricing.nationalMobile"></ion-input>
+          </div>
+        </ion-col>
+
+        <ion-col>
+          <div class="input-label">
+            {{ 'ADMIN.BILLING.LAND_LINES_NATIONAL' | translate }}
+          </div>
+          <div class="fire-input">
+            <div class="currency">R</div>
+            <ion-input name="nationalLandLines" type="number" [(ngModel)]="pricing.nationalLandLines"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <div class="fire-input fire-select">
+            <ion-item>
+              <ion-select interface="popover" [(ngModel)]="selectedIndex" [ngModelOptions]="ngModelOption">
+                <ion-option *ngFor="let country of pricing.international; let i = index" [value]="i">
+                  {{ country.country }}
+                </ion-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="pricing?.international?.length">
+
+        <ion-col>
+          <div class="input-label">
+            {{ 'ADMIN.BILLING.LAND_LINES_NATIONAL' | translate }}
+          </div>
+          <div class="fire-input">
+            <div class="currency">R</div>
+            <ion-input name="interMobile" type="number"
+                       [(ngModel)]="pricing.international[selectedIndex].mobile"></ion-input>
+          </div>
+        </ion-col>
+
+        <ion-col>
+          <div class="input-label">
+            {{ 'ADMIN.BILLING.LAND_LINES_INTERNATIONAL' | translate }}
+          </div>
+          <div class="fire-input">
+            <div class="currency">R</div>
+            <ion-input name="interLandLines" type="number"
+                       [(ngModel)]="pricing.international[selectedIndex].landLines"></ion-input>
+          </div>
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row class="fill-space"></ion-row>
+    </ion-grid>
+
+    <ion-row>
+      <button ion-button type="submit" full color="link" *ngIf="!pending && !pricingForm.pristine">
+        {{ 'FORMS.SAVE_CHANGES' | translate }}
+      </button>
+    </ion-row>
+
+  </ion-grid>
+
+</form>

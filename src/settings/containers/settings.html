@@ -1,0 +1,10 @@
+<ion-header>
+  <header [title]="'MENU.SETTINGS' | translate"></header>
+</ion-header>
+
+<ion-content>
+
+  <settings-form [user]="settings$ | async" [loggedIn]="loggedIn$ | async"
+                 (settingsChange)="saveChanges($event)"></settings-form>
+
+</ion-content>

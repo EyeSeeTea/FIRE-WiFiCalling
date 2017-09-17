@@ -1,0 +1,27 @@
+header {
+  .toolbar-background {
+    background: $fire-nav-bg;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    ion-buttons {
+      order: 0;
+      .button-inner {
+        text-transform: capitalize;
+        font-size: 18px;
+        color: color($colors, light);
+      }
+    }
+  }
+
+  .header-title {
+    color: color($colors, light);
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 15px;
+  }
+}

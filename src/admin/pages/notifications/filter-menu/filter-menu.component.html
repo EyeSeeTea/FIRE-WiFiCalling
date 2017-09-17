@@ -1,0 +1,15 @@
+<div *ngIf="show" [@slideDown] class="filter-menu">
+  <div [@slideListDown] padding class="main-menu">
+
+    <div class="item" *ngFor="let filter of filterOptions">
+      <button ion-button clear full class="item" (click)="setFilter(filter)">
+        {{ ('ADMIN.NOTIF.' + filter.name) | translate }}
+      </button>
+    </div>
+
+    <div class="item search-item">
+      <search-input (textChange)="filterByName($event)"
+                    [placeholder]="'ADMIN.NOTIF.FILTER_NAME' | translate"></search-input>
+    </div>
+  </div>
+</div>

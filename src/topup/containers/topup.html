@@ -1,0 +1,27 @@
+<ion-header>
+  <header></header>
+
+  <div class="fire-tabs">
+
+    <!-- ADD_VOUCHER/VOUCHERS LIST TABS -->
+
+    <div class="fire-tabs-inner">
+      <div class="fire-tab" [class.active]="selectedTab === 'AddVoucher'" (tap)="selectedTab = 'AddVoucher'">
+        <span>{{ 'VOUCHER.ADD' | translate }}</span>
+      </div>
+      <div class="fire-tab" [class.active]="selectedTab === 'ListVoucher'" (tap)="selectedTab = 'ListVoucher'">
+        <span>{{ 'VOUCHER.LIST' | translate }}</span>
+      </div>
+    </div>
+
+  </div>
+</ion-header>
+
+
+<ion-content no-bounce>
+
+  <add-voucher class="fire-tab-content" [@slideLTR] *ngIf="selectedTab === 'AddVoucher'" (submit)="onAddVoucher($event)"></add-voucher>
+
+  <list-voucher class="fire-tab-content" [@slideRTL] *ngIf="selectedTab === 'ListVoucher'"></list-voucher>
+
+</ion-content>

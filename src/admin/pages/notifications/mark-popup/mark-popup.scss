@@ -1,0 +1,17 @@
+mark-popup {
+  display: block;
+  padding: 6px 3px;
+  background-color: color($colors, brown);
+
+  .item {
+    position: relative;
+    font-weight: bold;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+  }
+}
+

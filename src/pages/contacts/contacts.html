@@ -1,0 +1,24 @@
+<ion-header>
+  <header></header>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar (ionInput)="filterKey.next($event.target.value)"></ion-searchbar>
+
+  <ion-list>
+
+    <button ion-item *ngFor="let contact of list | async">
+
+      <ion-avatar item-start>
+        <!--<img *ngIf="contact?.photos" [test]="contact.photos[0]"/>-->
+        <ion-icon name="contact"></ion-icon>
+      </ion-avatar>
+
+      <div class="item-content">
+        <p> {{ contact.displayName || contact.phoneNumbers[0].value }} </p>
+      </div>
+
+    </button>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,109 @@
+{
+  "TABS": {
+    "CALL": "Klavye",
+    "CONTACTS": "Kişiler",
+    "HISTORY": "Son Aramalar",
+    "TOP_UP": "Yükleme",
+    "NOTIFICATIONS": "Bildirimler",
+    "USERS": "Kullanıcılar",
+    "BILLING": "Fatura"
+  },
+  "MENU": {
+    "HOME": "Ana",
+    "LICENSE": "Lisansları",
+    "ABOUT": "Hakkinda",
+    "SETTINGS": "Ayarlar",
+    "ADMIN": "Yönetici",
+    "LOGOUT": "Çikiş Yap"
+  },
+  "ADMIN": {
+    "USERS": {
+      "SEND_MESSAGE": "Mesaj gönder",
+      "LAST_ACCESS": "Son erişim",
+      "SEARCH_USER": "Kullanıcı ara",
+      "USERS": "Kullanıcılar",
+      "MESSAGE_TO": "Mesajı"
+    },
+    "BILLING": {
+      "TITLE": "Faturalandırma Tercihi",
+      "VOIP_CALL_PRICES": "VOIP Çağrı Fiyatları (R/min)",
+      "MOBILE_LOCAL": "Mobil Yerel",
+      "MOBILE_NATIONAL": "Mobil Ulusal",
+      "MOBILE_INTERNATIONAL": "Mobil Uluslararası",
+      "LAND_LINES_LOCAL": "Yerel sabit hatlar",
+      "LAND_LINES_NATIONAL": "Ulusal sabit hatlar",
+      "LAND_LINES_INTERNATIONAL": "Uluslararası sabit hatlar"
+    },
+    "NOTIF": {
+      "TOPPED_UP": "tepesinde",
+      "USER_REQUEST": "kullanıcı isteği",
+      "USER_ACCEPTED": "kullanıcı kabul etti",
+      "MESSAGE_SENT": "mesaj gönderildi",
+      "PROFILE_UPDATED": "profile updated",
+      "USER_NAME": "kullanıcı adı",
+      "FILTER": "Filtre",
+      "DATE": "Tarih",
+      "FILTER_NAME": "Kullanıcı adına göre filtrele"
+    }
+  },
+  "AUTH": {
+    "LOGIN": "Oturum Aç",
+    "REQUEST_USER": "Kayıt Olmak",
+    "EXISTING_USER": "Mevcut Kullanıcı",
+    "NEW_USER": "Yeni Kullanıcı",
+    "FORGOT_PASSWORD": "Şifre Unuttum?"
+  },
+  "VOUCHER": {
+    "ADD": "Add Voucher",
+    "LIST": "Vouchers List",
+    "DETAILS": "Voucher Details",
+    "VOUCHER_CODE": "Voucher Code",
+    "ENTER_CODE": "Enter Voucher Code",
+    "BULK": "Bulk",
+    "VENDOR": "Vendor",
+    "CREATION": "Creation",
+    "ACTIVATION": "Activation",
+    "DEPLETION": "Depletion",
+    "NOT_DEPLETED": "Not yet depleted",
+    "DEPLETED": "depleted",
+    "VIEW_PDF": "View PDF",
+    "AVAILABLE": "Available",
+    "PENDING": "Pending",
+    "CODE": "Code",
+    "TYPE_TO_SEARCH": "Type to search",
+    "ACTIVATION_DATE": "Activation date"
+  },
+  "FORMS": {
+    "NAME": "Adı",
+    "SURNAME": "Soyadı",
+    "USERNAME": "Kullanıcı Adı",
+    "FEMALE": "Kadın",
+    "MALE": "Erkek",
+    "PASSWORD": "Şifre",
+    "REPEAT_PASSWORD": "Tekrar Şifre",
+    "EMAIL": "Eposta",
+    "ADDRESS": "Adres",
+    "PHONE_NUMBER": "Telefon Numarası",
+    "SERVER": "Sunucu",
+    "SAVE_CHANGES": "Değişiklikleri Kaydet",
+    "ERR": {
+      "USERNAME_REQUIRED": "Kullanıcı adı gerekiyor",
+      "NAME_REQUIRED": "Ad gerekli",
+      "SURNAME_REQUIRED": "Soyadı gerekiyor",
+      "PASSWORD_REQUIRED": "Şifre gereklidir",
+      "CPASSWORD_REQUIRED": "Şifreyi Onayla Gerekli Onaylama",
+      "PASSWORD_MATCH": "Şifreler eşleşmedi",
+      "EMAIL_REQUIRED": "Email gereklidir",
+      "EMAIL_VALID": "Email geçerli değil",
+      "ADDRESS_REQUIRED": "Adres gerekiyor",
+      "PHONE_NUMBER_REQUIRED": "Telefon numarası gerekiyor",
+      "PHONE_NUMBER_LENGTH": "Telefon numarası 10 basamaklı olmalıdır"
+    }
+  },
+  "CALLING": {
+    "CALL": "Call",
+    "CALLING_TO": "Calling to",
+    "USE_GSM": "Use GSM",
+    "USE_VOIP": "Use VoIP"
+  }
+}

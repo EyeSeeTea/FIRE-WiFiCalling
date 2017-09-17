@@ -1,0 +1,5 @@
+<div class="menu-item" *ngFor="let page of params.get('pages')">
+  <button ion-button full [color]="page.color" (click)="viewCtrl.dismiss(page)">
+    {{ page.title | translate }}
+  </button>
+</div>

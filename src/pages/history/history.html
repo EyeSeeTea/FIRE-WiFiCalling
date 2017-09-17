@@ -1,0 +1,32 @@
+<ion-header>
+  <header></header>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar></ion-searchbar>
+
+  <ion-list>
+
+    <button ion-item *ngFor="let log of history | orderBy: 'date': true">
+
+      <ion-avatar item-start>
+        <!--<img *ngIf="log?.photos" [test]="log.photos[0]"/>-->
+        <ion-icon name="contact"></ion-icon>
+      </ion-avatar>
+
+      <div class="item-content">
+        <p> {{ log.displayName }} </p>
+
+        <small>
+          <span>1</span>
+          <img src="assets/img/exitcall_icn.svg">
+          <span>{{ log.date | timeAgo }}</span>
+        </small>
+      </div>
+
+      <ion-icon item-end name="call"></ion-icon>
+    </button>
+
+  </ion-list>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-grid no-padding>
+
+  <ion-row padding text-center class="dialog-title">
+    <ion-col text-center>
+      <h3 *ngIf="users.length === 1;else manyUsers">{{ 'ADMIN.USERS.MESSAGE_TO' | translate }} {{ users[0]?.name }}</h3>
+      <ng-template #manyUsers>
+        <h3>{{ 'ADMIN.USERS.MESSAGE_TO' | translate }} {{ users.length }} {{ 'ADMIN.USERS.USERS' | translate }}</h3>
+      </ng-template>
+    </ion-col>
+  </ion-row>
+
+  <ion-row padding text-center class="dialog-content">
+    <ion-col text-center>
+      <textarea placeholder="Write your message here." [(ngModel)]="message"></textarea>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="dialog-actions">
+    <button ion-button full color="link" (click)="viewCtrl.dismiss(message)">
+      {{ 'ADMIN.USERS.SEND_MESSAGE' | translate }}
+    </button>
+  </ion-row>
+</ion-grid>

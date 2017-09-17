@@ -1,0 +1,25 @@
+<ion-header>
+  <header></header>
+  <notif-nav [notifications]="state.list"
+             [showMenu]="state.showFilterMenu"
+             [order]="state.order"
+             (select)="list.check$.next($event)"></notif-nav>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="onRefresh()">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <notif-list #list [notifications]="state.list"
+              [showMenu]="state.showFilterMenu"
+              [order]="state.order"
+              [filter]="state.filter"></notif-list>
+
+</ion-content>
