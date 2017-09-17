@@ -19,8 +19,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { WiFiCalling } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
-import { CallPage } from '../pages/call/call';
-import { CallingPage } from '../pages/call/calling';
 import { HistoryPage } from '../pages/history/history';
 import { TopupPage } from '../pages/topup/topup';
 import { ContactsPage } from '../pages/contacts/contacts';
@@ -41,8 +39,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     WiFiCalling,
     TabsPage,
-    CallPage,
-    CallingPage,
     HistoryPage,
     TopupPage,
     ContactsPage
@@ -68,8 +64,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   entryComponents: [
     WiFiCalling,
     TabsPage,
-    CallPage,
-    CallingPage,
     HistoryPage,
     TopupPage,
     ContactsPage
