@@ -19,6 +19,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { WiFiCalling } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
+import { CallPage } from '../pages/call/call';
 import { HistoryPage } from '../pages/history/history';
 import { ContactsPage } from '../pages/contacts/contacts';
 
@@ -38,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     WiFiCalling,
+    CallPage,
     TabsPage,
     HistoryPage,
     ContactsPage
@@ -65,6 +67,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   entryComponents: [
     WiFiCalling,
+    CallPage,
     TabsPage,
     HistoryPage,
     ContactsPage
