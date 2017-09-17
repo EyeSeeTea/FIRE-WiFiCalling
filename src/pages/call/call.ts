@@ -1,21 +1,17 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
-import { Store } from '@ngrx/store';
-
-import { AuthGuard } from "../../auth/guard/auth-guard";
 
 @IonicPage()
 @Component({
   selector: 'page-call',
   templateUrl: 'call.html',
 })
-export class CallPage extends AuthGuard {
+export class CallPage {
 
   phoneNumber: string = '';
 
-  constructor(public navCtrl: NavController, public store: Store<any>) {
-    super(store);
+  constructor(public navCtrl: NavController) {
   }
 
   add(n: string) {
