@@ -1,4 +1,5 @@
 {
+  "TOP_UP_CONTENT": "Top up content",
   "TABS": {
     "CALL": "Klavye",
     "CONTACTS": "Kişiler",
@@ -53,12 +54,6 @@
     "NEW_USER": "Yeni Kullanıcı",
     "FORGOT_PASSWORD": "Şifre Unuttum?"
   },
-  "VOUCHER": {
-    "ADD": "Add Voucher",
-    "LIST": "Vouchers List",
-    "VOUCHER_CODE": "Voucher Code",
-    "ENTER_CODE": "Enter Voucher Code"
-  },
   "FORMS": {
     "NAME": "Adı",
     "SURNAME": "Soyadı",
@@ -85,5 +80,11 @@
       "PHONE_NUMBER_REQUIRED": "Telefon numarası gerekiyor",
       "PHONE_NUMBER_LENGTH": "Telefon numarası 10 basamaklı olmalıdır"
     }
+  },
+  "CALLING": {
+    "CALL": "Call",
+    "CALLING_TO": "Calling to",
+    "USE_GSM": "Use GSM",
+    "USE_VOIP": "Use VoIP"
   }
 }
