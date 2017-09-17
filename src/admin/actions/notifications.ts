@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { Notification } from '../models/notification';
 
 /** ADMIN NOTIFICATIONS ACTIONS */
 
@@ -30,7 +31,7 @@ export class GetList implements Action {
 export class GetListSuccess implements Action {
   readonly type = GET_LIST_SUCCESS;
 
-  constructor(public payload: any) {
+  constructor(public payload: Notification[]) {
   }
 }
 

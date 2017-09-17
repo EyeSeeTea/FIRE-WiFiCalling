@@ -1,12 +1,13 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { IonicPage, ModalController, Refresher } from 'ionic-angular';
+import { IonicPage, Refresher } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 
-import * as users from '../../actions/users';
-import * as fromAdmin from '../../reducers';
-import { MessageDialogComponent } from './message-dialog/message-dialog.component';
-import { User, UserListOptions } from '../../models/user';
+import { DialogService } from '../../../shared/dialog/dialog.service';
+import { UserListOptions } from '../../models/user';
+import { User } from '../../../auth/models/user';
+import { getUsers, getUsersPending } from '../../reducers';
+import * as Users from '../../actions/users';
 
 @IonicPage()
 @Component({
@@ -16,10 +17,10 @@ import { User, UserListOptions } from '../../models/user';
 export class UsersPage implements OnInit, OnDestroy {
 
   /** Select user list from store */
-  users$ = this.store.select(fromAdmin.getUsers);
+  users$ = this.store.select(getUsers);
 
   /** Select user list pending state from store */
-  pending$ = this.store.select(fromAdmin.getUsersPending);
+  pending$ = this.store.select(getUsersPending);
 
   /** User list pending observer */
   pendingObs: Subscription;
@@ -35,22 +36,19 @@ export class UsersPage implements OnInit, OnDestroy {
   /** Refresher ref */
   @ViewChild(Refresher) refresher: Refresher;
 
-  constructor(public store: Store<any>, private modalCtrl: ModalController,) {
+  constructor(public store: Store<any>, private dialogs: DialogService) {
   }
 
   /** Send message to selected users */
   sendMessage(selectedUsers: User[]) {
 
     /** Show message dialog */
-    const messageDialog = this.modalCtrl.create(MessageDialogComponent,
-      {
-        users: selectedUsers
-      });
+    const messageDialog = this.dialogs.messageDialog({users: selectedUsers});
 
     messageDialog.onDidDismiss(message => {
       /** Send message to users if it exists */
       if (message) {
-        this.store.dispatch(new users.SendMessage({message: message, users: selectedUsers}));
+        this.store.dispatch(new Users.SendMessage({message: message, users: selectedUsers}));
       }
     });
 
@@ -59,15 +57,13 @@ export class UsersPage implements OnInit, OnDestroy {
 
   getUserList() {
     /** Refresh user list */
-    this.store.dispatch(new users.GetList(null));
-  }
-
-  ionViewWillEnter() {
-    /** Request user list on page enter */
-    this.getUserList();
+    this.store.dispatch(new Users.GetList(null));
   }
 
   ngOnInit() {
+    /** Request user list on page enter */
+    this.getUserList();
+
     /** Complete refresher when user list is loaded */
     this.pendingObs = this.pending$.subscribe((pending) => {
       if (!pending) {

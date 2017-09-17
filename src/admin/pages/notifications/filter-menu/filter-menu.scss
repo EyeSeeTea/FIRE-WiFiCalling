@@ -1,8 +1,10 @@
 filter-menu {
+  position: relative;
   display: block;
-  padding: 1em;
-  background-color: color($colors, brown);
 
+  .main-menu {
+    background-color: color($colors, brown);
+  }
   search-input {
     width: 100%;
     input {

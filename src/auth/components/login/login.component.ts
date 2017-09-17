@@ -1,12 +1,12 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
-import { errAnimation } from '../../animations/auth.animations';
+import { slideVerticalAnimation } from '../../../shared/animations/shared.animations';
 
 @Component({
   selector: 'login',
   templateUrl: 'login.component.html',
-  animations: [errAnimation]
+  animations: [slideVerticalAnimation]
 })
 
 export class LoginComponent implements OnInit, OnDestroy {
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   });
   sub: Subscription;
 
-  @Output() submitted = new EventEmitter();
+  @Output() login = new EventEmitter();
 
   ngOnInit() {
     this.sub = this.form.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.form.valid) {
-      this.submitted.emit(this.form.value);
+      this.login.emit(this.form.value);
     } else {
       this.showErrors = true;
     }
@@ -65,10 +65,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   validationMessages = {
     username: {
-      required: 'ERR.USERNAME_REQUIRED'
+      required: 'FORMS.ERR.USERNAME_REQUIRED'
     },
     password: {
-      required: 'ERR.PASSWORD_REQUIRED'
+      required: 'FORMS.ERR.PASSWORD_REQUIRED'
     },
   };
 

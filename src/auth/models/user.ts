@@ -18,13 +18,14 @@ export interface User {
   id: number;
   name: string;
   username: string;
+  password: string;
+  serverHost: string;
   address: string;
   avatarUrl: string;
   email: string;
   gender: string;
   state: string;
   phoneNumber: string;
-  serverHost: string;
   admin: boolean;
   created: Date;
   updated: Date;

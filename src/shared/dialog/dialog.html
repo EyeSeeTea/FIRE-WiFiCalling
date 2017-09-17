@@ -6,15 +6,11 @@
     </ion-col>
   </ion-row>
 
-  <ion-row class="fill-space"></ion-row>
-
-  <ion-row padding text-center class="dialog-content">
+  <ion-row align-items-center class="dialog-content">
     <ion-col text-center>
       {{ params.get('content') }}
     </ion-col>
   </ion-row>
-
-  <ion-row class="fill-space"></ion-row>
 
   <ion-row *ngFor="let btn of params.get('buttons')" class="dialog-actions">
     <button ion-button full [color]="btn.color" (click)="viewCtrl.dismiss(btn.value)">{{btn.label}}</button>

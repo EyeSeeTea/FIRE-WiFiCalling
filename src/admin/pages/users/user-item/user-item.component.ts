@@ -1,8 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { User } from '../../../models/user';
-
-/** We are forced not to use 'ChangeDetectionStrategy.OnPush' because ngModel doesn't work it
- *  bug issue: https://github.com/angular/angular/issues/10816 */
+import { User } from '../../../../auth/models/user';
 
 @Component({
   selector: 'user-item',
@@ -14,4 +11,3 @@ export class UserItemComponent {
   @Input() item: User;
 
 }
-

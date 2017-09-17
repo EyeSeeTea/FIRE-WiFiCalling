@@ -1,4 +1,4 @@
-<form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <ion-grid no-padding>
 
@@ -10,7 +10,7 @@
             <ion-icon name="person"></ion-icon>
             <ion-input type="text" formControlName="username" [placeholder]="'FORMS.USERNAME' | translate"></ion-input>
           </div>
-          <div [@slideDown] *ngIf="showErrors && formErrors.username.length" class="fire-input-error">
+          <div [@slideVertical] *ngIf="showErrors && formErrors.username.length" class="fire-input-error">
             {{ formErrors.username[0] | translate}}
           </div>
         </ion-col>
@@ -22,7 +22,7 @@
             <ion-icon name="lock"></ion-icon>
             <ion-input type="password" formControlName="password" [placeholder]="'FORMS.PASSWORD' | translate"></ion-input>
           </div>
-          <div [@slideDown] *ngIf="showErrors && formErrors.password.length" class="fire-input-error">
+          <div [@slideVertical] *ngIf="showErrors && formErrors.password.length" class="fire-input-error">
             {{ formErrors.password[0] | translate}}
           </div>
         </ion-col>
@@ -30,7 +30,7 @@
 
       <ion-row>
         <ion-col text-center>
-          <button ion-button color="link" clear style="text-transform: none">{{ 'ACCESS.FORGOT_PASSWORD' | translate }} </button>
+          <button ion-button color="link" clear style="text-transform: none">{{ 'AUTH.FORGOT_PASSWORD' | translate }} </button>
         </ion-col>
       </ion-row>
 
@@ -39,7 +39,7 @@
 
 
     <ion-row>
-      <button ion-button type="submit" full color="link">{{ 'ACCESS.LOGIN' | translate }} </button>
+      <button ion-button type="submit" full color="link">{{ 'AUTH.LOGIN' | translate }} </button>
     </ion-row>
 
   </ion-grid>

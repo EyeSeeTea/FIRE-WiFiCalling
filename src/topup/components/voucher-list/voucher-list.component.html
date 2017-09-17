@@ -1,0 +1,21 @@
+<ion-grid padding>
+
+  <ion-row padding>
+    <ion-col>
+      <div class="filter-voucher">
+        <div class="fire-input">
+          <ion-input name="search" [(ngModel)]="searchKey" [placeholder]="'VOUCHER.TYPE_TO_SEARCH' | translate"></ion-input>
+          <ion-icon name="search"></ion-icon>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <div class="voucher-list">
+      <voucher-item *ngFor="let voucher of vouchers$ | async | filterBy: { code: searchKey }" [voucher]="voucher"></voucher-item>
+    </div>
+  </ion-row>
+
+</ion-grid>
+

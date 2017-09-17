@@ -1,12 +1,12 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
-import { errAnimation } from '../../animations/auth.animations';
+import { slideVerticalAnimation } from '../../../shared/animations/shared.animations';
 
 @Component({
   selector: 'register',
   templateUrl: 'register.component.html',
-  animations: [errAnimation]
+  animations: [slideVerticalAnimation]
 })
 export class RegisterComponent implements OnInit, OnDestroy {
 
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   );
   sub: Subscription;
 
-  @Output() submitted = new EventEmitter();
+  @Output() register = new EventEmitter();
 
   ngOnInit() {
     this.sub = this.form.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   onSubmit() {
 
     if (this.form.valid) {
-      this.submitted.emit(this.form.value);
+      this.register.emit(this.form.value);
     } else {
       this.showErrors = true;
     }
@@ -95,29 +95,29 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   validationMessages = {
     name: {
-      required: 'ERR.NAME_REQUIRED'
+      required: 'FORMS.ERR.NAME_REQUIRED'
     },
     surname: {
-      required: 'ERR.SURNAME_REQUIRED',
+      required: 'FORMS.ERR.SURNAME_REQUIRED',
     },
     email: {
-      required: 'ERR.EMAIL_REQUIRED',
-      email: 'ERR.EMAIL_VALID'
+      required: 'FORMS.ERR.EMAIL_REQUIRED',
+      email: 'FORMS.ERR.EMAIL_VALID'
     },
     address: {
-      required: 'ERR.ADDRESS_REQUIRED',
+      required: 'FORMS.ERR.ADDRESS_REQUIRED',
     },
     phone: {
-      required: 'ERR.PHONE_NUMBER_REQUIRED',
-      minlength: 'ERR.PHONE_NUMBER_LENGTH',
-      maxlength: 'ERR.PHONE_NUMBER_LENGTH'
+      required: 'FORMS.ERR.PHONE_NUMBER_REQUIRED',
+      minlength: 'FORMS.ERR.PHONE_NUMBER_LENGTH',
+      maxlength: 'FORMS.ERR.PHONE_NUMBER_LENGTH'
     },
     password: {
-      required: 'ERR.PASSWORD_REQUIRED'
+      required: 'FORMS.ERR.PASSWORD_REQUIRED'
     },
     cPassword: {
-      required: 'ERR.CPASSWORD_REQUIRED',
-      notSame: 'ERR.PASSWORD_MATCH'
+      required: 'FORMS.ERR.CPASSWORD_REQUIRED',
+      notSame: 'FORMS.ERR.PASSWORD_MATCH'
     }
   };
 

@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { DialogService } from '../../../../shared/dialog/dialog.service';
 import { Notification } from '../../../models/notification';
-import { Store } from "@ngrx/store";
-import * as notifications from '../../../actions/notifications';
+import * as Notifications from '../../../actions/notifications';
 
 @Component({
   selector: 'notif-item',
@@ -20,17 +21,49 @@ export class NotifItemComponent {
     this.temp = item.newUserAccepted || item.newUserRequest || item.message || item.voucher || item;
   }
 
-  constructor(private store: Store<any>) {
+  constructor(private store: Store<any>, private dialogs: DialogService) {
   }
 
   /** Accept user */
   acceptUser() {
-    this.store.dispatch(new notifications.AcceptUser(this.item.id));
+
+    const acceptDialog = this.dialogs.confirmDialog({
+      title: 'Confirmation!',
+      content: 'Accept registration request from ' + this.temp.user.name,
+      buttons: [
+        {label: 'Accept Registration', value: true, color: 'secondary'},
+        {label: 'Dismiss', color: 'light'}
+      ]
+    });
+
+    acceptDialog.onDidDismiss(confirmed => {
+      if (confirmed) {
+        this.store.dispatch(new Notifications.AcceptUser(this.item.id));
+      }
+    });
+
+    acceptDialog.present();
   }
 
   /** Reject user */
   rejectUser() {
-    this.store.dispatch(new notifications.RejectUser(this.item.id));
+
+    const rejectDialog = this.dialogs.confirmDialog({
+      title: 'Confirmation!',
+      content: 'Reject registration request from ' + this.temp.user.name,
+      buttons: [
+        {label: 'Reject Registration', value: true, color: 'danger'},
+        {label: 'Dismiss', color: 'light'}
+      ]
+    });
+
+    rejectDialog.onDidDismiss(confirmed => {
+      if (confirmed) {
+        this.store.dispatch(new Notifications.RejectUser(this.item.id));
+      }
+    });
+
+    rejectDialog.present();
   }
 }
 

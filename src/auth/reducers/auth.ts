@@ -22,10 +22,6 @@ export function reducer(state = initialState, action: auth.Actions): State {
       };
     }
 
-    case auth.LOGIN_REDIRECT: {
-      return initialState;
-    }
-
     case auth.LOGOUT: {
       return initialState;
     }

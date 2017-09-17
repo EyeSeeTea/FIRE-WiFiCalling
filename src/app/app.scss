@@ -1,18 +1,29 @@
 @import '../theme/forms';
 @import '../theme/buttons';
+@import '../theme/dialogs';
+@import '../theme/layout';
+@import '../theme/tabs';
 
-.activeHighlight {
-	background-color: color($colors, light);
+body {
+  color: color($colors, gray);
 }
 
-.fill-space{
+h1, h2, h3, h4, h5, h6 {
+  color: color($colors, gray);
+}
+
+.item-md {
+  color: unset;
+}
+.content-md {
+  color: unset;
+}
+
+.activeHighlight {
+  background-color: color($colors, light);
+}
+
+.fill-space {
   flex: 1;
 }
 
-.modal-wrapper{
-  height: 300px;
-}
-
-.tabbar{
-
-}

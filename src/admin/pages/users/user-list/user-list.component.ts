@@ -8,7 +8,8 @@ import {
   QueryList,
   ViewChildren
 } from '@angular/core';
-import { User, UserListOptions } from '../../../models/user';
+import { User } from '../../../../auth/models/user';
+import { UserListOptions } from '../../../models/user';
 import { UserItemComponent } from '../user-item/user-item.component';
 
 @Component({

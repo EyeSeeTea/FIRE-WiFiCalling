@@ -28,9 +28,10 @@ export class NotificationsService {
   }
 
   /** Mark notification as seen */
-  markSeen(id: number, seen: boolean) {
-    const endpoint = `${this.notificationsEndpoint}/${id}`;
-    return this.fireHttp.patch(endpoint, {seen: seen});
+  markSeen(ids: number[], seen: boolean) {
+    /** TODO: refactor with the mark as seen endpoint */
+    const endpoint = `markAsSeenEndpoint/${ids}`;
+    return this.fireHttp.post(endpoint, {seen: seen});
   }
 
 

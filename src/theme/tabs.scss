@@ -1,0 +1,71 @@
+/** Common styles for AuthPage and TopUpPage */
+
+.app-logo {
+  height: 17vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.app-name {
+  margin-left: 15px;
+  font-size: 2.5em;
+  font-style: italic;
+}
+
+.fire-tabs {
+  background: $fire-nav-tabs-bg;
+  color: white;
+  width: 100%;
+}
+
+.fire-tab-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .col {
+    margin-bottom: 10px;
+  }
+}
+
+.fire-tabs-inner {
+  display: flex;
+  .fire-tab {
+    cursor: pointer;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    span {
+      position: relative;
+      padding: 15px;
+      width: 160px;
+      text-align: center;
+    }
+  }
+  .active span {
+    font-weight: bold;
+    &:after {
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      position: absolute;
+      content: '';
+      height: 5px;
+      background-color: color($colors, link);
+    }
+  }
+}

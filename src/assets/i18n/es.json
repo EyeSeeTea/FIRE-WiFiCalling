@@ -1,5 +1,4 @@
 {
-  "TOP_UP_CONTENT": "Contenido de la pestaña de recarga",
   "TABS": {
     "CALL": "Llamar",
     "CONTACTS": "Contactos",
@@ -10,19 +9,69 @@
     "BILLING": "Recibos"
   },
   "MENU": {
-    "HOME": "Home",
+    "HOME": "Principal",
     "LICENSE": "Licencia",
     "ABOUT": "About",
     "SETTINGS": "Preferencias",
     "ADMIN": "Administracion",
     "LOGOUT": "Salir"
   },
-  "ACCESS": {
-    "LOGIN": "Log In",
+  "ADMIN": {
+    "USERS": {
+      "SEND_MESSAGE": "Enviar mensaje",
+      "LAST_ACCESS": "Ultimo acceso",
+      "SEARCH_USER": "Buscar usuario",
+      "USERS": "Usuarios",
+      "MESSAGE_TO": "Mensaje para_CALL_PRICES"
+    },
+    "BILLING": {
+      "TITLE": "Preferencia de facturación",
+      "VOIP_CALL_PRICES": "VOIP Precios de llamadas (R/min)",
+      "MOBILE_LOCAL": "Móvil local",
+      "MOBILE_NATIONAL": "Móvil nacional",
+      "MOBILE_INTERNATIONAL": "Móvil internacional",
+      "LAND_LINES_LOCAL": "Líneas telefónicas locales",
+      "LAND_LINES_NATIONAL": "Líneas telefónicas nacionales",
+      "LAND_LINES_INTERNATIONAL": "Líneas telefónicas internacionales"
+    },
+    "NOTIF": {
+      "TOPPED_UP": "cubierto",
+      "USER_REQUEST": "solicitud del usuario",
+      "USER_ACCEPTED": "usuario aceptado",
+      "MESSAGE_SENT": "mensaje enviado",
+      "PROFILE_UPDATED": "perfil actualizado",
+      "USER_NAME": "nombre de usuario",
+      "FILTER": "Filtrar",
+      "DATE": "Fecha",
+      "FILTER_NAME": "Filtrar por nombre de usuario"
+    }
+  },
+  "AUTH": {
+    "LOGIN": "Iniciar sesión",
     "REQUEST_USER": "Registrarte",
     "EXISTING_USER": "Usuario Existente",
     "NEW_USER": "Nuevo Usuario",
     "FORGOT_PASSWORD": "Recordar Contraseña?"
+  },
+  "VOUCHER": {
+    "ADD": "Add Voucher",
+    "LIST": "Vouchers List",
+    "DETAILS": "Voucher Details",
+    "VOUCHER_CODE": "Voucher Code",
+    "ENTER_CODE": "Enter Voucher Code",
+    "BULK": "Bulk",
+    "VENDOR": "Vendor",
+    "CREATION": "Creation",
+    "ACTIVATION": "Activation",
+    "DEPLETION": "Depletion",
+    "NOT_DEPLETED": "Not yet depleted",
+    "DEPLETED": "depleted",
+    "VIEW_PDF": "View PDF",
+    "AVAILABLE": "Available",
+    "PENDING": "Pending",
+    "CODE": "Code",
+    "TYPE_TO_SEARCH": "Type to search",
+    "ACTIVATION_DATE": "Activation date"
   },
   "FORMS": {
     "NAME": "Nombre",
@@ -34,20 +83,22 @@
     "REPEAT_PASSWORD": "Repetir Contraseña",
     "EMAIL": "Email",
     "ADDRESS": "Dirección",
-    "PHONE_NUMBER": "Teléfono"
-  },
-  "ERR": {
-    "USERNAME_REQUIRED": "Nombre de usuario es obligatorio",
-    "NAME_REQUIRED": "Nombre es obligatorio",
-    "SURNAME_REQUIRED": "Apellido es obligatorio",
-    "PASSWORD_REQUIRED": "Contraseña es obligatorio",
-    "CPASSWORD_REQUIRED": "Confirmar contraseña es un campo obligatorio",
-    "PASSWORD_MATCH": "Las contraseñas no coinciden",
-    "EMAIL_REQUIRED": "Email es obligatorio",
-    "EMAIL_VALID": "Email no es valido",
-    "ADDRESS_REQUIRED": "Direccion es obligatoria",
-    "PHONE_NUMBER_REQUIRED": "Teléfono es obligatorio",
-    "PHONE_NUMBER_LENGTH": "Teléfono debe tener una longitud minima de 10"
+    "PHONE_NUMBER": "Teléfono",
+    "SERVER": "Servidor",
+    "SAVE_CHANGES": "Guardar cambios",
+    "ERR": {
+      "USERNAME_REQUIRED": "Nombre de usuario es obligatorio",
+      "NAME_REQUIRED": "Nombre es obligatorio",
+      "SURNAME_REQUIRED": "Apellido es obligatorio",
+      "PASSWORD_REQUIRED": "Contraseña es obligatorio",
+      "CPASSWORD_REQUIRED": "Confirmar contraseña es un campo obligatorio",
+      "PASSWORD_MATCH": "Las contraseñas no coinciden",
+      "EMAIL_REQUIRED": "Email es obligatorio",
+      "EMAIL_VALID": "Email no es valido",
+      "ADDRESS_REQUIRED": "Direccion es obligatoria",
+      "PHONE_NUMBER_REQUIRED": "Teléfono es obligatorio",
+      "PHONE_NUMBER_LENGTH": "Teléfono debe tener una longitud minima de 10"
+    }
   },
   "CALLING": {
     "CALL": "Llamar",

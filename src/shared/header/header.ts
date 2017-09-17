@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { App, ModalController, NavController } from 'ionic-angular';
+import { App, ModalController } from 'ionic-angular';
 import { MenuDialogComponent } from '../menu-dialog/menu-dialog.component';
 import { TabsPage } from '../../pages/tabs/tabs';
 import { Store } from '@ngrx/store';
 import * as Auth from '../../auth/actions/auth';
 import { State } from '../../auth/reducers/auth';
 
-type Page = { title: string, component?: any, classes?: string };
+type Page = { title: string, component?: any, color?: string };
 
 @Component({
   selector: 'header',
@@ -14,21 +14,24 @@ type Page = { title: string, component?: any, classes?: string };
 })
 export class HeaderComponent {
 
-  @Input() state: any;
+  @Input() title: string;
 
+  /** Initial auth state */
   auth: State = {loggedIn: false, user: null};
 
   /** Menu items */
   pages: Page[] = [
-    {title: 'MENU.HOME', component: TabsPage, classes: 'home-button'},
-    {title: 'MENU.ADMIN', component: 'AdminPage', classes: 'admin-button'},
-    {title: 'MENU.SETTINGS', component: 'SettingsPage', classes: ''},
-    {title: 'MENU.ABOUT', component: 'AboutPage', classes: ''},
-    {title: 'MENU.LICENSE', component: 'LicensePage', classes: ''},
-    {title: 'MENU.LOGOUT'}
+    {title: 'MENU.HOME', component: TabsPage, color: 'primary'},
+    {title: 'MENU.ADMIN', component: 'AdminPage', color: 'brown'},
+    {title: 'MENU.SETTINGS', component: 'SettingsPage', color: 'lightgray'},
+    {title: 'MENU.ABOUT', component: 'AboutPage', color: 'lightgray'},
+    {title: 'MENU.LICENSE', component: 'LicensePage', color: 'lightgray'},
+    {title: 'MENU.LOGOUT', color: 'danger'}
   ];
 
-  constructor(private store: Store<any>, private app: App, private nav: NavController, private modal: ModalController) {
+  constructor(private store: Store<any>, private app: App, private modal: ModalController) {
+
+    /** Get auth state from the store */
     store.subscribe((state: any) => this.auth = state.auth.status || null);
   }
 
@@ -50,11 +53,6 @@ export class HeaderComponent {
           && page.title !== 'MENU.ADMIN'
           && page.title !== 'MENU.LOGOUT'
       });
-    } else {
-      /** If the user is not admin, remove the admin button */
-      // if (!this.auth.user.admin) {
-      //   pages = this.pages.filter((page: Page) => page.title !== 'MENU.ADMIN');
-      // }
     }
 
     const menu = this.modal.create(MenuDialogComponent,
@@ -67,10 +65,8 @@ export class HeaderComponent {
       if (page) {
         if (page.title === 'MENU.LOGOUT') {
           this.store.dispatch(new Auth.Logout());
-        } else if (page.title === 'MENU.ADMIN' || page.title === 'MENU.HOME') {
-          this.app.getRootNavs()[0].push(page.component);
         } else {
-          this.nav.push(page.component);
+          this.app.getRootNavs()[0].push(page.component);
         }
       }
     });

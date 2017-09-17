@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { Pricing } from '../models/billing';
 
 /** ADMIN BILLING ACTIONS */
 
@@ -18,7 +19,7 @@ export class GetPricing implements Action {
 export class GetPricingSuccess implements Action {
   readonly type = GET_PRICING_SUCCESS;
 
-  constructor(public payload: any) {
+  constructor(public payload: Pricing) {
   }
 }
 
@@ -34,7 +35,7 @@ export class GetPricingFailure implements Action {
 export class UpdatePricing implements Action {
   readonly type = UPDATE_PRICING;
 
-  constructor(public payload: any) {
+  constructor(public payload: Pricing) {
   }
 }
 

@@ -1,23 +1,23 @@
 <ion-header>
   <header></header>
 
-  <div class="auth-header">
+  <div class="fire-tabs">
 
     <!-- LOGO -->
 
-    <div class="auth-logo">
+    <div class="app-logo">
       <img src="assets/img/wifi_logo.svg">
-      <span class="auth-title">WiFiCall</span>
+      <span class="app-name">WiFiCall</span>
     </div>
 
     <!-- LOGIN/REGISTER TABS -->
 
-    <div class="auth-tabs">
-      <div class="auth-tab" [class.active]="selectedTab === 'Login'" (tap)="selectedTab = 'Login'">
-        <span>{{ 'ACCESS.EXISTING_USER' | translate }}</span>
+    <div class="fire-tabs-inner">
+      <div class="fire-tab" [class.active]="selectedTab === 'Login'" (tap)="selectedTab = 'Login'">
+        <span>{{ 'AUTH.EXISTING_USER' | translate }}</span>
       </div>
-      <div class="auth-tab" [class.active]="selectedTab === 'Register'" (tap)="selectedTab = 'Register'">
-        <span>{{ 'ACCESS.NEW_USER' | translate }}</span>
+      <div class="fire-tab" [class.active]="selectedTab === 'Register'" (tap)="selectedTab = 'Register'">
+        <span>{{ 'AUTH.NEW_USER' | translate }}</span>
       </div>
     </div>
 
@@ -27,8 +27,8 @@
 
 <ion-content no-bounce>
 
-  <login [@slideLogin] *ngIf="selectedTab === 'Login'" (submitted)="onLogin($event)"></login>
+  <login class="fire-tab-content" [@slideLTR] *ngIf="selectedTab === 'Login'" (login)="onLogin($event)"></login>
 
-  <register [@slideRegister] *ngIf="selectedTab === 'Register'" (submitted)="onRegister($event)"></register>
+  <register class="fire-tab-content" [@slideRTL] *ngIf="selectedTab === 'Register'" (register)="onRegister($event)"></register>
 
 </ion-content>

@@ -3,13 +3,7 @@ notif-item {
   display: block;
   padding: 6px 16px;
   border-bottom: 1px solid color($colors, lightgray);
-
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f5f6+0,f4f1ef+37,e8e0dc+100 */
-  background: #f2f5f6; /* Old browsers */
-  background: -moz-linear-gradient(top, #f2f5f6 0%, #f4f1ef 37%, #e8e0dc 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #f2f5f6 0%,#f4f1ef 37%,#e8e0dc 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #f2f5f6 0%,#f4f1ef 37%,#e8e0dc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#e8e0dc',GradientType=0 ); /* IE6-9 */
+  background: $list-item-bg;
 
   p {
     font-size: 13px;
@@ -78,6 +72,7 @@ notif-item {
     display: flex;
     margin-bottom: 4px;
     button {
+      cursor: pointer;
       flex: 1;
       margin: 2px 0;
     }

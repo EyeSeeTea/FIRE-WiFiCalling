@@ -18,6 +18,23 @@
     "LOGOUT": "Log Out"
   },
   "ADMIN": {
+    "USERS": {
+      "SEND_MESSAGE": "Send Message",
+      "LAST_ACCESS": "Last Access",
+      "SEARCH_USER": "Search for user",
+      "USERS": "Users",
+      "MESSAGE_TO": "Message to"
+    },
+    "BILLING": {
+      "TITLE": "Billing Preference",
+      "VOIP_CALL_PRICES": "VOIP Calls Prices (R/min)",
+      "MOBILE_LOCAL": "Mobile local",
+      "MOBILE_NATIONAL": "Mobile national",
+      "MOBILE_INTERNATIONAL": "Mobile international",
+      "LAND_LINES_LOCAL": "Land lines local",
+      "LAND_LINES_NATIONAL": "Land lines national",
+      "LAND_LINES_INTERNATIONAL": "Land lines international"
+    },
     "NOTIF": {
       "FILTER": {
         "TOPPED_UP": "topped up",
@@ -29,12 +46,32 @@
       }
     }
   },
-  "ACCESS": {
+  "AUTH": {
     "LOGIN": "Log In",
     "REQUEST_USER": "Request User",
     "EXISTING_USER": "Existing User",
     "NEW_USER": "New User",
     "FORGOT_PASSWORD": "Forgot password?"
+  },
+  "VOUCHER": {
+    "ADD": "Add Voucher",
+    "LIST": "Vouchers List",
+    "DETAILS": "Voucher Details",
+    "VOUCHER_CODE": "Voucher Code",
+    "ENTER_CODE": "Enter Voucher Code",
+    "BULK": "Bulk",
+    "VENDOR": "Vendor",
+    "CREATION": "Creation",
+    "ACTIVATION": "Activation",
+    "DEPLETION": "Depletion",
+    "NOT_DEPLETED": "Not yet depleted",
+    "DEPLETED": "depleted",
+    "VIEW_PDF": "View PDF",
+    "AVAILABLE": "Available",
+    "PENDING": "Pending",
+    "CODE": "Code",
+    "TYPE_TO_SEARCH": "Type to search",
+    "ACTIVATION_DATE": "Activation date"
   },
   "FORMS": {
     "NAME": "Name",
@@ -46,25 +83,27 @@
     "REPEAT_PASSWORD": "Repeat Password",
     "EMAIL": "Email",
     "ADDRESS": "Address",
-    "PHONE_NUMBER": "Phone Number"
-  },
-  "ERR": {
-    "USERNAME_REQUIRED": "Username is required",
-    "NAME_REQUIRED": "Name is required.",
-    "SURNAME_REQUIRED": "Surname is required.",
-    "PASSWORD_REQUIRED": "Password is required.",
-    "CPASSWORD_REQUIRED": "Confirm Password is required.",
-    "PASSWORD_MATCH": "Passwords do not match.",
-    "EMAIL_REQUIRED": "Email is required.",
-    "EMAIL_VALID": "Email is not valid.",
-    "ADDRESS_REQUIRED": "Address is required.",
-    "PHONE_NUMBER_REQUIRED": "Phone number is required.",
-    "PHONE_NUMBER_LENGTH": "Phone number must be 10 digit."
-  },
+    "PHONE_NUMBER": "Phone Number",
+    "SERVER": "Server",
+    "SAVE_CHANGES": "Save changes",
+    "ERR": {
+      "USERNAME_REQUIRED": "Username is required",
+      "NAME_REQUIRED": "Name is required.",
+      "SURNAME_REQUIRED": "Surname is required.",
+      "PASSWORD_REQUIRED": "Password is required.",
+      "CPASSWORD_REQUIRED": "Confirm Password is required.",
+      "PASSWORD_MATCH": "Passwords do not match.",
+      "EMAIL_REQUIRED": "Email is required.",
+      "EMAIL_VALID": "Email is not valid.",
+      "ADDRESS_REQUIRED": "Address is required.",
+      "PHONE_NUMBER_REQUIRED": "Phone number is required.",
+      "PHONE_NUMBER_LENGTH": "Phone number must be 10 digit."
+    },
   "CALLING": {
     "CALL": "Call",
     "CALLING_TO": "Calling to",
     "USE_GSM": "Use GSM",
     "USE_VOIP": "Use VoIP"
+  }
   }
 }

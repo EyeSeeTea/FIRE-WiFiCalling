@@ -1,21 +1,20 @@
-/** Notification filter:
- * Select (all/unread/none) notifications
- * Set notification date order
- * Set filter menu
- * */
-
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { PopoverController, Select } from 'ionic-angular';
-import * as notifications from '../../../actions/notifications';
-import { Notification } from '../../../models/notification';
+import { Platform, PopoverController, Select } from 'ionic-angular';
 import { MarkPopupComponent } from '../mark-popup/mark-popup.component';
+import { Notification } from '../../../models/notification';
+import * as Notifications from '../../../actions/notifications';
 
 @Component({
   selector: 'notif-nav',
   templateUrl: 'notif-nav.component.html'
 })
 export class NotifNavComponent {
+
+  /** Filter button icon */
+  get filterIcon() {
+    return this.platform.is('ios') ? (this.showMenu ? 'ios-funnel' : 'ios-funnel-outline') : 'funnel';
+  }
 
   /** Show filter menu */
   @Input() showMenu = false;
@@ -32,18 +31,17 @@ export class NotifNavComponent {
   /** Select ref */
   @ViewChild(Select) filterSelect: Select;
 
-  constructor(public store: Store<any>, private popoverCtrl: PopoverController) {
-
+  constructor(public store: Store<any>, private popoverCtrl: PopoverController, private platform: Platform) {
   }
 
   /** Set notification date order */
   setOrder(order: boolean) {
-    this.store.dispatch(new notifications.SetOrder(order));
+    this.store.dispatch(new Notifications.SetOrder(order));
   }
 
   /** Toggle filter menu */
-  toggleMenu(toggle: boolean){
-    this.store.dispatch(new notifications.ToggleFilterMenu(toggle));
+  toggleMenu(toggle: boolean) {
+    this.store.dispatch(new Notifications.ToggleFilterMenu(toggle));
   }
 
   /** Show select popover for selecting (all/unread/none) notifications */
