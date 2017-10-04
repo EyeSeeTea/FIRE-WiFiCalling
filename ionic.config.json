@@ -1,5 +1,8 @@
 {
   "name": "WiFiCalling",
   "app_id": "b6856239",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }

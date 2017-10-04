@@ -11,7 +11,9 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 @Component({
   template: `
-    <ion-nav [root]="(loggedIn$ | async) ? rootPage : 'AuthPage'"></ion-nav>`
+    <ion-nav [root]="(loggedIn$ | async) ? rootPage : 'AuthPage'"></ion-nav>
+    <call-worker></call-worker>
+  `
 })
 export class WiFiCalling {
 

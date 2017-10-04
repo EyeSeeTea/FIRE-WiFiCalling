@@ -1,0 +1,39 @@
+<div *ngIf="state?.peer" class="calling-wrapper incoming-call">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="caller-id">
+
+          <h3 class="status">
+            Incoming call
+          </h3>
+
+          <h3 class="phone-number">
+            {{ state?.peer?.phoneNumber }}
+            +905384406085
+          </h3>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="fill-space"></ion-row>
+
+    <!-- ACTION BUTTONS -->
+    <ion-row class="action-buttons">
+
+      <ion-col text-center>
+        <button ion-button round color="success" (click)="acceptCall()">
+          <ion-icon name="call"></ion-icon>
+        </button>
+      </ion-col>
+
+      <ion-col text-center>
+        <button ion-button round color="danger" (click)="rejectCall()">
+          <ion-icon name="call" class="reject-button"></ion-icon>
+        </button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</div>

@@ -19,7 +19,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { WiFiCalling } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
-import { CallPage } from '../pages/call/call';
 import { HistoryPage } from '../pages/history/history';
 import { ContactsPage } from '../pages/contacts/contacts';
 
@@ -29,6 +28,8 @@ import * as auth from '../auth/reducers';
 import { FireHttpModule } from '../auth/http/fire-http.module';
 
 import { AuthEffects } from '../auth/effects/auth.effects';
+import { ToneService } from "../tone/tone.service";
+import { CallWorkerModule } from "../calling/containers/call-worker.module";
 
 
 // AoT requires an exported function for factories
@@ -39,7 +40,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     WiFiCalling,
-    CallPage,
     TabsPage,
     HistoryPage,
     ContactsPage
@@ -63,16 +63,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     StoreModule.forRoot(reducers, {metaReducers}),
     StoreModule.forFeature('auth', auth.reducers),
     EffectsModule.forRoot([AuthEffects]),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    CallWorkerModule
   ],
   entryComponents: [
     WiFiCalling,
-    CallPage,
     TabsPage,
     HistoryPage,
     ContactsPage
   ],
   providers: [
+    ToneService,
     StatusBar,
     SplashScreen,
     Contacts,

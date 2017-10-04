@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { App, NavParams } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 import { AlertController } from 'ionic-angular';
@@ -7,17 +7,17 @@ import { FireHttp } from '../../auth/http/fire-http';
 import 'rxjs/add/operator/map';
 
 @IonicPage({
-  segment: 'calling/:phoneNumber'
+  segment: 'call-type'
 })
 @Component({
-  selector: 'page-calling',
-  templateUrl: 'calling.html',
+  selector: 'page-call-type',
+  templateUrl: 'call-type.html',
 })
-export class CallingPage {
+export class CallTypePage {
   phoneNumber: string = '';
   rates = {gsm: 'unknown', voip: 'unknown'};
 
-  constructor(public navCtrl: NavController,
+  constructor(public app: App,
               public navParams: NavParams,
               private fireHttp: FireHttp,
               private alertCtrl: AlertController,
@@ -53,10 +53,12 @@ export class CallingPage {
   }
 
   gsm() {
+    this.app.getRootNav().setRoot('CallingPage');
     console.log('Tried to call %s using GSM', this.phoneNumber);
   }
 
   voip() {
+    this.app.getRootNav().setRoot('CallingPage');
     console.log('Tried to call %s using VoIP', this.phoneNumber);
   }
 }

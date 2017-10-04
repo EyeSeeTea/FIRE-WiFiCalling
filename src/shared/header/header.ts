@@ -66,7 +66,7 @@ export class HeaderComponent {
         if (page.title === 'MENU.LOGOUT') {
           this.store.dispatch(new Auth.Logout());
         } else {
-          this.app.getRootNavs()[0].push(page.component);
+          this.app.getRootNav().push(page.component);
         }
       }
     });

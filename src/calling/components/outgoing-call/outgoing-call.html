@@ -1,0 +1,121 @@
+<div *ngIf="state?.peer" class="calling-wrapper">
+
+  <div class="caller-id">
+
+    <div class="display-pic">
+      <ion-icon name="person"></ion-icon>
+    </div>
+
+    <h3 class="status">
+      Calling {{ state?.user?.name }}
+    </h3>
+
+    <h3 class="phone-number">
+      {{ state?.peer?.phoneNumber }}
+    </h3>
+
+  </div>
+
+  <div class="action-buttons">
+
+    <ion-grid>
+      <!-- FIRST ROW OF BUTTONS -->
+      <ion-row>
+        <ion-col>
+
+          <button color="gray" ion-button round (click)="testConnected()">
+            <ion-icon name="volume-up"></ion-icon>
+            <!--<ion-icon name="volume-off"></ion-icon>-->
+          </button>
+
+        </ion-col>
+        <ion-col>
+
+          <button color="gray" ion-button round>
+            <ion-icon name="people"></ion-icon>
+          </button>
+
+        </ion-col>
+
+        <ion-col>
+
+          <button color="gray" ion-button round>
+            <ion-icon name="pause"></ion-icon>
+            <!--<ion-icon name="radio-button-on"></ion-icon>-->
+          </button>
+
+        </ion-col>
+      </ion-row>
+
+      <!-- SECOND ROW OF BUTTONS -->
+
+      <ion-row>
+        <ion-col>
+
+          <button color="gray" ion-button round>
+            <ion-icon name="mic"></ion-icon>
+          </button>
+
+        </ion-col>
+        <ion-col>
+
+          <button color="gray" ion-button round>
+            <ion-icon name="mic"></ion-icon>
+          </button>
+
+        </ion-col>
+        <ion-col>
+
+          <button color="gray" ion-button round>
+            <ion-icon name="mic"></ion-icon>
+          </button>
+
+        </ion-col>
+      </ion-row>
+
+      <!-- THIRD ROW OF BUTTONS -->
+
+      <ion-row>
+        <ion-col>
+
+          <button color="gray" ion-button round>
+            <ion-icon name="mic"></ion-icon>
+          </button>
+
+        </ion-col>
+        <ion-col>
+
+          <button color="gray" ion-button round>
+            <ion-icon name="mic"></ion-icon>
+          </button>
+
+        </ion-col>
+
+        <ion-col>
+
+          <button color="gray" ion-button round>
+            <ion-icon name="mic"></ion-icon>
+          </button>
+
+        </ion-col>
+
+      </ion-row>
+
+      <!-- HANGUP BUTTON -->
+
+      <ion-row>
+        <ion-col text-center>
+
+          <button color="danger" ion-button round (click)="hangUp()">
+            <ion-icon name="close"></ion-icon>
+          </button>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+  </div>
+</div>
+
+
