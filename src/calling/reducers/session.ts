@@ -15,10 +15,15 @@ export type StatusType =
   | 'connected'
   | 'disconnected';
 
-export interface State {
+/** Incoming/outgoing interface */
+export interface CallState {
   peer: User;
-  connection: ConnectionType;
-  type: CallingType;
+  connection?: ConnectionType;
+  type?: CallingType;
+}
+
+/** Call session interface */
+export interface State extends CallState {
   status: StatusType;
   startDate: number;
   endDate: number;

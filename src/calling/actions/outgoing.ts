@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store';
 
 /** CALLING TYPES */
 
-export const OUTGOING_CALL = '[Calling] Outgoing Call...';
+export const OUTGOING_CALL = '[Calling] Make An Outgoing Call';
 export const NO_ANSWER = '[Calling] No Answer';
 
 /** OUTGOING CALLS ACTIONS */

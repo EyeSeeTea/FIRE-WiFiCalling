@@ -7,14 +7,14 @@
     </div>
 
     <h3 class="phone-number">
-      {{ state?.peer?.phoneNumber }}
+      {{ state.peer?.phoneNumber }}
     </h3>
 
     <h3 class="status">
-      {{ state?.status }}
+      {{ state.status }}
     </h3>
 
-    <div *ngIf="state?.status === 'connected'" class="timer">
+    <div *ngIf="state.status === 'connected'" class="timer">
       {{ timerTicks$ | async | timer }}
     </div>
 
@@ -77,33 +77,7 @@
         </ion-col>
       </ion-row>
 
-      <!-- THIRD ROW OF BUTTONS -->
-
-      <ion-row>
-        <ion-col>
-
-          <button color="gray" ion-button round>
-            <ion-icon name="mic"></ion-icon>
-          </button>
-
-        </ion-col>
-        <ion-col>
-
-          <button color="gray" ion-button round>
-            <ion-icon name="mic"></ion-icon>
-          </button>
-
-        </ion-col>
-
-        <ion-col>
-
-          <button color="gray" ion-button round>
-            <ion-icon name="mic"></ion-icon>
-          </button>
-
-        </ion-col>
-
-      </ion-row>
+      <ion-row class="fill-space"></ion-row>
 
       <!-- HANGUP BUTTON -->
 

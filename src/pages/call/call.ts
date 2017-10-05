@@ -5,6 +5,7 @@ import { Store } from "@ngrx/store";
 
 import * as outgoingCall from '../../calling/actions/outgoing';
 import * as incomingCall from '../../calling/actions/incoming';
+import { CallState } from "../../calling/reducers/session";
 
 @IonicPage()
 @Component({
@@ -35,22 +36,26 @@ export class CallPage {
     console.log('Add contact with number %s', this.phoneNumber);
   }
 
-  incomingTest(){
-    this.store.dispatch(new incomingCall.IncomingCall({
+  incomingTest() {
+    const callInfo: CallState = {
       peer: {
         name: 'Maria',
         phoneNumber: '+966523118088'
       },
-    }));
+    };
+
+    this.store.dispatch(new incomingCall.IncomingCall(callInfo));
   }
 
   outgoingTest() {
-    this.store.dispatch(new outgoingCall.OutgoingCall({
+    const callInfo: CallState = {
       peer: {
         name: 'John',
         phoneNumber: '+963113118088'
       },
       connection: 'internet'
-    }));
+    };
+
+    this.store.dispatch(new outgoingCall.OutgoingCall(callInfo));
   }
 }

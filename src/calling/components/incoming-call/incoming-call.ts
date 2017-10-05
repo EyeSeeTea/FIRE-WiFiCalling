@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { State } from '../../reducers/incoming';
+import { CallState } from '../../reducers/session';
 import * as Calling from '../../actions/incoming';
 
 @Component({
@@ -10,7 +10,7 @@ import * as Calling from '../../actions/incoming';
 
 export class IncomingCall implements OnInit {
 
-  @Input() state: State;
+  @Input() state: CallState;
 
   constructor(private store: Store<any>) {
   }
@@ -19,10 +19,10 @@ export class IncomingCall implements OnInit {
   }
 
   acceptCall() {
-    this.store.dispatch(new Calling.AcceptCall(null));
+    this.store.dispatch(new Calling.AcceptCall(this.state));
   }
 
   rejectCall() {
-    this.store.dispatch(new Calling.RejectCall(null));
+    this.store.dispatch(new Calling.RejectCall());
   }
 }

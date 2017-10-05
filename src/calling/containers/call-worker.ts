@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectSessionState, selectOutgoingState, selectIncomingState } from '../reducers';
+import { CallingService } from '../services/calling.service';
 
 @Component({
   selector: 'call-worker',
@@ -17,11 +18,11 @@ export class CallWorker implements OnInit {
   incomingState$ = this.store.select(selectIncomingState);
   outgoingState$ = this.store.select(selectOutgoingState);
 
-  constructor(private store: Store<any>) {
+  constructor(private store: Store<any>, private sip: CallingService) {
   }
 
   ngOnInit() {
-    console.log('call-worker init');
+    this.sip.initialize();
   }
 
 }

@@ -6,8 +6,8 @@ import * as fromIncoming from './incoming';
 
 export interface CallingState {
   session: fromSession.State;
-  outgoing: fromOutgoing.State;
-  incoming: fromIncoming.State;
+  outgoing: fromSession.CallState;
+  incoming: fromSession.CallState;
 }
 
 export const reducers = {

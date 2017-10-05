@@ -9,7 +9,7 @@ export class CallingService {
 
   public socket: any;
   configuration;
-  // ua;
+  ua;
 
   constructor() {
 
@@ -24,40 +24,42 @@ export class CallingService {
     };
   }
 
-  // connect() {
-  //   JsSIP.debug.enable('JsSIP:*');
-  //
-  //   this.ua = new JsSIP.UA(this.configuration);
-  //   this.ua.start();
-  //
-  //   // Register callbacks to desired call events
-  //   const eventHandlers = {
-  //     'progress': function (e) {
-  //       console.log('call is in progress');
-  //     },
-  //     'failed': function (e) {
-  //       console.log('call failed with cause: ' + e.data.cause);
-  //     },
-  //     'ended': function (e) {
-  //       console.log('call ended with cause: ' + e.data.cause);
-  //     },
-  //     'confirmed': function (e) {
-  //       console.log('call confirmed');
-  //     }
-  //   };
+  initialize() {
 
-    // const options = {
-    //   'eventHandlers': eventHandlers,
-    //   'mediaConstraints': {'audio': true}
-    // };
+    JsSIP.debug.enable('JsSIP:*');
+
+    this.ua = new JsSIP.UA(this.configuration);
+    this.ua.start();
+
+    // Register callbacks to desired call events
+    const eventHandlers = {
+      'progress': function (e) {
+        console.log('call is in progress');
+      },
+      'failed': function (e) {
+        console.log('call failed with cause: ' + e.data.cause);
+      },
+      'ended': function (e) {
+        console.log('call ended with cause: ' + e.data.cause);
+      },
+      'confirmed': function (e) {
+        console.log('call confirmed');
+      }
+    };
+
+    const options = {
+      'eventHandlers': eventHandlers,
+      'mediaConstraints': {'audio': true}
+    };
+
+  }
+
+
+  /** Fake peer answer in 2s delay */
+  call(user) {
+    return of({}).delay(2000);
 
     // const uri = 'sip:2@dev.eyeseetea.com';
     // const session = this.ua.call(uri, options);
-  // }
-
-
-  /** Fake user answering in 2s */
-  call(user) {
-    return of({}).delay(2000);
   }
 }

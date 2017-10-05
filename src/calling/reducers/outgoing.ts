@@ -1,21 +1,14 @@
 import * as calling from '../actions/outgoing';
 import * as session from '../actions/session';
-import { User } from '../../auth/models/user';
-import { ConnectionType, CallingType } from './session';
+import { CallState } from './session';
 
-export interface State {
-  peer: User;
-  connection: ConnectionType;
-  type: CallingType;
-}
-
-export const initialState: State = {
+export const initialState: CallState = {
   peer: null,
   connection: null,
   type: null
 };
 
-export function reducer(state = initialState, action: calling.Actions | session.Actions): State {
+export function reducer(state = initialState, action: calling.Actions | session.Actions): CallState {
 
   switch (action.type) {
 
@@ -28,11 +21,8 @@ export function reducer(state = initialState, action: calling.Actions | session.
       };
     }
 
-    case session.CONNECTED: {
-      return null;
-    }
-
-    case calling.NO_ANSWER: {
+    case session.CONNECTED:
+    case session.DISCONNECTED: {
       return null;
     }
 
@@ -42,5 +32,4 @@ export function reducer(state = initialState, action: calling.Actions | session.
   }
 }
 
-export const getRecipientUser = (state: State) => state.peer;
-export const getConnectionType = (state: State) => state.connection;
+export const getRecipientUser = (state: CallState) => state.peer;

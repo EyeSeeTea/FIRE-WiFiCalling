@@ -1,18 +1,13 @@
 import * as calling from '../actions/incoming';
-import { User } from '../../auth/models/user';
-import { CallingType } from './session';
+import { CallState } from './session';
 
-export interface State {
-  peer: User;
-  type: CallingType;
-}
-
-export const initialState: State = {
+export const initialState: CallState = {
   peer: null,
+  connection: null,
   type: null
 };
 
-export function reducer(state = initialState, action: calling.Actions): State {
+export function reducer(state = initialState, action: calling.Actions): CallState {
 
   switch (action.type) {
 
@@ -20,13 +15,12 @@ export function reducer(state = initialState, action: calling.Actions): State {
       return {
         ...state,
         peer: action.payload.peer,
+        connection: 'internet',
         type: 'incoming'
       };
     }
 
-    case calling.ACCEPT_CALL: {
-      return null;
-    }
+    case calling.ACCEPT_CALL:
     case calling.REJECT_CALL: {
       return null;
     }
@@ -37,4 +31,4 @@ export function reducer(state = initialState, action: calling.Actions): State {
   }
 }
 
-export const getCaller = (state: State) => state.peer;
+export const getCaller = (state: CallState) => state.peer;

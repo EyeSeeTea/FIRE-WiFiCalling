@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-
-import { State } from '../../reducers/outgoing';
+import { CallState } from '../../reducers/session';
 import * as Calling from '../../actions/session';
 
 @Component({
@@ -11,7 +10,7 @@ import * as Calling from '../../actions/session';
 
 export class OutgoingCall implements OnInit {
 
-  @Input() state: State;
+  @Input() state: CallState;
 
   constructor(private store: Store<any>) {
   }
@@ -19,16 +18,11 @@ export class OutgoingCall implements OnInit {
   ngOnInit() {
   }
 
-  ngOnChanges() {
-    console.log('outgoing test', this.state);
-  }
-
   testConnected() {
-    this.store.dispatch(new Calling.Connected(null));
+    this.store.dispatch(new Calling.Connected(this.state));
   }
 
   hangUp() {
     this.store.dispatch(new Calling.HangUp());
   }
-
 }

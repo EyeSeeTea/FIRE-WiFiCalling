@@ -5,7 +5,9 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { CallingEffects } from '../effects/calling.effects';
+import { SessionEffects } from '../effects/session.effects';
+import { IncomingEffects } from '../effects/incoming.effects';
+import { OutgoingEffects } from '../effects/outgoing.effects';
 import { reducers } from '../reducers';
 
 import { CallingService } from '../services/calling.service';
@@ -21,7 +23,7 @@ import { OutgoingCall } from '../components/outgoing-call/outgoing-call';
     IonicModule,
     TranslateModule.forChild(),
     StoreModule.forFeature('calling', reducers),
-    EffectsModule.forFeature([CallingEffects]),
+    EffectsModule.forFeature([SessionEffects, OutgoingEffects, IncomingEffects]),
     SharedModule
   ],
   declarations: [

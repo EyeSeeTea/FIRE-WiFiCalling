@@ -15,19 +15,19 @@ export interface RegisterForm {
 }
 
 export interface User {
-  id: number;
-  name: string;
-  username: string;
-  password: string;
-  serverHost: string;
-  address: string;
-  avatarUrl: string;
-  email: string;
-  gender: string;
-  state: string;
-  phoneNumber: string;
-  admin: boolean;
-  created: Date;
-  updated: Date;
-  lastAccess: Date;
+  id?: number;
+  name?: string;
+  username?: string;
+  password?: string;
+  serverHost?: string;
+  address?: string;
+  avatarUrl?: string;
+  email?: string;
+  gender?: string;
+  state?: string;
+  phoneNumber?: string;
+  admin?: boolean;
+  created?: Date;
+  updated?: Date;
+  lastAccess?: Date;
 }

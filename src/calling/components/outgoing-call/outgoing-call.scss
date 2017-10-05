@@ -1,10 +1,11 @@
-outgoing-call {
+outgoing-call, session-call {
 
   .caller-id {
     height: 40vh;
   }
 
   .action-buttons {
+    padding: 3em 0;
     flex: 1;
   }
 
