@@ -8,52 +8,123 @@ import JsSIP from 'jssip';
 export class CallingService {
 
   public socket: any;
-  configuration;
   ua;
 
-  constructor() {
+  settings = {
+    display_name: '1@dev.est',
+    uri: '1@dev.eyeseetea.com',
+    password: '1pass',
+    socket:
+      {
+        uri: 'wss://dev.eyeseetea.com:5060',
+        via_transport: 'auto',
+      },
+    registrar_server: null,
+    contact_uri: null,
+    authorization_user: '1',
+    instance_id: null,
+    session_timers: true,
+    use_preloaded_route: false
+  };
 
-    this.socket = new JsSIP.WebSocketInterface('ws://dev.eyeseetea.com');
-    this.configuration = {
-      sockets: [this.socket],
-      uri: '1@dev.eyeseetea.com',
-      password: '1pass',
-      display_name: '1@dev.est',
-      authorization_user: '1',
-      registrar_server: 'dev.eyeseetea.com'
-    };
+  // settings = {
+  //   display_name: 'webrtc',
+  //   uri: 'webrtc@rhizortc.specialstories.org',
+  //   password: 'verysecret',
+  //   socket:
+  //     {
+  //       uri: 'wss://rhizortc.specialstories.org:8443',
+  //       via_transport: 'auto',
+  //     },
+  //   registrar_server: null,
+  //   contact_uri: null,
+  //   authorization_user: null,
+  //   instance_id: null,
+  //   session_timers: true,
+  //   use_preloaded_route: false
+  // };
+
+  constructor() {
   }
 
   initialize() {
 
-    JsSIP.debug.enable('JsSIP:*');
+    this.socket = new JsSIP.WebSocketInterface(this.settings.socket.uri);
+    this.socket.via_transport = 'auto';
 
-    this.ua = new JsSIP.UA(this.configuration);
-    this.ua.start();
+    // Setup JsSIP
+    try {
+      JsSIP.debug.enable('JsSIP:*');
+      this.ua = new JsSIP.UA({
+        uri: this.settings.uri,
+        password: this.settings.password,
+        display_name: this.settings.display_name,
+        sockets: [this.socket],
+        registrar_server: this.settings.registrar_server,
+        contact_uri: this.settings.contact_uri,
+        authorization_user: this.settings.authorization_user,
+        instance_id: this.settings.instance_id,
+        session_timers: this.settings.session_timers,
+        use_preloaded_route: this.settings.use_preloaded_route
+      });
 
-    // Register callbacks to desired call events
-    const eventHandlers = {
-      'progress': function (e) {
-        console.log('call is in progress');
-      },
-      'failed': function (e) {
-        console.log('call failed with cause: ' + e.data.cause);
-      },
-      'ended': function (e) {
-        console.log('call ended with cause: ' + e.data.cause);
-      },
-      'confirmed': function (e) {
-        console.log('call confirmed');
-      }
-    };
+      this.addEvents(this.ua);
 
-    const options = {
-      'eventHandlers': eventHandlers,
-      'mediaConstraints': {'audio': true}
-    };
+      // Start JsSIP
+      this.ua.start();
+
+    } catch (error) {
+      console.log('JsSIP config error', error);
+      return;
+    }
 
   }
 
+  addEvents(sipUa) {
+    sipUa.on('connecting', () =>
+      console.log('connecting')
+    );
+
+    sipUa.on('connected', () => {
+      console.log('connected');
+      sipUa.register();
+    });
+
+    sipUa.on('disconnected', () =>
+      console.log('disconnected')
+    );
+
+    sipUa.on('registered', () =>
+      console.log('registered')
+    );
+
+    sipUa.on('unregistered', () => {
+      console.log('unregistered');
+    });
+
+    sipUa.on('registrationFailed', (data) => {
+      console.log('registrationFailed');
+    });
+
+    sipUa.on('newRTCSession', (data) => {
+      if (data.originator === 'local') { return; } // Catch incoming actions only
+      this.handleIncomingCall(data);
+    });
+  }
+
+  handleIncomingCall(data) {
+    data.session.on('failed', (err) => {
+      console.log('failed');
+    });
+
+    data.session.on('ended', () => {
+      console.log('ended');
+    });
+
+    data.session.on('accepted', () => {
+      console.log('accepted');
+    });
+  }
 
   /** Fake peer answer in 2s delay */
   call(user) {
