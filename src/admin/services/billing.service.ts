@@ -11,11 +11,11 @@ export class BillingService {
 
   /** Get billing prices */
   getPricing() {
-    return this.fireHttp.get(this.endpoint).map(res => res.json());
+    return this.fireHttp.get(this.endpoint);
   }
 
   /** Update billing prices */
   updatePricing(pricing) {
-    return this.fireHttp.patch(this.endpoint, pricing).map(res => res.json());
+    return this.fireHttp.patch(this.endpoint, pricing);
   }
 }

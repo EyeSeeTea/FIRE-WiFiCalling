@@ -12,12 +12,12 @@ export class AuthService {
 
   login(keys: Authenticate) {
     this.fireHttp.setAuthKeys(keys);
-    return this.fireHttp.get('/users').map(res => res.json());
+    return this.fireHttp.get('/users');
   }
 
   register(form: RegisterForm) {
     /** TODO: remove the hardcoded username when the registration design is complete
      * issue: https://github.com/EyeSeeTea/FIRE-WiFiCalling/issues/37 */
-    return this.fireHttp.post(this.endpoint, {user: {...form, username: 'hardcoded'}}).map(res => res.json());
+    return this.fireHttp.post(this.endpoint, {user: {...form, username: 'hardcoded'}});
   }
 }

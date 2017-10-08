@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, ConnectionBackend } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage';
 import { Authenticate } from '../models/user';
+import { HttpClient, HttpHandler, HttpHeaders } from "@angular/common/http";
 
 @Injectable()
-export class FireHttp extends Http {
+export class FireHttp extends HttpClient {
 
   baseUrl = 'http://dev.eyeseetea.com:5000';
   private keys: Authenticate = {username: 'joel', password: 'joel1234'};
 
-  constructor(backend: ConnectionBackend, defaultOptions: RequestOptions, secureStorage: SecureStorage) {
+  constructor(handler: HttpHandler, secureStorage: SecureStorage) {
 
-    super(backend, defaultOptions);
+    super(handler);
 
     secureStorage.create('fire-app').then((storage: SecureStorageObject) => {
       console.log('SecureStorage is loaded');
@@ -50,9 +50,9 @@ export class FireHttp extends Http {
   }
 
   getHeaders() {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic ' + btoa(this.keys.username + ':' + this.keys.password));
-    return {headers: headers};
+    const headers = new HttpHeaders()
+      .set('Authorization','Basic ' + btoa(this.keys.username + ':' + this.keys.password));
+    return {headers};
   }
 
   setAuthKeys(keys: Authenticate) {

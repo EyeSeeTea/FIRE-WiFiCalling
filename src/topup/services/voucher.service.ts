@@ -19,7 +19,7 @@ export class VoucherService {
 
   /** Add new voucher to user's account */
   addVoucher(userId, voucher: Voucher) {
-    return this.fireHttp.post(`${this.endpoint}/${userId}/vouchers`, { voucher: voucher }).map(res => res.json());
+    return this.fireHttp.post(`${this.endpoint}/${userId}/vouchers`, { voucher: voucher });
   }
 
 }
