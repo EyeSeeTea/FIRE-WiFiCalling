@@ -45,7 +45,7 @@ export class Register implements Action {
 
 export class RegisterSuccess implements Action {
   readonly type = REGISTER_SUCCESS;
-  constructor(public payload: RegisterForm) {
+  constructor(public payload: any) {
   }
 }
 
