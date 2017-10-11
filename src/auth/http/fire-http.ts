@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage';
 import { Authenticate } from '../models/user';
-import { HttpClient, HttpHandler, HttpHeaders } from "@angular/common/http";
 
 @Injectable()
 export class FireHttp extends HttpClient {
 
-  baseUrl = 'http://dev.eyeseetea.com:5000';
-  private keys: Authenticate = {username: 'joel', password: 'joel1234'};
+  baseUrl = 'http://dev.eyeseetea.com:5001';
+  private keys: Authenticate;
 
   constructor(handler: HttpHandler, secureStorage: SecureStorage) {
 
