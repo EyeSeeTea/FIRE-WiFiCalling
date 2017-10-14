@@ -1,16 +1,16 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { FireHttp } from './fire-http';
 import { SecureStorage } from '@ionic-native/secure-storage';
 import { AuthService } from '../services/auth.service';
+import { HttpClientModule, HttpHandler } from "@angular/common/http";
 
-export function fireHttpFactory(backend: XHRBackend, defaultOptions: RequestOptions, secureStorage: SecureStorage) {
-  return new FireHttp(backend, defaultOptions, secureStorage);
+export function fireHttpFactory(handler: HttpHandler, secureStorage: SecureStorage) {
+  return new FireHttp(handler, secureStorage);
 }
 
 @NgModule({
   imports: [
-    HttpModule
+    HttpClientModule
   ]
 })
 export class FireHttpModule {
@@ -24,7 +24,7 @@ export class FireHttpModule {
         {
           provide: FireHttp,
           useFactory: fireHttpFactory,
-          deps: [XHRBackend, RequestOptions, SecureStorage]
+          deps: [HttpHandler, SecureStorage]
         }
       ]
     };

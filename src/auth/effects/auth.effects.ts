@@ -47,7 +47,7 @@ export class AuthEffects {
     .map((keys: Authenticate) => {
 
       /** Close loading dialog */
-      if(this.loadingDialog){
+      if (this.loadingDialog) {
         this.loadingDialog.dismiss();
       }
 
@@ -74,27 +74,25 @@ export class AuthEffects {
       this.loadingDialog.present();
 
       return this.authService.register(form)
-        .map((user: User) => new Auth.RegisterSuccess(form))
+        .map((res: any) => new Auth.RegisterSuccess(res))
         .catch(error => of(new Auth.RegisterFailure(error)))
     });
 
   /** Register success */
 
-  /** TODO: Autologin after register, replace form.email with form.username
-   * (waiting for a decision https://github.com/EyeSeeTea/FIRE-WiFiCalling/issues/37) */
-
   @Effect({dispatch: false})
   registerSuccess$ = this.actions$
     .ofType(Auth.REGISTER_SUCCESS)
-    .do(() => {
+    .map((action: Auth.LoginSuccess) => action.payload)
+    .do((res) => {
 
       /** Close loading dialog */
-      if(this.loadingDialog){
+      if (this.loadingDialog) {
         this.loadingDialog.dismiss();
       }
 
       /** Show success dialog */
-      this.dialogs.errorDialog('Your account request will be reviewed by the admin.').present();
+      this.dialogs.successDialog('Your account request will be reviewed by the admin.').present();
     });
 
 
@@ -104,15 +102,15 @@ export class AuthEffects {
   failure$ = this.actions$
     .ofType(Auth.REGISTER_FAILURE, Auth.LOGIN_FAILURE)
     .map((action: Auth.LoginFailure) => action.payload)
-    .map((err) => {
+    .do((err) => {
 
       /** Close loading dialog */
-      if(this.loadingDialog){
+      if (this.loadingDialog) {
         this.loadingDialog.dismiss();
       }
 
       /** Show error dialog */
-      this.dialogs.errorDialog(err).present();
+      this.dialogs.errorDialog(err.error.message).present();
     });
 
   /** Loading dialog ref */
