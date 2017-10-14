@@ -11,6 +11,7 @@ import { Effect, Actions } from '@ngrx/effects';
 
 import { AuthService } from '../services/auth.service';
 import * as Auth from '../actions/auth';
+import * as Calling from '../../calling/actions/session';
 
 import { TabsPage } from '../../pages/tabs/tabs';
 import { Authenticate, RegisterForm, User } from '../models/user';
@@ -34,29 +35,33 @@ export class AuthEffects {
       this.loadingDialog.present();
 
       return this.authService.login(keys)
-        .map((user: User) => new Auth.LoginSuccess({user}))
+        .map((user: User) => new Auth.LoginSuccess(user))
         .catch(error => of(new Auth.LoginFailure(error)))
     });
 
   /** Login success */
 
-  @Effect({dispatch: false})
+  @Effect()
   loginSuccess$ = this.actions$
     .ofType(Auth.LOGIN_SUCCESS)
-    .map((action: Auth.Login) => action.payload)
-    .map((keys: Authenticate) => {
+    .map((action: Auth.LoginSuccess) => action.payload)
+    .exhaustMap((user: User) => {
 
       /** Close loading dialog */
       if (this.loadingDialog) {
         this.loadingDialog.dismiss();
       }
 
-      this.secureStorage.create('fire-app')
-        .then((storage: SecureStorageObject) => storage.set('auth-keys', JSON.stringify(keys)))
-        .catch((err) => console.log('Login Success: could not set auth-keys in SecureStorage', err));
+      /** Store keys in secure storage */
+      // this.secureStorage.create('fire-app')
+      //   .then((storage: SecureStorageObject) => storage.set('auth-keys', JSON.stringify(keys)))
+      //   .catch((err) => console.log('Login Success: could not set auth-keys in SecureStorage', err));
 
       /** Navigate to home page */
       this.appCtrl.getRootNav().setRoot(TabsPage);
+
+      /** Initialize SIP with user settings */
+      return of(new Calling.Initialize(user));
     });
 
   /** Register new user */

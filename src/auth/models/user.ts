@@ -30,4 +30,7 @@ export interface User {
   created?: Date;
   updated?: Date;
   lastAccess?: Date;
+  sip?: {
+    host: string
+  }
 }

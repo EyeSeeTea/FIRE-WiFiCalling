@@ -3,51 +3,38 @@ import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/delay';
 
 import JsSIP from 'jssip';
+import { ToneService } from "../../tone/tone.service";
+import { Store } from "@ngrx/store";
+import { User } from "../../auth/models/user";
 
 @Injectable()
 export class CallingService {
 
-  public socket: any;
-  ua;
+  private audioElement: HTMLAudioElement;
+  private ua;
+  socket;
+  settings;
 
-  settings = {
-    display_name: '1@dev.est',
-    uri: '1@dev.eyeseetea.com',
-    password: '1pass',
-    socket:
-      {
-        uri: 'wss://dev.eyeseetea.com:5060',
-        via_transport: 'auto',
-      },
-    registrar_server: null,
-    contact_uri: null,
-    authorization_user: '1',
-    instance_id: null,
-    session_timers: true,
-    use_preloaded_route: false
-  };
-
-  // settings = {
-  //   display_name: 'webrtc',
-  //   uri: 'webrtc@rhizortc.specialstories.org',
-  //   password: 'verysecret',
-  //   socket:
-  //     {
-  //       uri: 'wss://rhizortc.specialstories.org:8443',
-  //       via_transport: 'auto',
-  //     },
-  //   registrar_server: null,
-  //   contact_uri: null,
-  //   authorization_user: null,
-  //   instance_id: null,
-  //   session_timers: true,
-  //   use_preloaded_route: false
-  // };
-
-  constructor() {
+  constructor(private toneService: ToneService, private store: Store<any>) {
   }
 
-  initialize() {
+  initialize(user: User) {
+
+    this.settings = {
+      display_name: user.name,
+      uri: '1@dev.eyeseetea.com',
+      password: '1pass',
+      socket: {
+        uri: 'wss://dev.eyeseetea.com:8443' || user.sip.host,
+        via_transport: 'auto',
+      },
+      registrar_server: null,
+      contact_uri: null,
+      authorization_user: '1',
+      instance_id: null,
+      session_timers: true,
+      use_preloaded_route: false
+    };
 
     this.socket = new JsSIP.WebSocketInterface(this.settings.socket.uri);
     this.socket.via_transport = 'auto';
@@ -107,7 +94,9 @@ export class CallingService {
     });
 
     sipUa.on('newRTCSession', (data) => {
-      if (data.originator === 'local') { return; } // Catch incoming actions only
+      if (data.originator === 'local') {
+        return;
+      } // Catch incoming actions only
       this.handleIncomingCall(data);
     });
   }
