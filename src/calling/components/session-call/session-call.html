@@ -1,4 +1,4 @@
-<div *ngIf="state?.status === 'connected'" class="calling-wrapper">
+<div *ngIf="state" class="calling-wrapper">
 
   <div class="caller-id">
 
@@ -14,7 +14,7 @@
       {{ state.status }}
     </h3>
 
-    <div *ngIf="state.status === 'connected'" class="timer">
+    <div class="timer">
       {{ timerTicks$ | async | timer }}
     </div>
 
@@ -27,7 +27,7 @@
       <ion-row>
         <ion-col>
 
-          <button color="gray" ion-button round (click)="testConnected()">
+          <button color="gray" ion-button round>
             <ion-icon name="volume-up"></ion-icon>
             <!--<ion-icon name="volume-off"></ion-icon>-->
           </button>

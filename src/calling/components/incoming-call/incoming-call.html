@@ -1,4 +1,4 @@
-<div *ngIf="state?.peer" class="calling-wrapper incoming-call">
+<div *ngIf="state" class="calling-wrapper incoming-call">
 
   <ion-grid>
     <ion-row>
@@ -22,13 +22,13 @@
     <ion-row class="action-buttons">
 
       <ion-col text-center>
-        <button ion-button round color="success" (click)="acceptCall()">
+        <button ion-button round color="success" (click)="answer()">
           <ion-icon name="call"></ion-icon>
         </button>
       </ion-col>
 
       <ion-col text-center>
-        <button ion-button round color="danger" (click)="rejectCall()">
+        <button ion-button round color="danger" (click)="hangUp()">
           <ion-icon name="call" class="reject-button"></ion-icon>
         </button>
       </ion-col>

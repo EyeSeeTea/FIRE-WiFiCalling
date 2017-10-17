@@ -18,10 +18,6 @@ export class OutgoingCall implements OnInit {
   ngOnInit() {
   }
 
-  testConnected() {
-    this.store.dispatch(new Calling.Connected(this.state));
-  }
-
   hangUp() {
     this.store.dispatch(new Calling.HangUp());
   }

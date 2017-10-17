@@ -9,12 +9,6 @@ export type CallingType =
   | 'incoming'
   | 'outgoing';
 
-export type StatusType =
-  | 'ready'
-  | 'connecting'
-  | 'connected'
-  | 'disconnected';
-
 /** Incoming/outgoing interface */
 export interface CallState {
   peer: User;
@@ -24,19 +18,11 @@ export interface CallState {
 
 /** Call session interface */
 export interface State extends CallState {
-  status: StatusType;
   startDate: number;
   endDate: number;
 }
 
-export const initialState: State = {
-  peer: null,
-  connection: null,
-  type: null,
-  status: 'ready',
-  startDate: null,
-  endDate: null
-};
+export const initialState: State = null;
 
 export function reducer(state = initialState, action: calling.Actions): State {
 
@@ -45,7 +31,6 @@ export function reducer(state = initialState, action: calling.Actions): State {
     case calling.CONNECTED: {
       return {
         ...state,
-        status: 'connected',
         connection: action.payload.connection,
         type: action.payload.type,
         peer: action.payload.peer,
@@ -54,12 +39,16 @@ export function reducer(state = initialState, action: calling.Actions): State {
       };
     }
 
+    // case calling.DISCONNECTED: {
+    //   return {
+    //     ...state,
+    //     endDate: Date.now()
+    //   };
+    // }
+
+    case calling.CALL_ENDED:
     case calling.DISCONNECTED: {
-      return {
-        ...state,
-        status: 'disconnected',
-        endDate: Date.now()
-      };
+      return null
     }
 
     default: {
@@ -69,8 +58,7 @@ export function reducer(state = initialState, action: calling.Actions): State {
 }
 
 export const getPeerUser = (state: State) => state.peer;
-export const getConnectionType = (state: State) => state.status;
 export const getCallingType = (state: State) => state.type;
-export const getStatus = (state: State) => state.status;
-export const getStartDate = (state: State) => state.status;
-export const getEndDate = (state: State) => state.status;
+export const getConnectionType = (state: State) => state.connection;
+export const getStartDate = (state: State) => state.startDate;
+export const getEndDate = (state: State) => state.endDate;

@@ -2,11 +2,7 @@ import * as calling from '../actions/outgoing';
 import * as session from '../actions/session';
 import { CallState } from './session';
 
-export const initialState: CallState = {
-  peer: null,
-  connection: null,
-  type: null
-};
+export const initialState: CallState = null;
 
 export function reducer(state = initialState, action: calling.Actions | session.Actions): CallState {
 

@@ -21,12 +21,7 @@ export class SessionCall implements OnInit {
   }
 
   ngOnInit() {
-    this.timerTicks$ = timer(0, 1000)
-      .takeWhile(() => this.state.status === 'connected');
-  }
-
-  testConnected() {
-    this.store.dispatch(new Calling.Connected(null));
+    this.timerTicks$ = timer(0, 1000);
   }
 
   hangUp() {

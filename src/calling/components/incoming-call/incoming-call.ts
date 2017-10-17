@@ -1,28 +1,25 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Component, Input } from '@angular/core';
 import { CallState } from '../../reducers/session';
-import * as Calling from '../../actions/incoming';
+import * as Incoming from '../../actions/incoming';
+import { Store } from "@ngrx/store";
 
 @Component({
   selector: 'incoming-call',
   templateUrl: 'incoming-call.html'
 })
 
-export class IncomingCall implements OnInit {
+export class IncomingCall {
 
   @Input() state: CallState;
 
-  constructor(private store: Store<any>) {
+  constructor(public store: Store<any>) {
   }
 
-  ngOnInit() {
+  answer() {
+    this.store.dispatch(new Incoming.AcceptCall())
   }
 
-  acceptCall() {
-    this.store.dispatch(new Calling.AcceptCall(this.state));
-  }
-
-  rejectCall() {
-    this.store.dispatch(new Calling.RejectCall());
+  hangUp() {
+    this.store.dispatch(new Incoming.RejectCall())
   }
 }
