@@ -13,7 +13,7 @@ export class AuthService {
 
   login(keys: Authenticate) {
     this.fireHttp.setAuthKeys(keys);
-    return this.fireHttp.get(this.loginEndpoint).map(res => res.data);
+    return this.fireHttp.get(this.loginEndpoint).map(res => ({...res.data, password: keys.password}));
   }
 
   register(form: RegisterForm) {

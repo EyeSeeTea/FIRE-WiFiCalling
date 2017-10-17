@@ -28,8 +28,7 @@ import * as auth from '../auth/reducers';
 import { FireHttpModule } from '../auth/http/fire-http.module';
 
 import { AuthEffects } from '../auth/effects/auth.effects';
-import { ToneService } from "../tone/tone.service";
-import { CallWorkerModule } from "../calling/containers/call-worker.module";
+import { CallWorkerModule } from '../calling/containers/call-worker.module';
 
 
 // AoT requires an exported function for factories
@@ -73,7 +72,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContactsPage
   ],
   providers: [
-    ToneService,
     StatusBar,
     SplashScreen,
     Contacts,

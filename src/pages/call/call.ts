@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
-import { Store } from "@ngrx/store";
-
-import * as outgoingCall from '../../calling/actions/outgoing';
-import * as incomingCall from '../../calling/actions/incoming';
-import { CallState } from "../../calling/reducers/session";
+import { ToneService } from "../../calling/services/tone.service";
 
 @IonicPage()
 @Component({
@@ -16,10 +12,11 @@ export class CallPage {
 
   phoneNumber: string = '';
 
-  constructor(public navCtrl: NavController, private store: Store<any>) {
+  constructor(public navCtrl: NavController, private toneService: ToneService) {
   }
 
   add(n: string) {
+    this.toneService.start(n);
     this.phoneNumber += n;
   }
 
@@ -36,26 +33,4 @@ export class CallPage {
     console.log('Add contact with number %s', this.phoneNumber);
   }
 
-  incomingTest() {
-    const callInfo: CallState = {
-      peer: {
-        name: 'Maria',
-        phoneNumber: '+966523118088'
-      },
-    };
-
-    this.store.dispatch(new incomingCall.IncomingCall(callInfo));
-  }
-
-  outgoingTest() {
-    const callInfo: CallState = {
-      peer: {
-        name: 'John',
-        phoneNumber: '+963113118088'
-      },
-      connection: 'internet'
-    };
-
-    this.store.dispatch(new outgoingCall.OutgoingCall(callInfo));
-  }
 }
