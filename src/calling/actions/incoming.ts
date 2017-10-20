@@ -3,54 +3,57 @@ import { CallFailureResponse } from "../models/calling.models";
 
 /** INCOMING CALLS TYPES */
 
-export const HANDLE_INCOMING_CALLS = '[Calling] Handle Incoming callS';
-export const INCOMING_CALL = '[Calling] Incoming call';
-export const CALL_FAILURE = '[Calling] Incoming call failure';
-export const ACCEPT_CALL = '[Calling] Accept incoming call';
-export const REJECT_CALL = '[Calling] Reject incoming call';
-export const SKIP_CALL = '[Calling] Skip incoming call (busy)';
+export const HANDLE = '[Incoming Call] Handling An Incoming CallS';
+export const CALL = '[Incoming Call] Incoming Call';
+export const FAILURE = '[Incoming Call] Failure';
+export const ACCEPT = '[Incoming Call] Accept';
+export const REJECT = '[Incoming Call] Reject';
+export const SKIP = '[Incoming Call] Skip';
 
 /** INCOMING CALLS ACTIONS */
 
-export class HandleIncomingCalls implements Action {
-  readonly type = HANDLE_INCOMING_CALLS;
+export class Handle implements Action {
+  readonly type = HANDLE;
 
   constructor(public payload: any) {
   }
 }
 
-export class IncomingCall implements Action {
-  readonly type = INCOMING_CALL;
+export class Call implements Action {
+  readonly type = CALL;
 
   constructor(public payload: any) {
   }
 }
 
-export class CallFailure implements Action {
-  readonly type = CALL_FAILURE;
+export class Failure implements Action {
+  readonly type = FAILURE;
 
   constructor(public payload: CallFailureResponse) {
   }
 }
 
-export class SkipCall implements Action {
-  readonly type = SKIP_CALL;
+export class Skip implements Action {
+  readonly type = SKIP;
+
+  constructor(public payload: any) {
+  }
 }
 
-export class AcceptCall implements Action {
-  readonly type = ACCEPT_CALL;
+export class Accept implements Action {
+  readonly type = ACCEPT;
 }
 
-export class RejectCall implements Action {
-  readonly type = REJECT_CALL;
+export class Reject implements Action {
+  readonly type = REJECT;
 }
 
 
 export type Actions =
-  | HandleIncomingCalls
-  | IncomingCall
-  | AcceptCall
-  | RejectCall
-  | CallFailure
-  | SkipCall;
+  | Handle
+  | Call
+  | Accept
+  | Reject
+  | Failure
+  | Skip;
 

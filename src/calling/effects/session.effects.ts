@@ -9,6 +9,8 @@ import { ToneService } from '../services/tone.service';
 import { DialogService } from '../../shared/dialog/dialog.service';
 
 import * as Session from '../actions/session';
+import { SipService } from '../services/sip.service';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class SessionEffects {
@@ -24,10 +26,11 @@ export class SessionEffects {
   callDisconnected$ = this.actions$
     .ofType(Session.DISCONNECTED)
     .map((action: Session.Disconnected) => action.payload)
-    .map(err => {
+    .do(err => {
       this.tone.stopAll();
 
       if (err) {
+        console.warn(err);
         /** Show error dialog */
         this.dialogs.errorDialog(err).present();
       }
@@ -37,11 +40,32 @@ export class SessionEffects {
   @Effect()
   callHangUp$ = this.actions$
     .ofType(Session.HANG_UP)
-    .map(() => new Session.Disconnected(null));
+    .exhaustMap(() => {
+      try {
+        this.sip.state.session.terminate();
+      } catch (error) {
+        console.log('Session already finished');
+      }
+      this.sip.removeSounds();
+      this.sip.clearSessions();
+      return of(new Session.Disconnected(null));
+    });
+
+  /** Call Ended */
+  @Effect({dispatch: false})
+  callEnded$ = this.actions$
+    .ofType(Session.CALL_ENDED)
+    .map((action: Session.CallEnded) => action.payload)
+    .do(() => {
+      this.tone.stopAll();
+      /** Show call ended dialog */
+      this.dialogs.successDialog('Call Ended').present();
+    });
 
   constructor(private actions$: Actions,
               private tone: ToneService,
-              private dialogs: DialogService) {
+              private dialogs: DialogService,
+              private sip: SipService) {
   }
 
 }

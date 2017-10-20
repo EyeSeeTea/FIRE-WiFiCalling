@@ -16,10 +16,10 @@ export class IncomingCall {
   }
 
   answer() {
-    this.store.dispatch(new Incoming.AcceptCall())
+    this.store.dispatch(new Incoming.Accept())
   }
 
   hangUp() {
-    this.store.dispatch(new Incoming.RejectCall())
+    this.store.dispatch(new Incoming.Reject())
   }
 }

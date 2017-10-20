@@ -38,4 +38,10 @@ menu-dialog {
       height: 182px;
     }
   }
+  &.not-admin {
+    .modal-wrapper {
+      top: calc(50% - (234px/2));
+      height: 234px;
+    }
+  }
 }

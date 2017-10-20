@@ -7,12 +7,14 @@
     </div>
 
     <h3 class="status">
-      Calling {{ state?.user?.name }}
+      Calling
     </h3>
 
     <h3 class="phone-number">
-      {{ state?.peer?.phoneNumber }}
+      {{ state.peer?.phoneNumber }}
     </h3>
+
+    <p> {{ state?.status | titlecase }} </p>
 
   </div>
 
@@ -23,7 +25,7 @@
       <ion-row>
         <ion-col>
 
-          <button color="gray" ion-button round (click)="testConnected()">
+          <button color="gray" ion-button round>
             <ion-icon name="volume-up"></ion-icon>
             <!--<ion-icon name="volume-off"></ion-icon>-->
           </button>
@@ -41,7 +43,6 @@
 
           <button color="gray" ion-button round>
             <ion-icon name="pause"></ion-icon>
-            <!--<ion-icon name="radio-button-on"></ion-icon>-->
           </button>
 
         </ion-col>

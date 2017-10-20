@@ -17,13 +17,19 @@ export class SipEffects {
 
   /** Initialize SIP when user login */
   @Effect({dispatch: false})
-  start$ = this.actions$
+  sipInitialize$ = this.actions$
     .ofType(Sip.INITIALIZE)
     .map((action: Sip.Initialize) => action.payload)
     .withLatestFrom(this.store.select(getSipStatus))
     .map(([user, state]) => !state ? user : null)
     .filter((user: User) => !!user)
     .do((user: User) => this.sip.initialize(user));
+
+  /** SIP Connected */
+  @Effect({dispatch: false})
+  sipConnected$ = this.actions$
+    .ofType(Sip.CONNECTED)
+    .do(() => this.sip.ua.register());
 
   constructor(private actions$: Actions,
               private store: Store<any>,

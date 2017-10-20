@@ -11,7 +11,7 @@ export class BillingService {
 
   /** Get billing prices */
   getPricing() {
-    return this.fireHttp.get(this.endpoint);
+    return this.fireHttp.get(this.endpoint).map(res => res.data);
   }
 
   /** Update billing prices */

@@ -26,6 +26,9 @@ export class Disconnected implements Action {
 
 export class CallEnded implements Action {
   readonly type = CALL_ENDED;
+
+  constructor(public payload: any) {
+  }
 }
 
 export class HangUp implements Action {

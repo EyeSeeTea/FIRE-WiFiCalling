@@ -1,30 +1,30 @@
-import * as calling from '../actions/incoming';
+import * as incoming from '../actions/incoming';
 import * as session from '../actions/session';
 import { CallState } from './session';
 
 export const initialState: CallState = null;
 
-export function reducer(state = initialState, action: calling.Actions | session.Actions): CallState {
+export function reducer(state = initialState, action: incoming.Actions | session.Actions): CallState {
 
   switch (action.type) {
 
-    case calling.INCOMING_CALL: {
+    case incoming.CALL: {
       /** TODO: Investigate how to show caller id */
       return {
         ...state,
-        // peer: action.payload,
+        peer: action.payload,
         connection: 'internet',
         type: 'incoming'
       };
     }
 
-    case calling.SKIP_CALL: {
+    case incoming.SKIP: {
       return state;
     }
 
-    case calling.CALL_FAILURE:
-    case calling.ACCEPT_CALL:
-    case calling.REJECT_CALL:
+    case incoming.FAILURE:
+    case incoming.ACCEPT:
+    case incoming.REJECT:
     case session.CONNECTED:
     case session.DISCONNECTED: {
       return null;

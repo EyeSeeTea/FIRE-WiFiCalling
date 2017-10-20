@@ -4,7 +4,7 @@ import { IonicPage } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 import { FireHttp } from '../../auth/http/fire-http';
 import 'rxjs/add/operator/map';
-import * as Calling from '../../calling/actions/outgoing';
+import * as Sip from '../../calling/actions/outgoing';
 
 @IonicPage({
   segment: 'call-type'
@@ -32,10 +32,10 @@ export class CallTypePage {
   }
 
   gsm() {
-    this.store.dispatch(new Calling.OutgoingCall(this.phoneNumber));
+    this.store.dispatch(new Sip.Call(this.phoneNumber));
   }
 
   voip() {
-    this.store.dispatch(new Calling.OutgoingCall(this.phoneNumber));
+    this.store.dispatch(new Sip.Call(this.phoneNumber));
   }
 }

@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -48,7 +48,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     IonicModule.forRoot(WiFiCalling, {
       backButtonText: ''
     }),
-    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

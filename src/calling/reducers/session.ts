@@ -14,6 +14,7 @@ export interface CallState {
   peer: User;
   connection?: ConnectionType;
   type?: CallingType;
+  status?: string;
 }
 
 /** Call session interface */

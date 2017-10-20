@@ -3,11 +3,11 @@ import { User } from '../../auth/models/user';
 
 /** SIP TYPES */
 
-export const INITIALIZE = '[Calling] SIP Initialize';
-export const CONNECTING = '[Calling] SIP Connecting';
-export const CONNECTED = '[Calling] SIP Connected';
-export const DISCONNECTED = '[Calling] SIP Disconnected';
-export const REGISTERED = '[Calling] SIP Registered';
+export const INITIALIZE = '[SIP] Initialize';
+export const CONNECTING = '[SIP] Connecting';
+export const CONNECTED = '[SIP] Connected';
+export const DISCONNECTED = '[SIP] Disconnected';
+export const REGISTERED = '[SIP] Registered';
 
 
 /** SIP ACTIONS */
@@ -25,6 +25,9 @@ export class Connecting implements Action {
 
 export class Connected implements Action {
   readonly type = CONNECTED;
+
+  constructor(public payload: any) {
+  }
 }
 
 export class Disconnected implements Action {

@@ -20,38 +20,25 @@ export class IncomingEffects {
   /** Handle Incoming calls */
   @Effect()
   handleIncomingCall$ = this.actions$
-    .ofType(Incoming.HANDLE_INCOMING_CALLS)
-    .map((action: Incoming.HandleIncomingCalls) => action.payload)
+    .ofType(Incoming.HANDLE)
+    .map((action: Incoming.Handle) => action.payload)
     .withLatestFrom(this.store.select(selectSessionState), this.store.select(selectIncomingState))
-    .exhaustMap(([data, session, incoming]) => {
-
-      return of({}).map(() => {
-        /** Avoid if busy or other incoming */
-        if (session || incoming) {
-          data.session.terminate({
-            status_code: 486,
-            reason_phrase: 'Busy Here'
-          });
-          return new Incoming.SkipCall();
-        }
-        return new Incoming.IncomingCall(data);
-      });
-    });
+    .exhaustMap(([data, session, incoming]) =>
+      /** Avoid if busy or other incoming */
+      of({}).map((res) => (session || incoming) ? new Incoming.Skip(data) : new Incoming.Call(data))
+    );
 
   /** Incoming call */
   @Effect({dispatch: false})
   incomingCall$ = this.actions$
-    .ofType(Incoming.INCOMING_CALL)
-    .map((action: Incoming.IncomingCall) => action.payload)
-    .do((data) => {
-      audioPlayer.play('ringing', true);
-    });
+    .ofType(Incoming.CALL)
+    .do(() => audioPlayer.play('ringing', true));
 
   /** Incoming call failure */
   @Effect({dispatch: false})
   incomingCallFailure$ = this.actions$
-    .ofType(Incoming.CALL_FAILURE)
-    .map((action: Incoming.CallFailure) => action.payload)
+    .ofType(Incoming.FAILURE)
+    .map((action: Incoming.Failure) => action.payload)
     .do((res: CallFailureResponse) => {
       if (res.cause !== 'Rejected' && res.cause !== 'Canceled') {
         this.dialog.errorDialog(res.message).present();
@@ -61,14 +48,22 @@ export class IncomingEffects {
   /** Accept incoming call */
   @Effect({dispatch: false})
   acceptCall$ = this.actions$
-    .ofType(Incoming.ACCEPT_CALL)
+    .ofType(Incoming.ACCEPT)
     .do(() => this.sip.answerIncomingCall());
 
   /** Reject incoming call */
   @Effect({dispatch: false})
   rejectCall$ = this.actions$
-    .ofType(Incoming.REJECT_CALL)
+    .ofType(Incoming.REJECT)
     .do(() => this.sip.hangUpIncomingCall());
+
+  /** Skip incoming call */
+  @Effect({dispatch: false})
+  skipCall$ = this.actions$
+    .ofType(Incoming.SKIP)
+    .map((action: Incoming.Skip) => action.payload)
+    .do((data) => data.session.terminate({status_code: 486, reason_phrase: 'Busy Here'}));
+
 
   constructor(private actions$: Actions,
               private store: Store<any>,

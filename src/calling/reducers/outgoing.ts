@@ -8,7 +8,7 @@ export function reducer(state = initialState, action: calling.Actions | session.
 
   switch (action.type) {
 
-    case calling.OUTGOING_CALL: {
+    case calling.CALL: {
       return {
         ...state,
         peer: action.payload.peer,
@@ -17,6 +17,22 @@ export function reducer(state = initialState, action: calling.Actions | session.
       };
     }
 
+    case calling.CONNECTING: {
+      return {
+        ...state,
+        status: 'connecting'
+      };
+    }
+
+    case calling.PROGRESS: {
+      return {
+        ...state,
+        status: 'ringing'
+      };
+    }
+
+    case calling.FAILURE:
+    case calling.CONFIRMED:
     case session.CONNECTED:
     case session.DISCONNECTED: {
       return null;

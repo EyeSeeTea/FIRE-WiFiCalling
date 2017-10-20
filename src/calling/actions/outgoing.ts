@@ -3,23 +3,51 @@ import { CallFailureResponse } from "../models/calling.models";
 
 /** CALLING TYPES */
 
-export const OUTGOING_CALL = '[Calling] Make An Outgoing Call';
-export const NO_ANSWER = '[Calling] No Answer';
-export const CALL_FAILURE = '[Calling] Incoming call failure';
+export const CALL = '[Outgoing Call] Make a call';
+export const NO_ANSWER = '[Outgoing Call] No answer';
+export const FAILURE = '[Outgoing Call] Call failure';
+export const CONNECTING = '[Outgoing Call] Connecting';
+export const ENDED = '[Outgoing Call] Ended';
+export const ACCEPTED = '[Outgoing Call] Accepted';
+export const CONFIRMED = '[Outgoing Call] Confirmed';
+export const PROGRESS = '[Outgoing Call] Progress';
 
 /** OUTGOING CALLS ACTIONS */
 
-export class OutgoingCall implements Action {
-  readonly type = OUTGOING_CALL;
+export class Call implements Action {
+  readonly type = CALL;
 
   constructor(public payload: any) {
   }
 }
 
-export class CallFailure implements Action {
-  readonly type = CALL_FAILURE;
+export class Connecting implements Action {
+  readonly type = CONNECTING;
+}
+
+export class Progress implements Action {
+  readonly type = PROGRESS;
+}
+
+export class Accepted implements Action {
+  readonly type = ACCEPTED;
+}
+
+export class Failure implements Action {
+  readonly type = FAILURE;
 
   constructor(public payload: CallFailureResponse) {
+  }
+}
+
+export class Confirmed implements Action {
+  readonly type = CONFIRMED;
+}
+
+export class Ended implements Action {
+  readonly type = ENDED;
+
+  constructor(public payload: any) {
   }
 }
 
@@ -31,7 +59,12 @@ export class NoAnswer implements Action {
 }
 
 export type Actions =
-  | OutgoingCall
-  | CallFailure
-  | NoAnswer;
+  | Call
+  | Failure
+  | NoAnswer
+  | Connecting
+  | Ended
+  | Accepted
+  | Confirmed
+  | Progress;
 
