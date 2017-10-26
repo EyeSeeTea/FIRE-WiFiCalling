@@ -1,5 +1,5 @@
 <ion-header>
-    <header></header>
+  <header></header>
 </ion-header>
 
 <ion-content padding>
@@ -12,36 +12,38 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <div class="call_opt_box">
-          <div class="call_opt_header">
+        <div class="call-opt-box">
+          <div class="call-opt-header">
             GSM
           </div>
-          {{rates.gsm}}
-          <div class="units">
-            R/min
+          <div class="call-pricing">
+            {{rates.gsm}}
+            <div class="units">
+              R/min
+            </div>
           </div>
+          <button ion-button full color="success" (click)="voip()">
+            {{'CALLING.USE_GSM' | translate}}
+          </button>
         </div>
       </ion-col>
       <ion-col>
-        <div class="call_opt_box">
-          <div class="call_opt_header">
+        <div class="call-opt-box">
+          <div class="call-opt-header">
             VoIP
           </div>
-          {{rates.voip}}
-          <div class="units">
-            R/min
+          <div class="call-pricing">
+
+            {{rates.voip}}
+            <div class="units">
+              R/min
+            </div>
           </div>
+
+          <button ion-button full color="success" (click)="gsm()">
+            {{'CALLING.USE_VOIP' | translate}}
+          </button>
         </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <button ion-button class="call_button" (click)="gsm()">
-          {{'CALLING.USE_GSM' | translate}}</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button class="call_button" (click)="voip()">
-          {{'CALLING.USE_VOIP' | translate}}</button>
       </ion-col>
     </ion-row>
   </ion-grid>

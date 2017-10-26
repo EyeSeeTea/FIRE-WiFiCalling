@@ -13,13 +13,13 @@ log.txt
 npm-debug.log*
 
 .idea/
+.sourcemaps/
 .sass-cache/
 .tmp/
 .versions/
 coverage/
 dist/
 node_modules/
-package-lock.json
 tmp/
 temp/
 hooks/

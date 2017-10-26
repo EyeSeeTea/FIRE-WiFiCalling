@@ -7,6 +7,7 @@ import * as Auth from '../../auth/actions/auth';
 import { selectAuthStatusState } from '../../auth/reducers';
 import { State } from '../../auth/reducers/auth';
 import { Subscription } from 'rxjs/Subscription';
+import * as Router from '../../router/actions/router';
 
 type Page = { title: string, component?: any, color?: string };
 
@@ -22,17 +23,17 @@ export class HeaderComponent implements OnDestroy {
 
   /** Menu items */
   pages: Page[] = [
-    {title: 'MENU.HOME', component: TabsPage, color: 'primary'},
-    {title: 'MENU.ADMIN', component: 'AdminPage', color: 'brown'},
-    {title: 'MENU.SETTINGS', component: 'SettingsPage', color: 'lightgray'},
-    {title: 'MENU.ABOUT', component: 'AboutPage', color: 'lightgray'},
-    {title: 'MENU.LICENSE', component: 'LicensePage', color: 'lightgray'},
-    {title: 'MENU.LOGOUT', color: 'danger'}
+    { title: 'MENU.HOME', component: TabsPage, color: 'primary' },
+    { title: 'MENU.ADMIN', component: 'AdminPage', color: 'brown' },
+    { title: 'MENU.SETTINGS', component: 'SettingsPage', color: 'lightgray' },
+    { title: 'MENU.ABOUT', component: 'AboutPage', color: 'lightgray' },
+    { title: 'MENU.LICENSE', component: 'LicensePage', color: 'lightgray' },
+    { title: 'MENU.LOGOUT', color: 'danger' }
   ];
 
   constructor(private store: Store<State>,
-              private app: App,
-              private modal: ModalController) {
+    private app: App,
+    private modal: ModalController) {
 
     /** Get auth state from the store */
     this.authObs$ = this.store.select(selectAuthStatusState)
@@ -69,17 +70,23 @@ export class HeaderComponent implements OnDestroy {
     }
 
     const menu = this.modal.create(MenuDialogComponent,
-      {pages: pages},
-      {cssClass: cssClass}
+      { pages: pages },
+      { cssClass: cssClass }
     );
 
     menu.onDidDismiss(page => {
       /** Navigate to page */
       if (page) {
-        if (page.title === 'MENU.LOGOUT') {
-          this.store.dispatch(new Auth.Logout());
-        } else {
-          this.app.getRootNav().push(page.component);
+        switch (page.title) {
+          case 'MENU.LOGOUT':
+            this.store.dispatch(new Auth.Logout());
+            break;
+          case 'MENU.HOME':
+          case 'MENU.ADMIN':
+            this.store.dispatch(new Router.Navigate(page.component));
+            break;
+          default:
+            this.app.getRootNav().push(page.component);
         }
       }
     });

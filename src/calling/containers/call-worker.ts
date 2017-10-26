@@ -5,7 +5,6 @@ import { selectSessionState, selectOutgoingState, selectIncomingState, getSipSta
 @Component({
   selector: 'call-worker',
   template: `
-    <!--<sip-status [state]="sipStatus$ | async"></sip-status>-->
     <session-call [state]="sessionState$ | async"></session-call>
     <outgoing-call [state]="outgoingState$ | async"></outgoing-call>
     <incoming-call [state]="incomingState$ | async"></incoming-call>

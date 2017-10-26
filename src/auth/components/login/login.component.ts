@@ -50,6 +50,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
+  forgotPassword() {
+    console.log('Forgot password clicked!');
+  }
+
   onSubmit() {
     if (this.form.valid) {
       this.login.emit(this.form.value);

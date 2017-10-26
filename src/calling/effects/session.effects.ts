@@ -58,8 +58,8 @@ export class SessionEffects {
     .map((action: Session.CallEnded) => action.payload)
     .do(() => {
       this.tone.stopAll();
-      /** Show call ended dialog */
-      this.dialogs.successDialog('Call Ended').present();
+      /** Show call summary dialog */
+      this.dialogs.callEndDialog(null).present();
     });
 
   constructor(private actions$: Actions,

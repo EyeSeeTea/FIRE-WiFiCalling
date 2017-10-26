@@ -1,4 +1,17 @@
 {
+  "TOP_UP_CONTENT": "Top up content",
+  "CALLING": {
+    "CALL": "Llamar",
+    "CALLING_TO": "Llamando a",
+    "USE_GSM": "Usar GSM",
+    "USE_VOIP": "Usar VOIP"
+  },
+  "DIALOGS": {
+    "OK": "Ok",
+    "REGISTRATION_ACCEPTED": "Registration accepted!",
+    "MESSAGE_SUCCESS": "",
+    "MESSAGE_ERROR": "Sorry! your message was not sent."
+  },
   "TABS": {
     "CALL": "Klavye",
     "CONTACTS": "Kişiler",
@@ -43,7 +56,13 @@
       "USER_NAME": "kullanıcı adı",
       "FILTER": "Filtre",
       "DATE": "Tarih",
-      "FILTER_NAME": "Kullanıcı adına göre filtrele"
+      "FILTER_NAME": "Kullanıcı adına göre filtrele",
+      "ACCEPT": "Accept",
+      "REJECT": "Reject",
+      "DISMISS": "Dismiss",
+      "SELECT_UNSEEN": "Select unseen",
+      "SELECT_ALL": "Select all",
+      "DESELECT_ALL": "Deselect all"
     }
   },
   "AUTH": {
@@ -99,11 +118,5 @@
       "PHONE_NUMBER_REQUIRED": "Telefon numarası gerekiyor",
       "PHONE_NUMBER_LENGTH": "Telefon numarası 10 basamaklı olmalıdır"
     }
-  },
-  "CALLING": {
-    "CALL": "Call",
-    "CALLING_TO": "Calling to",
-    "USE_GSM": "Use GSM",
-    "USE_VOIP": "Use VoIP"
   }
 }

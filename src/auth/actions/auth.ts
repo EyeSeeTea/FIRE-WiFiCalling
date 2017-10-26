@@ -10,6 +10,7 @@ export const LOGIN_FAILURE = '[Auth] Login Failure';
 export const REGISTER = '[Register] Register';
 export const REGISTER_SUCCESS = '[Register] Register Success';
 export const REGISTER_FAILURE = '[Register] Register Failure';
+export const REDIRECT_LOGIN = '[Auth] Redirect to Login page';
 
 /** LOGIN ACTIONS */
 
@@ -55,8 +56,13 @@ export class RegisterFailure implements Action {
   }
 }
 
+export class RedirectLogin implements Action {
+  readonly type = REDIRECT_LOGIN;
+}
+
 
 export type Actions =
+  | RedirectLogin
   | Login
   | LoginSuccess
   | LoginFailure

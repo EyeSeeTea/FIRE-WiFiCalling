@@ -8,13 +8,14 @@ import { UserListOptions } from '../../models/user';
 import { User } from '../../../auth/models/user';
 import { getUsers, getUsersPending } from '../../reducers';
 import * as Users from '../../actions/users';
+import { AdminGuard } from '../../../auth/guard/admin-guard';
 
 @IonicPage()
 @Component({
   selector: 'page-users',
   templateUrl: 'users.html'
 })
-export class UsersPage implements OnInit, OnDestroy {
+export class UsersPage extends AdminGuard implements OnInit, OnDestroy {
 
   /** Select user list from store */
   users$ = this.store.select(getUsers);
@@ -37,6 +38,7 @@ export class UsersPage implements OnInit, OnDestroy {
   @ViewChild(Refresher) refresher: Refresher;
 
   constructor(public store: Store<any>, private dialogs: DialogService) {
+    super(store);
   }
 
   /** Send message to selected users */

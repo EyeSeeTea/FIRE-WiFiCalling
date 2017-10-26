@@ -17,19 +17,20 @@ import { EffectsModule } from '@ngrx/effects';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { metaReducers, reducers } from '../reducers';
+import * as auth from '../auth/reducers';
+import * as router from '../router/reducers';
+import { AuthEffects } from '../auth/effects/auth.effects';
+import { RouterEffects } from '../router/effects/router.effects';
+
+import { FireHttpModule } from '../auth/http/fire-http.module';
+import { CallWorkerModule } from '../calling/containers/call-worker.module';
+import { SharedModule } from '../shared/shared.module';
+
 import { WiFiCalling } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
 import { HistoryPage } from '../pages/history/history';
 import { ContactsPage } from '../pages/contacts/contacts';
-
-import { SharedModule } from '../shared/shared.module';
-import { metaReducers, reducers } from '../reducers';
-import * as auth from '../auth/reducers';
-import { FireHttpModule } from '../auth/http/fire-http.module';
-
-import { AuthEffects } from '../auth/effects/auth.effects';
-import { CallWorkerModule } from '../calling/containers/call-worker.module';
-
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -60,7 +61,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FireHttpModule.forRoot(),
     StoreModule.forRoot(reducers, {metaReducers}),
     StoreModule.forFeature('auth', auth.reducers),
-    EffectsModule.forRoot([AuthEffects]),
+    StoreModule.forFeature('router', router.reducers),
+    EffectsModule.forRoot([AuthEffects, RouterEffects]),
     StoreDevtoolsModule.instrument(),
     CallWorkerModule
   ],

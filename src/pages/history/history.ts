@@ -1,16 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { AuthGuard } from '../../auth/guard/auth-guard';
 
 @Component({
   selector: 'page-history',
   templateUrl: 'history.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HistoryPage {
+export class HistoryPage extends AuthGuard {
 
   history;
 
   constructor(public store: Store<any>) {
+
+    super(store);
 
     const minDate = new Date('October 13, 2016 11:13:00');
     const maxDate = Date.now();

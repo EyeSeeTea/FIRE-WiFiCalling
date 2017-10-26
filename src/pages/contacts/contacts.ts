@@ -4,13 +4,14 @@ import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/switchMap';
+import { AuthGuard } from '../../auth/guard/auth-guard';
 
 @Component({
   selector: 'page-contacts',
   templateUrl: 'contacts.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContactsPage implements OnInit, OnDestroy {
+export class ContactsPage extends AuthGuard implements OnInit, OnDestroy {
 
   /** Filter contacts with name or phone number */
   filterKey = new BehaviorSubject('');
@@ -19,7 +20,7 @@ export class ContactsPage implements OnInit, OnDestroy {
   list = new Subject<IContactProperties[]>();
 
   constructor(public contacts: Contacts, public store: Store<any>) {
-
+    super(store);
   }
 
   ngOnInit() {

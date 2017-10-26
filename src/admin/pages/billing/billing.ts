@@ -5,19 +5,20 @@ import { Pricing } from '../../models/billing';
 
 import { getBilling, getBillingPending } from '../../reducers';
 import * as Billing from '../../actions/billing'
+import { AdminGuard } from '../../../auth/guard/admin-guard';
 
 @IonicPage()
 @Component({
   selector: 'page-billing',
   templateUrl: 'billing.html'
 })
-export class BillingPage {
+export class BillingPage extends AdminGuard {
 
   pricing$ = this.store.select(getBilling);
   pending$ = this.store.select(getBillingPending);
 
   constructor(public store: Store<any>) {
-
+    super(store);
   }
 
   ionViewWillEnter() {

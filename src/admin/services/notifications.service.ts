@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FireHttp } from '../../auth/http/fire-http';
+import { empty } from 'rxjs/observable/empty';
 
 @Injectable()
 export class NotificationsService {
@@ -30,8 +31,9 @@ export class NotificationsService {
   /** Mark notification as seen */
   markSeen(ids: number[], seen: boolean) {
     /** TODO: refactor with the mark as seen endpoint */
-    const endpoint = `markAsSeenEndpoint/${ids}`;
-    return this.fireHttp.post(endpoint, {seen: seen});
+    // const endpoint = `markAsSeenEndpoint/${ids}`;
+    // return this.fireHttp.post(endpoint, {seen: seen});
+    return empty();
   }
 
 

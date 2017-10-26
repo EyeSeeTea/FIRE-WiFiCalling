@@ -98,12 +98,13 @@ export class NotificationsEffects {
   markSeen$ = this.actions$
     .ofType(Notifications.MARK_SEEN)
     .map((action: Notifications.MarkSeen) => action.payload)
-    .exhaustMap((selectedItems: Notification[]) => {
+    .exhaustMap((selectedItems: number[]) => {
 
+    console.log('test', selectedItems);
       /** Extract the ids from the selected notifications */
-      const selectedIds = selectedItems.map(item => item.id);
+      // const selectedIds = selectedItems.map(item => item.id);
 
-      return this.notificationsService.markSeen(selectedIds, true)
+      return this.notificationsService.markSeen(selectedItems, true)
         .map((notifications: Notification) => new Notifications.MarkSeenSuccess())
         .catch(error => of(new Notifications.MarkSeenFailure(error)))
     });

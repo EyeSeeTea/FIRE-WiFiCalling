@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Voucher } from '../models/voucher';
 import { AddVoucher } from '../actions/voucher';
 import { slideRTLAnimation, slideLTRAnimation} from '../../shared/animations/shared.animations';
+import { AuthGuard } from '../../auth/guard/auth-guard';
 
 @IonicPage()
 @Component({
@@ -12,12 +13,13 @@ import { slideRTLAnimation, slideLTRAnimation} from '../../shared/animations/sha
   animations: [slideRTLAnimation, slideLTRAnimation]
 })
 
-export class TopUpPage {
+export class TopUpPage extends AuthGuard {
 
   /** default active tab */
   selectedTab = 'AddVoucher';
 
-  constructor(private store: Store<any>) {
+  constructor(public store: Store<any>) {
+    super(store);
   }
 
   onAddVoucher(e: Voucher) {

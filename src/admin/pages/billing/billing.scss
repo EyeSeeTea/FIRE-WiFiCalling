@@ -10,7 +10,7 @@ page-billing {
     width: 100%;
     max-width: none;
     color: color($colors, lightgray);
-    font-weight: bold;
+    font-weight: normal;
 
     .select-icon-inner{
       color: color($colors, lightgray) !important;
@@ -53,6 +53,10 @@ page-billing {
 
   .fire-select {
     background-color: color($colors, gray);
+  }
+
+  .toolbar-title {
+    font-weight: normal;
   }
 
 }

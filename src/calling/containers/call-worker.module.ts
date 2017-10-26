@@ -12,13 +12,12 @@ import { OutgoingEffects } from '../effects/outgoing.effects';
 import { reducers } from '../reducers';
 
 import { SipService } from '../services/sip.service';
+import { ToneService } from '../services/tone.service';
 import { CallWorker } from './call-worker';
 import { SharedModule } from '../../shared/shared.module';
 import { SessionCall } from '../components/session-call/session-call';
 import { IncomingCall } from '../components/incoming-call/incoming-call';
 import { OutgoingCall } from '../components/outgoing-call/outgoing-call';
-import { SipStatus } from '../components/sip-status/sip-status';
-import { ToneService } from '../services/tone.service';
 
 @NgModule({
   imports: [
@@ -33,8 +32,7 @@ import { ToneService } from '../services/tone.service';
     CallWorker,
     SessionCall,
     IncomingCall,
-    OutgoingCall,
-    SipStatus
+    OutgoingCall
   ],
   exports: [
     CallWorker
