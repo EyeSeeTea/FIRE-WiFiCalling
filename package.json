@@ -1,8 +1,9 @@
 {
   "name": "calling-app",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "EyeSeeTea Team",
+  "description": "WiFiCalling: phone calls over SIP auto-provisioning",
+  "homepage": "http://eyeseetea.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -47,6 +48,5 @@
   "devDependencies": {
     "@ionic/app-scripts": "3.0.1",
     "typescript": "2.3.4"
-  },
-  "description": "An Ionic project"
+  }
 }
