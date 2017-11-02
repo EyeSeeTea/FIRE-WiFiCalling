@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CallState } from '../../reducers/session';
 import * as Calling from '../../actions/session';
@@ -8,14 +8,13 @@ import * as Calling from '../../actions/session';
   templateUrl: 'outgoing-call.html'
 })
 
-export class OutgoingCall implements OnInit {
+export class OutgoingCall {
 
+  mic = true;
+  speaker = false;
   @Input() state: CallState;
 
   constructor(private store: Store<any>) {
-  }
-
-  ngOnInit() {
   }
 
   hangUp() {

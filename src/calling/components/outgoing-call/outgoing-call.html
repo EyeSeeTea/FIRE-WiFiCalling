@@ -21,54 +21,24 @@
   <div class="action-buttons">
 
     <ion-grid>
+
+      <ion-row class="fill-space"></ion-row>
       <!-- FIRST ROW OF BUTTONS -->
       <ion-row>
-        <ion-col>
 
-          <button color="gray" ion-button round>
+        <ion-col>
+          <button color="gray" ion-button round [class.active-speaker]="speaker" (tap)="speaker = !speaker">
             <ion-icon name="volume-up"></ion-icon>
-            <!--<ion-icon name="volume-off"></ion-icon>-->
           </button>
-
-        </ion-col>
-        <ion-col>
-
-          <button color="gray" ion-button round>
-            <ion-icon name="people"></ion-icon>
-          </button>
-
         </ion-col>
 
         <ion-col>
 
-          <button color="gray" ion-button round>
-            <ion-icon name="pause"></ion-icon>
-          </button>
-
-        </ion-col>
-      </ion-row>
-
-      <!-- SECOND ROW OF BUTTONS -->
-
-      <ion-row>
-        <ion-col>
-
-          <button color="gray" ion-button round>
-            <ion-icon name="mic"></ion-icon>
-          </button>
-
-        </ion-col>
-        <ion-col>
-
-          <button color="gray" ion-button round>
-            <ion-icon name="mic"></ion-icon>
-          </button>
-
-        </ion-col>
-        <ion-col>
-
-          <button color="gray" ion-button round>
-            <ion-icon name="mic"></ion-icon>
+          <button color="gray" ion-button round (tap)="mic = !mic">
+            <ion-icon *ngIf="mic; else mute" name="mic"></ion-icon>
+            <ng-template #mute>
+              <ion-icon name="mic-off"></ion-icon>
+            </ng-template>
           </button>
 
         </ion-col>
@@ -81,7 +51,7 @@
       <ion-row>
         <ion-col text-center>
 
-          <button color="danger" ion-button round (click)="hangUp()">
+          <button color="danger" ion-button round (tap)="hangUp()">
             <ion-icon name="close"></ion-icon>
           </button>
 
@@ -92,5 +62,3 @@
 
   </div>
 </div>
-
-

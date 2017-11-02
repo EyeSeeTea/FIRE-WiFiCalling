@@ -35,7 +35,7 @@
     "@ngx-translate/http-loader": "2.0.0",
     "ionic-angular": "3.7.1",
     "ionicons": "3.0.0",
-    "jssip": "3.0.21",
+    "jssip": "3.0.23",
     "ngx-bar-rating": "^1.1.0",
     "ngx-filter-pipe": "^1.0.0",
     "ngx-order-pipe": "^1.0.3",

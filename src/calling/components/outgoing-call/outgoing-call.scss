@@ -1,6 +1,7 @@
 outgoing-call, session-call {
 
   .caller-id {
+    margin-top: 4em;
     height: 40vh;
   }
 
@@ -12,7 +13,6 @@ outgoing-call, session-call {
   .caller-id, .action-buttons {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
   }
 
@@ -53,5 +53,10 @@ outgoing-call, session-call {
   settings-form, form {
     display: flex;
     flex: 1;
+  }
+
+  .active-speaker {
+    background-color: color($colors, lightgray) !important;
+    color: color($colors, dark) !important;
   }
 }

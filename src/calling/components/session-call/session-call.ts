@@ -13,6 +13,8 @@ import * as Calling from '../../actions/session';
 
 export class SessionCall implements OnInit {
 
+  mic = true;
+  speaker = false;
   /** Display call duration */
   timerTicks$;
   @Input() state: State;
