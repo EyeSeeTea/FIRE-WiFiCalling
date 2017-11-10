@@ -36,14 +36,15 @@
       "LAND_LINES_INTERNATIONAL": "Land lines international"
     },
     "NOTIF": {
-      "FILTER": {
-        "TOPPED_UP": "topped up",
-        "USER_REQUEST": "user request",
-        "USER_ACCEPTED": "user accepted",
-        "MESSAGE_SENT": "message sent",
-        "PROFILE_UPDATED": "profile updated",
-        "USER_NAME": "user name"
-      }
+      "TOPPED_UP": "Topped up",
+      "USER_REQUEST": "New User request",
+      "USER_ACCEPTED": "New User accepted",
+      "MESSAGE_SENT": "Message sent",
+      "PROFILE_UPDATED": "Profile updated",
+      "USER_NAME": "username",
+      "FILTER": "Filter",
+      "DATE": "Date",
+      "FILTER_NAME": "Filter by username"
     }
   },
   "AUTH": {
@@ -99,11 +100,11 @@
       "PHONE_NUMBER_REQUIRED": "Phone number is required.",
       "PHONE_NUMBER_LENGTH": "Phone number must be 10 digit."
     },
-  "CALLING": {
-    "CALL": "Call",
-    "CALLING_TO": "Calling to",
-    "USE_GSM": "Use GSM",
-    "USE_VOIP": "Use VoIP"
-  }
+    "CALLING": {
+      "CALL": "Call",
+      "CALLING_TO": "Calling to",
+      "USE_GSM": "Use GSM",
+      "USE_VOIP": "Use VoIP"
+    }
   }
 }

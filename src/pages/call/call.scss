@@ -1,16 +1,10 @@
 page-call {
   ion-icon {
     font-size: 25px;
-    color: #4A4A4A;
   }
 
-  .call_button {
-    width: 100%;
-    background-color: #62AC11;
-    color: white;
-    text-shadow: 1px 1px 1px black;
-    position: absolute;
-    bottom: 0;
+  .call-container {
+    height: 100%;
   }
 
   .phone-number-call {
@@ -18,8 +12,8 @@ page-call {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #4A4A4A;
-    font-size: 200%;
+    color: color($colors, gray);
+    font-size: 2em;
   }
   .phone-number-wrapper {
     height: 60px;

@@ -12,27 +12,27 @@ export class UsersService {
 
   /** Get users list */
   getUsers() {
-    return this.fireHttp.get(this.endpoint).map(res => res.json().data);
+    return this.fireHttp.get(this.endpoint).map(res => res.data);
   }
 
   getUser(id: number) {
     const endpoint = this.endpoint + '/' + id;
-    return this.fireHttp.get(endpoint).map(res => res.json());
+    return this.fireHttp.get(endpoint);
   }
 
   updateUser(id: number) {
     const endpoint = this.endpoint + '/' + id;
-    return this.fireHttp.patch(endpoint, {}).map(res => res.json());
+    return this.fireHttp.patch(endpoint, {});
   }
 
   deleteUser(id: number) {
     const endpoint = this.endpoint + '/' + id;
-    return this.fireHttp.delete(endpoint).map(res => res.json());
+    return this.fireHttp.delete(endpoint);
   }
 
   /** Send message to selected user(s) */
   sendMessage(message: string, users: User[]) {
-    return this.fireHttp.get(this.endpoint, {message: message, users: users}).map(res => res.json());
+    return this.fireHttp.get(this.endpoint, {message: message, users: users});
   }
 
 }

@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -19,7 +19,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { WiFiCalling } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
-import { CallPage } from '../pages/call/call';
 import { HistoryPage } from '../pages/history/history';
 import { ContactsPage } from '../pages/contacts/contacts';
 
@@ -29,6 +28,7 @@ import * as auth from '../auth/reducers';
 import { FireHttpModule } from '../auth/http/fire-http.module';
 
 import { AuthEffects } from '../auth/effects/auth.effects';
+import { CallWorkerModule } from '../calling/containers/call-worker.module';
 
 
 // AoT requires an exported function for factories
@@ -39,7 +39,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     WiFiCalling,
-    CallPage,
     TabsPage,
     HistoryPage,
     ContactsPage
@@ -49,7 +48,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     IonicModule.forRoot(WiFiCalling, {
       backButtonText: ''
     }),
-    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -63,11 +61,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     StoreModule.forRoot(reducers, {metaReducers}),
     StoreModule.forFeature('auth', auth.reducers),
     EffectsModule.forRoot([AuthEffects]),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    CallWorkerModule
   ],
   entryComponents: [
     WiFiCalling,
-    CallPage,
     TabsPage,
     HistoryPage,
     ContactsPage

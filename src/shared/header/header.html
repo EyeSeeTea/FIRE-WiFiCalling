@@ -7,9 +7,7 @@
       </button>
     </ion-buttons>
 
-    <div class="header-title"> {{ title }} </div>
-
-    <div class="fill-space"></div>
+    <div *ngIf="auth.user" class="header-title"> {{ auth.user.name }} - {{ auth.user.phoneNumber }} </div>
 
     <ion-buttons>
       <button ion-button icon-only (click)="openMenu()">

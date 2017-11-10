@@ -1,10 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { App, ModalController } from 'ionic-angular';
 import { MenuDialogComponent } from '../menu-dialog/menu-dialog.component';
 import { TabsPage } from '../../pages/tabs/tabs';
 import { Store } from '@ngrx/store';
 import * as Auth from '../../auth/actions/auth';
+import { selectAuthStatusState } from '../../auth/reducers';
 import { State } from '../../auth/reducers/auth';
+import { Subscription } from 'rxjs/Subscription';
 
 type Page = { title: string, component?: any, color?: string };
 
@@ -12,12 +14,11 @@ type Page = { title: string, component?: any, color?: string };
   selector: 'header',
   templateUrl: 'header.html'
 })
-export class HeaderComponent {
-
-  @Input() title: string;
+export class HeaderComponent implements OnDestroy {
 
   /** Initial auth state */
-  auth: State = {loggedIn: false, user: null};
+  auth: State;
+  authObs$: Subscription;
 
   /** Menu items */
   pages: Page[] = [
@@ -29,10 +30,13 @@ export class HeaderComponent {
     {title: 'MENU.LOGOUT', color: 'danger'}
   ];
 
-  constructor(private store: Store<any>, private app: App, private modal: ModalController) {
+  constructor(private store: Store<State>,
+              private app: App,
+              private modal: ModalController) {
 
     /** Get auth state from the store */
-    store.subscribe((state: any) => this.auth = state.auth.status || null);
+    this.authObs$ = this.store.select(selectAuthStatusState)
+      .subscribe((auth: State) => this.auth = auth);
   }
 
   /** Open menu dialog */
@@ -40,19 +44,28 @@ export class HeaderComponent {
     let pages = this.pages;
     let cssClass = 'main-menu';
 
-    /** If user is logged in show full menu */
     if (!this.auth.loggedIn) {
 
       /** If user is not logged in, then:
-       * - Add 'guest' class to menu to set shorter menu height
-       * - Remove 'home', 'admin' and 'logout' buttons
-       * */
+       * - Add 'guest' class to menu to set the proper height
+       * - Remove 'Home', 'Admin' and 'Logout' buttons
+       */
       cssClass += ' guest';
-      pages = this.pages.filter(page => {
-        return page.title !== 'MENU.HOME'
-          && page.title !== 'MENU.ADMIN'
-          && page.title !== 'MENU.LOGOUT'
-      });
+      pages = this.pages.filter(page =>
+        page.title !== 'MENU.HOME' &&
+        page.title !== 'MENU.ADMIN' &&
+        page.title !== 'MENU.LOGOUT'
+      );
+    } else if (!this.auth.user.admin) {
+      /** If logged in but not an Admin user, then
+       * - Add 'guest' class to menu to set the proper height
+       * - Remove 'Home' and 'Admin' buttons
+       */
+      cssClass += ' not-admin';
+      pages = this.pages.filter(page =>
+        page.title !== 'MENU.HOME' &&
+        page.title !== 'MENU.ADMIN'
+      );
     }
 
     const menu = this.modal.create(MenuDialogComponent,
@@ -66,11 +79,17 @@ export class HeaderComponent {
         if (page.title === 'MENU.LOGOUT') {
           this.store.dispatch(new Auth.Logout());
         } else {
-          this.app.getRootNavs()[0].push(page.component);
+          this.app.getRootNav().push(page.component);
         }
       }
     });
 
     menu.present();
+  }
+
+  ngOnDestroy() {
+    if (this.authObs$) {
+      this.authObs$.unsubscribe();
+    }
   }
 }
