@@ -5,6 +5,7 @@ import { Authenticate, RegisterForm } from '../models/user';
 @Injectable()
 export class AuthService {
 
+  loginEndpoint = '/currentUser';
   endpoint = '/newUserRequests';
 
   constructor(private fireHttp: FireHttp) {
@@ -12,12 +13,10 @@ export class AuthService {
 
   login(keys: Authenticate) {
     this.fireHttp.setAuthKeys(keys);
-    return this.fireHttp.get('/users');
+    return this.fireHttp.get(this.loginEndpoint).map(res => ({...res.data, password: keys.password}));
   }
 
   register(form: RegisterForm) {
-    /** TODO: remove the hardcoded username when the registration design is complete
-     * issue: https://github.com/EyeSeeTea/FIRE-WiFiCalling/issues/37 */
-    return this.fireHttp.post(this.endpoint, {user: {...form, username: 'hardcoded'}});
+    return this.fireHttp.post(this.endpoint, form);
   }
 }

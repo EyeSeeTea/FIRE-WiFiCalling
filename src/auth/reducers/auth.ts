@@ -18,7 +18,7 @@ export function reducer(state = initialState, action: auth.Actions): State {
       return {
         ...state,
         loggedIn: true,
-        user: action.payload.user,
+        user: action.payload,
       };
     }
 

@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { SharedModule } from '../../shared/shared.module';
 
-import { CallingPage } from './calling';
+import { CallTypePage } from './call-type';
 
 @NgModule({
   declarations: [
-    CallingPage
+    CallTypePage
   ],
   imports: [
-    IonicPageModule.forChild(CallingPage),
+    IonicPageModule.forChild(CallTypePage),
     SharedModule
   ],
   exports: [
-    CallingPage
+    CallTypePage
   ]
 })
-export class CallingPageModule {}
+export class CallTypePageModule {}

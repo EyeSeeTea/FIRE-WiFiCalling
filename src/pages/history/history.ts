@@ -26,19 +26,19 @@ export class HistoryPage {
       {
         displayName: 'Coreen Boomer',
         phoneNumber: '111 7777 333 45',
-        type: 'incoming',
+        type: 'incoming-call',
         date: randomDate(minDate, maxDate, '12', '0'),
         missed: false
       }, {
         displayName: 'Ruben Gangi',
         phoneNumber: '222 2222 333 45',
-        type: 'incoming',
+        type: 'incoming-call',
         date: randomDate(minDate, maxDate, '12', '0'),
         missed: false
       }, {
         displayName: 'Carlos',
         phoneNumber: '111 2222 444 44',
-        type: 'incoming',
+        type: 'incoming-call',
         date: randomDate(minDate, maxDate, '12', '0'),
         missed: true
       }, {

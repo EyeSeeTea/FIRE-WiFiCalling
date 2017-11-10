@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         Validators.email
       ]),
       address: new FormControl('', Validators.required),
-      gender: new FormControl(''),
+      gender: new FormControl('Male'),
       phone: new FormControl('', [
         Validators.required,
         Validators.maxLength(10),

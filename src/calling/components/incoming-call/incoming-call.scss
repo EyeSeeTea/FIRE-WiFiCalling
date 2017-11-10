@@ -1,0 +1,17 @@
+incoming-call {
+  .reject-button {
+    transform: rotate(134deg);
+  }
+
+  .action-buttons {
+    margin-bottom: 2.5em;
+  }
+
+  .caller-id {
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,22 @@
+call-worker {
+
+  .calling-wrapper {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100vh;
+    background-color: #313030;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  button.button-round {
+    border-radius: 50%;
+    font-size: 2em;
+    height: 2.4em;
+    width: 2.4em;
+    margin: 0.2em;
+  }
+}

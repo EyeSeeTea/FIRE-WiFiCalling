@@ -6,11 +6,11 @@ import 'rxjs/add/operator/take';
 import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
 import { App, LoadingController, Loading } from 'ionic-angular';
-import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage';
 import { Effect, Actions } from '@ngrx/effects';
 
 import { AuthService } from '../services/auth.service';
 import * as Auth from '../actions/auth';
+import * as Sip from '../../calling/actions/sip';
 
 import { TabsPage } from '../../pages/tabs/tabs';
 import { Authenticate, RegisterForm, User } from '../models/user';
@@ -34,29 +34,28 @@ export class AuthEffects {
       this.loadingDialog.present();
 
       return this.authService.login(keys)
-        .map((user: User) => new Auth.LoginSuccess({user}))
+        .map((user: User) => new Auth.LoginSuccess(user))
         .catch(error => of(new Auth.LoginFailure(error)))
     });
 
   /** Login success */
 
-  @Effect({dispatch: false})
+  @Effect()
   loginSuccess$ = this.actions$
     .ofType(Auth.LOGIN_SUCCESS)
-    .map((action: Auth.Login) => action.payload)
-    .map((keys: Authenticate) => {
+    .map((action: Auth.LoginSuccess) => action.payload)
+    .exhaustMap((user: User) => {
 
       /** Close loading dialog */
-      if(this.loadingDialog){
+      if (this.loadingDialog) {
         this.loadingDialog.dismiss();
       }
 
-      this.secureStorage.create('fire-app')
-        .then((storage: SecureStorageObject) => storage.set('auth-keys', JSON.stringify(keys)))
-        .catch((err) => console.log('Login Success: could not set auth-keys in SecureStorage', err));
-
       /** Navigate to home page */
       this.appCtrl.getRootNav().setRoot(TabsPage);
+
+      /** Initialize SIP with user settings */
+      return of(new Sip.Initialize(user));
     });
 
   /** Register new user */
@@ -74,27 +73,25 @@ export class AuthEffects {
       this.loadingDialog.present();
 
       return this.authService.register(form)
-        .map((user: User) => new Auth.RegisterSuccess(form))
+        .map((res: any) => new Auth.RegisterSuccess(res))
         .catch(error => of(new Auth.RegisterFailure(error)))
     });
 
   /** Register success */
 
-  /** TODO: Autologin after register, replace form.email with form.username
-   * (waiting for a decision https://github.com/EyeSeeTea/FIRE-WiFiCalling/issues/37) */
-
   @Effect({dispatch: false})
   registerSuccess$ = this.actions$
     .ofType(Auth.REGISTER_SUCCESS)
-    .do(() => {
+    .map((action: Auth.LoginSuccess) => action.payload)
+    .do((res) => {
 
       /** Close loading dialog */
-      if(this.loadingDialog){
+      if (this.loadingDialog) {
         this.loadingDialog.dismiss();
       }
 
       /** Show success dialog */
-      this.dialogs.errorDialog('Your account request will be reviewed by the admin.').present();
+      this.dialogs.successDialog('Your account request will be reviewed by the admin.').present();
     });
 
 
@@ -104,15 +101,15 @@ export class AuthEffects {
   failure$ = this.actions$
     .ofType(Auth.REGISTER_FAILURE, Auth.LOGIN_FAILURE)
     .map((action: Auth.LoginFailure) => action.payload)
-    .map((err) => {
+    .do((err) => {
 
       /** Close loading dialog */
-      if(this.loadingDialog){
+      if (this.loadingDialog) {
         this.loadingDialog.dismiss();
       }
 
       /** Show error dialog */
-      this.dialogs.errorDialog(err).present();
+      this.dialogs.errorDialog(err.error.message).present();
     });
 
   /** Loading dialog ref */
@@ -121,7 +118,6 @@ export class AuthEffects {
   constructor(private actions$: Actions,
               private authService: AuthService,
               private appCtrl: App,
-              private secureStorage: SecureStorage,
               private loadingCtrl: LoadingController,
               private dialogs: DialogService) {
   }

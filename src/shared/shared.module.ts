@@ -21,6 +21,7 @@ import { MarkPopupComponent } from '../admin/pages/notifications/mark-popup/mark
 import { MessageDialogComponent } from '../admin/pages/users/message-dialog/message-dialog.component';
 import { MenuDialogComponent } from './menu-dialog/menu-dialog.component';
 import { DialogService } from "./dialog/dialog.service";
+import { TimerPipe } from "./timer/timer.pipe";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DialogService } from "./dialog/dialog.service";
     MenuDialogComponent,
     MarkPopupComponent,
     SearchInputComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
+    TimerPipe
   ],
   imports: [
     IonicModule,
@@ -48,7 +50,8 @@ import { DialogService } from "./dialog/dialog.service";
     OrderModule,
     HeaderComponent,
     SearchInputComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
+    TimerPipe
   ],
   providers: [
     DialogService
