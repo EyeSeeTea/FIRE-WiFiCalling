@@ -1,0 +1,22 @@
+<ion-grid no-padding>
+
+  <ion-row padding text-center class="dialog-title">
+    <ion-col text-center>
+      <h3>Call Ended</h3>
+    </ion-col>
+  </ion-row>
+
+  <ion-row align-items-center class="dialog-content">
+    <ion-col text-center>
+      <span>
+        <h5 [style.visibility]="rated ? 'hidden' : 'visible'">How was the call quality?</h5>
+        <bar-rating name="rating" (ngModelChange)="onRate($event)" max="5" theme="stars"></bar-rating>
+      </span>
+      <span *ngIf="rated">Thanks for your feedback!</span>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="dialog-actions">
+    <button ion-button full color="primary" (click)="viewCtrl.dismiss()"> {{ 'DIALOGS.OK' | translate }}</button>
+  </ion-row>
+</ion-grid>

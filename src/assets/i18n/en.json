@@ -1,5 +1,17 @@
 {
   "TOP_UP_CONTENT": "Top up content",
+  "CALLING": {
+    "CALL": "Call",
+    "CALLING_TO": "Calling to",
+    "USE_GSM": "Use GSM",
+    "USE_VOIP": "Use VoIP"
+  },
+  "DIALOGS": {
+    "OK": "Ok",
+    "REGISTRATION_ACCEPTED": "Registration accepted!",
+    "MESSAGE_SUCCESS": "",
+    "MESSAGE_ERROR": "Sorry! your message was not sent."
+  },
   "TABS": {
     "CALL": "Call",
     "CONTACTS": "Contacts",
@@ -10,7 +22,7 @@
     "BILLING": "Billing"
   },
   "MENU": {
-    "HOME": "Home",
+    "HOME": "Wifi Call",
     "LICENSE": "License",
     "ABOUT": "About",
     "SETTINGS": "Settings",
@@ -44,7 +56,13 @@
       "USER_NAME": "username",
       "FILTER": "Filter",
       "DATE": "Date",
-      "FILTER_NAME": "Filter by username"
+      "FILTER_NAME": "Filter by username",
+      "ACCEPT": "Accept",
+      "REJECT": "Reject",
+      "DISMISS": "Dismiss",
+      "SELECT_UNSEEN": "Select unseen",
+      "SELECT_ALL": "Select all",
+      "DESELECT_ALL": "Deselect all"
     }
   },
   "AUTH": {
@@ -99,12 +117,6 @@
       "ADDRESS_REQUIRED": "Address is required.",
       "PHONE_NUMBER_REQUIRED": "Phone number is required.",
       "PHONE_NUMBER_LENGTH": "Phone number must be 10 digit."
-    },
-    "CALLING": {
-      "CALL": "Call",
-      "CALLING_TO": "Calling to",
-      "USE_GSM": "Use GSM",
-      "USE_VOIP": "Use VoIP"
     }
   }
 }

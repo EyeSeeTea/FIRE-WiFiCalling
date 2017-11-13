@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from 'ionic-angular';
 import { TranslateModule } from '@ngx-translate/core';
+import { BarRatingModule } from 'ngx-bar-rating';
 
 /** OrderModule is used in History page and Admin Users page */
 import { OrderModule } from 'ngx-order-pipe';
@@ -20,8 +21,9 @@ import { SearchInputComponent } from './input/search-input.component';
 import { MarkPopupComponent } from '../admin/pages/notifications/mark-popup/mark-popup.component';
 import { MessageDialogComponent } from '../admin/pages/users/message-dialog/message-dialog.component';
 import { MenuDialogComponent } from './menu-dialog/menu-dialog.component';
-import { DialogService } from "./dialog/dialog.service";
-import { TimerPipe } from "./timer/timer.pipe";
+import { DialogService } from './dialog/dialog.service';
+import { TimerPipe } from './timer/timer.pipe';
+import { CallSummary } from '../calling/components/call-summary/call-summary';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { TimerPipe } from "./timer/timer.pipe";
     MessageDialogComponent,
     MenuDialogComponent,
     MarkPopupComponent,
+    CallSummary,
     SearchInputComponent,
     TimeAgoPipe,
     TimerPipe
@@ -41,7 +44,8 @@ import { TimerPipe } from "./timer/timer.pipe";
     TranslateModule.forChild(),
     OrderModule,
     FilterPipeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BarRatingModule
   ],
   exports: [
     TranslateModule,
@@ -60,7 +64,8 @@ import { TimerPipe } from "./timer/timer.pipe";
     DialogComponent,
     MessageDialogComponent,
     MenuDialogComponent,
-    MarkPopupComponent
+    MarkPopupComponent,
+    CallSummary
   ]
 })
 export class SharedModule {

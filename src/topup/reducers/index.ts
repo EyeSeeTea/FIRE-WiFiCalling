@@ -19,13 +19,11 @@ export const reducers = {
 
 export const selectTopUpState = createFeatureSelector<VoucherState>('vouchers');
 
-export const selectAuthStatusState = createSelector(selectTopUpState, (state: VoucherState) => state.data);
+export const selectTopUpDataState = createSelector(selectTopUpState, (state: VoucherState) => state.data);
+export const selectTopUpPageState = createSelector(selectTopUpState, (state: VoucherState) => state.topUpPage);
 
-export const getVouchers = createSelector(selectAuthStatusState, fromVoucher.getVouchers);
-
+export const getVouchers = createSelector(selectTopUpDataState, fromVoucher.getVouchers);
 export const selectAuthPageState = createSelector(selectTopUpState, (state: VoucherState) => state.topUpPage);
-
-export const getAuthPageError = createSelector(selectAuthPageState, fromVoucherPage.getError);
-
-export const getAuthPagePending = createSelector(selectAuthPageState, fromVoucherPage.getPending);
+export const getAuthPageError = createSelector(selectTopUpPageState, fromVoucherPage.getError);
+export const getAuthPagePending = createSelector(selectTopUpPageState, fromVoucherPage.getPending);
 

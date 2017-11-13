@@ -30,7 +30,8 @@
 
       <ion-row>
         <ion-col text-center>
-          <button ion-button color="link" clear style="text-transform: none">{{ 'AUTH.FORGOT_PASSWORD' | translate }} </button>
+          <button ion-button type="button" color="link" clear style="text-transform: none"
+                  (tap)="forgotPassword()">{{ 'AUTH.FORGOT_PASSWORD' | translate }} </button>
         </ion-col>
       </ion-row>
 

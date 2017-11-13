@@ -4,21 +4,22 @@
 <ion-content>
 
   <ion-grid no-padding class="call-container">
-    <ion-grid padding>
 
-      <ion-row class="phone-number-wrapper">
-        <ion-col col-auto>
-          <ion-icon name="person-add" [hidden]="!phoneNumber.length"
-                    (tap)="personAdd()" (press)="personAdd()"></ion-icon>
-        </ion-col>
-        <ion-col col-auto class="phone-number-call">
-          {{ phoneNumber }}
-        </ion-col>
-        <ion-col col-auto>
-          <ion-icon name="backspace" [hidden]="!phoneNumber.length"
-                    (tap)="removeLast()" (press)="phoneNumber = ''"></ion-icon>
-        </ion-col>
-      </ion-row>
+    <ion-row class="phone-number-wrapper">
+      <ion-col col-auto>
+        <ion-icon name="person-add" [hidden]="!phoneNumber.length"
+                  (tap)="personAdd()" (press)="personAdd()"></ion-icon>
+      </ion-col>
+      <ion-col col-auto class="phone-number-call">
+        {{ phoneNumber }}
+      </ion-col>
+      <ion-col col-auto>
+        <ion-icon name="backspace" [hidden]="!phoneNumber.length"
+                  (tap)="removeLast()" (press)="phoneNumber = ''"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <ion-grid class="keys-wrapper">
 
       <ion-row justify-content-center>
         <ion-col col-auto>
@@ -65,12 +66,12 @@
         </ion-col>
       </ion-row>
 
-      <ion-row class="fill-space"></ion-row>
     </ion-grid>
 
     <ion-row>
-      <button *ngIf="phoneNumber.length" ion-button full color="secondary" (click)="call()">
-        {{ 'CALLING.CALL' | translate }}
+      <button [style.visibility]="phoneNumber.length ? 'visible' : 'hidden'"
+              ion-button full color="success" (click)="call()">
+       <ion-icon name="call"></ion-icon> {{ 'CALLING.CALL' | translate }}
       </button>
     </ion-row>
   </ion-grid>

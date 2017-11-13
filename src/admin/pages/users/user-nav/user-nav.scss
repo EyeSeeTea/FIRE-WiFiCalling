@@ -5,12 +5,12 @@ user-nav {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    font-size: 18px;
+    font-size: 16px;
     ion-buttons {
       order: 0;
       .button-inner {
         text-transform: capitalize;
-        font-size: 18px;
+        font-size: 16px;
       }
       ion-icon {
         margin-right: 10px;
@@ -40,7 +40,6 @@ user-nav {
     .user-last-access {
       margin: 0 15px;
       min-width: 60px;
-      font-weight: 500;
       color: white;
       text-transform: capitalize;
     }

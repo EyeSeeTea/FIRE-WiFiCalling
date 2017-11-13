@@ -1,0 +1,20 @@
+@import "../../../theme/variables";
+
+call-summary {
+  display: flex !important;
+  flex-direction: column;
+  background-color: color($colors, light);
+
+  bar-rating {
+    display: inline-block;
+    margin-bottom: 0.5em;
+  }
+
+  h5 {
+    margin-bottom: 0.5em;
+  }
+
+  .grid, .dialog-content {
+    flex: 1;
+  }
+}

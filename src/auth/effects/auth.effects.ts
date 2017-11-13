@@ -52,7 +52,7 @@ export class AuthEffects {
       }
 
       /** Navigate to home page */
-      this.appCtrl.getRootNav().setRoot(TabsPage);
+      this.app.getRootNav().setRoot(TabsPage);
 
       /** Initialize SIP with user settings */
       return of(new Sip.Initialize(user));
@@ -108,16 +108,33 @@ export class AuthEffects {
         this.loadingDialog.dismiss();
       }
 
-      /** Show error dialog */
-      this.dialogs.errorDialog(err.error.message).present();
+      if (err) {
+        /** Show error dialog */
+        this.dialogs.errorDialog(err.error.message).present();
+      }
     });
+
+  /** Logout */
+
+  @Effect()
+  logout$ = this.actions$
+    .ofType(Auth.LOGOUT)
+    .exhaustMap(() => of(new Auth.RedirectLogin()));
+
+
+  /** Redirect to login page */
+
+  @Effect({dispatch: false})
+  redirect$ = this.actions$
+    .ofType(Auth.REDIRECT_LOGIN)
+    .do(() => this.app.getRootNav().setRoot('AuthPage'));
 
   /** Loading dialog ref */
   loadingDialog: Loading;
 
   constructor(private actions$: Actions,
               private authService: AuthService,
-              private appCtrl: App,
+              private app: App,
               private loadingCtrl: LoadingController,
               private dialogs: DialogService) {
   }

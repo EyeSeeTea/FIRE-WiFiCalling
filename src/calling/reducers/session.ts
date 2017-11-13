@@ -19,8 +19,7 @@ export interface CallState {
 
 /** Call session interface */
 export interface State extends CallState {
-  startDate: number;
-  endDate: number;
+  connected: boolean;
 }
 
 export const initialState: State = null;
@@ -35,9 +34,15 @@ export function reducer(state = initialState, action: calling.Actions): State {
         connection: action.payload.connection,
         type: action.payload.type,
         peer: action.payload.peer,
-        startDate: Date.now(),
-        endDate: undefined
+        connected: true
       };
+    }
+
+    case calling.INCOMING_CALL_CONNECT: {
+      return {
+        ...state,
+        connected: false
+      }
     }
 
     // case calling.DISCONNECTED: {
@@ -61,5 +66,3 @@ export function reducer(state = initialState, action: calling.Actions): State {
 export const getPeerUser = (state: State) => state.peer;
 export const getCallingType = (state: State) => state.type;
 export const getConnectionType = (state: State) => state.connection;
-export const getStartDate = (state: State) => state.startDate;
-export const getEndDate = (state: State) => state.endDate;

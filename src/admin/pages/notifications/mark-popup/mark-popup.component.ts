@@ -5,13 +5,13 @@ import { NavParams, ViewController } from 'ionic-angular';
   selector: 'mark-popup',
   template: `
     <button ion-button clear full class="item" (click)="viewCtrl.dismiss('ALL')">
-      Select All
+      {{ 'ADMIN.NOTIF.SELECT_ALL' | translate }}
     </button>
     <button ion-button clear full class="item" (click)="viewCtrl.dismiss('UNSEEN')">
-      Unread ({{ params.get('unseen') }})
+      {{ 'ADMIN.NOTIF.SELECT_UNSEEN' | translate }} ({{ params.get('unseen') }})
     </button>
     <button ion-button clear full class="item" (click)="viewCtrl.dismiss('NONE')">
-      Unselect All
+      {{ 'ADMIN.NOTIF.DESELECT_ALL' | translate }}
     </button>
   `
 })

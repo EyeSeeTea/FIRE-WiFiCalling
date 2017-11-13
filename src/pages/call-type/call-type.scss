@@ -1,24 +1,24 @@
 page-call-type {
-  .call_opt_box {
+  .call-opt-box {
     border-style: solid;
     border-width: thin;
     border-color: #797979;
     font-size: 30px;
   }
 
-  .call_opt_header {
+  .call-opt-header {
     background-color: #797979;
     color: white;
     font-size: 20px;
+    padding: 10px;
+  }
+
+  .call-pricing {
+    padding: 10px;
   }
 
   .units {
     font-size: 12px;
   }
 
-  .call_button {
-    background-color: #62AC11;
-    color: white;
-    text-shadow: 2px 2px 2px black;
-  }
 }

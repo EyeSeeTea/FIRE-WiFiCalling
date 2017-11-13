@@ -1,18 +1,21 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
-import { ToneService } from "../../calling/services/tone.service";
+import { Store } from '@ngrx/store';
+import { ToneService } from '../../calling/services/tone.service';
+import { AuthGuard } from '../../auth/guard/auth-guard';
 
 @IonicPage()
 @Component({
   selector: 'page-call',
   templateUrl: 'call.html',
 })
-export class CallPage {
+export class CallPage extends AuthGuard {
 
   phoneNumber: string = '';
 
-  constructor(public navCtrl: NavController, private toneService: ToneService) {
+  constructor(public store: Store<any>, public navCtrl: NavController, private toneService: ToneService) {
+    super(store);
   }
 
   add(n: string) {

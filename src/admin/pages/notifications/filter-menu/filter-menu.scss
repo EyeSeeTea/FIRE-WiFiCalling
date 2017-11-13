@@ -8,6 +8,7 @@ filter-menu {
   search-input {
     width: 100%;
     input {
+      border-radius: 4px;
       padding: 6px 16px;
       width: 100%;
       height: 40px;
@@ -21,12 +22,13 @@ filter-menu {
   }
   .item {
     position: relative;
-    font-weight: bold;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     color: white;
+    text-transform: initial;
+    font-weight: normal;
   }
 }

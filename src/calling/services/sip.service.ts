@@ -37,6 +37,7 @@ export class SipService {
     try {
 
       this.socket = new JsSIP.WebSocketInterface(`wss://${this.sipHost}:8443`);
+      this.socket.via_transport = 'auto';
 
       this.settings = {
         uri: `${user.id}@${user.sip.host}`,
@@ -79,8 +80,6 @@ export class SipService {
     /** SIP incoming calls */
     sipUa.on('newRTCSession', (data) => {
 
-      console.log('XXX newRTCSession', data);
-
       if (data.originator === 'local') {
 
         /** Outgoing calls */
@@ -89,17 +88,18 @@ export class SipService {
 
         data.session.on('progress', () => this.store.dispatch(new Outgoing.Progress()));
 
+        data.session.on('accepted', () => this.store.dispatch(new Outgoing.Accepted()));
+
         data.session.on('confirmed', () => this.store.dispatch(new Session.Connected({type: 'outgoing', connection: 'internet', peer: null})));
 
         data.session.on('failed', (e) => this.store.dispatch(new Outgoing.Failure(e)));
 
-        data.session.on('ended', (e) => this.store.dispatch(new Outgoing.Ended(e)));
+        data.session.on('ended', (e) => this.store.dispatch(new Session.CallEnded(e)));
 
         data.session.connection.onaddstream = (e) => this.addStream(e);
 
         data.session.connection.onremovestream = (e) => this.removeSounds();
 
-        data.session.on('accepted', () => this.store.dispatch(new Outgoing.Accepted()));
 
       } else {
 
@@ -123,6 +123,10 @@ export class SipService {
             session: data.session,
             incomingSession: null
           });
+          this.store.dispatch(new Session.IncomingCallConnect());
+        });
+
+        data.session.on('confirmed', () => {
           this.store.dispatch(new Session.Connected({type: 'incoming', connection: 'internet', peer: null}));
         });
 
@@ -191,6 +195,28 @@ export class SipService {
     if (this.audioElement) {
       document.body.removeChild(this.audioElement);
       this.audioElement = null;
+    }
+  }
+
+
+  /**
+   * Send tones on jsSip session
+   * @param dtmfs Tones to send
+   * @param session jsSip session
+   */
+  dtmfsCall(dtmfs: string, session: any) {
+    const tones = dtmfs + '#';
+    let dtmfSender = null;
+    if (session.connection.signalingState !== 'closed') {
+      if (session.connection.getSenders) {
+        dtmfSender = session.connection.getSenders()[0].dtmf;
+      } else {
+        const peerconnection = session.connection;
+        const localStream = peerconnection.getLocalStreams()[0];
+        dtmfSender = session.connection.createDTMFSender(localStream.getAudioTracks()[0]);
+      }
+      dtmfSender.insertDTMF(tones, 400, 50);
+      console.log('Sending DTMF codes', tones);
     }
   }
 }

@@ -2,17 +2,17 @@
 
   <ion-row padding text-center class="dialog-title">
     <ion-col text-center>
-      <h3>{{ params.get('title') }}</h3>
+      <h3>{{ params.get('title') | translate }}</h3>
     </ion-col>
   </ion-row>
 
   <ion-row align-items-center class="dialog-content">
     <ion-col text-center>
-      {{ params.get('content') }}
+      {{ params.get('content') | translate }}
     </ion-col>
   </ion-row>
 
   <ion-row *ngFor="let btn of params.get('buttons')" class="dialog-actions">
-    <button ion-button full [color]="btn.color" (click)="viewCtrl.dismiss(btn.value)">{{btn.label}}</button>
+    <button ion-button full [color]="btn.color" (click)="viewCtrl.dismiss(btn.value)">{{ btn.label | translate }}</button>
   </ion-row>
 </ion-grid>

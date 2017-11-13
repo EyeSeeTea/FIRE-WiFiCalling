@@ -31,8 +31,8 @@ export class NotifItemComponent {
       title: 'Confirmation!',
       content: 'Accept registration request from ' + this.temp.user.name,
       buttons: [
-        {label: 'Accept Registration', value: true, color: 'secondary'},
-        {label: 'Dismiss', color: 'light'}
+        {label: 'ADMIN.NOTIF.ACCEPT', value: true, color: 'success'},
+        {label: 'ADMIN.NOTIF.DISMISS', color: 'light'}
       ]
     });
 
@@ -52,8 +52,8 @@ export class NotifItemComponent {
       title: 'Confirmation!',
       content: 'Reject registration request from ' + this.temp.user.name,
       buttons: [
-        {label: 'Reject Registration', value: true, color: 'danger'},
-        {label: 'Dismiss', color: 'light'}
+        {label: 'ADMIN.NOTIF.REJECT', value: true, color: 'danger'},
+        {label: 'ADMIN.NOTIF.DISMISS', color: 'light'}
       ]
     });
 
